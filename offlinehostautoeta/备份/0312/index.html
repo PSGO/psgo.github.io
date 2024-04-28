@@ -1,0 +1,104 @@
+<html manifest="Cache.manifest">
+<head>
+    <title>支持 3.00 - 4.51 所有版本 | 禁止商用 | 正在检查缓存更新...</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="prefetch" href="main.css" as="style">
+    <link rel="prefetch" href="int64.js" as="script">
+    <link rel="prefetch" href="rop.js" as="script">
+    <link rel="prefetch" href="exploit.js" as="script">
+    <link rel="prefetch" href="payload_map.js" as="script">
+    <link rel="prefetch" href="custom_host_stuff.js" as="script">
+	
+    <link rel="prefetch" href="module/utils.js" as="script">
+    <link rel="prefetch" href="module/constants.js" as="script">
+    <link rel="prefetch" href="module/int64.js" as="script">
+    <link rel="prefetch" href="module/mem.js" as="script">
+    <link rel="prefetch" href="module/memtools.js" as="script">
+    <link rel="prefetch" href="module/rw.js" as="script">
+    <link rel="prefetch" href="webkit_psfree.js" as="script">
+    <link rel="prefetch" href="webkit_fontface.js" as="script">
+	
+	<link rel="prefetch" href="offsets\3.00.js" as="script">
+	<link rel="prefetch" href="offsets\3.10.js" as="script">
+	<link rel="prefetch" href="offsets\3.20.js" as="script">
+	<link rel="prefetch" href="offsets\3.21.js" as="script">
+	<link rel="prefetch" href="offsets\4.00.js" as="script">
+	<link rel="prefetch" href="offsets\4.02.js" as="script">
+	<link rel="prefetch" href="offsets\4.03.js" as="script">
+	<link rel="prefetch" href="offsets\4.50.js" as="script">
+	<link rel="prefetch" href="offsets\4.51.js" as="script">
+	
+	<script>
+			var auto;
+			var fugai;		
+			window.applicationCache.ondownloading = function()
+			{
+				auto = 1;
+				alert("折腾缓存有新的版本！\n\n点击确定按钮将开始缓存！缓存完成之前请不要操作！\n\n如果缓存失败请重新打开窗口再次缓存！")
+			};
+
+			window.applicationCache.onprogress = function(a)
+			{
+				document.getElementById("jb-progress-status-text").innerHTML="<h3>正在缓存中！请耐心等待！不要操作！缓存进度: "+(Math.round(100*(a.loaded/a.total)))+"% </h3>";
+			};
+
+			window.applicationCache.oncached = window.applicationCache.onupdateready = function()
+			{
+				if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+				
+					window.applicationCache.swapCache();
+					window.location.reload();
+					fugai = "新缓存覆盖老"
+				}
+				
+				for (;;) {
+					
+					if (fugai == undefined) {
+						fugai = "";
+					}
+					alert(fugai + "缓存完成！\n\n长按PS键回到桌面，进入PS5设置-网络，关闭网络开关！！！\n\n再次进入本页即可离线使用！记得定期打开PS5网络开关更新缓存！ \n\n如果折腾遇到连续失败，建议清除缓存后重新缓存，完成后关闭PS5网络开关！");
+					document.location.href = "index.html";
+				}
+			};
+				
+			window.applicationCache.onnoupdate = function(){
+				
+				setTimeout(function() {document.location.href = "cache.html";}, 1500);
+				
+			}
+
+			window.applicationCache.onerror = function(){
+				
+				if (auto != 1)
+				{
+					setTimeout(function() {document.location.href = "cache.html";}, 1500);
+				}
+				else
+				{
+					alert("网络不稳定，缓存失败！ \n\n点击确定尝试再次缓存或请重新打开窗口，如果持续缓存失败请关闭PS5网络使用离线进行折腾！\n\n首次缓存请检查网络问题或稍后再试！否则无法使用离线进行折腾！ \n\n也可以尝试连接手机热点");
+					window.applicationCache.update();
+				}	
+			}
+			if(!document.location.href.endswith("/index.html"))
+				document.location.href = "index.html";
+    </script>
+<style>
+body{background-color:black;border: 5px solid #603bcc}
+
+.loader {position: absolute;left: 50%;top: 55%;margin: -75px 0 0 -75px;border: 10px solid #1f1e1e;border-radius: 50%;border-top: 10px solid #603bcc;border-left: 10px solid #603bcc;width: 120px;height: 120px;animation: spin 1s linear infinite;}
+@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}
+</style>
+</head>
+
+<body>
+	<div id="loader" class="loader"></div>
+    <br>
+    <div>
+	<h1 style="font-size:60px;text-align:center;font-style:italic;"><font color="#603bcc">PSGO 全自动折腾离线版 × etaHEN</font></h1>
+	<h2 id="jb-progress-status-text" style="font-size:30px;text-align:center;color:#fff;font-weight:bold;">开机后稍等15秒 · 缓存后关网络 · 待机关机前关游戏 · 后台请勿更新游戏 · 成功后请勿重复进入</h2>
+    </div>
+</body>
+
+</html>

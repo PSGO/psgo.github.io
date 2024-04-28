@@ -1,0 +1,222 @@
+﻿<html manifest="Cache.manifest">
+<head>
+<title>PSGO浏览器 - PS5.PSGO.eu.org</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<style>
+html, body {
+background-image: url('');
+background-size: 100%;
+background-repeat: no-repeat;
+background-color: #202124;
+color: white;
+text-align: center;
+margin: 0px;
+overflow: hidden;
+}
+
+h1 {
+font-size: 25px;
+text-align: center;
+color: white;
+}
+
+.TextCaption{
+display: block;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#clock{
+ float:right;
+ margin-right:2.25%;
+ margin-top: 25px;
+ font-weight:bold;
+ font-size:28px;
+  color: white;
+}
+#date {
+ float:left;
+ margin-left:1.25%;
+ font-weight:bold;
+ margin-top: 25px;
+ font-size:28px;
+ color: white;
+}
+</style>
+	<script>
+window.applicationCache.ondownloading = function()
+{
+	alert("浏览器有新的版本！点击确定按钮将开始缓存!缓存完成之前请不要操作！")
+};
+
+window.applicationCache.onprogress = function(a)
+{
+	document.getElementById("progress").innerHTML="<h3>缓存中请勿有其他操作: "+(Math.round(100*(a.loaded/a.total)))+"% </h3>";
+};
+
+window.applicationCache.oncached = window.applicationCache.onupdateready = function()
+{
+	alert("浏览器缓存完成!如果想离线使用PSGO折腾方案，请在联网状态下点击我的收藏中的离线方案进行缓存和升级!")
+    document.location.href = document.location.href;
+};
+
+if(!document.location.href.endswith("/index.html"))
+    document.location.href = "index.html";
+</script>
+<script>
+    function showdate() {
+  var dt = new Date();
+    Hour= dt.getHours();
+  Minute= dt.getMinutes();
+     Day=dt.getDate();
+   Month=dt.getMonth()+1;
+   Year=dt.getFullYear();
+if (Minute < 10) { Minute = "0" + Minute; };
+if (Hour < 10) { Hour = "0" + Hour; };
+document.getElementById("date").innerHTML = (Year+"/"+Month+"/"+Day);
+document.getElementById("clock").innerHTML = (Hour+":"+Minute);
+  }
+  
+  setInterval(showdate,0);
+</script>
+<body class="bg-darker">
+<div id="container"  style="">
+<span id="date" ></span><span id="clock" ></span><h1 style='font-size:25px;text-align:center;color:yellow;'></h1>
+<br>
+<div  style='text-align:center;color'><h1 style="font-size:60px;text-align:center;font-style:italic;text-shadow: 4px 2px #303134;"><font color="#dcddde">PSGO 浏览器 v1.8</font></h1></div>
+<div id="progress"></div>
+<body style="margin:0px;padding:0px;overflow:auto;">
+<div id=BOX1 class=BOX style="margin:30px 5px 0px 35px;">
+<input style="top:1px;" id="search-input" type="text" value="https://">
+</div>	
+<div id=BOX2 class=BOX style="margin:30px 0px 0px -35px;">
+<button id=infobutz class=leeful onclick='goToURL();'>  跳转  </button>
+</div>
+<div  style='margin-top: 10px;margin-left:45px;text-align:left;color'><font size="4" color="#dcddde">注意：区分字母大小写、区分http和https，输入错误会影响加载离线缓存</font></div>
+<div id=BOX3  style="margin-top: 30px;">
+
+<div id=BOX3>
+
+<!-- <button style="position:absolute; bottom:75px;" class="leeful smaller" id=clrHis onclick="clearHistory()">清空历史</button><br> -->
+
+<!-- <button style="position:absolute; bottom:25px;" class="leeful smaller" id=clrFav onclick="clearFavorites()">清空收藏</button> -->
+
+<h1 style="margin-top:390px;color:white;"> <a href="" style="color: #f31414;margin-left: 0px;">  </a><br><a style="color: white;margin-left: 0px;">  </a></h1>
+
+</div>
+
+<div id=favsid  style="margin-top: 100px;">
+
+
+<div style='text-align:left;margin-left:100px;' id=favsid>
+<h3 style='margin-left:0px;' onclick="A666()">我的收藏</h3>
+<a href='https://ps5.psgo.eu.org/offlinehostauto/index.html' target='_self'>【L2键】全自动离线版（首次或更新缓存需联网）</a><br>
+<a href='https://ps5.psgo.eu.org/offlinehost/index.html' target='_self'>【R2键】一键插件离线版（首次或更新缓存需联网）</a><br>
+<a href='https://ps5.psgo.eu.org/' target='_self'>PS5折腾导航首页 - PS5.PSGO.eu.org（联网进入）</a><br>
+<div id=favs></div>
+</div>
+
+<div id=histid  style="margin-right: 100px;">
+
+<div style='text-align:left;'  id=histid>
+<h3  style='margin-left:0px;'onclick="O888()">历史访问</h3>
+<div id=hist></div>
+
+<script>
+url="";
+x=document.getElementById("search-input");
+
+if(!navigator.userAgent.includes('PlayStation 5')) {
+ alert("请在PS5中进入本页!");
+}
+
+if(localStorage.history==null){
+ localStorage.history=""
+};
+
+if(localStorage.fav==null){
+localStorage.fav="<a href='https://ps5.psgo.eu.org/onlinehost/qing/index.html' target='_self'>一键清除浏览器缓存（联网进入）</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>删除</button><br>";
+}
+ 
+function goToURL(){
+ addHist()
+ window.location.href = x.value;
+}
+ 
+function clearHistory(){
+ if (confirm('你确定要删除全部历史记录吗?')) {
+  localStorage.history="";
+  hist.innerHTML=localStorage.history;
+ } else {return}
+}
+ 
+function clearFavorites(){
+ if (confirm('你确定要删除全部收藏记录吗?')) {
+  localStorage.fav="";
+  favs.innerHTML=localStorage.fav;
+ } else {return}
+}
+
+function addHist() {
+ a = localStorage.history;
+ b = "<a href='"+x.value+"' target='_self'>"+x.value+" </a><button onclick='url=this.previousElementSibling.innerHTML;addFav()'>添加</button><br>";
+ localStorage.history = b+a;
+}
+
+function addFav(){
+ a = localStorage.fav;
+ b = "<a href='"+url+"' target='_self'>"+url+"</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>删除</button><br>";
+ alert(url+"\n已添加到收藏夹");
+ localStorage.fav = b+a;
+ favs.innerHTML=localStorage.fav;
+}
+
+function remFav(){
+ if (confirm('你确定要删除这个收藏记录吗?')) {
+  favlistBefore = localStorage.fav;
+  removefav = "<a href='"+url+"' target='_self'>"+url+"</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>删除</button><br>";
+  localStorage.fav = favlistBefore.replace(removefav, "");
+  favs.innerHTML=localStorage.fav;
+ } else {return}
+}
+
+hist.innerHTML=localStorage.history;
+favs.innerHTML=localStorage.fav;
+</script>
+<script>
+var ikey = 0;
+function manejarKeyPress(event) {
+	//L2
+	if (event.keyCode === 118) {
+		
+		window.open("https://ps5.psgo.eu.org/offlinehostauto/", '_blank');	
+	}
+	//R2
+	if (event.keyCode === 119) {
+
+		window.open("https://ps5.psgo.eu.org/offlinehost/", '_blank');	
+	}
+}
+
+document.addEventListener("keydown", manejarKeyPress);
+</script>
+<script>
+var i666 = 0;
+var i888 = 0;
+function A666() {
+        i666 += 1;
+		if (i666 == 3) {
+		window.open("https://ps5.psgo.eu.org/666/", '_blank');	
+		}
+	}
+function O888() {
+        i888 += 1;
+		if (i888 == 3) {
+		window.open("https://ps5.psgo.eu.org/888/", '_blank');	
+		}
+	}
+</script>
+</body>
+</html>

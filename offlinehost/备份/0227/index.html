@@ -1,0 +1,241 @@
+<html manifest="Cache.manifest">
+<head>
+    <title>支持4.03、4.50、4.51 | 兼容3.00-4.51 | 正在检查缓存...</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+	
+	<link rel="prefetch" href="main.css" as="style">
+    <link rel="prefetch" href="int64.js" as="script">
+    <link rel="prefetch" href="rop.js" as="script">
+    <link rel="prefetch" href="exploit.js" as="script">
+    <link rel="prefetch" href="payload_map.js" as="script">
+    <link rel="prefetch" href="custom_host_stuff.js" as="script">
+    <link rel="prefetch" href="webkit.js" as="script">
+    <link rel="prefetch" href="rop_slave.js" as="script">
+	<link rel="prefetch" href="offsets\3.00.js" as="script">
+	<link rel="prefetch" href="offsets\3.10.js" as="script">
+	<link rel="prefetch" href="offsets\3.20.js" as="script">
+	<link rel="prefetch" href="offsets\3.21.js" as="script">
+	<link rel="prefetch" href="offsets\4.00.js" as="script">
+	<link rel="prefetch" href="offsets\4.02.js" as="script">
+	<link rel="prefetch" href="offsets\4.03.js" as="script">
+	<link rel="prefetch" href="offsets\4.50.js" as="script">
+	<link rel="prefetch" href="offsets\4.51.js" as="script">
+	
+	<script>
+			var auto;
+			var fugai;
+			var liulnaqi;
+			window.applicationCache.ondownloading = function()
+			{
+				auto = 1;
+				alert("折腾缓存有新的版本！\n\n点击确定按钮将开始缓存！缓存完成之前请不要操作！\n\n如果缓存失败请重新打开窗口再次缓存！")
+			};
+
+			window.applicationCache.onprogress = function(a)
+			{
+				document.getElementById("jb-progress-status-text").innerHTML="<h3>正在缓存中！请耐心等待！不要操作！缓存进度: "+(Math.round(100*(a.loaded/a.total)))+"% </h3>";
+			};
+
+			window.applicationCache.oncached = window.applicationCache.onupdateready = function()
+			{
+				if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+				
+					window.applicationCache.swapCache();
+					window.location.reload();
+					var fugai = "新缓存覆盖老"
+				}
+				
+				for (;;) {
+					if (fugai == undefined) {
+						fugai = "";
+					}
+					alert(fugai + "缓存完成！\n\n长按PS键回到桌面，进入PS5设置-网络，关闭网络开关！！！\n\n再次进入本页即可离线使用！记得定期打开PS5网络开关更新缓存！ \n\n如果折腾遇到连续失败，建议清除缓存后重新缓存，完成后关闭PS5网络开关！");
+					document.location.href = "index.html";
+				}
+			};
+				
+			window.applicationCache.onnoupdate = function(){
+				
+				setTimeout(function() {window.open("cache.html", '_blank');}, 2500);
+				liulnaqi = 1;
+				document.getElementById("credits").style.display = "block";
+				
+			}
+
+			window.applicationCache.onerror = function(){
+				
+				if (auto != 1)
+				{
+					setTimeout(function() {window.open("cache.html", '_blank');}, 2500);
+					liulnaqi = 1;
+					document.getElementById("credits").style.display = "block";
+				}
+				else
+				{
+					alert("网络不稳定，缓存失败！ \n\n点击确定尝试再次缓存或请重新打开窗口，如果持续缓存失败请关闭PS5网络使用离线进行折腾！\n\n首次缓存请检查网络问题或稍后再试！否则无法使用离线进行折腾！ \n\n也可以尝试连接手机热点");
+					window.applicationCache.update();
+				}	
+			}
+			if(!document.location.href.endswith("/index.html"))
+				document.location.href = "index.html";
+    </script>
+<!-- <script> -->
+<!-- function mostrarPopup() { -->
+    <!-- const url = prompt("PSGO 浏览器 Lite\n\n注意：如果要访问的是离线缓存网站，需区分字母大小写、区分http和https", "https://"); -->
+
+    <!-- if (url) { -->
+		
+        <!-- window.open(url, '_blank'); -->
+    <!-- } -->
+<!-- } -->
+
+<!-- function manejarKeyPress(event) { -->
+
+    <!-- if (event.keyCode == 118 && liulnaqi == 1) { -->
+        <!-- mostrarPopup(); -->
+    <!-- } -->
+<!-- } -->
+
+<!-- document.addEventListener("keydown", manejarKeyPress); -->
+<!-- </script> -->
+<style>
+.loader {position: absolute;left: 50%;top: 55%;margin: -75px 0 0 -75px;border: 10px solid #1f1e1e;border-radius: 50%;border-top: 10px solid #603bcc;border-left: 10px solid #603bcc;width: 120px;height: 120px;animation: spin 1s linear infinite;}
+@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}
+ 
+.loader3 {
+  position: absolute;left: 50%;top: 55%;margin: -75px 0 0 -100px;
+  height: 10px; 
+}
+
+.icon,
+.icon svg {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+.loader3:not(.oneline) .icon:nth-child(odd) {
+  margin-right: 3px;
+}
+
+.icon:nth-child(1) {
+  animation-delay: 0;
+}
+
+.icon:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.icon:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.icon:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.icon {
+  transform: rotate(-90deg) scale(0);
+}
+
+.animate {
+  animation: psicon 2s cubic-bezier(.75,0,1,1);
+  /* If we want, we can add infinite iterations here, but then lose the randomisation of the symbols */
+}
+
+@keyframes psicon {
+  0% {
+    transform: rotate(-90deg) scale(0);
+    animation-timing-function: cubic-bezier(0,0,.25,1);
+  }
+  40%, 60% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(90deg) scale(0);
+  }
+}
+</style>
+</head>
+
+<body>
+	<div style="margin: 40px;">
+		<h1 style="font-size:60px;text-align:center;font-style:italic;"><font color="#603bcc">PSGO 一键折腾多插件离线版</font></h1>
+		<h2 id="jb-progress-status-text" style="font-size:26px;text-align:center;color:#fff;font-weight:bold;">开机后稍等15秒 · 缓存后关网络 · 待机关机前关游戏 · 后台请勿更新游戏 · 成功后请勿重复进入和注入</h2>
+    </div>
+	<!-- <div id="loader" class="loader"></div> -->
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="67px" height="67px" viewBox="0 0 67 67" style="enable-background:new 0 0 67 67;" xml:space="preserve">
+		<style type="text/css">
+		  .st0 { fill: #FFFFFF; } .bottopmsg{ position:fixed;bottom: 34px;width: 1520px;padding:5px 0 1px 0;}
+		</style>
+
+	  <symbol id="ps_triangle" viewBox="0 0 67 67">
+		<path class="st0" d="M0.1,62.2L33.4,4.5l33.5,57.7L0.1,62.2z M33.4,18.9L12.5,55h41.8L33.4,18.9z"/>
+	  </symbol>
+	
+	  <symbol id="ps_square" viewBox="0 0 67 67">
+		<path class="st0" d="M62.3,4.5v57.7H4.6V4.5H62.3z M54.8,12H12.1v42.6h42.6V12z"/>
+	  </symbol>
+	
+	  <symbol id="ps_circle" viewBox="0 0 67 67">
+		<path id="ps_circle" class="st0" d="M33.5,3c16.7,0,30.2,13.5,30.2,30.2c0,16.7-13.5,30.2-30.2,30.2S3.2,50,3.2,33.3 C3.2,16.6,16.7,3,33.5,3z M55.7,33.3C55.7,21,45.8,11,33.5,11C21.1,11,11.2,21,11.2,33.3c0,12.3,9.9,22.3,22.3,22.3 C45.8,55.5,55.7,45.6,55.7,33.3z" />
+	  </symbol>
+	
+	  <symbol id="ps_cross" viewBox="0 0 67 67">
+		<path class="st0" d="M57,63L33.5,39.5L10,63l-5.3-5.3l23.5-23.5L4.7,10.7L10,5.4l23.5,23.5L57,5.4l5.3,5.3L38.7,34.2 l23.5,23.6L57,63z"/>
+	  </symbol>
+	</svg>
+	
+	<div class="loader3">
+		<div class="icon animate" id="icon1"><svg><use xlink:href="#ps_triangle" id="svg1" class="svg-icon" /></svg></div><!--
+	  --><div class="icon animate" id="icon2"><svg><use xlink:href="#ps_square" id="svg2" class="svg-icon" /></svg></div><!--
+	  --><div class="icon animate" id="icon3"><svg><use xlink:href="#ps_cross" id="svg3" class="svg-icon" /></svg></div><!--
+	  --><div class="icon animate" id="icon4"><svg><use xlink:href="#ps_circle" id="svg4" class="svg-icon" /></svg></div>
+	</div>
+	
+	<script>// Inspired by the loader on the PS4 which randomises the symbols that appear
+		var iconList = ['triangle','square','cross','circle'],
+			icons = document.getElementsByClassName('icon'),
+			ready = 0,
+			i,j;
+		
+		function changeIcon(icon, iconParent) {
+			var randomIcon = '#ps_' + iconList[Math.floor(Math.random() * iconList.length)],
+				iconNum = parseInt(icon.id.substr(3));
+		
+			if (ready < iconNum) { // We make sure every icon is done animating in the right order
+				ready = iconNum;
+			}
+		
+			iconParent.classList.remove('animate');
+			icon.setAttribute('xlink:href', randomIcon);
+		
+			if (ready === 4) { // If all symbols are changed, start the animation anew
+				setTimeout(function(){
+					for (j = 0 ; j < icons.length ; j++) {
+						icons[j].classList.add('animate');
+					}
+					ready = 0;
+				}, 0);
+			}
+		}
+		
+		for (i = 0 ; i < icons.length ; i++) { // Loop through all the icons
+			icons[i].addEventListener('animationend', function(e) {
+				changeIcon(e.target.querySelector('.svg-icon'), e.target);
+			});
+		}
+	</script>
+	<!-- <div> -->
+		<!-- <center style="position: fixed;bottom: 0;width: 100%;margin-bottom: 10px;font-size: 18px;display:none" -->
+			<!-- class="info opacity-transition" id="credits"> -->
+			<!-- <h3> -->
+			<!-- <b>跳转前快速按下手柄 L2 键打开浏览器Lite</b><br> -->
+			<!-- </h3> -->
+		<!-- </center> -->
+	<!-- </div> -->
+</body>
+
+</html>

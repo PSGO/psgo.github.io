@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>PS5浏览器 - PSGO折腾导航</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div id=BOX1>
+<input id="search-input" type="url" value="http://">
+</div>
+
+<div id=BOX2>
+<button id=gobut class=leeful onclick='goToURL();'> 跳转 ></button>
+</div>
+
+<div id=BOX3>
+<button class="leeful smaller" id=clrHis onclick="clearHistory()">清空历史</button><br>
+<button class="leeful smaller" id=clrFav onclick="clearFavorites()">清空收藏</button>
+</div>
+
+<div id=favsid>
+<h1>收藏夹:</h1>
+<a href='https://ps5.psgo.eu.org/' target='_self'>https://ps5.psgo.eu.org/ - PS5折腾导航</a><br>
+<div id=favs></div>
+</div>
+
+<div id=histid>
+<h1>历史记录:</h1>
+<div id=hist></div>
+</div>
+<script>
+url="";
+x=document.getElementById("search-input");
+
+if(!navigator.userAgent.includes('PlayStation 5')) {
+ alert("请在PS5中进入本页!");
+}
+
+if(localStorage.history==null){
+ localStorage.history=""
+};
+
+if(localStorage.fav==null){
+localStorage.fav="<a href='https://sleirsgoevy.github.io/ps4jb2/ps5-403/index.html' target='_self'>https://sleirsgoevy.github.io/ps4jb2/ps5-403 - 原链接</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>删除</button><br>";
+localStorage.fav+="<a href='https://ps5.psgo.eu.org/s' target='_self'>https://ps5.psgo.eu.org/s - 国内镜像</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>删除</button><br>";
+}
+ 
+function goToURL(){
+ addHist()
+ window.location.href = x.value;
+}
+ 
+function clearHistory(){
+ if (confirm('你确定要删除全部历史记录吗?')) {
+  localStorage.history="";
+  hist.innerHTML=localStorage.history;
+ } else {return}
+}
+ 
+function clearFavorites(){
+ if (confirm('你确定要删除全部收藏记录吗?')) {
+  localStorage.fav="";
+  favs.innerHTML=localStorage.fav;
+ } else {return}
+}
+
+function addHist() {
+ a = localStorage.history;
+ b = "<a href='"+x.value+"' target='_self'>"+x.value+" </a><button onclick='url=this.previousElementSibling.innerHTML;addFav()'>添加</button><br>";
+ localStorage.history = b+a;
+}
+
+function addFav(){
+ a = localStorage.fav;
+ b = "<a href='"+url+"' target='_self'>"+url+"</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>删除</button><br>";
+ alert(url+"\n已添加到收藏夹");
+ localStorage.fav = b+a;
+ favs.innerHTML=localStorage.fav;
+}
+
+function remFav(){
+ if (confirm('你确定要删除这个收藏记录吗?')) {
+  favlistBefore = localStorage.fav;
+  removefav = "<a href='"+url+"' target='_self'>"+url+"</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>删除</button><br>";
+  localStorage.fav = favlistBefore.replace(removefav, "");
+  favs.innerHTML=localStorage.fav;
+ } else {return}
+}
+
+hist.innerHTML=localStorage.history;
+favs.innerHTML=localStorage.fav;
+</script>
+</body>
+</html>

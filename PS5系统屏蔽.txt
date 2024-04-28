@@ -1,0 +1,61 @@
+2024/4/26更新 -PS5.PSGO.eu.org
+
+以下为通过网络层面进行屏蔽，相比其他方法来说效果最好。但是建议多种屏蔽方法叠加，起到多重保险的作用。其他还有一键插件法、FTP文件替换法等
+
+1.部分路由器支持白名单或者黑名单，建议直接用黑名单添加进去playstation.net（屏蔽全局）、update.playstation.net（屏蔽系统更新）、dl.playstation.net（屏蔽游戏更新），一行添加一个链接不包含链接后的括号，不同的路由器操作大同小异，自行看说明书或百度搜索“路由器XX型号黑名单访问”，操作完成后重启路由器和PS5
+
+2.部分路由器支持通配符，屏蔽的更彻底
+*.ps5.update.playstation.net或者*.update.playstation.net或者*.playstation.net
+
+3.不支持以上方式的可以挨个添加，只需要其中的每个链接，比如djp01.ps5.update.playstation.net，因为PS5分不同销售地区不同版本，建议全部都需要添加
+
+# Redirect PS5 Update PUP CDN Domains
+djp01.ps5.update.playstation.net
+dus01.ps5.update.playstation.net
+deu01.ps5.update.playstation.net
+dkr01.ps5.update.playstation.net
+duk01.ps5.update.playstation.net
+dmx01.ps5.update.playstation.net
+dau01.ps5.update.playstation.net
+dsa01.ps5.update.playstation.net
+dtw01.ps5.update.playstation.net
+dru01.ps5.update.playstation.net
+dcn01.ps5.update.playstation.net
+dhk01.ps5.update.playstation.net
+dbr01.ps5.update.playstation.net
+
+
+# Redirect PS5 Update List Domains
+fjp01.ps5.update.playstation.net
+fus01.ps5.update.playstation.net
+feu01.ps5.update.playstation.net
+fkr01.ps5.update.playstation.net
+fuk01.ps5.update.playstation.net
+fmx01.ps5.update.playstation.net
+fau01.ps5.update.playstation.net
+fsa01.ps5.update.playstation.net
+ftw01.ps5.update.playstation.net
+fru01.ps5.update.playstation.net
+fcn01.ps5.update.playstation.net
+fhk01.ps5.update.playstation.net
+fbr01.ps5.update.playstation.net
+
+
+# Redirect PS5 Update Feature Domains
+hjp01.ps5.update.playstation.net
+hus01.ps5.update.playstation.net
+heu01.ps5.update.playstation.net
+hkr01.ps5.update.playstation.net
+huk01.ps5.update.playstation.net
+hmx01.ps5.update.playstation.net
+hau01.ps5.update.playstation.net
+hsa01.ps5.update.playstation.net
+htw01.ps5.update.playstation.net
+hru01.ps5.update.playstation.net
+hcn01.ps5.update.playstation.net
+hhk01.ps5.update.playstation.net
+hbr01.ps5.update.playstation.net
+
+# 屏蔽游戏更新
+sgst.prod.dl.playstation.net
+gs2.ww.prod.dl.playstation.net

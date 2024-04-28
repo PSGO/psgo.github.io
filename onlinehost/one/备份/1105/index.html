@@ -1,0 +1,160 @@
+<html>
+<head>
+<!-- 改名 -->
+    <title>PSGO一键折腾在线版 - PS5.PSGO.eu.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+    <script>
+        function allset() { }
+    </script>
+    <script defer src="int64.js"></script>
+    <script defer src="rop.js"></script>
+    <script defer src="exploit.js"></script>
+    <script defer src="payload_map.js"></script>
+    <script defer src="custom_host_stuff.js"></script>
+    <!-- 去掉缓存 -->
+	<!-- <script defer src="appcache_handler.js"></script> -->
+    <!-- <script> -->
+        <!-- window.addEventListener('load', function () { -->
+            <!-- add_cache_event_toasts(); -->
+        <!-- }, false); -->
+    <!-- </script> -->
+</head>
+
+</html>
+
+
+<body>
+    <div id="toast-container"></div>
+
+    <div style="margin: 2.5rem;">
+        <h1 style="color:#603bcc;font-size:60px;text-align:center;font-style:italic;">PSGO 4.03 & 4.50 & 4.51一键折腾在线版</h1>
+		<div id="progress" style="font-size:25px;text-align:center;color:#fff;font-style:italic;font-weight:bold;">开机后稍等1-2分钟！ · 待机关机前关闭游戏 · 内存提示点确定 · 失败提示需重启 · 请勿重复注入</div>
+        <p id="current-fw" class="text-secondary" style="text-align: center;display: none;"></p>
+    </div>
+
+    <div id="before-jb-view">
+
+        <div id="run-jb-parent" class="opacity-transition"
+            style="display: flex; justify-content: center; align-items: center; position: absolute; top: 0;left: 0; width: 100%; height: 100%;">
+            <a tabindex="0" class="btn" style="max-width: 30%;background-color: #603bcc;" id="run-jb" onclick="runJailbreak()">开始折腾</a>
+        </div>
+
+        <div id="jb-progress" class=""
+            style="display: none; flex-direction: column; justify-content: center; align-items: center; position: absolute; top: 0;left: 0; width: 100%; height: 100%;">
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <p id="jb-progress-status-text" style="text-align: center; width: 100%;">正在
+                折腾中 <br/><span class="secondary-text">(可能会假死)</span></p>
+            <textarea id="console" class="log" style="display: none;"></textarea>
+        </div>
+
+        <div id="post-jb-view" class="opacity-transition"
+            style="display: flex; flex-direction: column; justify-content: center; align-items: center;opacity: 0; pointer-events: none; padding-top: 2rem;">
+            <!-- please dont judge this, if i create the elements in js after the jailbreak it 'runs out of memory'. -->
+            <!-- TODO: try making the buttons before the jb and assign the onclicks after, i think i tried this already but make sure -->
+            <div id="payloads-list" class="grid-container">
+                <a class="btn mx-auto hidden-btn" id="payload-0" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-1" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-2" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-3" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-4" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-5" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-6" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-7" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-8" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-9" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-10" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-11" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-12" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-13" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-14" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-15" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-16" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-17" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-18" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-19" tabindex="0">
+                    <p></p>
+                    <p class="secondary-text"></p>
+                </a>
+
+            </div>
+        </div>
+
+
+
+        <center style="position: fixed;bottom: 0;width: 100%;margin-bottom: 1.5rem;" class="info opacity-transition"
+            id="credits">
+            <h3>
+                <b>Specter v1.04 | 当前版本：20231105（修复稳定性、新增伪装高版本、屏蔽更新、系统和版本查询等插件）</b><br>
+                阮·Andy、Specter、Sleirsgoevy、ChendoChap、Znullptr、ChendoChap、Notzecoxao、JoseG、Flat_z、John、PSGO等
+            </h3>
+        </center>
+    </div>
+
+</body>
+	<script>
+
+</script>

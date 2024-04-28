@@ -1,0 +1,34 @@
+CACHE MANIFEST 
+#PS5.PSGO.eu.org 2024/03/12
+
+CACHE: 
+cache.html
+custom_host_stuff.js
+exploit.js
+index.html
+int64.js
+main.css
+payload_map.js
+rop.js
+rop_slave.js
+webkit_fontface.js
+webkit_psfree.js
+module\constants.js
+module\int64.js
+module\mem.js
+module\memtools.js
+module\rw.js
+module\utils.js
+offsets\3.00.js
+offsets\3.10.js
+offsets\3.20.js
+offsets\3.21.js
+offsets\4.00.js
+offsets\4.02.js
+offsets\4.03.js
+offsets\4.50.js
+offsets\4.51.js
+payloads\etaHEN.bin
+
+NETWORK: 
+* 

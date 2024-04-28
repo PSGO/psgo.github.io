@@ -1,0 +1,79 @@
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <link rel="shortcut icon" href="https://psgo.eu.org/psgo.ico" type="image/x-icon">
+  <title>清除缓存 - PSGO.psgo.eu.org</title> 
+   <style> 
+  button
+    {
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#CFB53B;
+    box-shadow:0 5px 0 #888888;
+    } 
+
+    
+    button:hover
+    {
+    color: #CFB53B;
+    font-size:22px;
+    background:#161616;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+    } 
+    
+    button:active
+    {
+    background:#CFB53B;
+    position:relative;
+    color:#000;
+    top:5px;
+    box-shadow:none
+    }
+    </style>
+ <head> 
+   <body style="background-color:#181818;">
+        <br>
+   		<h1 style="font-size:50px;color:#CFB53B;text-align:center;">如何清除PS5浏览器缓存？</h1>
+        <br>
+		<div style="width:800px;margin:50px auto;">
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">注意：由于PS5自身系统存在无法双清缓存的Bug，导致无法灵活主动清除浏览器缓存，另外如果当初缓存折腾网页的时候，没有等待缓存完成会导致缓存文件不完整，进而影响折腾的稳定性，甚至会频繁死机。如果你现在就遇到连续死机超过5次（排除操作错误的原因），或者折腾方案有更新的时候，你没有再次收到缓存提示，建议你主动清除旧缓存并重新缓存。目前暂时没有极为简单的处理方法，无论你之前是使用哪个作者的网页版还是ESP还是PKG等折腾方案，都可以使用下面提供3种方案来清除：</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第1种方法：使用ELF清缓存插件</p>
+		<p style="font-size:20px;color:white;">先进入debug模式下，链接为 https://ps5.psgo.eu.org/debug/ 然后等待页面提示ELF推送，在电脑上打开https://ps5.psgo.eu.org/ 下载NetCat和清除缓存插件ELF。打开Netcat，填入PS5的IP和端口号9020，点击推送elf插件到PS5，这时左上角会弹出清除完成的提醒则表示已清除。</p>
+		<br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第2种方法：使用FTP插件手动清除</p>
+		<p style="font-size:20px;color:white;">先进入debug模式下，链接为 https://ps5.psgo.eu.org/debug/ 然后等待页面提示ELF推送，在电脑上打开https://ps5.psgo.eu.org/ 下载NetCat和FTP插件和FTP工具。使用NetCat注入ftp插件，并在电脑上启动ftp后按照路径找到PS5主机内以下文件并删除即可清除浏览器缓存。<br> user/home/user_folder/webkit/shell/NKCookie.jar.db
+user/home/user_folder/webkit/shell/NKCookie.jar.db-shm
+user/home/user_folder/webkit/shell/NKCookie.jar.db-wal
+user/home/user_folder/webkit/shell/appcache/ApplicationCache.db
+user/home/user_folder/webkit/shell/appcache/ApplicationCache.db-shm
+user/home/user_folder/webkit/shell/appcache/ApplicationCache.db-wal
+user/home/user_folder/webkit/shell/local/https_manuals.playstation.net_0.localstorage
+user/home/user_folder/webkit/shell/local/https_manuals.playstation.net_0.localstorage-shm
+user/home/user_folder/webkit/shell/local/https_manuals.playstation.net_0.localstorage-wal
+user/home/user_folder/webkit/shell/resourceloadstatistics/full_browsing_session_resourceLog.plist</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第3种方法：等待网站更新缓存配置</p>
+		<p style="font-size:20px;color:white;">你可以等待网站更新方案，定期联网进入看是否弹出缓存提示，如果折腾网站缓存配置文件发生变化后，PS5在联网状态下会再次提醒缓存，建议你在非折腾情况下使用进入折腾网站页面，避免缓存过程中由于折腾不稳定死机导致缓存文件不完整，缓存过程切记不要心急要等待缓存完成之后再操作。由于某些网站可能只更新文件但不更新配置，这时候你将无法收到再次缓存的提示。如果缓存完成，但是由于丢包、文件损坏等问题导致的折腾不完整并频繁死机，建议你不要等待网站推送更新，建议你使用上面的方法主动清除。</p>
+		<br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;"> 后续如有更为简单的一键清除方案，会在本页进行更新说明</p>
+        
+
+        <br>
+		</div> 
+		<br><br><br>
+	<h1 style="font-size:20px;color:#CFB53B;text-align:center;">-- 持续更新中 --</h1>
+	<br>
+	<h1 style="font-size:20px;color:#CFB53B;text-align:center;">PS5.PSGO.eu.org - 记得收藏分享本站</h1>
+    <br><br><br><br><br><br>
+   </body>
+</html>

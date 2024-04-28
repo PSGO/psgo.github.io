@@ -1,0 +1,220 @@
+<html manifest="Cache.manifest">
+
+<head>
+    <title>PSGO一键折腾 - PS5.PSGO.eu.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+    <script>
+        function allset() { }
+    </script>
+    <script defer src="int64.js"></script>
+    <script defer src="rop.js"></script>
+    <script defer src="exploit.js"></script>
+    <script defer src="payload_map.js"></script>
+    <script defer src="custom_host_stuff.js"></script>
+    <!-- <script defer src="appcache_handler.js"></script> -->
+    <!-- <script> -->
+        <!-- window.addEventListener('load', function () { -->
+            <!-- add_cache_event_toasts(); -->
+        <!-- }, false); -->
+    <!-- </script> -->
+	<script>
+var auto;		
+window.applicationCache.ondownloading = function()
+{
+	alert("折腾缓存有新的版本！\n\n点击确定按钮将开始缓存！缓存完成之前请不要操作！\n\n若缓存失败请重新打开窗口再次缓存！")
+};
+
+window.applicationCache.onprogress = function(a)
+{
+	document.getElementById("progress").innerHTML="<h3>缓存中！请耐心等待！不要操作！缓存进度: "+(Math.round(100*(a.loaded/a.total)))+"% </h3>";
+};
+
+window.applicationCache.oncached = window.applicationCache.onupdateready = function()
+{
+	alert("缓存完成！\n\n长按PS键回到桌面后再次进入本页面！\n\n现在可以断开网络离线使用！记得定期打开PS5网络更新缓存！")
+    document.location.href = document.location.href;
+};
+
+if(!document.location.href.endswith("/index.html"))
+    document.location.href = "index.html";
+</script>
+	<script>
+function updateCache() {
+
+window.applicationCache.update();
+ 
+window.applicationCache.onnoupdate = function(){
+    alert("当前缓存是最新版本，无需更新！");
+}
+
+window.applicationCache.onerror = function(){
+    alert("当前处于离线状态或网络不稳定！\n\n点击更新缓存前请先将PS5连接到网络！打开网络并保持畅通！ \n\n你也可以尝试连接手机热点");
+} 
+}
+</script>
+
+</head>
+
+</html>
+
+
+<body>
+    <div id="toast-container"></div>
+
+    <div style="margin: 40px;">
+        <h1 style="color:#603bcc;font-size:60px;text-align:center;font-style:italic;">PSGO 4.03 & 4.50 一键折腾离线版</h1>
+		<div id="progress" style="font-size:22px;text-align:center;color:#fff;font-style:italic;font-weight:bold;">开机后稍等1-2分钟！ · 待机关机前关闭游戏 · 内存提示点确定 · 失败提示需重启 · 请勿重复注入<span id="listening-ip"></span></div>
+		<p id="current-fw" class="text-secondary" style="text-align: center; margin-bottom: 8px; padding-bottom: 0;display: none;"></p>
+        <p id="listening-ip" class="text-secondary" style="text-align: center; margin-top: 0; padding-top: 0;display: none;"><br/></p>
+    </div>
+
+    <div id="before-jb-view">
+
+        <div id="run-jb-parent" class="opacity-transition"
+            style="display: flex; justify-content: center; align-items: center; position: absolute; top: 0;left: 0; width: 100%; height: 100%;">
+            <a tabindex="0" class="btn" style="max-width: 50%;background-color:#603bcc;font-weight:600;" id="run-jb" onclick="runJailbreak()">开始折腾（建议8秒后点击）<span id="daojishi"></span></a>
+			<a tabindex="0" class="btn" style="max-width: 15%;" onclick="updateCache()">更新离线缓存</a>
+        </div>
+
+        <div id="jb-progress" class="opacity-transition"
+            style="display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; top: 0;left: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none;">
+            <div class="lds-ellipsis" style="margin-top: 40px;">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <p id="jb-progress-status-text" style="text-align: center; width: 100%; margin-top: 40px;">
+                正在
+                折腾中... <br /><span class="secondary-text">(可能会假死)</span></p>
+            <textarea id="console" class="log" style="display: none;"></textarea>
+        </div>
+
+        <div id="post-jb-view" class="opacity-transition" style="width: 100%;">
+            <!-- please dont judge this, if i create the elements in js after the jailbreak it 'runs out of memory'. -->
+            <div id="payloads-list" class="grid-container">
+                <a class="btn mx-auto hidden-btn" id="payload-0" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-1" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-2" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-3" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-4" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-5" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-6" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-7" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-8" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-9" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-10" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-11" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-12" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-13" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-14" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-15" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-16" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-17" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-18" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+                <a class="btn mx-auto hidden-btn" id="payload-19" tabindex="0">
+                    <p class="payload-name"></p>
+                    <p class="payload-description"></p>
+                    <p class="payload-author"></p>
+                </a>
+            </div>
+        </div>
+
+        <center style="position: fixed;bottom: 0;width: 100%;margin-bottom: 24px" class="info opacity-transition"
+            id="credits">
+            <h3>
+                <b>Specter v1.04 | <a href="https://ps5.psgo.eu.org/onlinehost/qing/" aria-hidden="true" tabindex="-1">清除浏览器缓存（联网进入）</a> | 当前版本：20231103（修复稳定性、新增伪装高版本、屏蔽更新等插件）</b><br>
+                阮·Andy、Specter、Sleirsgoevy、ChendoChap、Znullptr、ChendoChap、Notzecoxao、JoseG、Flat_z、John、PSGO等
+            </h3>
+        </center>
+    </div>
+
+</body>
+<!-- <script> -->
+    <!-- var secstime=6; -->
+    <!-- for(var i=secstime;i>=0;i--){ -->
+       <!-- window.setTimeout("doUpdate("+ i + ")",(secstime-i)*1000); -->
+    <!-- } -->
+    <!-- function doUpdate(daojitime){ -->
+       <!-- document.getElementById("daojishi").innerHTML="（建议 " + daojitime +" 秒后点击）"; -->
+       <!-- if(daojitime==0) document.getElementById("daojishi").innerHTML=""; -->
+    <!-- } -->
+<!-- </script> -->

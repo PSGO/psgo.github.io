@@ -1,0 +1,156 @@
+PS5 GAMES 提取整理by BedroZen（资源均来自网络和网友，与PSGO无关）
+
+1.10更新 - https://ps5.psgo.eu.org/pc.html
+
+运行PS5操作说明：
+一、FTP传输方法
+1.1fichier网盘，有条件的同学自行下载或等待他人的转存网盘
+2.下载资源后解压（最外面只有一层文件夹命名为字母数字，最好用“游戏字母全拼+游戏ID”区分），使用FTP插件和工具，将文件夹传入/data/（本机自带硬盘）或/mnt/ext1/data/（内置扩展硬盘）；也可以使用USB设备拷贝，先挂载到移动设备mnt/usb0/游戏文件夹，然后在itemzflow中选中当前挂载的目录，然后在点击“I/O options”选择“move”，然后移动到/data/里
+3.使用一键折腾PKG或Windows离线版  最新版本缓存，注入etaHEN v1.2b（注意：如果频繁遇到异常，使用清缓存插件清除后重新缓存，etaHEN作者只提到清缓存并未说明原因）
+4.下载、安装和启动PS5专用的itemzflow，然后启动PS5 App，选择“Change App Path”挂载游戏目录，然后点击“launch”启动游戏
+5.之后再次开机折腾，注入etaHEN，先启动一下itemzflow，然后就可以从桌面图标启动PS5游戏
+
+二、USB传输方法
+1.把解压后的游戏文件夹存入USB设备， 移动硬盘、U盘都行
+2.进入itemzflow，选ps5 app ，然后点change app path，目录挂载到mnt/usb1/游戏文件夹
+3.返回到itemzflow首页，找到已挂载的游戏，点击进入，点击I/O Options，然后按方向键右键到“Copy Folder”，然后点击确认键，选择/data/（本机自带硬盘）或 /mnt/ext1/data/（内置扩展硬盘），等待拷贝完成
+4.重新挂载新目录，然后点击“launch”启动游戏
+
+注意：
+当前etahen和itemzflow稳定性欠佳，不要在折腾环境下频繁切换ps5设置中的网络开关，也不要在联网的状态下待机，否则会出现黑屏、假死等现象，记住待机前一定要关闭PS5的网络开关和关闭正在运行的游戏！
+
+
+PS5游戏测试结果列表:
+https://ps5.psgo.eu.org/ps5game.html
+
+
+Base64工具（把游戏名字下面的字符串单独拷贝进去点解密转换成正常下载链接）:
+https://psgo.eu.org/base64.html
+
+
+PS5合集更新原链接 来自BedroZen:
+https://pastebin.com/UeRiMQjf
+https://pastebin.com/raw/NgkQzQQu
+
+
+资源下载地址（需要国际网络）:
+ 
+Ghost of Tsushima PS5 Dump v2.017.000.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP3FtYjU5NXk2N2E3dDRrd3VmMWVk
+ 
+ 
+Back 4 Blood PS5 Dump v1.000.006.rar (Fixed)
+aHR0cHM6Ly8xZmljaGllci5jb20vP3d0MngwYjl2OWFqcm4xYTR1NWRy
+(Use the Fix files if you downloaded B4B before the archive was fixed)
+Back 4 Blood PS5 FIX.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2d1MDRhdzhwZWJjcWJnaThwNXI3
+ 
+ 
+Little Big Planet Sackboy - A Big Adventure PS5 Dump v01.014.000.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP29sZHJ3eDYzbGRrdHpjdGhmNjRu
+ 
+ 
+Marvel's Guardians of the Galaxy PS5 Dump v1.005.rar
+(Be sure to remove the ' in Marvel's and rename it to Marvels to fix *changing dir* issue)
+aHR0cHM6Ly8xZmljaGllci5jb20vP3ZvcGdpcHY5amlrdGo2azBsenIy
+ 
+ 
+STAR WARS Jedi Fallen Order PS5 Dump v1.003.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vPzZsbmx0M3Rwamd4MjBzMjAzbGUz
+ 
+ 
+WWE 2K22 PS5 Dump v1.005.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vPzk4aGl4bnQzNXZxZG43MDIzcXBy
+ 
+ 
+STRANGER OF PARADISE FINAL FANTASY ORIGIN PS5 Dump v1.001.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP3AyemlmNHVtaDh5eGVoZWt0djVv
+ 
+ 
+Sifu PS5 Dump v1.006.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP21hZXVyajkwanJvMzQ0MTMxMTFt
+ 
+ 
+Alan Wake Remastered PS5 Dump v1.000.003.rar (Fixed)
+aHR0cHM6Ly8xZmljaGllci5jb20vP3p2dHRtY2lyeTdlNDZqa3dweXZl
+ 
+ 
+Ghostwire Tokyo PS5 Dump v1.001.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP3hyYnc4bTA5aXJnOXJ0cHRtOTlu
+ 
+ 
+The Pathless PS5 Dump v2.000.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP3BxYWtkY3k2NGlzOHRxeXdiNGJ6
+ 
+ 
+Guilty Gear Strive PS5 Dump v1.014.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2FzNWJxNDlrNTVoemNyYmtpd2dn
+ 
+ 
+Tales of Arise PS5 Dump v01.000.004.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vPzhmdDF3bHR5bG1rNDU0bmVwd3V3
+ 
+ 
+Life is Strange True Colors PS5 Dump v1.008.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2FqOG1nNWNuNzM1ODcycHdlZ3Qy
+ 
+ 
+Persistence PS5 Dump v1.200.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2tqOTZnNWNzOGF2czh2OGI2cGxt
+ 
+ 
+Kena PS5 Dump v1.016.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2dkMHBqcDR5NGNpbWh2eXhldXV5
+ 
+ 
+Grand Theft Auto III - The Definitive Edition PS5 Dump v1.003.rar (Fixed)
+aHR0cHM6Ly8xZmljaGllci5jb20vP2k2MzMxMWNheTJxNTF2ZzdwdW82
+ 
+ 
+Grand Theft Auto San Andreas - The Definitive Edition PS5 Dump v1.003.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2J3Y2s0bXN2ZXQ4ajYzd2trbWJt
+ 
+ 
+Grand Theft Auto Vice City - The Definitive Edition PS5 Dump v1.003.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2huOGoxMG5nejg1bng4YWNwYmo2
+ 
+*************************************************
+ 
+New Years Collection:
+ 
+LEGO Star Wars The Skywalker Saga PS5 Dump v1.000.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2R2bWZ2OXkxaGZ3dWVsdG90N3Z1
+ 
+ 
+Tony Hawks Pro Skater 1+2 PS5 Dump v1.004.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP3hzMjE5OWxyaXJvdmE2NmY5bzl5
+ 
+ 
+Farming Simulator 22 PS5 Dump v1.030.rar
+(Only works on USB, crashes on internal/m.2)
+aHR0cHM6Ly8xZmljaGllci5jb20vPzhieG93b2tnaXBoajNkNDE2cms4
+ 
+ 
+Balan Wonderworld PS5 Dump v1.002.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vPzc4a2Z3aWdnZDd4Y2x1dXpvcTUxCg== 	
+ 
+ 
+Werewolf The Apocalypse - Earthblood PS5 Dump v1.005.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vPzd1NGpwdmF5cnVlbzA2OGNjYXQ3Cg==
+ 
+*************************************************
+ 
+Returnal PS5 Dump v2.000.003.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP3ZkNmx3YWN4eDdiMnY3dWdhYW90
+ 
+ 
+THE KING OF FIGHTERS XV PS5 Dump v1.000.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vPzB3OWU1c3E0NTJ6eDdkNmwzOGxv
+ 
+ 
+DIRT5 PS5 Dump v6.003.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP281c3h6dnJzZmNjaGZtY2Z5NGF2
+ 
+ 
+Sniper Ghost Warrior Contracts 2 PS5 Dump v1.004.rar
+aHR0cHM6Ly8xZmljaGllci5jb20vP2dnY3U2aGYwMWZxMDNueXdtdGc0

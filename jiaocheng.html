@@ -1,0 +1,229 @@
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+  <title>PS5折腾教程 - PSGO.eu.org</title> 
+
+<script>
+// 判断Cookie是否过期
+function isCookieExpired(name) {
+  var cookies = document.cookie.split(";");
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim();
+    if (cookie.startsWith(name + "=")) {
+      return false; // Cookie未过期
+    }
+  }
+  return true; // Cookie已过期
+}
+
+if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) {
+
+}
+else
+{
+	alert("点击确定（ok）将自动进入首页，输入正确的邀请码后即可访问！");
+	window.location='index.html';
+}
+</script>
+    
+   <style> 
+  button
+    {
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#CFB53B;
+    box-shadow:0 5px 0 #888888;
+    } 
+
+    
+    button:hover
+    {
+    color: #CFB53B;
+    font-size:22px;
+    background:#161616;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+    } 
+    
+    button:active
+    {
+    background:#CFB53B;
+    position:relative;
+    color:#000;
+    top:5px;
+    box-shadow:none
+    }
+    </style>
+ <head> 
+   <body style="background-color:#181818;">
+        <br>
+   		<h1 style="font-size:46px;color:#CFB53B;text-align:center;">PS5折腾教程 - PSGO.eu.org</h1>
+        <br>
+		<div style="width:800px;margin:50px auto;">
+		<p style="font-size:18px;font-weight:bold;color:#CFB53B;">
+		当前PS5折腾进度：<br><br>
+		目前3.00、3.10、3.20、3.21、4.00、4.02、4.03、4.50、4.51系统版本PS5可解锁运行PS4和部分PS5，不同系统版本成功率和稳定性略有差异，当前阶段以平均85-93%的成功率为标准，如差距过大请参考首页教程中的提高成功率方法进行问题排查；<br><br>
+		3.00-4.51之间的小版本（光驱版+数字版）平均每个版本HEN需要1个月左右时间；（已完成）<br><br>
+		5.00-7.61光驱版预计3月前后有突破，BD-JB入口Jar加载器可支持到7.61光驱版，目前仍未放出0day内核漏洞利用，尚处于攻克阶段；<br><br>
+		1.00-5.50版本（包含数字版）webkit漏洞（CVE-2022-22620 / PSFree项目）已确定可用，暂无内核漏洞利用和移植；<br><br>
+		暂无Hypervisor（HV）漏洞全链利用，等待flatZ和安迪进一步公开，尤其是2.X版本的同学要耐心等待，很可能成为第一批运行PS5PKG；<br><br>
+		安迪将在5月底展示另一个新的内核漏洞CVE-2006-4304，已确认漏洞支持到8.20，且不依赖webkit入口，需等待进一步公布细节<br><br><br><br>
+		注意事项：<br><br>
+		当前阶段还有诸多不完善不稳定，会有一定概率死机或失败，追求极致稳定的同学，请耐心等待！<br><br>
+		如果日常只运行PS4FPKG，建议选择更稳定的原版HEN。如果需要运行PS5资源，可选择稳定性稍差的etaHEN。更追求功能性还是稳定性，根据自己的需求自行斟酌。<br><br>
+		使用离线版折腾更新离线缓存之后，如果连续遇到异常，使用一键折腾中的清缓存插件或者浏览器进入首页选择一键清缓存在线版，清除缓存后重新缓存，并关闭PS5设置中的网络开关。一般情况下并不需要经常清缓存，直接更新缓存即可。<br><br><br><br>
+		折腾教程：<br><br>
+		以下操作仅用来学术研究和技术开发使用，切勿用作其他用途！<br><br></p>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;"><a style="color:#CFB53B;" target="_blank" href="https://psgo.lanzouj.com/iBioI1e0r8bc">另附网友制作的新手新机首次折腾手把手超详细图文教程PDF（点击下载）</a></p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第1步：关闭自动更新！关闭自动更新！关闭自动更新！</p>
+		<p style="font-size:18px;color:white;">进入设置 - 主机 - 主机软件升级设定 - 关闭 自动下载和自动安装；进入进入设置 - 系统 - 省电 - 待机模式中可使用的功能，关闭“保持与互联网连接”</p>
+        <!--<p style="font-size:18px;color:white;">如果你还不放心可以再加一道保险，将以下链接添加到路由器的黑名单中进行屏蔽，但是厂商未来可能会修改这些链接地址（注意不要有空格）：<br/>fcn01.ps5.update.playstation.net<br/>fjp01.ps5.update.playstation.net<br/>fus01.ps5.update.playstation.net<br/>feu01.ps5.update.playstation.net<br/>fkr01.ps5.update.playstation.net<br/>fuk01.ps5.update.playstation.net<br/>fmx01.ps5.update.playstation.net<br/>fau01.ps5.update.playstation.net<br/>fsa01.ps5.update.playstation.net<br/>ftw01.ps5.update.playstation.net<br/>fru01.ps5.update.playstation.net<br/>fcn01.ps5.update.playstation.net<br/>fhk01.ps5.update.playstation.net<br/>fbr01.ps5.update.playstation.net</p>-->
+		<p style="font-size:18px;color:white;">将以下链接添加到路由器的黑名单中进行屏蔽，如果不进行路由器屏蔽，PS5在联网状态下，系统和游戏都将会收到升级提醒！完整屏蔽域名列表下载地址：http://ps5.psgo.eu.org/PS5系统屏蔽.txt</p>
+		<p style="font-size:18px;color:white;">如果曾经联网过且断网后仍然提示更新系统，说明PS5中已经存在系统升级缓存包，为避免误升级，3.00-4.51版本需要使用FTP工具和FTP插件，删除UPDATE文件下的PS5UPDATE.PUP和PS5UPDATE.PUP.net.temp文件夹。未来可使用PS5文件管理器快速删除或使用一键禁用升级插件。其他系统版本，先进入设置-系统-系统软件-备份和恢复-备份你的 PS5，然后设置-系统系统软件-重置选项，格式化主机相当于恢复出厂也会删除系统升级缓存包 </p>
+		<br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第2步：设置DNS</p>
+		<p style="font-size:18px;color:white;">进入设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动，把主DNS改为165.227.83.145，次DNS改为192.241.221.79 （备用DNS：62.210.38.117，如果未设置DNS一定要离线使用或设置好路由器屏蔽，首次折腾推荐使用PSGO首页的Windows离线版，全程无需联网），保存完之后可能会提示“无法连接互联网”，这是正常情况，是由于DNS有屏蔽升级服务的功能。（首页还提供Windows一键折腾服务，无需依赖在线DNS，断网也可折腾）</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第3步：打开用户指南</p>
+		<p style="font-size:18px;color:white;">进入设置 - 用户指南。健康与安全以及其他信息 - 用户指南，进入后会自动跳转到一个中转网站，弹窗提示安全证书，点击ok是，等待中转网页加载完成</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第4步：激活并进入Debug菜单</p>
+		<p style="font-size:18px;color:white;">手柄连续按两次L2键，会弹出一个输入框，第一行输入网址 http://ps5.psgo.eu.org/debug/ ，点击submit则跳转至PSGO折腾网站，大约20左右等待加载完成，如果遇到弹出信息“内存不足”，点击确定键，如果持续弹框或死机，请重启。成功后按下PS键返回桌面</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第5步：安装折腾PKG</p>
+		<p style="font-size:18px;color:white;">进入ps5.psgo.eu.org找到“PSGO全自动折腾”（推荐）、“PSGO一键折腾”（推荐）和“PSGO浏览器”，点击即可下载3个PKG文件，将文件拷贝到exfat格式移动硬盘或U盘的根目录下（不要放进文件夹！），插入PS5（后面的USB是高速口支持10Gbps）。进入设置，拉到最底部，进入Debug菜单-Game（弹出错误提示可忽略），选择game-installer安装pkg文件，安装完成后桌面会出现浏览器的快捷图标，请先不要启动，先重启PS5，建议你首次在非折腾的情况下（也就是正版环境）启动两个PKG应用并联网进行缓存，这样是为了避免由于折腾环境不稳定导致缓存失败。缓存完成后你可以断网离线使用PKG进行折腾。如果遇到缓存更新失败，请尝试切换DNS（114.114.114.114、8.8.4.4、233.5.5.5、119.29.29.29等），重启路由器和PS5后再试，或者链接手机热点进行缓存更新！</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第6步：启动折腾</p>
+		<p style="font-size:18px;color:white;">打开PS5桌面的PSGO一键折腾或全自动折腾（推荐），按照页面提示进行操作，等待注入HEN完成后按下PS键回到桌面。</p>
+        <br>
+		<!-- <p style="font-size:20px;font-weight:bold;color:#CFB53B;">第6步：进入PSGO折腾页面</p> -->
+		<!-- <p style="font-size:18px;color:white;">打开PS5桌面的PSGO一键折腾或全自动折腾（推荐），或者使用PSGO浏览器，输入网址 http://ps5.psgo.eu.org ，选择对应折腾方案按钮，等待大约20秒左右网页加载完成，按照页面提示进行操作。选择自动注入方式则无需进入下一步第7步。</p> -->
+        <!-- <br> -->
+		<!-- <p style="font-size:20px;font-weight:bold;color:#CFB53B;">第7步：注入bin解锁游戏运行</p> -->
+		<!-- <p style="font-size:18px;color:white;">进入ps5.psgo.eu.org往下拉找到“NetCat推送注入bin工具”或“安卓注入工具”，点击即可下载文件。把电脑（或安卓手机）和PS5连入同一个局域网，然后电脑打开注入工具NetCat GUI v1.2.exe（安卓端操作类似），第一行输入PS5的局域网地址，端口填写9019（老方案）或9020（新方案），第二行打开payload.bin文件，点击Inject Payload注入文件，完成后底部会提示Done。注入后如果PS5弹出“内存不足”的提示，不要点击O和X键！要长按手柄PS键返回桌面。如果成功的话，游戏则正常运行，并且设置最下方会出现Debug菜单，选择Game-Install就可以自由安装PKG文件了。如果失败，则重新进入页面操作。由于当前成功率并不是太高，建议一直待机。</p> -->
+        <!-- <br> -->
+        <br>
+		<br>
+		<br>
+		<p id="jingyan" style="font-size:20px;font-weight:bold;color:#fff;">减少死机断电的一些建议：</p>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">适用于所有折腾网站，举一反三自己总结经验，养成好习惯成功率可以在85-95%之间</p>
+<div style="font-size:18px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+建议关闭网络开关，完全离线使用。如果注入etaHEN一瞬间频繁死机或断电，请保持PS5连接wifi再折腾。如果是wifi连接状态，PS5设置-网络中，确保wifi名字右边不是红色感叹号失败，第二行互联网连接可以是红色感叹号失败，折腾进行中时，切记不要切断路由器或手机热点或ESP；
+
+不要频繁切换不同的折腾网站和不同的离线折腾方案，尤其是不清缓存的前提下频繁切换离线方案使用更容易断电；
+
+后台不要有更新游戏，暂停更新或删除更新。建议根治提前设置好路由器屏蔽升级；
+
+开机后在桌面稍等15-60秒，等系统组件（眼睛看不见）充分加载完成；
+
+折腾成功后不要再次重复进入折腾页面，折腾中途误按PS键后也不要再次进入折腾页面，先重启；
+
+注入HEN成功后，不要再次重复注入，etaHEN和原版HEN只能二选一注入。其它插件也不建议重复注入，也有几率断电；
+
+某些插件，比如PS5debug、FTP、ELF加载器、解锁帧率等插件也有一定几率导致断电，如非必要，减少开启插件的数量，日常只建议单一注入HEN或者etaHEN即可；
+
+注入插件后，不要急着按PS键返回桌面，要等左上角提示消息消失之后再按PS键，尤其是etaHEN、PS5debug等（个别插件不会弹消息，多等几秒）；
+
+缓存不同离线方案太多之后，要定期清除浏览器缓存，并重新缓存，建议不要缓存多种不同的折腾方案，只保留一份折腾缓存最稳定；
+
+折腾进行中不要去操作手柄，尤其是返回键、L1、R1键；
+
+待机和关机前把正在运行的游戏或应用OPTIONS键关闭掉；
+
+不建议插着USB设备去操作折腾，尤其是移动硬盘，折腾成功后再插上；
+
+如果加装M.2内置扩展固态后遇到频繁折腾失败，需要核实固态兼容性问题，另外现阶段建议尽量先使用外置扩展；
+
+折腾熟练后，不要着急忙慌的操作，按照页面说明一步一步稳扎稳打；
+
+如果遇到一轮连着2次断电，建议再次开机后选择"关机"而非"重启"，然后再开机；
+
+如果遇到一轮连着3次断电（如果其它操作都按要求做了，实际上很难遇到连续3次），建议拔掉电源，15分钟后再开机，然后清除浏览器缓存并重新缓存，然后关闭网络再折腾；
+
+如果遇到某次折腾连续5次弹内存不足，建议按PS键回到桌面并重新进入折腾页面，或者重启；
+
+如果遇到折腾页面遇到"未响应"提示，要点"否"按钮。如果不小心点了"是"，建议按PS键回到桌面并重新进入折腾页面，或者重启；
+
+某些自制应用PKG频繁地启动和关闭也会导致断电，尤其是关机会断电，建议想清楚要做的操作后一次性操作完；
+
+如果游戏过程中频繁断电，需要核实资源或扩展硬盘是否有问题
+
+3.X版本最后一个环节注入原版HEN或etaHEN后提示内存不足属于正常现象，直接按下PS键返回桌面玩耍即可，不要点确定键或返回键。
+
+以上内容来自PSGO，转载请注明出处，链接：ps5.psgo.eu.org
+
+</pre>
+</div>
+		</div> 
+		<br><br><br>
+		
+	<h1 style="font-size:20px;color:#CFB53B;text-align:center;">-- 持续完善更新中 --</h1>
+	<br>
+	<!-- <h1 style="font-size:20px;color:#CFB53B;text-align:center;"> PS5新3群：287873386 </h1> -->
+    <br><br><br><br><br><br>
+   </body>
+</html>
+<!-- weixin -->
+<link rel="stylesheet" href="https://laoba.pages.dev/css/weixin.css">
+<div style="position: fixed;left: 20px;bottom: 20px;z-index: 999;width:220px"><a style="text-decoration:none;" href="https://laoba.pages.dev" target="_blank"><img class="header"></a></div>
+
+<script>
+	document.oncopy = function (e) {
+		// 获取选区对象
+		let selObj = window.getSelection();
+		// IE8及更早不支持window.getSelection
+		if (typeof selObj == 'undefined') return false;
+
+		// 获取clipboardData对象
+		// Chrome\Safari\Firefox浏览器中,这个对象是event对象的属性
+		// IE浏览器中,它是window对象的属性
+		let clipboardData = e.clipboardData || window.clipboardData;
+
+		// 获取选区文本内容
+		let selectedText = selObj + '';
+
+		let copytext;
+		// 如果选中文字内容小于30个字符，则不做任何操作
+		if (selectedText.length < 30) {
+			copytext = selectedText;
+
+		} else {
+			copytext = selectedText +
+				'\n\n\n' +
+				'来源：PSGO折腾导航\n' +
+				'链接：' + location.href + '\n' +
+				'著作权归作者所有，商业转载请联系作者获取授权，非商业转载请注明出处。';
+		}
+
+		// setData(format,text)用于设置剪贴板内容
+		clipboardData.setData('text/plain', copytext);
+		
+		// 取消默认的复制事件
+		return false;
+		// e.preventDefault()亦可
+		
+	}
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>
+</html>

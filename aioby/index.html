@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html manifest="Cache.manifest">
+  <head>
+	<meta charset="UTF-8">
+    <title>PSGO折腾多合一 | 当前菜单缓存版本：v0330 | 官网：PS5.PSGO.eu.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="resources/stylesheet.css">
+  
+<script>
+window.applicationCache.ondownloading = function()
+{
+	alert("折腾大全有新的缓存！\n\n点击确定按钮将开始缓存!缓存完成之前请不要操作！\n\n记得以后定期打开PS5网络检查缓存更新哦~")
+};
+
+window.applicationCache.onprogress = function(a)
+{
+	document.getElementById("progress").innerHTML="缓存中请勿操作: "+(Math.round(100*(a.loaded/a.total)))+"%";
+};
+
+window.applicationCache.oncached = window.applicationCache.onupdateready = function()
+{
+	alert("缓存完成!\n\n如果想离线使用折腾方案，请在联网状态下点击其中的离线折腾方案按钮进入后进行单独缓存和更新!\n\n记得以后定期打开PS5网络检查缓存更新哦~")
+    location.reload();
+};
+
+if(!document.location.href.endswith("/index.html"))
+    document.location.href = "index.html";
+</script>
+<script>
+function mostrarPopup() {
+    const url = prompt("PSGO 浏览器 Lite\n\n注意：如果要访问的是离线缓存网站，需区分字母大小写、区分http和https", "https://");
+
+    if (url) {
+		
+        window.open(url, '_blank');
+    }
+}
+
+function manejarKeyPress(event) {
+
+    if (event.keyCode == 118) {
+        mostrarPopup();
+    }
+}
+
+document.addEventListener("keydown", manejarKeyPress);
+</script>
+  </head>
+
+  <body>
+  <br> 
+  <h1 style="font-size:60px;text-align:center;font-style:italic;text-shadow: 3px 2px #c4e4f6;"><font color="#39C">PSGO 折腾多合一</font></h1> 
+  <h2 id="progress" style="font-size:30px;text-align:center;color:#39C;font-style:italic;font-weight:bold;">不同方案需要进入后单独缓存 <font color="#39C">当前采用http请求仅为https无法访问时的备用</font></h2> 
+  <br>  
+  
+	<ul>
+      <li><a target="_blank" href="../offlinehostauto/">原版HEN全自动 × PSFree × 支持离线缓存</a></li>
+      <li><a target="_blank" href="../offlinehostautoeta/">etaHEN全自动 × PSFree × 支持离线缓存</a></li>
+      <li><a target="_blank" href="../offlinehost/">一键折腾 ×  PSFree × 多插件 × 支持离线缓存</a></li>
+      <li><a target="_blank" href="../onlinehost/qing/">一键清除浏览器缓存在线版</a></li>
+      <!-- <li><a target="_blank" href="http://ps5.psgo.eu.org/onlinehost/auto/">全自动etaHEN在线版</a></li> -->
+      <li><a target="_blank" href="../onlinehost/one/">一键折腾多插件在线版</a></li>
+	  <li><a target="_blank" href="../offlinebrowser/">中文离线浏览器 × 支持离线缓存</a></li>
+	  <li><a target="_blank" href="https://manuals.playstation.net/document/pb/ps5/index.html">用户指南快捷入口 - 支持ESP、Win离线</a></li>
+	  <!-- <li><a href="" onclick="mostrarPopup()">浏览器轻量版 - 按下手柄L2键</a></li> -->
+    </ul>
+	<!-- <br><br><br> -->
+	<!-- <h2 style="font-size:30px;text-align:center;color:#39C;font-style:italic;font-weight:bold;">-- 持续增加收录中 --</h2> -->
+	<!-- <br><br><br> -->
+	
+	<!-- <ul> -->
+	<!-- <div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">PSGO内部测试（小白勿试，非内测组成员不建议日常使用，仅用于测试）</div> <br> -->
+	  <!-- <li><a target="_blank" href="https://ps5.psgo.eu.org/888/">一键折腾 × 多插件 × PSFree × 简化etaHEN</a></li> -->
+      <!-- <li><a target="_blank" href="https://ps5.psgo.eu.org/666/">全自动 × 老漏洞 × 原版etaHEN</a></li> -->
+    <!-- </ul> -->
+    <!-- <h2 style="font-size:18px;text-align:center;color:#39C;font-style:italic;font-weight:bold;">请将你的系统版本、内测缓存版本、遇到的问题、成功率数据和测试照片录像发送至邮箱：psgo.tk@outlook.com</h2> -->
+	
+	<!-- <br><br><br><br><br><br><br><br><br> -->
+	<!-- <div style="font-size:20px;" id="fork-me"> -->
+	<!-- 建议用于体验和挑选，不建议频繁切换使用！<br> -->
+	<!-- 去PSGO首页下载折腾大全PKG使用起来更方便哦！<br><br> -->
+	<!-- 部分支持离线缓存的网站，需要联网点进去单独缓存哈~ <br> -->
+	<!-- 本导航只是跳转，没办法保证第三方网站时刻能用好用~ <br><br> -->
+	<!-- 主站：<a href="https://ps5.psgo.eu.org/aio/">https://ps5.psgo.eu.org/aio/</a><br> -->
+	<!-- 备用：<a href="https://ps5.psgo.eu.org/aio/">https://ps5.psgo.eu.org/aio/</a><br><br> -->
+	<!-- 主站：https://ps5.psgo.eu.org/aio/<br> -->
+	<!-- 备用：https://psgo.pages.dev/aio/<br><br> -->
+	<!-- 官网：https://ps5.psgo.eu.org/<br> -->
+	<!-- 记得把我分享给机友们哦~ <br> -->
+	<!-- </div> -->
+	
+    <div class="clear"></div>
+    <img id="image" src="resources/images/tio.png">
+  </body>
+</html>
+<script>
+  if(!navigator.userAgent.includes('PlayStation 5')) {
+    alert("请在PS5浏览器中进入本页！");
+  }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>

@@ -1,0 +1,35 @@
+CACHE MANIFEST 
+# 2023/11/2 ÖÜ¶þ-23:50:40.80 
+
+CACHE: 
+custom_host_stuff.js
+exploit.js
+index.html
+int64.js
+main.css
+payload_map.js
+rop.js
+rop_slave.js
+service_worker.js
+webkit.js
+offsets\3.00.js
+offsets\3.10.js
+offsets\3.20.js
+offsets\3.21.js
+offsets\4.00.js
+offsets\4.02.js
+offsets\4.03.js
+offsets\4.50.js
+offsets\4.51.js
+payloads\Browser_appCache_remove.elf
+payloads\ftps5-p.elf
+payloads\hwinfo-tornblom.elf
+payloads\libhijacker-daemon-1.124.elf
+payloads\libhijacker-spawner-1.124.elf
+payloads\lock_unlock_updates.elf
+payloads\ps5-kstuff-v1.1.bin
+payloads\TO99999999_403_450.bin
+payloads\versions.elf
+
+NETWORK: 
+* 
