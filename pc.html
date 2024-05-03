@@ -534,55 +534,57 @@
 <div id="mask" onclick="loopy();" style="display:none;position: fixed;z-index: 99;bottom: 0;left: 0;width: 100%;height: 100%;opacity: 1;"></div>
 </body>
 </html>
-<script>
-function loopy() {
-	var p1 = "\u0036\u0036\u0036"; 
-	var p2 = "\u0038\u0038\u0038"; 
-	var p3 = "\u0030\u0030\u0030"; 
-	var userInputPassword = prompt("本开源项目仅面向开发者学术研究和技术开发使用，输入正确的邀请码进入本站则表示你承诺不会用于其它用途！\n\n请输入邀请码（点击页面左下角按钮获取）"); 
-	if (userInputPassword === p1 || userInputPassword === p2 || userInputPassword === p3) {
-		createCookie("mm", "1", 43776);
-		location.reload();
-	} 
-	else if (userInputPassword === null) {
-	}
-	else if (userInputPassword === "") {
-		alert("密码不能为空！");
-	}
-	else {
-		alert("密码错误！");
-	}
-}
-</script>
-<script>
-function createCookie(name, value, minutes) {
-  var date = new Date();
-  date.setTime(date.getTime() + minutes * 60 * 1000);
-  document.cookie = name + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
-}
 
-// 判断Cookie是否过期
-function isCookieExpired(name) {
-  var cookies = document.cookie.split(";");
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i].trim();
-    if (cookie.startsWith(name + "=")) {
-      return false; // Cookie未过期
-    }
-  }
-  return true; // Cookie已过期
-}
+<!-- <script> -->
+<!-- function loopy() { -->
+	<!-- var p1 = "\u0036\u0036\u0036";  -->
+	<!-- var p2 = "\u0038\u0038\u0038";  -->
+	<!-- var p3 = "\u0030\u0030\u0030";  -->
+	<!-- var userInputPassword = prompt("本开源项目仅面向开发者学术研究和技术开发使用，输入正确的邀请码进入本站则表示你承诺不会用于其它用途！\n\n请输入邀请码（点击页面左下角按钮获取）");  -->
+	<!-- if (userInputPassword === p1 || userInputPassword === p2 || userInputPassword === p3) { -->
+		<!-- createCookie("mm", "1", 43776); -->
+		<!-- location.reload(); -->
+	<!-- }  -->
+	<!-- else if (userInputPassword === null) { -->
+	<!-- } -->
+	<!-- else if (userInputPassword === "") { -->
+		<!-- alert("密码不能为空！"); -->
+	<!-- } -->
+	<!-- else { -->
+		<!-- alert("密码错误！"); -->
+	<!-- } -->
+<!-- } -->
+<!-- </script> -->
+<!-- <script> -->
+<!-- function createCookie(name, value, minutes) { -->
+  <!-- var date = new Date(); -->
+  <!-- date.setTime(date.getTime() + minutes * 60 * 1000); -->
+  <!-- document.cookie = name + "=" + value + "; expires=" + date.toGMTString() + "; path=/"; -->
+<!-- } -->
 
-if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) {
-  document.getElementById('mask').style.display = 'none';
-  document.getElementById('yaoqingma').style.display = 'none';
-}
-else
-{
-	document.getElementById('mask').style.display = 'block';
-	document.getElementById('yaoqingma').style.display = 'block';
-}
-</script>
+<!-- // 判断Cookie是否过期 -->
+<!-- function isCookieExpired(name) { -->
+  <!-- var cookies = document.cookie.split(";"); -->
+  <!-- for (var i = 0; i < cookies.length; i++) { -->
+    <!-- var cookie = cookies[i].trim(); -->
+    <!-- if (cookie.startsWith(name + "=")) { -->
+      <!-- return false; // Cookie未过期 -->
+    <!-- } -->
+  <!-- } -->
+  <!-- return true; // Cookie已过期 -->
+<!-- } -->
+
+<!-- if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) { -->
+  <!-- document.getElementById('mask').style.display = 'none'; -->
+  <!-- document.getElementById('yaoqingma').style.display = 'none'; -->
+<!-- } -->
+<!-- else -->
+<!-- { -->
+	<!-- document.getElementById('mask').style.display = 'block'; -->
+	<!-- document.getElementById('yaoqingma').style.display = 'block'; -->
+<!-- } -->
+<!-- </script> -->
+
 <!-- 悟空动态壁纸 -->
 <video poster="https://www.heishenhua.com/img/b1/img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="https://www.heishenhua.com/video/b1/video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
 <a style="text-decoration:none;" href="https://www.heishenhua.com/video/b1/PV05Full_ZH.mp4" target="_blank"><div style="position: fixed;right: 20px;bottom: 20px;z-index: 999;width:220px"><img style="width:100%"src="https://www.heishenhua.com/img/b1/img_logo_a.png"></div></a>
