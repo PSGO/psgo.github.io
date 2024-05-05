@@ -555,56 +555,56 @@ function loopy() {
 	}
 }
 </script>
-<!-- <script> -->
-<!-- function isTimeInRange(start, end) { -->
-    <!-- let now = new Date(); -->
-    <!-- let startTime = new Date(); -->
-    <!-- let endTime = new Date(); -->
+<script>
+function isTimeInRange(start, end) {
+    let now = new Date();
+    let startTime = new Date();
+    let endTime = new Date();
  
-    <!-- startTime.setHours(start.getHours(), start.getMinutes(), start.getSeconds(), start.getMilliseconds()); -->
-    <!-- endTime.setHours(end.getHours(), end.getMinutes(), end.getSeconds(), end.getMilliseconds()); -->
+    startTime.setHours(start.getHours(), start.getMinutes(), start.getSeconds(), start.getMilliseconds());
+    endTime.setHours(end.getHours(), end.getMinutes(), end.getSeconds(), end.getMilliseconds());
  
-    <!-- return now >= startTime && now <= endTime; -->
-<!-- } -->
+    return now >= startTime && now <= endTime;
+}
  
-<!-- let start = new Date(); -->
-<!-- let end = new Date(); -->
+let start = new Date();
+let end = new Date();
  
-<!-- start.setHours(7, 0, 0, 0); -->
-<!-- end.setHours(22, 0, 0, 0); -->
+start.setHours(7, 0, 0, 0);
+end.setHours(22, 0, 0, 0);
  
-<!-- if (isTimeInRange(start, end)) { -->
-    <!-- console.log("no"); -->
-<!-- } else { -->
+if (isTimeInRange(start, end)) {
+    console.log("no");
+} else {
 
-	<!-- function createCookie(name, value, minutes) { -->
-	  <!-- var date = new Date(); -->
-	  <!-- date.setTime(date.getTime() + minutes * 60 * 1000); -->
-	  <!-- document.cookie = name + "=" + value + "; expires=" + date.toGMTString() + "; path=/"; -->
-	<!-- } -->
+	function createCookie(name, value, minutes) {
+	  var date = new Date();
+	  date.setTime(date.getTime() + minutes * 60 * 1000);
+	  document.cookie = name + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
+	}
 
-	<!-- function isCookieExpired(name) { -->
-	  <!-- var cookies = document.cookie.split(";"); -->
-	  <!-- for (var i = 0; i < cookies.length; i++) { -->
-		<!-- var cookie = cookies[i].trim(); -->
-		<!-- if (cookie.startsWith(name + "=")) { -->
-		  <!-- return false; -->
-		<!-- } -->
-	  <!-- } -->
-	  <!-- return true; -->
-	<!-- } -->
+	function isCookieExpired(name) {
+	  var cookies = document.cookie.split(";");
+	  for (var i = 0; i < cookies.length; i++) {
+		var cookie = cookies[i].trim();
+		if (cookie.startsWith(name + "=")) {
+		  return false;
+		}
+	  }
+	  return true;
+	}
 
-	<!-- if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) { -->
-	  <!-- document.getElementById('mask').style.display = 'none'; -->
-	  <!-- document.getElementById('yaoqingma').style.display = 'none'; -->
-	<!-- } -->
-	<!-- else -->
-	<!-- { -->
-		<!-- document.getElementById('mask').style.display = 'block'; -->
-		<!-- document.getElementById('yaoqingma').style.display = 'block'; -->
-	<!-- } -->
-<!-- } -->
-<!-- </script> -->
+	if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) {
+	  document.getElementById('mask').style.display = 'none';
+	  document.getElementById('yaoqingma').style.display = 'none';
+	}
+	else
+	{
+		document.getElementById('mask').style.display = 'block';
+		document.getElementById('yaoqingma').style.display = 'block';
+	}
+}
+</script>
 
 <!-- 悟空动态壁纸 -->
 <video poster="https://www.heishenhua.com/img/b1/img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="https://www.heishenhua.com/video/b1/video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
