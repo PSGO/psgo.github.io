@@ -574,10 +574,7 @@ start.setHours(7, 0, 0, 0);
 end.setHours(22, 0, 0, 0);
  
 if (isTimeInRange(start, end)) {
-    console.log("no");
-} else {
-
-	function createCookie(name, value, minutes) {
+    function createCookie(name, value, minutes) {
 	  var date = new Date();
 	  date.setTime(date.getTime() + minutes * 60 * 1000);
 	  document.cookie = name + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
@@ -603,6 +600,8 @@ if (isTimeInRange(start, end)) {
 		document.getElementById('mask').style.display = 'block';
 		document.getElementById('yaoqingma').style.display = 'block';
 	}
+} else {
+
 }
 </script>
 

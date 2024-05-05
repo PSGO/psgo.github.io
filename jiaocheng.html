@@ -23,9 +23,7 @@ start.setHours(7, 0, 0, 0);
 end.setHours(22, 0, 0, 0);
  
 if (isTimeInRange(start, end)) {
-    console.log("no");
-} else {
-	function isCookieExpired(name) {
+    function isCookieExpired(name) {
 	  var cookies = document.cookie.split(";");
 	  for (var i = 0; i < cookies.length; i++) {
 		var cookie = cookies[i].trim();
@@ -44,6 +42,8 @@ if (isTimeInRange(start, end)) {
 		alert("点击确定（ok）将自动进入首页，输入正确的邀请码后即可访问！");
 		window.location='index.html';
 	}
+} else {
+	
 }
 </script>
     
