@@ -1,9 +1,9 @@
 const payload_map =
     [
         {
-            displayTitle: 'HEN原版 v1.4（推荐 / 仅解锁运行PS4）',
-            description: '不要重复点击！和etaHEN只能二选一！支持 3.00 - 4.51 所有版本',
-            fileName: 'ps5-kstuff.bin',
+            displayTitle: 'etaHEN原版 v1.8b（解锁运行PS5/PS4）',
+            description: '需联网！多合一整合HEN，支持 3.00 - 4.51 所有版本',
+            fileName: 'etaHEN.bin',
             author: '-',
             source:'-',
             version: '-'
@@ -17,9 +17,9 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: 'etaHEN原版 v1.7b（解锁运行PS5/PS4）',
-            description: '需联网！多合一整合HEN，支持 3.00 - 4.51 所有版本',
-            fileName: 'etaHEN.bin',
+            displayTitle: 'HEN原版 v1.4（推荐 / 仅解锁运行PS4）',
+            description: '不要重复点击！和etaHEN只能二选一！支持 3.00 - 4.51 所有版本',
+            fileName: 'ps5-kstuff.bin',
             author: '-',
             source:'-',
             version: '-'
