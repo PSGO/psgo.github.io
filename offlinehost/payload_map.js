@@ -1,15 +1,15 @@
 const payload_map =
     [
         {
-            displayTitle: 'etaHEN原版 v1.8b（解锁运行PS5/PS4）',
-            description: '需联网！多合一整合HEN，支持 3.00 - 4.51 所有版本',
+            displayTitle: 'etaHEN原版 v1.9b（解锁运行PS5/PS4）',
+            description: '多合一整合HEN，支持 3.00 - 4.51 所有版本',
             fileName: 'etaHEN.bin',
             author: '-',
             source:'-',
             version: '-'
         },
 		{
-            displayTitle: 'etaHEN简化版 v1.6b（解锁运行PS5/PS4）',
+            displayTitle: 'etaHEN简化版 v1.8b（解锁运行PS5/PS4）',
             description: '需联网！支持itemzFlow，支持 3.00 - 4.51 所有版本',
             fileName: 'etaHEN0.bin',
             author: '-',
@@ -65,7 +65,7 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: 'PS5debug（支持金手指）',
+            displayTitle: 'PS5debug v1.0b2（金手指）',
             description: '配合MultiTrainer II电脑客户端或内存调试工具',
             fileName: 'ps5debug.elf',
             author: '-',
@@ -74,7 +74,7 @@ const payload_map =
         },
 		{
             displayTitle: '解锁部分正版游戏120/60帧率',
-            description: 'libhijacker v1.158 运行后可直接启动相应版本游戏',
+            description: 'libhijacker v1.160 运行后可直接启动相应版本游戏',
             fileName: 'spawner.elf',
             author: '-',
             source:'-',
