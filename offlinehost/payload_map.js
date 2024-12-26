@@ -9,7 +9,7 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: 'etaHEN简化版 v1.8b（解锁运行PS5/PS4）',
+            displayTitle: 'etaHEN旧版 v1.8b（解锁运行PS5/PS4）',
             description: '需联网！支持itemzFlow，支持 3.00 - 4.51 所有版本',
             fileName: 'etaHEN0.bin',
             author: '-',
