@@ -1,7 +1,7 @@
 const payload_map =
     [
         {
-            displayTitle: 'etaHEN原版 v1.9b（解锁运行PS5/PS4）',
+            displayTitle: 'etaHEN v1.9b（解锁运行PS5/PS4）',
             description: '多合一整合HEN，支持 3.00 - 4.51 所有版本',
             fileName: 'etaHEN.bin',
             author: '-',
@@ -9,15 +9,15 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: 'etaHEN旧版 v1.8b（解锁运行PS5/PS4）',
-            description: '需联网！支持itemzFlow，支持 3.00 - 4.51 所有版本',
+            displayTitle: 'etaHEN v1.8b（解锁运行PS5/PS4）',
+            description: '支持itemzFlow，支持 3.00 - 4.51 所有版本',
             fileName: 'etaHEN0.bin',
             author: '-',
             source:'-',
             version: '-'
         },
 		{
-            displayTitle: 'Kstuff原版HEN v1.4（推荐 / 仅解锁运行PS4）',
+            displayTitle: 'Kstuff v1.4（推荐 / 仅解锁运行PS4）',
             description: '不要重复点击！和etaHEN只能二选一！支持 3.00 - 4.51 所有版本',
             fileName: 'ps5-kstuff.bin',
             author: '-',
@@ -41,7 +41,7 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: 'Clear cache清除浏览器缓存',
+            displayTitle: 'Clear cache 清除浏览器缓存',
             description: 'PS5无法双清，遇到缓存异常问题使用本功能清除后重新缓存',
             fileName: 'Browser_appCache_remove.elf',
             author: '-',
