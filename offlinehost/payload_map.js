@@ -17,7 +17,7 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: 'HEN原版 v1.4（推荐 / 仅解锁运行PS4）',
+            displayTitle: 'Kstuff原版HEN v1.4（推荐 / 仅解锁运行PS4）',
             description: '不要重复点击！和etaHEN只能二选一！支持 3.00 - 4.51 所有版本',
             fileName: 'ps5-kstuff.bin',
             author: '-',
@@ -33,7 +33,7 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: 'elf/bin插件加载器',
+            displayTitle: 'elf/bin插件loader加载器',
             description: '端口号9021，后台持续运行，配合NetCat或安卓客户端推送插件',
             fileName: 'elfldr.elf',
             author: '-',
@@ -41,7 +41,7 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: '清除浏览器缓存',
+            displayTitle: 'Clear cache清除浏览器缓存',
             description: 'PS5无法双清，遇到缓存异常问题使用本功能清除后重新缓存',
             fileName: 'Browser_appCache_remove.elf',
             author: '-',
@@ -49,7 +49,7 @@ const payload_map =
             version: '-'
         },
 		{
-            displayTitle: '屏蔽系统更新（推荐）',
+            displayTitle: 'Block updates 屏蔽系统更新',
             description: '左上角显示“blocker enable”则为永久生效，建议配合路由器屏蔽',
             fileName: 'lock_unlock_updates.elf',
             author: '-',
@@ -57,7 +57,7 @@ const payload_map =
             version: '-'
         }, 
         {
-            displayTitle: '备份数据（解决游戏图标消失问题）',
+            displayTitle: 'BackupDB 备份数据（解决图标消失）',
             description: '索引、存档等数据，点击前插入exfat格式U盘，建议每月备份一次',
             fileName: 'Backup-db-PS5.elf',
             author: '-',
