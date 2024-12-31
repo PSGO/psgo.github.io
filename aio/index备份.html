@@ -98,10 +98,6 @@ document.addEventListener("keydown", manejarKeyPress);
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">ESP</div> <br>
 	  <li><a target="_blank" href="https://psgo.github.io/esptool/">ESP Web Flasher</a></li>
 	  <li><a target="_blank" href="https://psgo.lanzoub.com/iLLi91wwvu4b">ESP Driver</a></li>
-	  <li><a href="#" onclick="fetchAndOpenLink(1, this); return false;">ESP8266(4MB)-ES-PWD12345678</a></li>
-	  <li><a href="#" onclick="fetchAndOpenLink(2, this); return false;">ESP32s2(4MB)-ES-PWD12345678</a></li>
-	  <li><a href="#" onclick="fetchAndOpenLink(3, this); return false;">FeatherS2(16MB)-ES-PWD12345678</a></li>
-	  <li><a href="#" onclick="fetchAndOpenLink(4, this); return false;">LilyGoS3(16MB)-ES-PWD12345678</a></li>
     </ul>
 	<br>
 	
@@ -125,7 +121,40 @@ document.addEventListener("keydown", manejarKeyPress);
     </ul>
 	<br>
 	
+	<!-- <ul> -->
+	<!-- <div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">PSGO折腾</div> <br> -->
+      <!-- <li><a target="_blank" href="../offlinehostauto/">原版HEN × 全自动 × PSFree × 支持离线缓存</a></li> -->
+      <!-- <li><a target="_blank" href="../offlinehostautoeta/">etaHEN × 全自动 × PSFree × 支持离线缓存</a></li> -->
+      <!-- <li><a target="_blank" href="../offlinehost/">一键折腾 ×  PSFree × 多插件 × 支持离线缓存</a></li> -->
+      <!-- <li><a target="_blank" href="../onlinehost/qing/">一键清除浏览器缓存在线版</a></li> -->
+      <!-- <li><a target="_blank" href="../onlinehost/auto/">全自动etaHEN在线版</a></li> -->
+      <!-- <li><a target="_blank" href="../onlinehost/one/">一键折腾多插件在线版</a></li> -->
+	  <!-- <li><a target="_blank" href="../offlinebrowser/">中文离线浏览器标准版 × 支持离线缓存</a></li> -->
+    <!-- </ul> -->
+	<!-- <br><br><br> -->
+	<!-- <h2 style="font-size:30px;text-align:center;color:#39C;font-style:italic;font-weight:bold;">-- 持续增加收录中 --</h2> -->
+	<!-- <br><br><br> -->
+	
+	<!-- <ul> -->
+	<!-- <div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">PSGO内部测试（小白勿试，非内测组成员不建议日常使用，仅用于测试）</div> <br> -->
+	  <!-- <li><a target="_blank" href="https://ps5.psgo.eu.org/888/">一键折腾 × 多插件 × PSFree × 简化etaHEN</a></li> -->
+      <!-- <li><a target="_blank" href="https://ps5.psgo.eu.org/666/">全自动 × 老漏洞 × 原版etaHEN</a></li> -->
+    <!-- </ul> -->
+    <!-- <h2 style="font-size:18px;text-align:center;color:#39C;font-style:italic;font-weight:bold;">请将你的系统版本、内测缓存版本、遇到的问题、成功率数据和测试照片录像发送至邮箱：psgo.tk@outlook.com</h2> -->
+	
 	<br><br><br><br><br><br><br><br><br>
+	<!-- <div style="font-size:20px;" id="fork-me"> -->
+	<!-- 建议用于体验和挑选，不建议频繁切换使用！<br> -->
+	<!-- 去PSGO首页下载折腾大全PKG使用起来更方便哦！<br><br> -->
+	<!-- 部分支持离线缓存的网站，需要联网点进去单独缓存哈~ <br> -->
+	<!-- 本导航只是跳转，没办法保证第三方网站时刻能用好用~ <br><br> -->
+	<!-- 主站：<a href="https://ps5.psgo.eu.org/aio/">https://ps5.psgo.eu.org/aio/</a><br> -->
+	<!-- 备用：<a href="https://ps5.psgo.eu.org/aio/">https://ps5.psgo.eu.org/aio/</a><br><br> -->
+	<!-- 主站：https://ps5.psgo.eu.org/aio/<br> -->
+	<!-- 备用：https://psgo.pages.dev/aio/<br><br> -->
+	<!-- 官网：https://ps5.psgo.eu.org/<br> -->
+	<!-- 记得把我分享给机友们哦~ <br> -->
+	<!-- </div> -->
 	
 	<div style="font-size:20px;" id="fork-me">
 	<!-- Link：<a href="https://psgo.github.io/aio/">psgo.github.io/aio/</a><br> -->
@@ -135,56 +164,18 @@ document.addEventListener("keydown", manejarKeyPress);
     <div class="clear"></div>
     <img id="image" src="resources/images/tio.png">
   </body>
-	<script>
-        async function fetchAndOpenLink(linkNumber, element) {
-            const originalText = element.textContent; // 保存原始文本
-            element.textContent = "Fetching link..."; // 显示状态
-
-            const url = "https://es7in1.site/ps4/index.php"; // 目标网页链接
-            const proxy = "https://api.allorigins.win/get?url="; // 使用公共CORS代理
-
-            try {
-                // 发起请求
-                const response = await fetch(proxy + encodeURIComponent(url));
-                const data = await response.json();
-                const htmlContent = data.contents; // 获取网页HTML内容
-
-                // 解析HTML并提取目标链接
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlContent, "text/html");
-                const links = doc.querySelectorAll("a[href*='PS5.ESP8266'], a[href*='PS5.ESP32S2'], a[href*='PS5.FEATHERS2'], a[href*='PS5.LilyGo']");
-
-                if (links.length >= linkNumber) {
-                    // 根据按钮选择对应链接
-                    const selectedLink = links[linkNumber - 1].href;
-                    element.textContent = originalText; // 恢复文本
-                    window.open(selectedLink, '_blank'); // 在新标签中打开链接
-                } else {
-                    element.textContent = "Link not found.";
-                }
-
-            } catch (error) {
-                console.error("Error fetching the website:", error);
-                element.textContent = "Failed to fetch.";
-            } finally {
-                setTimeout(() => {
-                    element.textContent = originalText; // 延时恢复原始文本
-                }, 3000); // 3秒后恢复原始文本
-            }
-        }
-    </script>
 </html>
 <script>
   if(!navigator.userAgent.includes('PlayStation 5')) {
     alert("Please enter this page in the PS5 browser! Suggest downloading AIO PKG and installing it on PS5!\n\n Click OK button to preview the page~");
   }
 </script>
-<!-- Global site tag (gtag.js) - Google Analytics统计 -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script> -->
-<!-- <script> -->
-  <!-- window.dataLayer = window.dataLayer || []; -->
-  <!-- function gtag(){dataLayer.push(arguments);} -->
-  <!-- gtag('js', new Date()); -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <!-- gtag('config', 'G-7VRDNYTJ1Y'); -->
-<!-- </script> -->
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>
