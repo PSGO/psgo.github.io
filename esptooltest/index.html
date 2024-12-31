@@ -44,9 +44,10 @@
                 <br><br>
 
                 <input class="btn btn-info btn-sm" type="button" id="connectButton" value="Connect" />
-                <input class="btn btn-info btn-sm" type="button" id="copyTraceButton" value="Copy Trace" />
+                <!-- <input class="btn btn-info btn-sm" type="button" id="copyTraceButton" value="Copy Trace" /> -->
                 <input class="btn btn-warning btn-sm" type="button" id="disconnectButton" value="Disconnect" />
                 <input class="btn btn-danger btn-sm" type="button" id="eraseButton" value="Erase Flash" />
+				<input class="btn btn-info btn-sm" type="button" id="copyTraceButton" value="Copy Trace" />
                 <br>
 
                 <div class="alert alert-danger alert-dismissible" id="alertDiv" style="display:none; margin-top:10px">
@@ -58,16 +59,17 @@
                     <table class="table table-striped" id="fileTable">
                         <thead class="thead-light">
                             <tr>
-                                <th>Flash Address</th>
-                                <th>File</th>
+                                <th>Flash Address(Default: 0x0)</th>
+                                <th>Bin File</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
                         </tbody>
                     </table>
-                    <input class="btn btn-info btn-sm" type="button" id="addFile" value="Add File" />
-                    <input class="btn btn-info btn-sm" type="button" id="programButton" value="Program" />
+                    <!-- <input class="btn btn-info btn-sm" type="button" id="addFile" value="Add File" /> -->
+					<input class="btn btn-info btn-sm" type="button" id="programButton" value="Start flashing" />
+                    <input class="btn btn-warning btn-sm" type="button" id="addFile" value="Add more files" />
                 </div>
                 <output id="list"></output>
                 <hr/>
@@ -88,7 +90,7 @@
                 <input class="btn btn-info" type="button" id="resetButton" value="Reset" />
                 <hr/>
             </div>
-            <div id="terminal" style="display:none"></div>
+            <div id="terminal"></div>
         </div>
         <script src="index.8d9987d7.js" type="module"></script>
         <script>
