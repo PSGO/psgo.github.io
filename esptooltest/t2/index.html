@@ -14,6 +14,19 @@
          <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+document.onreadystatechange = function () {
+   if (document.readyState == "complete") {
+        //document.body.style.display = "block";
+	    $('body').show(1000);
+	    $('#loading').hide(500);//关闭动画
+   }else{
+        //document.body.style.display = "none";
+	    $('body').hide(500);
+	    loading(1);//加载动画
+   };
+};
+</script>
     </head>
     <body>
         <!-- <h1 align="center"><p><img src="esp-logo.png" width="42" height="42" style="vertical-align:middle"></img> ESP Tool</p></h1> -->
@@ -60,7 +73,7 @@
                     <table class="table table-striped" id="fileTable">
                         <thead class="thead-light">
                             <tr>
-                                <th>Flash Address (Default: 0x0000)</th>
+                                <th>Flash Address (Default for single bin: 0x0000)</th>
                                 <th>Bin File</th>
                                 <th></th>
                             </tr>
