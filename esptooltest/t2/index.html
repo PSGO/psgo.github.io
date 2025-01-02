@@ -18,7 +18,7 @@
     <body>
         <!-- <h1 align="center"><p><img src="esp-logo.png" width="42" height="42" style="vertical-align:middle"></img> ESP Tool</p></h1> -->
         <h1 style="font-size:40px;text-align:center;">ESP Web Flasher</h1>
-        <h4 align="center">A Serial Flasher utility for Espressif chips</h4>
+        <h5 align="center">Open with Chrome, Support ESP32-s2 & 8266, Install ESP driver first (<a target="_blank" href="https://psgo.lanzoub.com/iuMfi2j6gkyd">Download</a>)</h4>
         <div id="safariErr" style="display:none"><p align="center" style="color:red">This tool is not supported on Safari browser!</p>
         </div>
         <div align="center" style="display:none">
@@ -33,7 +33,7 @@
             <hr/>
             <div id="program">
                 <h3> Program </h3>
-                <label for="baudrates" id="lblBaudrate">Baudrate:</label>
+                <label for="baudrates" id="lblBaudrate">Baudrate (Default: 921600):</label>
                 <label style="display:none" id="lblConnTo">Connected to device: </label>
                 <select name="baudrates" id="baudrates">
                     <option value="921600">921600</option>
@@ -60,7 +60,7 @@
                     <table class="table table-striped" id="fileTable">
                         <thead class="thead-light">
                             <tr>
-                                <th>Flash Address(Default: 0x0000)</th>
+                                <th>Flash Address (Default: 0x0000)</th>
                                 <th>Bin File</th>
                                 <th></th>
                             </tr>
@@ -106,3 +106,12 @@
         </script>
     </body>
 </html>
+<!-- Global site tag (gtag.js) - Google Analytics统计 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>
