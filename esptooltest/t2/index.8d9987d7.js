@@ -7697,7 +7697,7 @@ $382e02c9bbd5d50b$var$addFileButton.onclick = ()=>{
     const element1 = document.createElement("input");
     element1.type = "text";
     element1.id = "offset" + rowCount;
-    element1.value = "0x1000";
+    element1.value = "0x0000";
     cell1.appendChild(element1);
     // Column 2 - File selector
     const cell2 = row.insertCell(1);
