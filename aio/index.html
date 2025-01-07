@@ -98,7 +98,7 @@ document.addEventListener("keydown", manejarKeyPress);
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">ESP (Open with PC browser)</div> <br>
 	  <li><a href="#" onclick="fetchAndOpenLink(2, this); return false;">ESP32s2(4MB)-ES-PWD12345678</a></li>
 	  <li><a href="#" onclick="fetchAndOpenLink(1, this); return false;">ESP8266(4MB)-ES-PWD12345678</a></li>
-	  <!-- <li><a href="#" onclick="fetchAndOpenLink(3, this); return false;">FeatherS2(16MB)-ES-PWD12345678</a></li> -->
+	  <li><a href="#" onclick="fetchAndOpenLink(3, this); return false;">FeatherS2(16MB)-ES-PWD12345678</a></li>
 	  <!-- <li><a href="#" onclick="fetchAndOpenLink(4, this); return false;">LilyGoS3(16MB)-ES-PWD12345678</a></li> -->
 	  <li><a target="_blank" href="https://psgo.lanzoub.com/iLLi91wwvu4b">ESP Driver</a></li>
 	  <li><a target="_blank" href="https://psgo.github.io/esptoolv2/">ESP Web Flasher v2 For Win/Mac/Linux</a></li>
@@ -178,7 +178,7 @@ document.addEventListener("keydown", manejarKeyPress);
                 // 解析HTML并提取目标链接
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlContent, "text/html");
-                const links = doc.querySelectorAll("a[href*='PS5.ESP8266'], a[href*='PS5.ESP32S2'], a[href*='PS5.FEATHERS2'], a[href*='PS5.LilyGo']");
+                const links = doc.querySelectorAll("a[href*='PS5'][href*='ESP8266'], a[href*='PS5'][href*='ESP32S2'], a[href*='PS5'][href*='FEATHERS2'], a[href*='PS5'][href*='LilyGo']");
 
                 if (links.length >= linkNumber) {
                     // 根据按钮选择对应链接
