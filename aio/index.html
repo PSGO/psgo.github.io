@@ -164,57 +164,81 @@ document.addEventListener("keydown", manejarKeyPress);
   </body>
 <script>
     async function fetchAndOpenLink(linkNumber, element) {
-        const originalText = element.textContent; // 保存原始文本
-        element.textContent = "Getting latest file link..."; // 显示状态
+        const originalText = element.textContent; // Save original text
+        element.textContent = "Getting the latest file link..."; // Show status
 
-        const url = "https://es7in1.site/ps4/index.php"; // 目标网页链接
-        const proxy = "https://api.allorigins.win/get?url="; // 使用公共CORS代理
+        // Pre-open a blank new tab with a temporary title and message
+        const newTab = window.open('', '_blank');
+        newTab.document.write('<html><head><title>Fetching...</title></head><body><h1>Fetching the link, please wait...</h1></body></html>');
+        newTab.document.close(); // Finish writing
 
-        try {
-            // 发起请求
-            const response = await fetch(proxy + encodeURIComponent(url));
-            const data = await response.json();
-            const htmlContent = data.contents; // 获取网页HTML内容
+        const url = "https://es7in1.site/ps4/index.php"; // Target webpage URL
+        const proxy = "https://api.allorigins.win/get?url="; // Use public CORS proxy
 
-            // 解析HTML并提取目标链接
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlContent, "text/html");
-            const links = Array.from(doc.querySelectorAll("a")); // 获取所有的 <a> 标签
+        let attempts = 0; // Track number of attempts
+        const maxAttempts = 3; // Maximum retries
 
-            // 定义关键字，拆分成多个词
-            const keywords = [
-                ['PS5', 'ESP8266'], ['PS5', 'ESP32S2'], ['PS5', 'FEATHERS2'], ['PS5', 'LilyGo']
-            ];
+        async function fetchLink() {
+            attempts++;
+            try {
+                // Make the request
+                const response = await fetch(proxy + encodeURIComponent(url));
+                const data = await response.json();
+                const htmlContent = data.contents; // Get HTML content of the page
 
-            // 过滤出符合条件的链接
-            const filteredLinks = links.filter(link => {
-                // 对于每一组关键字，检查它们是否出现在 href, title 和 textContent 中
-                return keywords.some(keywordPair => 
-                    keywordPair.every(keyword => 
-                        link.href.includes(keyword) || 
-                        link.title.includes(keyword) || 
-                        link.textContent.includes(keyword)
-                    )
-                );
-            });
+                // Parse HTML and extract target links
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlContent, "text/html");
+                const links = Array.from(doc.querySelectorAll("a")); // Get all <a> tags
 
-            if (filteredLinks.length >= linkNumber) {
-                // 根据按钮选择对应链接
-                const selectedLink = filteredLinks[linkNumber - 1].href;
-                element.textContent = originalText; // 恢复文本
-                window.open(selectedLink, '_blank'); // 在新标签中打开链接
-            } else {
-                element.textContent = "Link not found.";
+                // Define keywords split into pairs
+                const keywords = [
+                    ['PS5', 'ESP8266'], ['PS5', 'ESP32S2'], ['PS5', 'FEATHERS2'], ['PS5', 'LilyGo']
+                ];
+
+                // Filter links based on keywords
+                const filteredLinks = links.filter(link => {
+                    return keywords.some(keywordPair => 
+                        keywordPair.every(keyword => 
+                            link.href.includes(keyword) || 
+                            link.title.includes(keyword) || 
+                            link.textContent.includes(keyword)
+                        )
+                    );
+                });
+
+                if (filteredLinks.length >= linkNumber) {
+                    // Select the appropriate link based on the button
+                    const selectedLink = filteredLinks[linkNumber - 1].href;
+                    newTab.location.href = selectedLink; // Redirect new tab to the target link
+                    element.textContent = originalText; // Restore original text
+                } else {
+                    newTab.document.body.innerHTML = "<h1>Link not found, please try again.</h1>";
+                    element.textContent = "Link not found.";
+                }
+            } catch (error) {
+                console.error(`Attempt ${attempts}: Error fetching the website`, error);
+
+                if (attempts < maxAttempts) {
+                    // Retry if attempts are below the max
+                    console.log(`Retrying... (${attempts}/${maxAttempts})`);
+                    await fetchLink();
+                } else {
+                    // After max attempts, show error in new tab
+                    newTab.document.body.innerHTML = "<h1>Failed to fetch the link after multiple attempts.</h1>";
+                    element.textContent = "Failed to fetch.";
+                }
+            } finally {
+                if (attempts >= maxAttempts) {
+                    setTimeout(() => {
+                        element.textContent = originalText; // Restore original text after delay
+                    }, 6000); // Restore after 6 seconds
+                }
             }
-
-        } catch (error) {
-            console.error("Error fetching the website:", error);
-            element.textContent = "Failed to fetch.";
-        } finally {
-            setTimeout(() => {
-                element.textContent = originalText; // 延时恢复原始文本
-            }, 6000); // 6秒后恢复原始文本
         }
+
+        // Start the first fetch attempt
+        fetchLink();
     }
 </script>
 </html>
