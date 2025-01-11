@@ -66,6 +66,15 @@
 <button type="button" onclick="window.open('esptoolv2/')";><font color=""> 在线刷机工具（支持ESP8266、ESP32）</font></button>
 </td></tr>
 <tr><td align="center">
+<button type="button" href="#" onclick="fetchAndOpenLink(2, this); return false;";><font color=""> ESP32s2(4MB)-ES-密码12345678</font></button>
+</td></tr>
+<tr><td align="center">
+<button type="button" href="#" onclick="fetchAndOpenLink(1, this); return false;";><font color=""> ESP8266(4MB)-ES-密码12345678</font></button>
+</td></tr>
+<tr><td align="center">
+<button type="button" href="#" onclick="fetchAndOpenLink(3, this); return false;";><font color=""> FeatherS2(16MB)-ES-密码12345678</font></button>
+</td></tr>
+<tr><td align="center">
 <button type="button" onclick="window.open('https://psgo.lanzouj.com/iIm3j1kyeq8j')";><font color=""> 用户指南快捷入口PKG（支持ESP）</font></button>
 </td></tr>
 
@@ -213,4 +222,83 @@
   document.getElementById("times").innerHTML = hnum + "小时 " + mnum + "分 " + snum + "秒 ";
  }
  setInterval("createtime()",250); 
+</script>
+<script>
+    async function fetchAndOpenLink(linkNumber, element) {
+        const originalText = element.textContent; // Save original text
+        element.textContent = "Getting the latest file link..."; // Show status
+
+        // Pre-open a blank new tab with a temporary title and message
+        const newTab = window.open('', '_blank');
+        newTab.document.write('<html><head><title>Fetching...</title></head><body><h1>正在获取最新文件链接，请稍等...</h1></body></html>');
+        newTab.document.close(); // Finish writing
+
+        const url = "https://es7in1.site/ps4/index.php"; // Target webpage URL
+        const proxy = "https://api.allorigins.win/get?url="; // Use public CORS proxy
+
+        let attempts = 0; // Track number of attempts
+        const maxAttempts = 3; // Maximum retries
+
+        async function fetchLink() {
+            attempts++;
+            try {
+                // Make the request
+                const response = await fetch(proxy + encodeURIComponent(url));
+                const data = await response.json();
+                const htmlContent = data.contents; // Get HTML content of the page
+
+                // Parse HTML and extract target links
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlContent, "text/html");
+                const links = Array.from(doc.querySelectorAll("a")); // Get all <a> tags
+
+                // Define keywords split into pairs
+                const keywords = [
+                    ['PS5', 'ESP8266'], ['PS5', 'ESP32S2'], ['PS5', 'FEATHERS2'], ['PS5', 'LilyGo']
+                ];
+
+                // Filter links based on keywords
+                const filteredLinks = links.filter(link => {
+                    return keywords.some(keywordPair => 
+                        keywordPair.every(keyword => 
+                            link.href.includes(keyword) || 
+                            link.title.includes(keyword) || 
+                            link.textContent.includes(keyword)
+                        )
+                    );
+                });
+
+                if (filteredLinks.length >= linkNumber) {
+                    // Select the appropriate link based on the button
+                    const selectedLink = filteredLinks[linkNumber - 1].href;
+                    newTab.location.href = selectedLink; // Redirect new tab to the target link
+                    element.textContent = originalText; // Restore original text
+                } else {
+                    newTab.document.body.innerHTML = "<h1>Link not found, please try again.</h1>";
+                    element.textContent = "Link not found.";
+                }
+            } catch (error) {
+                console.error(`Attempt ${attempts}: Error fetching the website`, error);
+
+                if (attempts < maxAttempts) {
+                    // Retry if attempts are below the max
+                    console.log(`Retrying... (${attempts}/${maxAttempts})`);
+                    await fetchLink();
+                } else {
+                    // After max attempts, show error in new tab
+                    newTab.document.body.innerHTML = "<h1>Failed to fetch the link after multiple attempts.</h1>";
+                    element.textContent = "Failed to fetch.";
+                }
+            } finally {
+                if (attempts >= maxAttempts) {
+                    setTimeout(() => {
+                        element.textContent = originalText; // Restore original text after delay
+                    }, 6000); // Restore after 6 seconds
+                }
+            }
+        }
+
+        // Start the first fetch attempt
+        fetchLink();
+    }
 </script>
