@@ -1,8 +1,8 @@
-2024/4/26更新 -PS5.PSGO.eu.org
+2025/1/1更新 -PSGO.eu.org
 
 以下为通过网络层面进行屏蔽，相比其他方法来说效果最好。但是建议多种屏蔽方法叠加，起到多重保险的作用。其他还有一键插件法、FTP文件替换法等
 
-1.部分路由器支持白名单或者黑名单，建议直接用黑名单添加进去playstation.net（屏蔽全局）、update.playstation.net（屏蔽系统更新）、dl.playstation.net（屏蔽游戏更新），一行添加一个链接不包含链接后的括号，不同的路由器操作大同小异，自行看说明书或百度搜索“路由器XX型号黑名单访问”，操作完成后重启路由器和PS5
+1.部分路由器支持白名单或者黑名单，建议直接用黑名单添加进去playstation.net和playstation.com（屏蔽全局）、update.playstation.net（屏蔽系统更新）、dl.playstation.net（屏蔽游戏更新），一行添加一个链接不包含链接后的括号，不同的路由器操作大同小异，自行看说明书或百度搜索“路由器XX型号黑名单访问”，操作完成后重启路由器和PS5
 
 2.部分路由器支持通配符，屏蔽的更彻底
 *.ps5.update.playstation.net或者*.update.playstation.net或者*.playstation.net

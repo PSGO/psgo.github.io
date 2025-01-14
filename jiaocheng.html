@@ -3,49 +3,6 @@
   <meta charset="utf-8"> 
   <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
   <title>PS5折腾教程 - PSGO.eu.org</title> 
-
-<script>
-function isTimeInRange(start, end) {
-    let now = new Date();
-    let startTime = new Date();
-    let endTime = new Date();
- 
-    startTime.setHours(start.getHours(), start.getMinutes(), start.getSeconds(), start.getMilliseconds());
-    endTime.setHours(end.getHours(), end.getMinutes(), end.getSeconds(), end.getMilliseconds());
- 
-    return now >= startTime && now <= endTime;
-}
- 
-let start = new Date();
-let end = new Date();
- 
-start.setHours(7, 0, 0, 0);
-end.setHours(22, 0, 0, 0);
- 
-if (isTimeInRange(start, end)) {
-    function isCookieExpired(name) {
-	  var cookies = document.cookie.split(";");
-	  for (var i = 0; i < cookies.length; i++) {
-		var cookie = cookies[i].trim();
-		if (cookie.startsWith(name + "=")) {
-		  return false; // Cookie未过期
-		}
-	  }
-	  return true; // Cookie已过期
-	}
-
-	if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) {
-
-	}
-	else
-	{
-		alert("点击确定（ok）将自动进入首页，输入正确的邀请码后即可访问！");
-		window.location='index.html';
-	}
-} else {
-	
-}
-</script>
     
    <style> 
   button
@@ -89,28 +46,14 @@ if (isTimeInRange(start, end)) {
    		<h1 style="font-size:46px;color:#CFB53B;text-align:center;">PS5折腾教程 - PSGO.eu.org</h1>
         <br>
 		<div style="width:800px;margin:50px auto;">
-		<p style="font-size:18px;font-weight:bold;color:#CFB53B;">
-		当前PS5折腾进度：<br><br>
-		目前3.00、3.10、3.20、3.21、4.00、4.02、4.03、4.50、4.51系统版本PS5可解锁运行PS4和部分PS5，不同系统版本成功率和稳定性略有差异，当前阶段以平均85-93%的成功率为标准，如差距过大请参考首页教程中的提高成功率方法进行问题排查；<br><br>
-		3.00-4.51之间的小版本（光驱版+数字版）平均每个版本HEN需要1个月左右时间；（已完成）<br><br>
-		5.00-7.61光驱版预计3月前后有突破，BD-JB入口Jar加载器可支持到7.61光驱版，目前仍未放出0day内核漏洞利用，尚处于攻克阶段；<br><br>
-		1.00-5.50版本（包含数字版）webkit漏洞（CVE-2022-22620 / PSFree项目）已确定可用，暂无内核漏洞利用和移植；<br><br>
-		暂无Hypervisor（HV）漏洞全链利用，等待flatZ和安迪进一步公开，尤其是2.X版本的同学要耐心等待，很可能成为第一批运行PS5PKG；<br><br>
-		安迪将在5月底展示另一个新的内核漏洞CVE-2006-4304，已确认漏洞支持到8.20，且不依赖webkit入口，需等待进一步公布细节<br><br><br><br>
-		注意事项：<br><br>
-		当前阶段还有诸多不完善不稳定，会有一定概率死机或失败，追求极致稳定的同学，请耐心等待！<br><br>
-		如果日常只运行PS4FPKG，建议选择更稳定的原版HEN。如果需要运行PS5资源，可选择稳定性稍差的etaHEN。更追求功能性还是稳定性，根据自己的需求自行斟酌。<br><br>
-		使用离线版折腾更新离线缓存之后，如果连续遇到异常，使用一键折腾中的清缓存插件或者浏览器进入首页选择一键清缓存在线版，清除缓存后重新缓存，并关闭PS5设置中的网络开关。一般情况下并不需要经常清缓存，直接更新缓存即可。<br><br><br><br>
-		折腾教程：<br><br>
-		以下操作仅用来学术研究和技术开发使用，切勿用作其他用途！<br><br></p>
 		
 		<p style="font-size:20px;font-weight:bold;color:#CFB53B;"><a style="color:#CFB53B;" target="_blank" href="https://psgo.lanzouj.com/iBioI1e0r8bc">另附网友制作的新手新机首次折腾手把手超详细图文教程PDF（点击下载）</a></p>
         <br>
 		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第1步：关闭自动更新！关闭自动更新！关闭自动更新！</p>
 		<p style="font-size:18px;color:white;">进入设置 - 主机 - 主机软件升级设定 - 关闭 自动下载和自动安装；进入进入设置 - 系统 - 省电 - 待机模式中可使用的功能，关闭“保持与互联网连接”</p>
         <!--<p style="font-size:18px;color:white;">如果你还不放心可以再加一道保险，将以下链接添加到路由器的黑名单中进行屏蔽，但是厂商未来可能会修改这些链接地址（注意不要有空格）：<br/>fcn01.ps5.update.playstation.net<br/>fjp01.ps5.update.playstation.net<br/>fus01.ps5.update.playstation.net<br/>feu01.ps5.update.playstation.net<br/>fkr01.ps5.update.playstation.net<br/>fuk01.ps5.update.playstation.net<br/>fmx01.ps5.update.playstation.net<br/>fau01.ps5.update.playstation.net<br/>fsa01.ps5.update.playstation.net<br/>ftw01.ps5.update.playstation.net<br/>fru01.ps5.update.playstation.net<br/>fcn01.ps5.update.playstation.net<br/>fhk01.ps5.update.playstation.net<br/>fbr01.ps5.update.playstation.net</p>-->
-		<p style="font-size:18px;color:white;">将以下链接添加到路由器的黑名单中进行屏蔽，如果不进行路由器屏蔽，PS5在联网状态下，系统和游戏都将会收到升级提醒！完整屏蔽域名列表下载地址：http://ps5.psgo.eu.org/PS5系统屏蔽.txt</p>
-		<p style="font-size:18px;color:white;">如果曾经联网过且断网后仍然提示更新系统，说明PS5中已经存在系统升级缓存包或游戏补丁升级包，为避免误升级，3.00-4.51版本需要使用FTP工具和FTP插件，删除UPDATE文件下的PS5UPDATE.PUP和PS5UPDATE.PUP.net.temp文件夹，或者使用PS5文件管理器快速删除或使用一键禁用升级插件。在桌面的游戏补丁下载提示中删除正在后台下载的补丁并断开网络，否则启动游戏也会提示升级。其他系统版本，先进入设置-系统-系统软件-备份和恢复-备份你的 PS5，然后设置-系统系统软件-重置选项，格式化主机相当于恢复出厂也会删除系统升级缓存包 </p>
+		<p style="font-size:18px;color:white;">将以下域名添加到路由器的黑名单中进行屏蔽，如果不进行路由器屏蔽，PS5在联网状态下，系统和游戏都将会收到升级提醒！屏蔽2个域名：playstation.net 和 playstation.com</p>
+		<p style="font-size:18px;color:white;">如果曾经联网过且断网后仍然提示更新系统，说明PS5中已经存在系统升级缓存包或游戏补丁升级包，为避免误升级，需要使用FTP工具和FTP插件，删除UPDATE文件下的PS5UPDATE.PUP和PS5UPDATE.PUP.net.temp文件夹，或者使用PS5文件管理器快速删除或使用一键禁用升级插件。在桌面的游戏补丁下载提示中删除正在后台下载的补丁并断开网络，否则启动游戏也会提示升级。另外，进入设置-系统-系统软件-备份和恢复-备份你的 PS5，然后设置-系统系统软件-重置选项，格式化主机相当于恢复出厂也会删除系统升级缓存包 </p>
 		<br>
 		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第2步：设置DNS</p>
 		<p style="font-size:18px;color:white;">进入设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动，把主DNS改为165.227.83.145，次DNS改为192.241.221.79 （备用DNS：62.210.38.117，如果未设置DNS一定要离线使用或设置好路由器屏蔽，首次折腾推荐使用PSGO首页的Windows离线版，全程无需联网），保存完之后可能会提示“无法连接互联网”，这是正常情况，是由于DNS有屏蔽升级服务的功能。（首页还提供Windows一键折腾服务，无需依赖在线DNS，断网也可折腾）</p>
@@ -140,7 +83,7 @@ if (isTimeInRange(start, end)) {
 		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">适用于所有折腾网站，举一反三自己总结经验，养成好习惯成功率可以在85-95%之间</p>
 <div style="font-size:18px;color:white;">
 <pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
-建议关闭网络开关，完全离线使用。如果注入etaHEN一瞬间频繁死机或断电，请保持PS5连接wifi再折腾。如果是wifi连接状态，PS5设置-网络中，确保wifi名字右边不是红色感叹号失败，第二行互联网连接可以是红色感叹号失败，折腾进行中时，切记不要切断路由器或手机热点或ESP；
+使用Kstuff原版HEN建议关闭网络开关，完全离线使用。如果使用etaHEN注入一瞬间频繁死机或断电(etaHEN某些版本会有此Bug)，请保持PS5连接着WiFi再折腾。如果是wifi连接状态，PS5设置-网络中，确保wifi名字右边不是红色感叹号失败，第二行互联网连接可以是红色感叹号失败，折腾进行中时，切记不要切断路由器或手机热点或ESP；
 
 不要频繁切换不同的折腾网站和不同的离线折腾方案，尤其是不清缓存的前提下频繁切换离线方案使用更容易断电；
 
@@ -182,14 +125,14 @@ if (isTimeInRange(start, end)) {
 
 3.X版本最后一个环节注入原版HEN或etaHEN后提示内存不足属于正常现象，直接按下PS键返回桌面玩耍即可，不要点确定键或返回键。
 
-以上内容来自PSGO，转载请注明出处，链接：ps5.psgo.eu.org
+以上内容来自PSGO，转载请注明出处，链接：psgo.eu.org
 
 </pre>
 </div>
 		</div> 
 		<br><br><br>
 		
-	<h1 style="font-size:20px;color:#CFB53B;text-align:center;">-- 持续完善更新中 --</h1>
+	<!-- <h1 style="font-size:20px;color:#CFB53B;text-align:center;">-- 持续完善更新中 --</h1> -->
 	<br>
 	<!-- <h1 style="font-size:20px;color:#CFB53B;text-align:center;"> PS5新3群：287873386 </h1> -->
     <br><br><br><br><br><br>
