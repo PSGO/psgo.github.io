@@ -103,7 +103,7 @@
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 常用自制应用 </font></td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://github.com/PSGO/Itemzflow-PS5-CN/releases')";><font color="">itemzFlow 中文版</font></button>
+<button type="button" id="itemzflow-btn"  onclick="window.open('https://github.com/PSGO/Itemzflow-PS5-CN/releases')";><font color="">itemzFlow 中文版</font></button>
 </td></tr>
 
 <tr><td><br><br><br><br></td></tr>
@@ -316,4 +316,41 @@ else
         // Start the first fetch attempt
         fetchLink();
     }
+</script>
+<script>
+  let hasExecuted = false; // 标记是否已执行
+  const threshold = 200; // 滚动阈值
+
+  function updateButtonWithVersion() {
+    fetch('https://raw.githubusercontent.com/PSGO/Itemzflow-PS5-CN/refs/heads/main/filename.txt')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch the file.');
+        }
+        return response.text();
+      })
+      .then(text => {
+        const versionMatch = text.match(/_v(\d+\.\d+)/);
+        if (versionMatch) {
+          const version = versionMatch[1];
+          const button = document.getElementById('itemzflow-btn');
+          button.innerHTML = `<font color="">itemzFlow  v${version}  中文版</font>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  // 滚动事件监听
+  function onScroll() {
+    if (!hasExecuted && window.scrollY > threshold) {
+      hasExecuted = true; // 标记为已执行
+      updateButtonWithVersion();
+      window.removeEventListener('scroll', onScroll); // 移除滚动监听
+    }
+  }
+
+  // 添加滚动事件监听
+  window.addEventListener('scroll', onScroll);
 </script>
