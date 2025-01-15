@@ -106,7 +106,11 @@
 <button type="button" id="itemzflow-btn" onclick="window.open('https://github.com/PSGO/Itemzflow-PS5-CN/releases')";><font color="">itemzFlow 中文版</font></button>
 <button type="button" onclick="window.open('https://pkg-zone.com/details/ITEM00001')";><font color="">原版</font></button>
 </td></tr>
-<tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;">配合etaHEN且版本要匹配</font></td></tr>
+<tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;">配合注入etaHEN且版本要匹配</font></td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('https://pkg-zone.com/details/LAPY20011')";><font color="">Xplorer 文件管理器</font></button>
+</td></tr>
 
 <tr><td><br><br><br><br></td></tr>
 
@@ -336,7 +340,7 @@ else
         if (versionMatch) {
           const version = versionMatch[1];
           const button = document.getElementById('itemzflow-btn');
-          button.innerHTML = `<font color="">itemzFlow  v${version}  中文版</font>`;
+          button.innerHTML = `<font color="">itemzFlow 游戏管理器  v${version}  中文版</font>`;
         }
       })
       .catch(error => {
