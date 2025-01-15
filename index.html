@@ -1,86 +1,137 @@
 <!doctype html>
-<script>
-if(navigator.userAgent.includes('PlayStation 5')) {
-    window.location.href = "aio/";
-}
-if(navigator.userAgent.includes('PlayStation 4')) {
-    window.location.href = "ps4.html";
-}
-</script>	
-<html>
+<html lang="zh">
 <head>
-<title>PSGO折腾导航 - PS5 & PS4 & Switch</title>
-<link rel="shortcut icon" href="psgo.ico"></link>
-<link rel="icon" href="psgo.ico"></link>
-</head>
-<style>
-html, body{
-margin: 0;
-<!-- background-color: #f2f3f8; -->
-background-color: white;
-color: white;
-font-size: 28px;
-}
-table {
-margin: auto;
-}
-.center-flex {
-  display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-  height: 100vh; /* 使父容器高度为视口高度 */
-}
-.zoom {
-	transition: transform 0.3s ease; /* 添加过渡效果 */
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSGO折腾导航 - PS5 & PS4 & Switch</title>
+  <link rel="shortcut icon" href="psgo.ico">
+  <link rel="icon" href="psgo.ico">
+  <style>
+    /* 默认样式 */
+    html, body {
+      margin: 0;
+      background-color: white;
+      color: black;
+      font-size: 22px;
+	  font-weight:bold;
+    }
 
-.zoom:hover {
-	transform: scale(1.1); /* 鼠标移入时放大至原来的1.2倍 */
-}
-</style>
-<meta charset="utf-8">
+    /* 图片自适应 */
+    img {
+      width: 100%;
+      max-width: 300px; /* 增大最大宽度 */
+      height: auto; /* 保持图片比例 */
+    }
+
+    /* 大屏幕设备 */
+    @media (min-width: 1024px) {
+      font-size: 28px;
+      img {
+        max-width: 350px; /* 大屏幕上进一步增大图片大小 */
+      }
+    }
+
+    /* 中等屏幕设备 */
+    @media (max-width: 1024px) {
+      font-size: 24px;
+      table {
+        width: 80%;
+      }
+      img {
+        max-width: 250px; /* 中等屏幕下稍微调小 */
+      }
+    }
+
+    /* 小屏幕设备 */
+    @media (max-width: 768px) {
+      font-size: 18px;
+      table {
+        width: 90%;
+      }
+      .zoom {
+        transform: scale(1); /* 禁用放大效果 */
+      }
+      img {
+        max-width: 200px; /* 小屏幕下调整为适中的大小 */
+      }
+    }
+
+    /* 超小屏幕设备 */
+    @media (max-width: 480px) {
+      font-size: 16px;
+      table {
+        width: 100%;
+      }
+      img {
+        max-width: 150px; /* 调整超小屏幕下图片大小 */
+      }
+    }
+
+    /* 横向排列图片 */
+    .grid-container {
+      display: flex; /* 使用 flex 布局 */
+      justify-content: space-evenly; /* 横向分布并均匀间隔 */
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap; /* 允许换行 */
+    }
+
+    /* 图片放大效果 */
+    .zoom {
+      transition: transform 0.3s ease;
+    }
+
+    .zoom:hover {
+      transform: scale(1.05); /* 轻微放大效果 */
+    }
+
+    /* 居中布局 */
+    .center-flex {
+      display: flex;
+      justify-content: center; /* 水平居中 */
+      align-items: center; /* 垂直居中 */
+      height: 100vh; /* 使父容器高度为视口高度 */
+    }
+  </style>
+  <script>
+    if (navigator.userAgent.includes('PlayStation 5')) {
+      window.location.href = "aio/";
+    }
+    if (navigator.userAgent.includes('PlayStation 4')) {
+      window.location.href = "ps4.html";
+    }
+  </script>
+</head>
 <body>
-	<div class="center-flex">
-  <div>
-	<table width="60%" height="80%" border="0" cellspacing="0" cellpadding="1">
-  <tbody>
-    <tr>
-      <!-- <th><font color="#61d5c2">PSGO 折腾导航</th> -->
-    </tr>
-    <tr>
-      <th><div id="main" style="text-align:center">
-		  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="10">
-  <tbody>
-<tr>
-  <td width="25%" height="50%"><a href="ps4.html"><img class="zoom" src="ps4.png"></a></td>
-  <td width="25%" ><a href="ps5.html"><img class="zoom" src="ps5.png"></a></td>
-  <td width="25%" ><a href="switch.html"><img class="zoom" src="switch.png"></a></td>
-</tr>
-<tr>
-  <td><font color="#48c9fa">PlayStation 4</font></td>
-  <td><font color="#61d5c2">PlayStation 5</font></td>
-  <td><font color="#f7d383">Nintendo Switch</font></td>
-</tr>
-  </tbody>
-</table>
-	</div>
-	</th>
-    </tr>
-    <tr>
-</tr> 
-  </tbody>
-</table>
-</div>
-</div>
+  <div class="center-flex">
+    <div>
+      <div id="main" style="text-align:center">
+        <div class="grid-container">
+          <div>
+            <a href="ps4.html"><img class="zoom" src="ps4.png" alt="PS4"></a>
+            <p style="color:#48c9fa;">PlayStation 4</p>
+          </div>
+          <div>
+            <a href="ps5.html"><img class="zoom" src="ps5.png" alt="PS5"></a>
+            <p style="color:#61d5c2;">PlayStation 5</p>
+          </div>
+          <div>
+            <a href="switch.html"><img class="zoom" src="switch.png" alt="Switch"></a>
+            <p style="color:#f7d383;">Nintendo Switch</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-7VRDNYTJ1Y');
+  </script>
 </body>
 </html>
-   	 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7VRDNYTJ1Y');
-</script>
-
