@@ -1,87 +1,112 @@
 <!doctype html>
-<script>
-if(navigator.userAgent.includes('PlayStation 5')) {
-    window.location.href = "aio/";
-}
-if(navigator.userAgent.includes('PlayStation 4')) {
-    window.location.href = "ps4.html";
-}
-</script>	
-<html>
+<html lang="zh">
 <head>
-<title>PSGO折腾导航 - PS5 & PS4 & Switch</title>
-<link rel="shortcut icon" href="psgo.ico"></link>
-<link rel="icon" href="psgo.ico"></link>
-</head>
-<style>
-html, body{
-margin: 0;
-<!-- background-color: #f2f3f8; -->
-background-color: white;
-color: white;
-font-size: 28px;
-}
-table {
-margin: auto;
-}
-.center-flex {
-  display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-  height: 100vh; /* 使父容器高度为视口高度 */
-}
-.zoom {
-	transition: transform 0.3s ease; /* 添加过渡效果 */
-}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSGO折腾导航 - PS5 & PS4 & Switch</title>
+  <link rel="shortcut icon" href="psgo.ico">
+  <link rel="icon" href="psgo.ico">
+  <style>
+    html, body {
+      margin: 0;
+      background-color: white;
+      color: white;
+      font-size: 22px;
+      font-family: Arial, sans-serif;
+    }
 
-.zoom:hover {
-	transform: scale(1.1); /* 鼠标移入时放大至原来的1.2倍 */
-}
-</style>
-<meta charset="utf-8">
+    .center-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .content {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      margin: auto;
+      border-spacing: 10px;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .zoom {
+      transition: transform 0.3s ease;
+    }
+
+    .zoom:hover {
+      transform: scale(1.1);
+    }
+
+    th, td {
+      color: black;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 20px;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      td {
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
 <body>
-	<div class="center-flex">
-  <div>
-	<table width="60%" height="80%" border="0" cellspacing="0" cellpadding="1">
-  <tbody>
-    <tr>
-      <!-- <th><font color="#61d5c2">PSGO 折腾导航</th> -->
-    </tr>
-    <tr>
-      <th><div id="main" style="text-align:center">
-		  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="10">
-  <tbody>
-<tr>
-  <td width="25%" height="50%"><a href="ps4.html"><img class="zoom" src="ps4.png"></a></td>
-  <td width="25%" height="50%"><a href="ps5.html"><img class="zoom" src="ps5.png"></a></td>
-  <td width="25%" height="50%"><a href="switch.html"><img class="zoom" src="switch.png"></a></td>
-</tr>
-<tr>
-  <td><font color="#48c9fa">PlayStation 4</font></td>
-  <td><font color="#61d5c2">PlayStation 5</font></td>
-  <td><font color="#f7d383">Nintendo Switch</font></td>
-</tr>
-  </tbody>
-</table>
-	</div>
-	</th>
-    </tr>
-    <tr>
-</tr> 
-  </tbody>
-</table>
-</div>
-</div>
+  <script>
+    if (navigator.userAgent.includes('PlayStation 5')) {
+      window.location.href = "aio/";
+    }
+    if (navigator.userAgent.includes('PlayStation 4')) {
+      window.location.href = "ps4.html";
+    }
+  </script>
+
+  <div class="center-flex">
+    <div class="content">
+      <table>
+        <tbody>
+          <tr>
+            <td><a href="ps4.html"><img class="zoom" src="ps4.png" alt="PS4"></a></td>
+            <td><a href="ps5.html"><img class="zoom" src="ps5.png" alt="PS5"></a></td>
+            <td><a href="switch.html"><img class="zoom" src="switch.png" alt="Switch"></a></td>
+          </tr>
+          <tr>
+            <td><font color="#48c9fa">PlayStation 4</font></td>
+            <td><font color="#61d5c2">PlayStation 5</font></td>
+            <td><font color="#f7d383">Nintendo Switch</font></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-7VRDNYTJ1Y');
+  </script>
 </body>
 </html>
-   	 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7VRDNYTJ1Y');
-</script>
-
-
