@@ -6,6 +6,14 @@
   <title>PSGO折腾导航 - PS5 & PS4 & Switch</title>
   <link rel="shortcut icon" href="psgo.ico">
   <link rel="icon" href="psgo.ico">
+  <script>
+    if (navigator.userAgent.includes('PlayStation 5')) {
+      window.location.href = "aio/";
+    }
+    if (navigator.userAgent.includes('PlayStation 4')) {
+      window.location.href = "ps4.html";
+    }
+  </script>
   <style>
     /* 默认样式 */
     html, body {
@@ -93,14 +101,6 @@
       height: 100vh; /* 使父容器高度为视口高度 */
     }
   </style>
-  <script>
-    if (navigator.userAgent.includes('PlayStation 5')) {
-      window.location.href = "aio/";
-    }
-    if (navigator.userAgent.includes('PlayStation 4')) {
-      window.location.href = "ps4.html";
-    }
-  </script>
 </head>
 <body>
   <div class="center-flex">
