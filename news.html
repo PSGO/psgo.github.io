@@ -1,0 +1,164 @@
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+  <title>PS5折腾进展 - PSGO.eu.org</title> 
+    
+   <style> 
+  button
+    {
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#CFB53B;
+    box-shadow:0 5px 0 #888888;
+    } 
+
+    
+    button:hover
+    {
+    color: #CFB53B;
+    font-size:22px;
+    background:#161616;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+    } 
+    
+    button:active
+    {
+    background:#CFB53B;
+    position:relative;
+    color:#000;
+    top:5px;
+    box-shadow:none
+    }
+    </style>
+ <head> 
+   <body style="background-color:#181818;">
+        <br>
+   		<h1 style="font-size:46px;color:#CFB53B;text-align:center;">PS5折腾进展 - PSGO.eu.org</h1>
+        <br>
+		<div style="width:800px;margin:50px auto;">
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月更新，来自KiiWii</p>
+<div style="font-size:18px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+推荐固件版本
+Golden FWs：
+4.51 = etaHEN
+2.50 = HV
+
+Hypervisor（管理程序漏洞）：
+最高管理程序漏洞版本： 1.00-4.51（FlatZ）
+最高公开管理程序漏洞版本： 1.00-2.50/2.70（byepervisor Specter）
+
+内核（Kernel Exploits）：
+最高可能内核漏洞版本： 1.00-7.61 UMTX
+最高公开内核漏洞版本： 1.00-4.51（IPV6 UAF）
+已发现内核偏移： 1.00-5.50
+
+用户空间漏洞（Userland Exploits）：
+Webkit： 1.00-5.50（PSFREE）
+Mast1C0re： 1.00-7.61（支持PS2备份）
+BD-JB： 1.00-7.61
+PPPWN： 1.00-8.20
+最高Lua入口点： 1.00-10.40
+
+功能支持：
+自制软件启用工具： etaHEN（支持3.XX-4.5X）
+PS5备份加载： 使用Itemzflow支持3.XX-4.5X 
+PS4备份加载： 使用FPKG启用工具支持2.XX-4.5X（休眠模式及后移移植功能可用，可能会崩溃）
+PS5调试工具已发布： 点此获取
+PS5修改器/作弊工具： 工作正常
+PS5游戏转储工具： 支持3.XX-4.5X（兼容大部分游戏，需使用Itemzflow）
+转储后的文件需重新构建以避免崩溃
+完整漏洞链： 1.00-2.70（byepervisor）
+Linux Kexec： 即将到来
+PSN访问： 永远无法实现
+最新官方固件（OFW）： 10.40（2024年11月12日）
+最新官方Beta固件： 10.00 Beta 2（2024年7月25日）
+UMTX 1.2漏洞：支持1.00-5.xx，通过Webkit漏洞运行，注意：5.xx版本Payload尚不可用
+UMTX 6.xx-7.61： 支持BD-JB光盘，数字版主机需新的Webkit漏洞支持
+
+PS4游戏兼容性：
+OFW 1.xx: 不支持PS4游戏
+OFW 2.xx: 支持至8.03
+OFW 3.xx: 支持至8.52
+OFW 4.xx: 支持至9.04
+OFW 5.xx: 支持至9.60
+OFW 6.xx: 支持至10.50
+OFW 7.xx: 支持至11.00
+OFW 8.xx/9.xx: 支持至11.50
+
+PS4移植FPKG完全兼容PS5
+
+</pre>
+</div>
+		</div> 
+		<br><br><br>
+		
+	<!-- <h1 style="font-size:20px;color:#CFB53B;text-align:center;">-- 持续完善更新中 --</h1> -->
+	<br>
+	<!-- <h1 style="font-size:20px;color:#CFB53B;text-align:center;"> PS5新3群：287873386 </h1> -->
+    <br><br><br><br><br><br>
+   </body>
+</html>
+<!-- weixin -->
+<link rel="stylesheet" href="https://laoba.pages.dev/css/weixin.css">
+<div style="position: fixed;left: 20px;bottom: 20px;z-index: 999;width:220px"><a style="text-decoration:none;" href="https://laoba.pages.dev" target="_blank"><img class="header"></a></div>
+
+<script>
+	document.oncopy = function (e) {
+		// 获取选区对象
+		let selObj = window.getSelection();
+		// IE8及更早不支持window.getSelection
+		if (typeof selObj == 'undefined') return false;
+
+		// 获取clipboardData对象
+		// Chrome\Safari\Firefox浏览器中,这个对象是event对象的属性
+		// IE浏览器中,它是window对象的属性
+		let clipboardData = e.clipboardData || window.clipboardData;
+
+		// 获取选区文本内容
+		let selectedText = selObj + '';
+
+		let copytext;
+		// 如果选中文字内容小于30个字符，则不做任何操作
+		if (selectedText.length < 30) {
+			copytext = selectedText;
+
+		} else {
+			copytext = selectedText +
+				'\n\n\n' +
+				'来源：PSGO折腾导航\n' +
+				'链接：' + location.href + '\n' +
+				'著作权归作者所有，商业转载请联系作者获取授权，非商业转载请注明出处。';
+		}
+
+		// setData(format,text)用于设置剪贴板内容
+		clipboardData.setData('text/plain', copytext);
+		
+		// 取消默认的复制事件
+		return false;
+		// e.preventDefault()亦可
+		
+	}
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>
+</html>
