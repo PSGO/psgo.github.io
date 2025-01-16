@@ -2,7 +2,7 @@
 <html manifest="Cache.manifest">
   <head>
 	<meta charset="UTF-8">
-    <title>PS5 Exploit Host AIO | Menu Cache date：2025/1/8 | by PSGO</title>
+    <title>PS5 Exploit Host AIO | Menu Cache date：2025/1/16 | by PSGO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="resources/stylesheet.css">
   
@@ -95,7 +95,7 @@ document.addEventListener("keydown", manejarKeyPress);
     </ul>
 	<br>
 	
-	<ul>
+	<ul class="hide-on-ps5">
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">ESP (Open with PC browser)</div> <br>
 	  <li><a href="#" onclick="fetchAndOpenLink(2, this); return false;">ESP32s2(4MB)-ES-PWD12345678</a></li>
 	  <li><a href="#" onclick="fetchAndOpenLink(1, this); return false;">ESP8266(4MB)-ES-PWD12345678</a></li>
@@ -108,22 +108,22 @@ document.addEventListener("keydown", manejarKeyPress);
     </ul>
 	<br>
 	
-	<ul>
+	<ul class="hide-on-ps5">
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">Windows Offline Self Host (Open with PC browser)</div> <br>
 	  <li><a target="_blank" href="https://github.com/PSGO/PS5-IPV6-Local-Server">IPV6 UAF - For 3.x 4.x</a></li>
 	  <li><a target="_blank" href="https://github.com/PSGO/PS5-UMTX-Local-Server">UMTX - For 1.x 2.x 5.x</a></li>
     </ul>
 	<br>
 	
-	<ul>
+	<ul class="hide-on-ps5">
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">BD-JB For 1.00-7.61 (Open with PC browser)</div> <br>
 	  <li><a target="_blank" href="https://github.com/hammer-83/ps5-jar-loader/releases">BD UMTX & JAR Loader & Payloads</a></li>
 	  <li><a target="_blank" href="https://www.imgburn.com/index.php?act=download">Imgburn - Burn BD-RE Disc</a></li>
 	  <li><a target="_blank" href="https://sourceforge.net/projects/unix-utils/files/socat/1.7.3.2/">Socat - Send Payload Tool</a></li>
-    </ul>
+    </ul class="hide-on-ps5">
 	<br>
 	
-	<ul>
+	<ul class="hide-on-ps5">
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">Game (Open with PC browser)</div> <br>
 	  <li><a target="_blank" href="https://pastebin.com/UeRiMQjf">PS5 GAME DUMPS by BedroZen</a></li>
 	  <li><a target="_blank" href="https://ps5pkg.net/">PS5PKG.NET</a></li>
@@ -137,7 +137,7 @@ document.addEventListener("keydown", manejarKeyPress);
     </ul>
 	<br>
 	
-	<ul>
+	<ul class="hide-on-ps5">
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">Others</div> <br>
 	  <li><a target="_blank" href="https://gbatemp.net/threads/ps5-exploit-guide.613891/">PS5 Jailbreak/CFW Status</a></li>
 	  <li><a target="_blank" >DNS: 62.210.38.117 / 165.227.83.145 / 192.241.221.79</a></li>
@@ -148,7 +148,6 @@ document.addEventListener("keydown", manejarKeyPress);
 	  <li><a target="_blank" href="https://controller.dl.playstation.net/controller/lang/en/2100004.html">Update DualSense</a></li>
 	  <li><a target="_blank" href="https://github.com/Denellyne/PCXSense">PCXSense - Dualsense For PC</a></li>
     </ul>
-	<br>
 	
 	<br><br><br><br><br><br><br><br><br>
 	
@@ -247,6 +246,11 @@ document.addEventListener("keydown", manejarKeyPress);
     <!-- alert("Please enter this page in the PS5 browser! Suggest downloading AIO PKG and installing it on PS5!\n\n Click OK button to preview the page~"); -->
 	document.getElementById("progress").innerHTML="Open from PS5 browser";
   }
+  else{
+    // 隐藏指定的 ul 元素
+      const elementsToHide = document.querySelectorAll('.hide-on-ps5');
+      elementsToHide.forEach(element => element.style.display = 'none');
+	  }
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics统计 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
