@@ -17,12 +17,34 @@ function a(e) {
           <div class="lantern-bottom-rope"></div>
         </div>`;
 }
+
+const phrases = [
+  "蛇年吉祥", "龍蛇飛舞", "蛇形如意", "春蛇吐寶", 
+  "靈蛇報喜", "蛇舞春風", "瑞蛇呈祥", "飛蛇載福", 
+  "蛇躍龍騰", "靈蛇獻瑞", "蛇年旺運", "金蛇呈瑞", 
+  "蛇鳴富貴", "瑞氣盈門", "蛇轉乾坤", "蛇舞盛世"
+];
+function getRandomPhrase() {
+  return phrases[Math.floor(Math.random() * phrases.length)];
+}
 function l() {
+  const phrase = getRandomPhrase();
+  const leftText = phrase.slice(0, 2);
+  const rightText = phrase.slice(2);
+
   const e = document.createElement("div");
   e.className = "lantern-left";
+  e.innerHTML = a(leftText);
+
   const t = document.createElement("div");
-  t.className = "lantern-right", e.innerHTML = a("蛇舞"), t.innerHTML = a("新春");
+  t.className = "lantern-right";
+  t.innerHTML = a(rightText);
+
   const n = document.createElement("div");
-  n.className = "lantern", n.appendChild(e), n.appendChild(t), document.body.appendChild(n);
+  n.className = "lantern";
+  n.appendChild(e);
+  n.appendChild(t);
+
+  document.body.appendChild(n);
 }
 d(l);
