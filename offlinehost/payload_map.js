@@ -1,8 +1,8 @@
 const payload_map =
     [
         {
-            displayTitle: 'etaHEN v1.9b（解锁运行PS5/PS4）',
-            description: '多合一整合HEN，支持 3.00 - 4.51 所有版本',
+            displayTitle: 'etaHEN v2.0b（解锁运行PS5/PS4）',
+            description: '多合一HEN，支持金手指，支持 3.00 - 4.51',
             fileName: 'etaHEN.bin',
             author: '-',
             source:'-',
