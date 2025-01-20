@@ -82,8 +82,8 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" href="#" onclick="fetchAndOpenLink(2, this); return false;";><font color=""> ESP32-S2 bin</font></button>
-<button type="button" href="#" onclick="fetchAndOpenLink(1, this); return false;";><font color=""> ESP8266 bin</font></button>
+<button id="button2" ><font color=""> ESP32-S2 bin</font></button>
+<button id="button1" ><font color=""> ESP8266 bin</font></button>
 </td></tr>
 <!-- <tr><td align="center"> -->
 <!-- <button type="button" href="#" onclick="fetchAndOpenLink(3, this); return false;";><font color=""> FeatherS2(16MB) ES 密码12345678</font></button> -->
@@ -284,85 +284,44 @@ else
  }
  setInterval("createtime()",250); 
 </script>
-<script>
-    async function fetchAndOpenLink(linkNumber, element) {
-        const originalText = element.textContent; // Save original text
-        element.textContent = "Getting the latest file link..."; // Show status
+  <script>
+    // Define the mapping of button ID to remote .txt file URLs
+    const fileMap = {
+      button1: 'https://fetchesp.psgo.eu.org/ESP8266.txt',
+      button2: 'https://fetchesp.psgo.eu.org/ESP32S2.txt',
+      button3: 'https://fetchesp.psgo.eu.org/LilyGo.txt',
+    };
 
-        // Pre-open a blank new tab with a temporary title and message
+    // Add event listeners for buttons
+    Object.keys(fileMap).forEach(buttonId => {
+      const button = document.getElementById(buttonId);
+      button.addEventListener('click', async () => {
+        const fileUrl = fileMap[buttonId];
+        
+        // Open a new tab and show loading message
         const newTab = window.open('', '_blank');
-        newTab.document.write('<html><head><title>获取中...</title></head><body><h1>正在获取最新文件链接，请稍等...</h1></body></html>');
-        newTab.document.close(); // Finish writing
+        newTab.document.write('<html><head><title>Fetching...</title></head><body><h1>正在获取最新文件，请稍等...</h1></body></html>');
+        newTab.document.close();
 
-        const url = "https://es7in1.site/ps4/index.php"; // Target webpage URL
-        const proxy = "https://api.allorigins.win/get?url="; // Use public CORS proxy
+        try {
+          // Fetch the URL content from the remote .txt file
+          const response = await fetch(fileUrl);
+          if (!response.ok) throw new Error(`Failed to fetch ${fileUrl}`);
+          const url = await response.text();
 
-        let attempts = 0; // Track number of attempts
-        const maxAttempts = 3; // Maximum retries
-
-        async function fetchLink() {
-            attempts++;
-            try {
-                // Make the request
-                const response = await fetch(proxy + encodeURIComponent(url));
-                const data = await response.json();
-                const htmlContent = data.contents; // Get HTML content of the page
-
-                // Parse HTML and extract target links
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlContent, "text/html");
-                const links = Array.from(doc.querySelectorAll("a")); // Get all <a> tags
-
-                // Define keywords split into pairs
-                const keywords = [
-                    ['PS5', 'ESP8266'], ['PS5', 'ESP32S2'], ['PS5', 'FEATHERS2'], ['PS5', 'LilyGo']
-                ];
-
-                // Filter links based on keywords
-                const filteredLinks = links.filter(link => {
-                    return keywords.some(keywordPair => 
-                        keywordPair.every(keyword => 
-                            link.href.includes(keyword) || 
-                            link.title.includes(keyword) || 
-                            link.textContent.includes(keyword)
-                        )
-                    );
-                });
-
-                if (filteredLinks.length >= linkNumber) {
-                    // Select the appropriate link based on the button
-                    const selectedLink = filteredLinks[linkNumber - 1].href;
-                    newTab.location.href = selectedLink; // Redirect new tab to the target link
-                    element.textContent = originalText; // Restore original text
-                } else {
-                    newTab.document.body.innerHTML = "<h1>Link not found, please try again.</h1>";
-                    element.textContent = "Link not found.";
-                }
-            } catch (error) {
-                console.error(`Attempt ${attempts}: Error fetching the website`, error);
-
-                if (attempts < maxAttempts) {
-                    // Retry if attempts are below the max
-                    console.log(`Retrying... (${attempts}/${maxAttempts})`);
-                    await fetchLink();
-                } else {
-                    // After max attempts, show error in new tab
-                    newTab.document.body.innerHTML = "<h1>Failed to fetch the link after multiple attempts.</h1>";
-                    element.textContent = "Failed to fetch.";
-                }
-            } finally {
-                if (attempts >= maxAttempts) {
-                    setTimeout(() => {
-                        element.textContent = originalText; // Restore original text after delay
-                    }, 6000); // Restore after 6 seconds
-                }
-            }
+          // Open the URL in the new tab
+          if (url) {
+            newTab.location.href = url.trim(); // Redirect the new tab to the fetched URL
+          } else {
+            newTab.document.body.innerHTML = '<h1>No valid URL found, please try again later.</h1>';
+          }
+        } catch (error) {
+          console.error('Error fetching file:', error);
+          newTab.document.body.innerHTML = '<h1>An error occurred, unable to fetch the URL.</h1>';
         }
-
-        // Start the first fetch attempt
-        fetchLink();
-    }
-</script>
+      });
+    });
+  </script>
 <script>
   let hasExecuted = false; // 标记是否已执行
   const threshold = 200; // 滚动阈值
