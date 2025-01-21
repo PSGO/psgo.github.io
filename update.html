@@ -5,48 +5,48 @@
   <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
   <title>更新记录 - PSGO.eu.org</title> 
 
-<script>
-function isTimeInRange(start, end) {
-    let now = new Date();
-    let startTime = new Date();
-    let endTime = new Date();
+<!-- <script> -->
+<!-- function isTimeInRange(start, end) { -->
+    <!-- let now = new Date(); -->
+    <!-- let startTime = new Date(); -->
+    <!-- let endTime = new Date(); -->
  
-    startTime.setHours(start.getHours(), start.getMinutes(), start.getSeconds(), start.getMilliseconds());
-    endTime.setHours(end.getHours(), end.getMinutes(), end.getSeconds(), end.getMilliseconds());
+    <!-- startTime.setHours(start.getHours(), start.getMinutes(), start.getSeconds(), start.getMilliseconds()); -->
+    <!-- endTime.setHours(end.getHours(), end.getMinutes(), end.getSeconds(), end.getMilliseconds()); -->
  
-    return now >= startTime && now <= endTime;
-}
+    <!-- return now >= startTime && now <= endTime; -->
+<!-- } -->
  
-let start = new Date();
-let end = new Date();
+<!-- let start = new Date(); -->
+<!-- let end = new Date(); -->
  
-start.setHours(7, 0, 0, 0);
-end.setHours(22, 0, 0, 0);
+<!-- start.setHours(7, 0, 0, 0); -->
+<!-- end.setHours(22, 0, 0, 0); -->
  
-if (isTimeInRange(start, end)) {
-    function isCookieExpired(name) {
-	  var cookies = document.cookie.split(";");
-	  for (var i = 0; i < cookies.length; i++) {
-		var cookie = cookies[i].trim();
-		if (cookie.startsWith(name + "=")) {
-		  return false; // Cookie未过期
-		}
-	  }
-	  return true; // Cookie已过期
-	}
+<!-- if (isTimeInRange(start, end)) { -->
+    <!-- function isCookieExpired(name) { -->
+	  <!-- var cookies = document.cookie.split(";"); -->
+	  <!-- for (var i = 0; i < cookies.length; i++) { -->
+		<!-- var cookie = cookies[i].trim(); -->
+		<!-- if (cookie.startsWith(name + "=")) { -->
+		  <!-- return false; // Cookie未过期 -->
+		<!-- } -->
+	  <!-- } -->
+	  <!-- return true; // Cookie已过期 -->
+	<!-- } -->
 
-	if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) {
+	<!-- if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) { -->
 
-	}
-	else
-	{
-		alert("点击确定（ok）将自动进入首页，输入正确的邀请码后即可访问！");
-		window.location='index.html';
-	}
-} else {
+	<!-- } -->
+	<!-- else -->
+	<!-- { -->
+		<!-- alert("点击确定（ok）将自动进入首页，输入正确的邀请码后即可访问！"); -->
+		<!-- window.location='index.html'; -->
+	<!-- } -->
+<!-- } else { -->
 	
-}
-</script>
+<!-- } -->
+<!-- </script> -->
   
  <head>
  
@@ -64,12 +64,22 @@ if (isTimeInRange(start, end)) {
 		当前阶段还有诸多不完善，会有一定概率死机失败，追求极致稳定的同学，请耐心等待！当前阶段以平均85-93%的成功率为标准，如差距过大请参考首页教程中的提高成功率方法进行问题排查。死机主要集中在UAF、Socket、Debug、注入四个环节（现阶段全网通病）。3.X版本注入原版HEN或etaHEN后提示内存不足属于正常现象，直接按下PS键返回桌面即可。<br><br>
 		如果日常只运行PS4，建议选择更稳定的原版HEN。如果需要运行PS5，可选择稳定性稍差的etaHEN。更追求功能性还是稳定性，根据自己的需求自行斟酌。<br><br>
 		使用离线版折腾更新离线缓存之后，如果连续遇到异常，使用一键折腾中的清缓存插件或者一键清缓存在线版，清除缓存后重新缓存。一般情况下并不需要经常清缓存，直接更新缓存即可。<br><br>
-		现已开通赞助打赏通道，帮助本站持续运营下去，链接：<a style="color:#CFB53B;" target="_blank" href="https://laoba.pages.dev">https://laoba.pages.dev</a><br><br>
-		邮箱（新）：psgo.eu.org@gmail.com<br><br>
-		<!-- TG电报群（新）：<a style="color:#CFB53B;" target="_blank" href="https://t.me/psgodev">https://t.me/psgodev</a><br> -->
-		<!-- Skype大群（新）：<a style="color:#CFB53B;" target="_blank" href="https://join.skype.com/uUgtOef3fbax">https://join.skype.com/uUgtOef3fbax</a><br><br> -->
 		与人玫瑰，留有余香，记得将本站和折腾进度分享给机友们！以下内容仅用来学术研究和技术开发使用，切勿用作其他用途！
 		</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月22日</p>
+		<p style="font-size:18px;color:white;">PSGO所有折腾方案目前均默认使用PSFree入口；</p>
+		<p style="font-size:18px;color:white;">对于3.x 4.x版本同学，从IPV6过渡到UMTX方案还需要一些时间，UMTX在可预见的未来是最优选择；</p>
+		<p style="font-size:18px;color:white;">PSGO UMTX 一键折腾离线版为同步自动化生成方案，使用一新一旧双etaHEN，方便同学们自由选择平滑升级；</p>
+		<p style="font-size:18px;color:white;">Itemzflow的官方原版的下一个版本预计解决中文乱码问题，与etaHEN2.0一起就在近期会发布；</p>
+		<p style="font-size:18px;color:white;">关于etaHEN1.9版本普遍反馈不够稳定，主要原因是加入了Toolbox，类似GoldHEN的设置项，这将带来的极大的扩展性和便利性，追求极致稳定的同学可以用无Toolbox或进入设置etaHEN Toolbox - Plugins和service中选择关闭所有插件，另外可以选择"Active Lite mode"打钩，不会加载额外的功能以提升稳定性；</p>
+		<p style="font-size:18px;color:white;">根据环境变化，PS5首页展示页可能会不定期关闭，只保留折腾缓存和Github自动化项目。人工维护部分比如本页不会像之前一样高频更新，以后纯佛系~</p>
+		<p style="font-size:18px;color:white;">本站之外看到的PSGO内容均为他人转载，原则上不建议使用转载内容，因为可能会有一些信息传递损耗；</p>
+		<p style="font-size:18px;color:white;">关于有些同学打不开本站或缓存失败的问题，请自己想办法，本站以Github为主，外加一个CDN，不会做额外的网络优化，也无法控制某些时候某些地区的阻断问题；</p>
+		<p style="font-size:18px;color:white;">本站不欢迎绿蛙黄丝日杂反贼，根据实际情况将会屏蔽个人或区域IP；</p>
+		<p style="font-size:18px;color:white;">本站不提供任何咨询服务，没有任何联系方式和群，如有问题在Github反馈，本站不提供任何付费内容和服务。</p>
+		<p style="font-size:18px;color:white;">最后给大家拜个早年，玩得开心~</p>
 		<br>
 		
 		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年5月28日</p>
