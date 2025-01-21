@@ -117,9 +117,10 @@ document.addEventListener("keydown", manejarKeyPress);
 	
 	<ul class="hide-on-ps5">
 	<div style="font-size:20px;text-align:center;color:#39C;font-style:;font-weight:;">BD-JB For 1.00-7.61 (Open with PC browser)</div> <br>
-	  <li><a target="_blank" href="https://github.com/ps5-payload-dev/bdj-umtx-hen">BDJ-IPV6-HEN For 3.x 4.x</a></li>
+	  <li><a target="_blank" href="https://github.com/ps5-payload-dev/bdj-ipv6-hen">BDJ-IPV6-HEN For 3.x 4.x</a></li>
 	  <li><a target="_blank" href="https://github.com/hammer-83/ps5-jar-loader/releases">BD UMTX & JAR Loader & Payloads</a></li>
-	  <li><a target="_blank" href="https://www.imgburn.com/index.php?act=download">Imgburn - Burn BD-RE/R</a></li>
+	  <li><a target="_blank" href="https://www.imgburn.com/index.php?act=download">Imgburn - Burn BD-RE/R Tool</a></li>
+	  <li><a target="_blank" href="https://github.com/aldostools/PS5-Payloads/releases">PS5 Payloads - Send Payload Tool</a></li>
 	  <li><a target="_blank" href="https://sourceforge.net/projects/unix-utils/files/socat/1.7.3.2/">Socat - Send Payload Tool</a></li>
 	  <li><a target="_blank" href="https://gbatemp.net/download/netcat-gui-1-2.37153/history">Netcat - Send Payload Tool</a></li>
     </ul class="hide-on-ps5">
@@ -134,7 +135,7 @@ document.addEventListener("keydown", manejarKeyPress);
 	  <li><a target="_blank" href="https://pkg-zone.com/details/ITEM00001">Itemzflow - Game Manager</a></li>
 	  <li><a target="_blank" href="https://pkg-zone.com/details/LAPY20011">Xplorer - File Manager</a></li>
 	  <li><a target="_blank" href="https://github.com/GoldHEN/GoldHEN_Cheat_Repository">PS4 Cheats Database</a></li>
-	  <li><a target="_blank" href="https://psgo.lanzoub.com/iSMMm2le0ezc">PS5 Cheats temporary</a></li>
+	  <li><a target="_blank" href="https://psgo.lanzoub.com/iM4Bs2lk3xbg">PS5 Cheats temporary</a></li>
 	  <li><a target="_blank" href="https://gofile.io/d/1BYBfj">MultiTrainer II & Reaper</a></li>
 	  <li><a target="_blank" href="https://motrix.app/">Motrix - Full-featured download manager</a></li>
     </ul>
@@ -156,8 +157,9 @@ document.addEventListener("keydown", manejarKeyPress);
 	
 	<div style="font-size:20px;" id="fork-me">
 	<!-- Link：<a href="https://psgo.github.io/aio/">psgo.github.io/aio/</a><br> -->
-	PS5 JB AIO.PKG：<a target="_blank" href="https://psgo.lanzoub.com/iuMfi2j6gkyd">Download</a><br>
-	Link：https://psgo.github.io/aio/<br><br>
+	PS5 AIO.PKG：<a target="_blank" href="https://psgo.lanzoub.com/iuMfi2j6gkyd">Download</a><br>
+	Link：https://psgo.github.io/aio/<br>
+	Follow：https://x.com/psgocn<br><br>
 	Please share with your friends <br>
 	</div>
 	
@@ -165,33 +167,28 @@ document.addEventListener("keydown", manejarKeyPress);
     <img id="image" src="resources/images/tio.png">
   </body>
   <script>
-    // Define the mapping of button ID to remote .txt file URLs
     const fileMap = {
       button1: 'https://fetchesp.psgo.eu.org/ESP8266.txt',
       button2: 'https://fetchesp.psgo.eu.org/ESP32S2.txt',
       button3: 'https://fetchesp.psgo.eu.org/LilyGo.txt',
     };
 
-    // Add event listeners for buttons
     Object.keys(fileMap).forEach(buttonId => {
       const button = document.getElementById(buttonId);
       button.addEventListener('click', async () => {
         const fileUrl = fileMap[buttonId];
         
-        // Open a new tab and show loading message
         const newTab = window.open('', '_blank');
         newTab.document.write('<html><head><title>Fetching...</title></head><body><h1>Fetching the latest file link, please wait...</h1></body></html>');
         newTab.document.close();
 
         try {
-          // Fetch the URL content from the remote .txt file
           const response = await fetch(fileUrl);
           if (!response.ok) throw new Error(`Failed to fetch ${fileUrl}`);
           const url = await response.text();
 
-          // Open the URL in the new tab
           if (url) {
-            newTab.location.href = url.trim(); // Redirect the new tab to the fetched URL
+            newTab.location.href = url.trim();
           } else {
             newTab.document.body.innerHTML = '<h1>No valid URL found, please try again later.</h1>';
           }
