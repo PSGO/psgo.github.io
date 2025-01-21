@@ -80,7 +80,7 @@
 		<br>
 		<br>
 		<p id="jingyan" style="font-size:20px;font-weight:bold;color:#fff;">减少死机断电的一些建议：</p>
-		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">适用于所有折腾网站，举一反三自己总结经验，养成好习惯成功率可以在85-95%之间。没有耐心或理解力较差又喜欢喷的同学，建议放弃使用折腾去买光盘最省事。</p>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">适用于所有折腾网站，举一反三自己总结经验，养成好习惯成功率可以在85-95%之间。</p>
 <div style="font-size:18px;color:white;">
 <pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
 使用Kstuff原版HEN建议关闭网络开关，完全离线使用。如果使用etaHEN注入一瞬间频繁死机或断电(etaHEN某些版本会有此问题)，请保持PS5连接着WiFi或有线再折腾（注意路由器屏蔽升级）。如果是wifi连接状态，PS5设置-网络中，确保wifi名字右边不是红色感叹号失败，第二行互联网连接可以是红色感叹号失败，折腾进行中时，切记不要切断路由器或手机热点或ESP；
@@ -98,6 +98,8 @@
 某些插件，比如PS5debug、FTP、ELF加载器、解锁帧率等插件也有一定几率导致断电，如非必要，减少开启插件的数量，日常只建议单一注入HEN或者etaHEN即可；
 
 etaHEN本身是多合一插件，会默认加载一些除kstuff以外的插件，如果日常不使用这些插件，如果是1.9b之后的版本，进入设置etaHEN Toolbox - Plugins和service中选择关闭，另外可以选择"Active Lite mode"打钩，不会加载额外的功能；
+
+首次使用etaHEN注入时，会在/data/etaHEN/路径下创建一些配置文件，有一定几率会创建空配置文件或有问题的配置文件，这是etaHEN的一个bug，这会导致后续无法注入etaHEN，如果出现注入kstuff原版HEN正常，而注入etaHEN持续失败的情况，可以通过FTP或文件管理器删除etaHEN文件夹；
 
 注入插件后，不要急着按PS键返回桌面，要等左上角提示消息消失之后再按PS键，尤其是etaHEN、PS5debug等（个别插件不会弹消息，多等几秒）；
 
