@@ -56,8 +56,7 @@ body{
     background:#9f8d61;
     } 
     
-	button:active,
-    button.active{
+    button:active{
     background:#9f8d61;
     position:relative;
     top:5px;
