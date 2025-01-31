@@ -4,7 +4,15 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
   <title>更新记录 - PSGO.eu.org</title> 
-
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "fad0f7c9-14e7-41fc-9f68-cd6db4fd17d6",
+    });
+  });
+</script>
 <!-- <script> -->
 <!-- function isTimeInRange(start, end) { -->
     <!-- let now = new Date(); -->
@@ -47,17 +55,9 @@
 	
 <!-- } -->
 <!-- </script> -->
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "fad0f7c9-14e7-41fc-9f68-cd6db4fd17d6",
-    });
-  });
-</script>
+
   
- <head>
+ </head>
  
  <body style="background-color:#181818;">
 <!-- <div style="font-size:16px;color:white;">
