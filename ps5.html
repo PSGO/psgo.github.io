@@ -126,12 +126,12 @@
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> BD-JB光盘折腾 </font></td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://github.com/ps5-payload-dev/bdj-ipv6-hen/releases')";><font color="">BDJ-IPv6-内置HEN 支持3.x 4.x</font></button>
+<button type="button" id="R-bdj-ipv6-hen" onclick="window.open('https://github.com/ps5-payload-dev/bdj-ipv6-hen/releases')";><font color="">BDJ-IPv6-内置HEN 支持3.x 4.x</font></button>
 <tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;"> 该方案已稳定，可作为日常使用，无需PC注入HEN</font></td></tr>
 </td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://github.com/hammer-83/ps5-jar-loader/releases')";><font color="">UMTX光盘 & JAR加载器 & 插件 支持1.00-7.61</font></button>
+<button type="button" id="R-ps5-jar-loader" onclick="window.open('https://github.com/hammer-83/ps5-jar-loader/releases')";><font color="">UMTX光盘 & JAR加载器 & 插件 支持1.00-7.61</font></button>
 </td></tr>
 
 <tr><td align="center">
@@ -149,13 +149,21 @@
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 常用自制应用 </font></td></tr>
 
 <tr><td align="center">
-<button type="button" id="itemzflow-btn" onclick="window.open('https://github.com/PSGO/Itemzflow-PS5-CN/releases')";><font color="">itemzFlow 中文版</font></button>
-<button type="button" onclick="window.open('https://pkg-zone.com/details/ITEM00001')";><font color="">原版</font></button>
+<button type="button" onclick="window.open('https://github.com/PSGO/Itemzflow-PS5-CN/releases')";><font color="">ItemzFlow 游戏管理器 中文版</font></button>
+<button type="button" id="P-PS5_ITEM00001" onclick="window.open('https://pkg-zone.com/details/ITEM00001')";><font color="">原版</font></button>
 </td></tr>
 <tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;">配合注入etaHEN且版本要匹配 / 预计v1.09原版将修复中文乱码</font></td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://pkg-zone.com/details/LAPY20011')";><font color="">Xplorer 文件管理器</font></button>
+<button type="button" id="P-PS5_LAPY20011" onclick="window.open('https://pkg-zone.com/download/ps5/LAPY20011/latest')";><font color="">Xplorer 文件管理器</font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" id="P-PS5_LAPY20012" onclick="window.open('https://pkg-zone.com/download/ps5/LAPY20012/latest')";><font color="">温控调节器</font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" id="P-PS4_CUSA01116" onclick="window.open('https://pkg-zone.com/download/ps4/CUSA01116/latest')";><font color="">YouTube 4K NoPSN</font></button>
 </td></tr>
 
 <tr><td><br><br><br><br></td></tr>
@@ -189,6 +197,11 @@
 <button type="button" onclick="window.open('https://dualshock.psgo.eu.org/')";><font color="">手柄校准工具</font></button>
 <button type="button" onclick="window.open('https://hardwaretester.com/gamepad')";><font color="">手柄测试工具</font></button>
 </td></tr>
+
+<tr><td align="center">
+<button type="button" id="R-PS4-Fake-PKG-Tools-3.87" onclick="window.open('https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87/releases')";><font color="">FPKG 解包打包工具</font></button>
+</td></tr>
+
 
 <tr><td><br><br><br><br></td></tr>
 
@@ -307,34 +320,34 @@
 	<!-- } -->
 <!-- } -->
 <!-- </script> -->
-<script>
-function createCookie(name, value, minutes) {
-  var date = new Date();
-  date.setTime(date.getTime() + minutes * 60 * 1000);
-  document.cookie = name + "=" + value + "; expires=" + date.toGMTString() + "; path=/";
-}
+<!-- <script> -->
+<!-- function createCookie(name, value, minutes) { -->
+  <!-- var date = new Date(); -->
+  <!-- date.setTime(date.getTime() + minutes * 60 * 1000); -->
+  <!-- document.cookie = name + "=" + value + "; expires=" + date.toGMTString() + "; path=/"; -->
+<!-- } -->
 
-function isCookieExpired(name) {
-  var cookies = document.cookie.split(";");
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i].trim();
-    if (cookie.startsWith(name + "=")) {
-      return false;
-    }
-  }
-  return true;
-}
+<!-- function isCookieExpired(name) { -->
+  <!-- var cookies = document.cookie.split(";"); -->
+  <!-- for (var i = 0; i < cookies.length; i++) { -->
+    <!-- var cookie = cookies[i].trim(); -->
+    <!-- if (cookie.startsWith(name + "=")) { -->
+      <!-- return false; -->
+    <!-- } -->
+  <!-- } -->
+  <!-- return true; -->
+<!-- } -->
 
-if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) {
-  document.getElementById('mask').style.display = 'none';
-  document.getElementById('yaoqingma').style.display = 'none';
-}
-else
-{
-	document.getElementById('mask').style.display = 'block';
-	document.getElementById('yaoqingma').style.display = 'block';
-}
-</script>
+<!-- if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) { -->
+  <!-- document.getElementById('mask').style.display = 'none'; -->
+  <!-- document.getElementById('yaoqingma').style.display = 'none'; -->
+<!-- } -->
+<!-- else -->
+<!-- { -->
+	<!-- document.getElementById('mask').style.display = 'block'; -->
+	<!-- document.getElementById('yaoqingma').style.display = 'block'; -->
+<!-- } -->
+<!-- </script> -->
 
 <!-- 悟空动态壁纸 -->
 <video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
@@ -408,41 +421,83 @@ else
     });
   </script>
 <script>
-  let hasExecuted = false; // 标记是否已执行
-  const threshold = 200; // 滚动阈值
+let hasExecuted = false;
+const threshold = 200;
 
-  function updateButtonWithVersion() {
-    fetch('https://raw.githubusercontent.com/PSGO/Itemzflow-PS5-CN/refs/heads/main/filename.txt')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch the file.');
+function checkScrollAndExecute() {
+  if (window.scrollY >= threshold && !hasExecuted) {
+    hasExecuted = true;
+    updateButtonsWithVersion();
+  }
+}
+
+window.addEventListener('scroll', checkScrollAndExecute);
+
+function updateButtonsWithVersion() {
+  const buttons = document.querySelectorAll('[id^="P-"], [id^="R-"]');
+  buttons.forEach(button => {
+    updateButtonWithVersion(button.id);
+  });
+}
+
+function updateButtonWithVersion(buttonId) {
+  const isPkgButton = buttonId.startsWith('P-');
+  const isReleasesButton = buttonId.startsWith('R-');
+  
+  let url = '';
+  if (isPkgButton) {
+    url = 'https://pkgzone-ver.psgo.eu.org/log/Latest.txt';
+  } else if (isReleasesButton) {
+    url = 'https://releases-ver.psgo.eu.org/log/Latest.txt';
+  }
+
+  if (!url) return;
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch the file.');
+      }
+      return response.text();
+    })
+    .then(text => {
+      const lines = text.split('\n');
+      const button = document.getElementById(buttonId);
+      let version = '';
+
+      lines.forEach(line => {
+        line = line.trim();
+
+        if (url.includes('releases-ver')) {
+          const match = line.match(/([^/]+)\/([^|]+)\|(.*)/);
+          if (match) {
+            const key = match[2].trim();
+            version = match[3].trim();
+
+            if (key === buttonId.replace('R-', '')) {
+              button.innerHTML += ` ${version}`;
+            }
+          }
+        } else {
+          const match = line.match(/\|(.*)/);
+          if (match) {
+            const strippedButtonId = buttonId.replace('P-', '');
+            if (match[1].includes(strippedButtonId)) {
+              const parts = match[1].split('_');
+              version = parts[parts.length - 1].trim();
+
+              if (strippedButtonId === buttonId.replace('P-', '')) {
+                button.innerHTML += ` ${version}`;
+              }
+            }
+          }
         }
-        return response.text();
-      })
-      .then(text => {
-        const versionMatch = text.match(/_v(\d+\.\d+)/);
-        if (versionMatch) {
-          const version = versionMatch[1];
-          const button = document.getElementById('itemzflow-btn');
-          button.innerHTML = `<font color="">itemzFlow 游戏管理器  v${version}  中文版</font>`;
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
       });
-  }
-
-  // 滚动事件监听
-  function onScroll() {
-    if (!hasExecuted && window.scrollY > threshold) {
-      hasExecuted = true; // 标记为已执行
-      updateButtonWithVersion();
-      window.removeEventListener('scroll', onScroll); // 移除滚动监听
-    }
-  }
-
-  // 添加滚动事件监听
-  window.addEventListener('scroll', onScroll);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
