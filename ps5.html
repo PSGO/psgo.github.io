@@ -34,10 +34,10 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://24.psgo.eu.org/')";><font color=""> 24小时</font><span class="dot"></span></button>
+<button type="button" id="B-24小时" onclick="window.open('https://24.psgo.eu.org/')";><font color=""> 24小时</font><span class="dot"></span></button>
 <button type="button" onclick="window.open('update.html')";><font color=""> 更新</font></button>
 <button type="button" onclick="window.open('jiaocheng.html')";><font color=""> 新手教程和减少死机</font></button>
-<button type="button" onclick="window.open('https://ps5jb.psgo.eu.org/')";><font color=""> 里程碑</font><span class="dot"></span></button>
+<button type="button" id="B-里程碑" onclick="window.open('https://ps5jb.psgo.eu.org/')";><font color=""> 里程碑</font><span class="dot"></span></button>
 <button type="button" onclick="window.open('https://psgo.pages.dev/xiaoguotu/')";><font color=""> 预览</font></button>
 </td></tr>
 
@@ -53,7 +53,7 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://psgo.lanzoub.com/iQizk2kd2sqh')";><font color=""> UMTX版 离线PKG 一键多插件 支持1.x、2.x，兼容1.x-5.x</font><span class="dot"></span></button>
+<button type="button" id="B-UMTX-PKG" onclick="window.open('https://psgo.lanzoub.com/iQizk2kd2sqh')";><font color=""> UMTX版 离线PKG 一键多插件 支持1.x、2.x，兼容1.x-5.x</font><span class="dot"></span></button>
 </td></tr>
 
 <tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;"> 默认Github源，若都打不开或缓存失败，尝试重启PS5/换DNS/用手机热点/清缓存</font></td></tr>
@@ -75,7 +75,7 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://ps5-win.psgo.eu.org/PS5_UMTX-Windows_Local_Server-Offline_Cache.zip')";><font color=""> UMTX版 新版方案 支持1.x、2.x，兼容1.x -5.x</font><span class="dot"></span></button>
+<button type="button" id="B-UMTX-WIN" onclick="window.open('https://ps5-win.psgo.eu.org/PS5_UMTX-Windows_Local_Server-Offline_Cache.zip')";><font color=""> UMTX版 新版方案 支持1.x、2.x，兼容1.x -5.x</font><span class="dot"></span></button>
 <button type="button" onclick="window.open('https://ps5-win.pages.dev/PS5_UMTX-Windows_Local_Server-Offline_Cache.zip')";><font color=""> 备链</font></button>
 <button type="button" onclick="window.open('https://github.com/PSGO/PS5-UMTX-Local-Server/releases')";><font color=""> 旧版</font></button>
 </td></tr>
@@ -89,12 +89,12 @@
 
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> ESP折腾</font></td></tr>
 <tr><td align="center">
-<button type="button" onclick="window.open('esptoolv2/')";><font color=""> 网页刷机工具 v2</font><span class="dot"></span></button>
-<button type="button" onclick="window.open('https://psgo.lanzoub.com/izN5i2jjny4h')";><font color=""> 安卓烧录工具</font><span class="dot"></span></button>
+<button type="button" id="B-网页刷机工具v2" onclick="window.open('esptoolv2/')";><font color=""> 网页刷机工具 v2</font><span class="dot"></span></button>
+<button type="button" id="B-安卓烧录工具" onclick="window.open('https://psgo.lanzoub.com/izN5i2jjny4h')";><font color=""> 安卓烧录工具</font><span class="dot"></span></button>
 </td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://esp.psgo.eu.org/')";><font color=""> ESP AIO 在线刷机、下载Bin文件 </font><span class="dot"></span></button>
+<button type="button" id="B-ESP-AIO" onclick="window.open('https://esp.psgo.eu.org/')";><font color=""> ESP AIO 在线刷机、下载Bin文件 </font><span class="dot"></span></button>
 </td></tr>
 <tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;"> 使用EchoStretch折腾固件，自动同步更新</font></td></tr>
 <!-- <tr><td align="center"> -->
@@ -299,6 +299,11 @@
 
 </body>
 </html>
+
+<!-- 悟空动态壁纸 -->
+<video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
+<a style="text-decoration:none;" href="https://www.heishenhua.com/video/b1/PV05Full_ZH.mp4" target="_blank"><div style="position: fixed;right: 20px;bottom: 20px;z-index: 999;width:220px"><img style="width:100%"src="img_logo_a.png"></div></a>
+
 <!-- 签到 -->
 <script>
 	// 获取当前日期的字符串格式（例如 "2025-01-24"）
@@ -353,9 +358,42 @@
 	}
 	initializeButton();
 </script>
-<!-- 悟空动态壁纸 -->
-<video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
-<a style="text-decoration:none;" href="https://www.heishenhua.com/video/b1/PV05Full_ZH.mp4" target="_blank"><div style="position: fixed;right: 20px;bottom: 20px;z-index: 999;width:220px"><img style="width:100%"src="img_logo_a.png"></div></a>
+
+<!-- 非动态按钮提示 -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll("button[id^='B-']"); // 只选择id前缀为B-的按钮，如果修改链接或提示名称，可以通过修改ID名称再次显示提示
+    const currentWeek = getCurrentWeek();
+    
+    buttons.forEach(button => {
+        const buttonId = button.id;
+        const dot = button.querySelector(".dot");
+        const storageKey = `clicked_${buttonId}`;
+        const storedWeek = localStorage.getItem(storageKey);
+
+        // 如果本周已经点击过，则隐藏
+        if (storedWeek === currentWeek && dot) {
+            dot.style.display = "none"; 
+        }
+
+        button.addEventListener("click", function () {
+            localStorage.setItem(storageKey, currentWeek);
+            if (dot) {
+                dot.style.display = "none"; // 隐藏被点击的按钮的小红点
+            }
+        });
+    });
+});
+
+// 获取当前的周标识（例如：2024-W06）
+function getCurrentWeek() {
+    const now = new Date();
+    const firstDayOfYear = new Date(now.getFullYear(), 0, 1);
+    const pastDays = (now - firstDayOfYear) / 86400000;
+    const weekNumber = Math.ceil((pastDays + firstDayOfYear.getDay() + 1) / 7);
+    return `${now.getFullYear()}-W${weekNumber}`;
+}
+</script>
 
 <!-- 运行时间 -->
 <script language="javascript"> 
