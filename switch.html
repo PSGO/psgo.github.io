@@ -151,7 +151,7 @@ body{
 
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 大气层整合包 </font></td></tr>
 <tr><td align="center">
-	 <button type="button" onclick="window.open('https://pan.baidu.com/s/1ZXq-AQhGAOtLOJIOZyKYRw?pwd=tpz6')";><font color=""> AK整合包</font></button>
+	 <button type="button" id="R-AK-Atmosphere" onclick="window.open('https://pan.baidu.com/s/1ZXq-AQhGAOtLOJIOZyKYRw?pwd=tpz6')";><font color=""> AK整合包</font></button>
 	 <button type="button" onclick="window.open('https://github.com/AK478BB/AK-Atmosphere/releases')";><font color=""> 备用地址</font></button>
 </td></tr>
 <tr><td align="center">
@@ -163,13 +163,13 @@ body{
 	 <button type="button" onclick="window.open('https://github.com/laila509/Atmosphere-syspatch/releases')";><font color=""> 备用地址</font></button>
 </td></tr>	  
 <tr><td align="center">
-	 <button type="button" onclick="window.open('https://github.com/Team-Neptune/DeepSea/releases')";><font color=""> DeepSea整合包 不含Sigpatches</font></button>	  
+	 <button type="button" id="R-DeepSea" onclick="window.open('https://github.com/Team-Neptune/DeepSea/releases')";><font color=""> DeepSea整合包 不含Sigpatches</font></button>	  
 </td></tr>
 <tr><td><br><br><br><br></td></tr>
 
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 纯净原版基础包 </font></td></tr>
 <tr><td align="center">
-<button type="button" onclick="window.open('https://github.com/Atmosphere-NX/Atmosphere/releases')";><font color=""> 【大气层包】大气层原版原链接 </font></button>
+<button type="button" id="R-atmosphere" onclick="window.open('https://github.com/Atmosphere-NX/Atmosphere/releases')";><font color=""> 【大气层包】大气层原版 </font></button>
 </td></tr>
 
 <tr><td align="center">
@@ -300,12 +300,87 @@ body{
  <link rel="stylesheet" href="css/yanhua.css">
  </body>
 </html>
-	 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<!-- 版本号 -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+updateButtonsWithVersion();
 
-  gtag('config', 'G-7VRDNYTJ1Y');
+function updateButtonsWithVersion() {
+  const buttons = document.querySelectorAll('[id^="P-"], [id^="R-"]');
+  buttons.forEach(button => {
+    updateButtonWithVersion(button.id);
+  });
+}
+
+function decodeBase64(encoded) {
+  return atob(encoded);
+}
+
+function updateButtonWithVersion(buttonId) {
+  const isPkgButton = buttonId.startsWith('P-');
+  const isReleasesButton = buttonId.startsWith('R-');
+  
+  let UUU = '';
+  if (isPkgButton) {
+    UUU = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
+  } else if (isReleasesButton) {
+    UUU = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
+  }
+
+  if (!UUU) return;
+
+  fetch(UUU)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch the file.');
+      }
+      return response.text();
+    })
+    .then(text => {
+      const lines = text.split('\n');
+      const button = document.getElementById(buttonId);
+      let version = '';
+
+      lines.forEach(line => {
+        line = line.trim();
+
+        if (UUU.includes('releases-ver')) {
+          const match = line.match(/([^/]+)\/([^|]+)\|(.*)/);
+          if (match) {
+            const key = match[2].trim();
+            version = match[3].trim();
+
+            if (key === buttonId.replace('R-', '')) {
+              button.innerHTML += ` ${version}`;
+            }
+          }
+        } else {
+          const match = line.match(/\|(.*)/);
+          if (match) {
+            const strippedButtonId = buttonId.replace('P-', '');
+            if (match[1].includes(strippedButtonId)) {
+              const parts = match[1].split('_');
+              version = parts[parts.length - 1].trim();
+
+              if (strippedButtonId === buttonId.replace('P-', '')) {
+                button.innerHTML += ` ${version}`;
+              }
+            }
+          }
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-7VRDNYTJ1Y');
+  </script>
