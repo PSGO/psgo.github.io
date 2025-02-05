@@ -34,7 +34,7 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" id="B-24小时" onclick="window.open('https://24.psgo.eu.org/')";><font color=""> 24小时</font><span class="dot"></span></button>
+<button type="button" id="24hours" onmousedown="this.querySelector('.dot')?.remove()" onclick="window.open('https://24.psgo.eu.org/')";><font color=""> 24小时</font></button>
 <button type="button" onclick="window.open('update.html')";><font color=""> 更新</font></button>
 <button type="button" onclick="window.open('jiaocheng.html')";><font color=""> 新手教程和减少死机</font></button>
 <button type="button" id="B-里程碑" onclick="window.open('https://ps5jb.psgo.eu.org/')";><font color=""> 里程碑</font><span class="dot"></span></button>
@@ -299,153 +299,63 @@
 
 </body>
 </html>
-
-<!-- 悟空动态壁纸 -->
-<video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
-<a style="text-decoration:none;" href="https://www.heishenhua.com/video/b1/PV05Full_ZH.mp4" target="_blank"><div style="position: fixed;right: 20px;bottom: 20px;z-index: 999;width:220px"><img style="width:100%"src="img_logo_a.png"></div></a>
-
-<!-- 签到 -->
-<script>
-	// 获取当前日期的字符串格式（例如 "2025-01-24"）
-	function getCurrentDate() {
-		const today = new Date();
-		const year = today.getFullYear();
-		const month = String(today.getMonth() + 1).padStart(2, '0');
-		const day = String(today.getDate()).padStart(2, '0');
-		return `${year}-${month}-${day}`;
-	}
-
-	// 设置 Cookie
-	function setCookie(name, value, days) {
-		const date = new Date();
-		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-		document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
-	}
-
-	// 获取 Cookie
-	function getCookie(name) {
-		const cookieArray = document.cookie.split('; ');
-		for (const cookie of cookieArray) {
-			const [key, value] = cookie.split('=');
-			if (key === name) return value;
-		}
-		return null;
-	}
-
-	// 初始化按钮状态
-	function initializeButton() {
-		const button = document.getElementById('button666');
-		const currentDate = getCurrentDate();
-		const lastSignedDate = getCookie('lastSignedDate');
-
-		if (lastSignedDate === currentDate) {
-			// 如果今天已经签到
-			button.innerHTML = `<font color="">已签到 今日稳了!</font>`;
-			button.classList.add('active');
-			button.disabled = true;
-		} else {
-			// 如果今天还未签到
-			button.innerHTML = `<font color="">今日份签到 求稳!</font>`;
-			button.disabled = false; // 启用按钮
-			button.onclick = () => {
-				// 点击签到按钮时
-				setCookie('lastSignedDate', currentDate, 1); // 设置签到日期 Cookie
-				button.innerHTML = `<font color="">已签到 今日稳了!</font>`;
-				button.classList.add('active');
-				button.disabled = true; // 禁用按钮
-			};
-		}
-	}
-	initializeButton();
-</script>
-
-<!-- 非动态按钮提示 -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll("button[id^='B-']"); // 只选择id前缀为B-的按钮，如果修改链接或提示名称，可以通过修改ID名称再次显示提示
-    const currentWeek = getCurrentWeek();
-    
-    buttons.forEach(button => {
-        const buttonId = button.id;
-        const dot = button.querySelector(".dot");
-        const storageKey = `clicked_${buttonId}`;
-        const storedWeek = localStorage.getItem(storageKey);
-
-        // 如果本周已经点击过，则隐藏
-        if (storedWeek === currentWeek && dot) {
-            dot.style.display = "none"; 
-        }
-
-        button.addEventListener("click", function () {
-            localStorage.setItem(storageKey, currentWeek);
-            if (dot) {
-                dot.style.display = "none"; // 隐藏被点击的按钮的小红点
-            }
-        });
-    });
-});
-
-// 获取当前的周标识（例如：2024-W06）
-function getCurrentWeek() {
-    const now = new Date();
-    const firstDayOfYear = new Date(now.getFullYear(), 0, 1);
-    const pastDays = (now - firstDayOfYear) / 86400000;
-    const weekNumber = Math.ceil((pastDays + firstDayOfYear.getDay() + 1) / 7);
-    return `${now.getFullYear()}-W${weekNumber}`;
-}
-</script>
-
-<!-- 运行时间 -->
-<script language="javascript"> 
- var now = new Date();
- function createtime(){
-  var grt= new Date("1/12/2025 12:00:00");
-  now.setTime(now.getTime()+250);
-  days = (now - grt ) / 1000 / 60 / 60 / 24;
-  dnum = Math.floor(days);
-  hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-  hnum = Math.floor(hours);
-  if(String(hnum).length ==1 ){hnum = "0" + hnum;}
-  minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-  mnum = Math.floor(minutes);
-  if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-  seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-  snum = Math.round(seconds);
-  if(String(snum).length ==1 ){snum = "0" + snum;}
-  document.getElementById("timeDate").innerHTML = "已运行 "+dnum+"天 ";
-  document.getElementById("times").innerHTML = hnum + "小时 " + mnum + "分 " + snum + "秒 ";
- }
- setInterval("createtime()",250); 
-</script>
-
-<!-- 版本号 -->
+  <!-- 版本号 -->
 <script>
 let hasExecuted = false;
-const threshold = 200;
+const threshold = 0; //默认200
 let pkgData = null;
 let releasesData = null;
 
-function checkScrollAndExecute() {
-  if (window.scrollY >= threshold && !hasExecuted) {
-    hasExecuted = true;
-    fetchVersionData();
-  }
-}
+<!-- function checkScrollAndExecute() { -->
+  <!-- if (window.scrollY >= threshold && !hasExecuted) { -->
+    <!-- hasExecuted = true; -->
+    <!-- fetchVersionData(); -->
+  <!-- } -->
+<!-- } -->
 
-window.addEventListener('scroll', checkScrollAndExecute);
+<!-- window.addEventListener('scroll', checkScrollAndExecute); -->
+
+fetchVersionData();//暂时使用及时加载
 
 async function fetchVersionData() {
   const pkgURL = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
   const releasesURL = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
 
   try {
-    [pkgData, releasesData] = await Promise.all([
+    const [newPkgData, newReleasesData] = await Promise.all([
       fetchWithRetry(pkgURL),
       fetchWithRetry(releasesURL)
     ]);
+
+    const oldPkgData = JSON.parse(localStorage.getItem('pkgData') || '[]');
+    const oldReleasesData = JSON.parse(localStorage.getItem('releasesData') || '[]');
+
+    if (!arraysEqual(newPkgData, oldPkgData) || !arraysEqual(newReleasesData, oldReleasesData)) {
+      mark24HoursButton();
+    }
+
+    localStorage.setItem('pkgData', JSON.stringify(newPkgData));
+    localStorage.setItem('releasesData', JSON.stringify(newReleasesData));
+
+    pkgData = newPkgData;
+    releasesData = newReleasesData;
+
     updateButtonsWithVersion();
   } catch (error) {
     console.error('Error:', error);
+  }
+}
+
+// 数组比较函数
+function arraysEqual(arr1, arr2) {
+  return JSON.stringify(arr1) === JSON.stringify(arr2);
+}
+
+// 给 id="24hours" 的按钮添加标记
+function mark24HoursButton() {
+  const btn = document.getElementById('24hours');
+  if (btn) {
+    btn.insertAdjacentHTML('beforeend', ' <span class="dot"></span>');
   }
 }
 
@@ -557,6 +467,122 @@ function bindClickEvent(button, buttonId, version) {
     button.dataset.clickBound = "true";
   }
 }
+</script>
+
+<!-- 悟空动态壁纸 -->
+<video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
+<a style="text-decoration:none;" href="https://www.heishenhua.com/video/b1/PV05Full_ZH.mp4" target="_blank"><div style="position: fixed;right: 20px;bottom: 20px;z-index: 999;width:220px"><img style="width:100%"src="img_logo_a.png"></div></a>
+
+<!-- 签到 -->
+<script>
+	// 获取当前日期的字符串格式（例如 "2025-01-24"）
+	function getCurrentDate() {
+		const today = new Date();
+		const year = today.getFullYear();
+		const month = String(today.getMonth() + 1).padStart(2, '0');
+		const day = String(today.getDate()).padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
+
+	// 设置 Cookie
+	function setCookie(name, value, days) {
+		const date = new Date();
+		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+		document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+	}
+
+	// 获取 Cookie
+	function getCookie(name) {
+		const cookieArray = document.cookie.split('; ');
+		for (const cookie of cookieArray) {
+			const [key, value] = cookie.split('=');
+			if (key === name) return value;
+		}
+		return null;
+	}
+
+	// 初始化按钮状态
+	function initializeButton() {
+		const button = document.getElementById('button666');
+		const currentDate = getCurrentDate();
+		const lastSignedDate = getCookie('lastSignedDate');
+
+		if (lastSignedDate === currentDate) {
+			// 如果今天已经签到
+			button.innerHTML = `<font color="">已签到 今日稳了!</font>`;
+			button.classList.add('active');
+			button.disabled = true;
+		} else {
+			// 如果今天还未签到
+			button.innerHTML = `<font color="">今日份签到 求稳!</font>`;
+			button.disabled = false; // 启用按钮
+			button.onclick = () => {
+				// 点击签到按钮时
+				setCookie('lastSignedDate', currentDate, 1); // 设置签到日期 Cookie
+				button.innerHTML = `<font color="">已签到 今日稳了!</font>`;
+				button.classList.add('active');
+				button.disabled = true; // 禁用按钮
+			};
+		}
+	}
+	initializeButton();
+</script>
+
+<!-- 非动态按钮提示 -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll("button[id^='B-']"); // 只选择id前缀为B-的按钮，如果修改链接或提示名称，可以通过修改ID名称再次显示提示
+    const currentWeek = getCurrentWeek();
+    
+    buttons.forEach(button => {
+        const buttonId = button.id;
+        const dot = button.querySelector(".dot");
+        const storageKey = `clicked_${buttonId}`;
+        const storedWeek = localStorage.getItem(storageKey);
+
+        // 如果本周已经点击过，则隐藏
+        if (storedWeek === currentWeek && dot) {
+            dot.style.display = "none"; 
+        }
+
+        button.addEventListener("click", function () {
+            localStorage.setItem(storageKey, currentWeek);
+            if (dot) {
+                dot.style.display = "none"; // 隐藏被点击的按钮的小红点
+            }
+        });
+    });
+});
+// 获取当前的周标识（例如：2024-W06）
+function getCurrentWeek() {
+    const now = new Date();
+    const firstDayOfYear = new Date(now.getFullYear(), 0, 1);
+    const pastDays = (now - firstDayOfYear) / 86400000;
+    const weekNumber = Math.ceil((pastDays + firstDayOfYear.getDay() + 1) / 7);
+    return `${now.getFullYear()}-W${weekNumber}`;
+}
+</script>
+<!-- 运行时间 -->
+<script language="javascript"> 
+ var now = new Date();
+ function createtime(){
+  var grt= new Date("1/12/2025 12:00:00");
+  now.setTime(now.getTime()+250);
+  days = (now - grt ) / 1000 / 60 / 60 / 24;
+  dnum = Math.floor(days);
+  hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+  hnum = Math.floor(hours);
+  if(String(hnum).length ==1 ){hnum = "0" + hnum;}
+  minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+  mnum = Math.floor(minutes);
+  if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+  seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+  snum = Math.round(seconds);
+  if(String(snum).length ==1 ){snum = "0" + snum;}
+  document.getElementById("timeDate").innerHTML = "已运行 "+dnum+"天 ";
+  document.getElementById("times").innerHTML = hnum + "小时 " + mnum + "分 " + snum + "秒 ";
+ }
+ setInterval("createtime()",250); 
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
