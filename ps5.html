@@ -336,8 +336,8 @@
 		if (lastSignedDate === currentDate) {
 			// 如果今天已经签到
 			button.innerHTML = `<font color="">已签到 今日稳了!</font>`;
-			button.classList.add('active'); // 添加 active 类
-			button.disabled = true; // 禁用按钮
+			button.classList.add('active');
+			button.disabled = true;
 		} else {
 			// 如果今天还未签到
 			button.innerHTML = `<font color="">今日份签到 求稳!</font>`;
@@ -346,13 +346,11 @@
 				// 点击签到按钮时
 				setCookie('lastSignedDate', currentDate, 1); // 设置签到日期 Cookie
 				button.innerHTML = `<font color="">已签到 今日稳了!</font>`;
-				button.classList.add('active'); // 添加 active 类
+				button.classList.add('active');
 				button.disabled = true; // 禁用按钮
 			};
 		}
 	}
-
-	// 页面加载时初始化按钮状态
 	initializeButton();
 </script>
 <!-- 悟空动态壁纸 -->
@@ -485,7 +483,7 @@ function handleVersionUpdate(button, buttonId, version) {
     return;
   }
   <!-- 1天 86400000 2天 172800000 3天 259200000 7天 604800000 -->
-  if (!clicked && currentTime - storedTime < 604800000) {
+  if (!clicked && currentTime - storedTime < 172800000) {
     button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
     bindClickEvent(button, buttonId, version);
     return;
