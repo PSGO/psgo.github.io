@@ -89,7 +89,7 @@
 
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> ESP折腾</font></td></tr>
 <tr><td align="center">
-<button type="button" onclick="window.open('esptoolv2/')";><font color=""> 网页刷机工具</font><span class="dot"></span></button>
+<button type="button" onclick="window.open('esptoolv2/')";><font color=""> 网页刷机工具 v2</font><span class="dot"></span></button>
 <button type="button" onclick="window.open('https://psgo.lanzoub.com/izN5i2jjny4h')";><font color=""> 安卓烧录工具</font><span class="dot"></span></button>
 </td></tr>
 
@@ -168,7 +168,7 @@
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 游戏相关 </font></td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('http://game.psgo.eu.org/')";><font color="">资源下载导航</font></button>
+<button type="button" onclick="window.open('http://game.psgo.eu.org/')";><font color="">折腾资源导航</font></button>
 </td></tr>
 
 <tr><td align="center">
@@ -225,7 +225,7 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://psgo.lanzouj.com/iI6zK1g6jquj')";><font color=""> Netcat 注入工具 v1.2 Win版 </font></button>
+<button type="button" onclick="window.open('https://psgo.lanzouj.com/iI6zK1g6jquj')";><font color=""> Netcat Win注入工具 v1.2</font></button>
 </td></tr>
 
 <tr><td align="center">
@@ -395,7 +395,7 @@ function checkScrollAndExecute() {
 }
 
 window.addEventListener('scroll', checkScrollAndExecute);
-
+<!-- PKG以P-识别，Github发布包以R-识别 -->
 function updateButtonsWithVersion() {
   const buttons = document.querySelectorAll('[id^="P-"], [id^="R-"]');
   buttons.forEach(button => {
@@ -403,20 +403,24 @@ function updateButtonsWithVersion() {
   });
 }
 
+function decodeBase64(encoded) {
+  return atob(encoded);
+}
+
 function updateButtonWithVersion(buttonId) {
   const isPkgButton = buttonId.startsWith('P-');
   const isReleasesButton = buttonId.startsWith('R-');
   
-  let url = '';
+  let UUU = '';
   if (isPkgButton) {
-    url = 'https://pkgzone-ver.psgo.eu.org/log/Latest.txt';
+    UUU = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
   } else if (isReleasesButton) {
-    url = 'https://releases-ver.psgo.eu.org/log/Latest.txt';
+    UUU = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
   }
-
-  if (!url) return;
-
-  fetch(url)
+  
+  if (!UUU) return;
+  
+  fetch(UUU)
     .then(response => {
       if (!response.ok) {
         throw new Error('Failed to fetch the file.');
@@ -427,18 +431,18 @@ function updateButtonWithVersion(buttonId) {
       const lines = text.split('\n');
       const button = document.getElementById(buttonId);
       let version = '';
-
+      
       lines.forEach(line => {
         line = line.trim();
-
-        if (url.includes('releases-ver')) {
+        
+        if (UUU.includes('releases-ver')) {
           const match = line.match(/([^/]+)\/([^|]+)\|(.*)/);
           if (match) {
             const key = match[2].trim();
             version = match[3].trim();
-
+            
             if (key === buttonId.replace('R-', '')) {
-              button.innerHTML += ` ${version}`;
+              handleVersionUpdate(button, buttonId, version);
             }
           }
         } else {
@@ -448,9 +452,9 @@ function updateButtonWithVersion(buttonId) {
             if (match[1].includes(strippedButtonId)) {
               const parts = match[1].split('_');
               version = parts[parts.length - 1].trim();
-
+              
               if (strippedButtonId === buttonId.replace('P-', '')) {
-                button.innerHTML += ` ${version}`;
+                handleVersionUpdate(button, buttonId, version);
               }
             }
           }
@@ -460,6 +464,48 @@ function updateButtonWithVersion(buttonId) {
     .catch(error => {
       console.error('Error:', error);
     });
+}
+
+function handleVersionUpdate(button, buttonId, version) {
+  const storedData = JSON.parse(localStorage.getItem(buttonId)) || {};
+  const currentTime = Date.now();
+  const storedVersion = storedData.version || '';
+  const storedTime = storedData.timestamp || 0;
+  const clicked = storedData.clicked || false;
+  
+  if (storedVersion !== version) {
+    localStorage.setItem(buttonId, JSON.stringify({
+      version,
+      timestamp: currentTime,
+      clicked: false
+    }));
+    
+    button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
+    bindClickEvent(button, buttonId, version);
+    return;
+  }
+  <!-- 1天 86400000 2天 172800000 3天 259200000 7天 604800000 -->
+  if (!clicked && currentTime - storedTime < 604800000) {
+    button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
+    bindClickEvent(button, buttonId, version);
+    return;
+  }
+  
+  button.innerHTML += ` ${version}`;
+  bindClickEvent(button, buttonId, version);
+}
+<!-- 点击按钮后隐藏 -->
+function bindClickEvent(button, buttonId, version) {
+  if (!button.dataset.clickBound) {
+    button.addEventListener('click', () => {
+      const dotElem = document.getElementById(`dot-${buttonId}`);
+      if (dotElem) {
+        dotElem.remove();
+      }
+      localStorage.setItem(buttonId, JSON.stringify({ version, timestamp: Date.now(), clicked: true }));
+    });
+    button.dataset.clickBound = "true";
+  }
 }
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
