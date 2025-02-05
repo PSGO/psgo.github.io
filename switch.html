@@ -306,74 +306,81 @@ updateButtonsWithVersion();
 
 function updateButtonsWithVersion() {
   const buttons = document.querySelectorAll('[id^="P-"], [id^="R-"]');
-  buttons.forEach(button => {
-    updateButtonWithVersion(button.id);
+
+  const pkgURL = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
+  const releasesURL = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
+
+  Promise.all([
+    fetchWithRetry(pkgURL),
+    fetchWithRetry(releasesURL)
+  ]).then(([pkgData, releasesData]) => {
+    buttons.forEach(button => {
+      updateButtonWithVersion(button, pkgData, releasesData);
+    });
+  }).catch(error => {
+    console.error('Error fetching version data:', error);
   });
+}
+
+// 带重试的fetch
+async function fetchWithRetry(url, retries = 1) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return (await response.text()).split('\n');
+    } catch (error) {
+      if (attempt === retries) {
+        console.error(`Failed to fetch ${url} after ${retries + 1} attempts.`);
+        return null; // 返回 null 以便后续逻辑处理
+      }
+    }
+  }
 }
 
 function decodeBase64(encoded) {
   return atob(encoded);
 }
 
-function updateButtonWithVersion(buttonId) {
+function updateButtonWithVersion(button, pkgData, releasesData) {
+  const buttonId = button.id;
   const isPkgButton = buttonId.startsWith('P-');
   const isReleasesButton = buttonId.startsWith('R-');
-  
-  let UUU = '';
-  if (isPkgButton) {
-    UUU = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
-  } else if (isReleasesButton) {
-    UUU = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
-  }
 
-  if (!UUU) return;
+  let data = isPkgButton ? pkgData : isReleasesButton ? releasesData : null;
+  if (!data) return;
 
-  fetch(UUU)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch the file.');
+  let version = '';
+
+  data.forEach(line => {
+    line = line.trim();
+
+    if (isReleasesButton) {
+      const match = line.match(/(.+?)\|(.*)/i);
+      if (match) {
+        const key = match[1].trim();
+        version = match[2].trim();
+        if (key.toLowerCase() === buttonId.replace('R-', '').toLowerCase()) {
+          button.innerHTML += ` ${version}`;
+        }
       }
-      return response.text();
-    })
-    .then(text => {
-      const lines = text.split('\n');
-      const button = document.getElementById(buttonId);
-      let version = '';
-
-      lines.forEach(line => {
-        line = line.trim();
-
-        if (UUU.includes('releases-ver')) {
-		  const match = line.match(/(.+?)\|(.*)/i);
-		  if (match) {
-			const key = match[1].trim();
-			version = match[2].trim();
-
-            if (key === buttonId.replace('R-', '')) {
-              button.innerHTML += ` ${version}`;
-            }
-          }
-        } else {
-          const match = line.match(/\|(.*)/);
-          if (match) {
-            const strippedButtonId = buttonId.replace('P-', '');
-            if (match[1].includes(strippedButtonId)) {
-              const parts = match[1].split('_');
-              version = parts[parts.length - 1].trim();
-
-              if (strippedButtonId === buttonId.replace('P-', '')) {
-                button.innerHTML += ` ${version}`;
-              }
-            }
+    } else {
+      const match = line.match(/\|(.*)/);
+      if (match) {
+        const strippedButtonId = buttonId.replace('P-', '');
+        if (match[1].includes(strippedButtonId)) {
+          const parts = match[1].split('_');
+          version = parts[parts.length - 1].trim();
+          if (strippedButtonId === buttonId.replace('P-', '')) {
+            button.innerHTML += ` ${version}`;
           }
         }
-      });
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+      }
+    }
+  });
 }
 </script>
+
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>

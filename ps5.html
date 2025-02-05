@@ -422,115 +422,129 @@ function getCurrentWeek() {
 <script>
 let hasExecuted = false;
 const threshold = 200;
+let pkgData = null;
+let releasesData = null;
 
 function checkScrollAndExecute() {
   if (window.scrollY >= threshold && !hasExecuted) {
     hasExecuted = true;
-    updateButtonsWithVersion();
+    fetchVersionData();
   }
 }
 
 window.addEventListener('scroll', checkScrollAndExecute);
-<!-- PKG以P-识别，Github发布包以R-识别 -->
-function updateButtonsWithVersion() {
-  const buttons = document.querySelectorAll('[id^="P-"], [id^="R-"]');
-  buttons.forEach(button => {
-    updateButtonWithVersion(button.id);
-  });
+
+async function fetchVersionData() {
+  const pkgURL = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
+  const releasesURL = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
+
+  try {
+    [pkgData, releasesData] = await Promise.all([
+      fetchWithRetry(pkgURL),
+      fetchWithRetry(releasesURL)
+    ]);
+    updateButtonsWithVersion();
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+//带重试fetch
+async function fetchWithRetry(url, retries = 1) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return (await response.text()).split('\n');
+    } catch (error) {
+      if (attempt === retries) {
+        console.error(`Failed to fetch ${url} after ${retries + 1} attempts.`);
+        throw error;
+      }
+    }
+  }
 }
 
 function decodeBase64(encoded) {
   return atob(encoded);
 }
 
+//PKG以P-识别，Github发布包以R-识别
+function updateButtonsWithVersion() {
+  document.querySelectorAll('[id^="P-"], [id^="R-"]').forEach(button => {
+    updateButtonWithVersion(button.id);
+  });
+}
+
+// 处理按钮更新
 function updateButtonWithVersion(buttonId) {
   const isPkgButton = buttonId.startsWith('P-');
   const isReleasesButton = buttonId.startsWith('R-');
-  
-  let UUU = '';
-  if (isPkgButton) {
-    UUU = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
-  } else if (isReleasesButton) {
-    UUU = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
-  }
-  
-  if (!UUU) return;
-  
-  fetch(UUU)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch the file.');
+
+  let data = isPkgButton ? pkgData : isReleasesButton ? releasesData : null;
+  if (!data) return;
+
+  let version = '';
+  data.forEach(line => {
+    line = line.trim();
+    
+    if (isReleasesButton) {
+      const match = line.match(/(.+?)\|(.*)/i);
+      if (match) {
+        const key = match[1].trim();
+        version = match[2].trim();
+        if (key.toLowerCase() === buttonId.replace('R-', '').toLowerCase()) {
+          handleVersionUpdate(buttonId, version);
+        }
       }
-      return response.text();
-    })
-    .then(text => {
-      const lines = text.split('\n');
-      const button = document.getElementById(buttonId);
-      let version = '';
-      
-      lines.forEach(line => {
-        line = line.trim();
-        
-		if (UUU.includes('releases-ver')) {
-		  const match = line.match(/(.+?)\|(.*)/i);
-		  if (match) {
-			const key = match[1].trim();
-			version = match[2].trim();
-			
-			if (key.toLowerCase() === buttonId.replace('R-', '').toLowerCase()) {
-			  handleVersionUpdate(button, buttonId, version);
-			}
-		  }
-        } else {
-          const match = line.match(/\|(.*)/);
-          if (match) {
-            const strippedButtonId = buttonId.replace('P-', '');
-            if (match[1].includes(strippedButtonId)) {
-              const parts = match[1].split('_');
-              version = parts[parts.length - 1].trim();
-              
-              if (strippedButtonId === buttonId.replace('P-', '')) {
-                handleVersionUpdate(button, buttonId, version);
-              }
-            }
+    } else {
+      const match = line.match(/\|(.*)/);
+      if (match) {
+        const strippedButtonId = buttonId.replace('P-', '');
+        if (match[1].includes(strippedButtonId)) {
+          const parts = match[1].split('_');
+          version = parts[parts.length - 1].trim();
+          if (strippedButtonId === buttonId.replace('P-', '')) {
+            handleVersionUpdate(buttonId, version);
           }
         }
-      });
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+      }
+    }
+  });
 }
 
-function handleVersionUpdate(button, buttonId, version) {
+function handleVersionUpdate(buttonId, version) {
+  const button = document.getElementById(buttonId);
+  if (!button) return;
+
   const storedData = JSON.parse(localStorage.getItem(buttonId)) || {};
   const currentTime = Date.now();
   const storedVersion = storedData.version || '';
   const storedTime = storedData.timestamp || 0;
   const clicked = storedData.clicked || false;
-  
+
   if (storedVersion !== version) {
     localStorage.setItem(buttonId, JSON.stringify({
       version,
       timestamp: currentTime,
       clicked: false
     }));
-    
+
     button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
     bindClickEvent(button, buttonId, version);
     return;
   }
-  <!-- 1天 86400000 2天 172800000 3天 259200000 7天 604800000 -->
+  //1天 86400000 2天 172800000 3天 259200000 7天 604800000
   if (!clicked && currentTime - storedTime < 172800000) {
     button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
     bindClickEvent(button, buttonId, version);
     return;
   }
-  
+
   button.innerHTML += ` ${version}`;
   bindClickEvent(button, buttonId, version);
 }
-<!-- 点击按钮后隐藏 -->
+
 function bindClickEvent(button, buttonId, version) {
   if (!button.dataset.clickBound) {
     button.addEventListener('click', () => {
