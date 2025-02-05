@@ -117,16 +117,16 @@
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> BD-JB光盘折腾 </font></td></tr>
 
 <tr><td align="center">
-<button type="button" id="R-IPV6-BDJ-etaHEN" onclick="window.open('https://github.com/LightningMods/IPV6-BDJ-etaHEN')";><font color="">IPV6-BDJ-etaHEN 支持3.x 4.x</font></button>
+<button type="button" id="R-LightningMods/IPV6-BDJ-etaHEN" onclick="window.open('https://github.com/LightningMods/IPV6-BDJ-etaHEN')";><font color="">IPV6-BDJ-etaHEN 支持3.x 4.x</font></button>
 </td></tr>
 
 <tr><td align="center">
-<button type="button" id="R-bdj-ipv6-hen" onclick="window.open('https://github.com/ps5-payload-dev/bdj-ipv6-hen/releases')";><font color="">BDJ-IPv6-Kstuff 支持3.x 4.x</font></button>
+<button type="button" id="R-ps5-payload-dev/bdj-ipv6-hen" onclick="window.open('https://github.com/ps5-payload-dev/bdj-ipv6-hen/releases')";><font color="">BDJ-IPv6-Kstuff 支持3.x 4.x</font></button>
 <tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;"> BD-JB方案已稳定，可作为日常使用，无需PC注入</font></td></tr>
 </td></tr>
 
 <tr><td align="center">
-<button type="button" id="R-ps5-jar-loader" onclick="window.open('https://github.com/hammer-83/ps5-jar-loader/releases')";><font color="">UMTX光盘、JAR加载器、插件 支持1.00-7.61</font></button>
+<button type="button" id="R-hammer-83/ps5-jar-loader" onclick="window.open('https://github.com/hammer-83/ps5-jar-loader/releases')";><font color="">UMTX光盘、JAR加载器、插件 支持1.00-7.61</font></button>
 </td></tr>
 
 <tr><td align="center">
@@ -147,7 +147,7 @@
 </td></tr>
 <tr><td align="center">
 <button type="button" id="P-PS5_ITEM00001" onclick="window.open('https://pkg-zone.com/details/ITEM00001')";><font color="">ItemzFlow 原版</font></button>
-<button type="button" id="R-etaHEN" onclick="window.open('https://github.com/etaHEN/etaHEN/releases')";><font color="">etaHEN 文件</font></button>
+<button type="button" id="R-etaHEN/etaHEN" onclick="window.open('https://github.com/etaHEN/etaHEN/releases')";><font color="">etaHEN 文件</font></button>
 </td></tr>
 <tr><td><font style="font-size:16px;text-align:center;color:#d2c49e;">配合注入etaHEN且版本要匹配 / 预计v1.09原版将修复中文乱码</font></td></tr>
 
@@ -201,11 +201,11 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" id="R-PS4-Fake-PKG-Tools-3.87" onclick="window.open('https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87/releases')";><font color="">FPKG 解包打包工具</font></button>
+<button type="button" id="R-CyB1K/PS4-Fake-PKG-Tools-3.87" onclick="window.open('https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87/releases')";><font color="">FPKG 解包打包工具</font></button>
 </td></tr>
 
 <tr><td align="center">
-<button type="button" id="R-ps4-eboot-dlc-patcher" onclick="window.open('https://github.com/idlesauce/ps4-eboot-dlc-patcher')";><font color=""> DLC修补脚本</font></button>
+<button type="button" id="R-idlesauce/ps4-eboot-dlc-patcher" onclick="window.open('https://github.com/idlesauce/ps4-eboot-dlc-patcher')";><font color=""> DLC修补脚本</font></button>
 </td></tr>
 
 <tr><td><br><br><br><br><br></td></tr>
@@ -255,7 +255,7 @@
 </td></tr>
 
 <tr><td align="center">
-<button type="button" id="R-PS-Multi-Tools" onclick="window.open('https://github.com/SvenGDK/PS-Multi-Tools')";><font color=""> PS Multi 开发者工具Win版</font></button>
+<button type="button" id="R-SvenGDK/PS-Multi-Tools" onclick="window.open('https://github.com/SvenGDK/PS-Multi-Tools')";><font color=""> PS Multi 开发者工具Win版</font></button>
 <button type="button" onclick="window.open('https://github.com/SvenGDK/PS-Mac-Tools')";><font color=""> Mac版</font></button>
 </td></tr>
 
@@ -471,16 +471,16 @@ function updateButtonWithVersion(buttonId) {
       lines.forEach(line => {
         line = line.trim();
         
-        if (UUU.includes('releases-ver')) {
-          const match = line.match(/([^/]+)\/([^|]+)\|(.*)/);
-          if (match) {
-            const key = match[2].trim();
-            version = match[3].trim();
-            
-            if (key === buttonId.replace('R-', '')) {
-              handleVersionUpdate(button, buttonId, version);
-            }
-          }
+		if (UUU.includes('releases-ver')) {
+		  const match = line.match(/(.+?)\|(.*)/i);
+		  if (match) {
+			const key = match[1].trim();
+			version = match[2].trim();
+			
+			if (key.toLowerCase() === buttonId.replace('R-', '').toLowerCase()) {
+			  handleVersionUpdate(button, buttonId, version);
+			}
+		  }
         } else {
           const match = line.match(/\|(.*)/);
           if (match) {

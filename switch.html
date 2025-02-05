@@ -151,7 +151,7 @@ body{
 
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 大气层整合包 </font></td></tr>
 <tr><td align="center">
-	 <button type="button" id="R-AK-Atmosphere" onclick="window.open('https://pan.baidu.com/s/1ZXq-AQhGAOtLOJIOZyKYRw?pwd=tpz6')";><font color=""> AK整合包</font></button>
+	 <button type="button" id="R-AK478BB/AK-Atmosphere" onclick="window.open('https://pan.baidu.com/s/1ZXq-AQhGAOtLOJIOZyKYRw?pwd=tpz6')";><font color=""> AK整合包</font></button>
 	 <button type="button" onclick="window.open('https://github.com/AK478BB/AK-Atmosphere/releases')";><font color=""> 备用地址</font></button>
 </td></tr>
 <tr><td align="center">
@@ -163,13 +163,13 @@ body{
 	 <button type="button" onclick="window.open('https://github.com/laila509/Atmosphere-syspatch/releases')";><font color=""> 备用地址</font></button>
 </td></tr>	  
 <tr><td align="center">
-	 <button type="button" id="R-DeepSea" onclick="window.open('https://github.com/Team-Neptune/DeepSea/releases')";><font color=""> DeepSea整合包 不含Sigpatches</font></button>	  
+	 <button type="button" id="R-Team-Neptune/DeepSea" onclick="window.open('https://github.com/Team-Neptune/DeepSea/releases')";><font color=""> DeepSea整合包 不含Sigpatches</font></button>	  
 </td></tr>
 <tr><td><br><br><br><br></td></tr>
 
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 纯净原版基础包 </font></td></tr>
 <tr><td align="center">
-<button type="button" id="R-atmosphere" onclick="window.open('https://github.com/Atmosphere-NX/Atmosphere/releases')";><font color=""> 【大气层包】大气层原版 </font></button>
+<button type="button" id="R-atmosphere-nx/atmosphere" onclick="window.open('https://github.com/Atmosphere-NX/Atmosphere/releases')";><font color=""> 【大气层包】大气层原版 </font></button>
 </td></tr>
 
 <tr><td align="center">
@@ -211,12 +211,12 @@ body{
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;"> 可选扩展插件（按需整合更稳定） </font></td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://github.com/easyworld/hekate/releases')";><font color=""> 【启动管理】Hekate中文版 </font></button>
-<button type="button" onclick="window.open('https://github.com/CTCaer/hekate/releases')";><font color=""> Hekate英文版 </font></button>
+<button type="button" id="R-easyworld/hekate" onclick="window.open('https://github.com/easyworld/hekate/releases')";><font color=""> 【启动管理】Hekate中文版 </font></button>
+<button type="button" id="R-CTCaer/hekate" onclick="window.open('https://github.com/CTCaer/hekate/releases')";><font color=""> Hekate英文版 </font></button>
 </td></tr>
 
 <tr><td align="center">
-<button type="button" onclick="window.open('https://github.com/rashevskyv/dbi/releases')";><font color=""> 【安装游戏】DBI 操作简单 安装稳定</font></button>
+<button type="button" id="R-rashevskyv/dbi" onclick="window.open('https://github.com/rashevskyv/dbi/releases')";><font color=""> 【安装游戏】DBI 操作简单 安装稳定</font></button>
 <button type="button" onclick="window.open('https://psgo.lanzoub.com/i1Y6S2529eve')";><font color=""> 快捷图标</font></button>
 </td></tr>
 	
@@ -344,10 +344,10 @@ function updateButtonWithVersion(buttonId) {
         line = line.trim();
 
         if (UUU.includes('releases-ver')) {
-          const match = line.match(/([^/]+)\/([^|]+)\|(.*)/);
-          if (match) {
-            const key = match[2].trim();
-            version = match[3].trim();
+		  const match = line.match(/(.+?)\|(.*)/i);
+		  if (match) {
+			const key = match[1].trim();
+			version = match[2].trim();
 
             if (key === buttonId.replace('R-', '')) {
               button.innerHTML += ` ${version}`;
