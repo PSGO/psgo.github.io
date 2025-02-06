@@ -14,6 +14,15 @@
       window.location.href = "ps4.html";
     }
   </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/index-sw.js').then(function(reg) {
+            console.log('Service Worker 注册成功', reg);
+        }).catch(function(err) {
+            console.log('Service Worker 注册失败', err);
+        });
+    }//调用缓存，适用于大文件比如背景图
+  </script>
   <style>
     /* 默认样式 */
     html, body {

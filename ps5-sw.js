@@ -1,4 +1,4 @@
-const CACHE_NAME = 'background-assets-v1';//更新缓存只需要改变名称字符
+const CACHE_NAME = 'ps5-20250206';//更新缓存只需要改变名称字符
 const ASSETS = [
     '/img_bg_title.png',
     '/video_WebTitle_batch.mp4'
