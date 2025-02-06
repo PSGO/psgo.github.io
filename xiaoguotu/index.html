@@ -43,22 +43,43 @@
 
 	<div class="banner">
 		<div class="b-img">
-			<a  style="background:url(images/1-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/2-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/3-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/4-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/5-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/6-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/7-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/8-y.webp) center no-repeat"></a>
-			<a  style="background:url(images/9-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/1-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/2-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/3-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/4-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/5-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/6-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/7-y.webp) center no-repeat"></a>
+			<a class="lazy"  style="background:url(images/8-y.webp) center no-repeat"></a>
+			<a class="lazy" style="background:url(images/9-y.webp) center no-repeat"></a>
 		</div>
 		<div class="b-list"></div>
 		<!-- <a class="bar-left"><em></em></a><a class="bar-right"><em></em></a> -->
 		
 	</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let lazyImages = document.querySelectorAll(".lazy");
 
+    let lazyLoad = function () {
+        lazyImages.forEach(img => {
+            let rect = img.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                let bg = img.getAttribute("data-bg");
+                if (bg) {
+                    img.style.background = `url(${bg}) center no-repeat`;
+                    img.removeAttribute("data-bg"); // 加载完移除属性
+                }
+            }
+        });
+    };
 
+    // 监听页面滚动和加载
+    window.addEventListener("scroll", lazyLoad);
+    window.addEventListener("resize", lazyLoad);
+    lazyLoad(); // 初次执行
+});
+</script>
 </body>
 </html>
 <!-- Global site tag (gtag.js) - Google Analytics -->
