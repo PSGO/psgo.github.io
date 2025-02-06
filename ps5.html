@@ -12,7 +12,6 @@
 		<!-- window.location='ps5index.html'; -->
 	<!-- } -->
   <!-- </script> -->
-    //调用缓存，适用于大文件比如背景图
     <video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" 
         x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true">
         <source src="video_WebTitle_batch.mp4" type="video/mp4">
@@ -26,7 +25,7 @@
         }).catch(function(err) {
             console.log('Service Worker 注册失败', err);
         });
-    }
+    }//调用缓存，适用于大文件比如背景图
     </script>
 </head> 
 
