@@ -294,7 +294,7 @@ body{
   </div> 
   <script>
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/switch-sw.js').then(function(reg) {
+        navigator.serviceWorker.register('/index-sw.js').then(function(reg) {
             console.log('Service Worker 注册成功', reg);
         }).catch(function(err) {
             console.log('Service Worker 注册失败', err);

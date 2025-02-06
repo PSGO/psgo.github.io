@@ -1,8 +1,14 @@
-const CACHE_NAME = 'index-20250206';//更新缓存只需要改变名称字符
+const CACHE_NAME = 'index-20250206';//更新资源文件，缓存只需要改变名称字符
 const ASSETS = [
+    '/img_bg_title.png',
+    '/video_WebTitle_batch.mp4',
     '/ps4.png',
     '/ps5.png',
-    '/switch.png'
+    '/switch.png',
+    '/bg.jpg',
+    '/css/pc.css',
+    '/psgo.ico'
+	
 ];
 
 // 安装 Service Worker 并缓存资源
