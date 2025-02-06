@@ -1,122 +1,92 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>预览效果 - PSGO.eu.org</title>
-    <link rel="shortcut icon" href="https://psgo.eu.org/psgo.ico">
-    <style>
-        * { margin: 0; padding: 0; }
-        html, body { height: 100%; background-color: #202125; overflow-x: hidden; }
-        
-        .banner { width: 100%; height: 100vh; position: relative; overflow: hidden; }
-        .b-img { width: 100%; height: 100%; position: absolute; display: flex; }
-        .b-img a { display: block; width: 100%; height: 100%; flex: 1; background-size: cover; background-position: center; transition: opacity 0.5s; }
-        
-        .b-list { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; }
-        .b-list span { width: 14px; height: 14px; border-radius: 50%; border: 3px solid #fff; margin: 0 5px; cursor: pointer; }
-        .b-list .spcss { border-color: #603bcc; }
-        
-        .bar-left, .bar-right { position: absolute; top: 50%; width: 50px; height: 50px; background: rgba(255, 255, 255, 0.5); cursor: pointer; text-align: center; line-height: 50px; font-size: 24px; font-weight: bold; color: #000; user-select: none; border-radius: 50%; }
-        .bar-left { left: 10px; }
-        .bar-right { right: 10px; }
-        
-        .bar-left:hover, .bar-right:hover { background: rgba(255, 255, 255, 0.8); }
-    </style>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<title>预览效果</title>
+	<link rel="shortcut icon" href="https://psgo.eu.org/psgo.ico"></link>
+	<style type="text/css">
+      *{margin:0;padding:0;}
+	 html,body{height: 100%;background-color:#202125}
+	.banner .b-img{height:100%;width:}
+	.banner .b-img a{display:block;width:33%;height:100%;float: left;}
+	.banner{ width:100%; height:100%; overflow:hidden; position:relative;font-size:0}
+	.banner .b-img{position:absolute;}
+	.b-list{ height:50px;position:absolute; left:50%;margin-left:-50px;top:90%;z-index:10;/*overflow: auto;*/}
+.b-list span{ display:block;cursor:pointer; width:14px; height:14px; border-radius:50%; border:3px solid #fff; float:left; margin:0 5px; _margin:0 3px;}
+.b-list .spcss{border:3px solid #603bcc;}
+.bar-left{ position:absolute; z-index:1; display:block; width:100px; height:100%; left:0px; background:none; top:0px; }
+.bar-right{ position:absolute;z-index:1; display:block; width:100px; height:100%; right:0px; background:none; top:0px; }
+.bar-left em{ display:block; width:50px; height:100px; background:url(images/arrow.png) 0px 0px no-repeat; margin:0 auto; margin-top:325px;}
+.bar-right em{ display:block; width:50px; height:100px; background:url(images/arrow.png) -50px 0px no-repeat; margin:0 auto; margin-top:325px;}
+.bar-left .emcss{ background-position:0px -100px;}
+.bar-right .emcss{ background-position:-50px -100px;}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/lunbo.js"></script>
 </head>
 <body>
+  <!--全屏滚动-->
+  <!--
+<div class="banner">
+  <div class="b-img">
+	  <a href="#" style="background:url(images/banner1.png) center no-repeat;"></a>
+	  <a href="#" style="background:url(images/banner2.png) center no-repeat;"></a>
+	  <a href="#" style="background:url(images/banner3.png) center no-repeat;"></a>
+	  <a href="#" style="background:url(images/banner3.png) center no-repeat;"></a>
+  </div>
+  <div class="b-list"></div>
+  <a class="bar-left" href="#"><em></em></a><a class="bar-right" href="#"><em></em></a>
+ </div>
 
-    <div class="banner">
-        <div class="b-img">
-            <!-- 第一张默认加载，其他使用 data-bg 懒加载 -->
-            <a class="lazy" style="background: url('images/1-y.webp') center no-repeat;" data-bg="images/1-y.webp"></a>
-            <a class="lazy" data-bg="images/2-y.webp"></a>
-            <a class="lazy" data-bg="images/3-y.webp"></a>
-            <a class="lazy" data-bg="images/4-y.webp"></a>
-            <a class="lazy" data-bg="images/5-y.webp"></a>
-            <a class="lazy" data-bg="images/6-y.webp"></a>
-            <a class="lazy" data-bg="images/7-y.webp"></a>
-            <a class="lazy" data-bg="images/8-y.webp"></a>
-            <a class="lazy" data-bg="images/9-y.webp"></a>
-        </div>
-        <div class="b-list"></div>
-        <div class="bar-left">&#9664;</div>
-        <div class="bar-right">&#9654;</div>
+ -->
+<!--end 全屏滚动-->
+
+<div class="banner">
+    <div class="b-img">
+        <a class="lazy" style="background:url(images/1-y.webp) center no-repeat" data-bg="images/1-y.webp"></a>
+        <a class="lazy" data-bg="images/2-y.webp"></a>
+        <a class="lazy" data-bg="images/3-y.webp"></a>
+        <a class="lazy" data-bg="images/4-y.webp"></a>
+        <a class="lazy" data-bg="images/5-y.webp"></a>
+        <a class="lazy" data-bg="images/6-y.webp"></a>
+        <a class="lazy" data-bg="images/7-y.webp"></a>
+        <a class="lazy" data-bg="images/8-y.webp"></a>
+        <a class="lazy" data-bg="images/9-y.webp"></a>
     </div>
+    <div class="b-list"></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let lazyImages = document.querySelectorAll(".lazy");
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let lazyImages = document.querySelectorAll(".lazy");
-            
-            function lazyLoad() {
-                lazyImages.forEach(img => {
-                    if (img.dataset.bg && img.getBoundingClientRect().top < window.innerHeight) {
-                        img.style.background = `url(${img.dataset.bg}) center no-repeat`;
-                        img.style.backgroundSize = "cover";
-                        img.removeAttribute("data-bg"); // 加载后移除属性
-                    }
-                });
+    let lazyLoad = function () {
+        lazyImages.forEach(img => {
+            let rect = img.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                let bg = img.getAttribute("data-bg");
+                if (bg) {
+                    img.style.background = `url(${bg}) center no-repeat`;
+                    img.removeAttribute("data-bg"); // 加载完移除属性
+                }
             }
-
-            window.addEventListener("scroll", lazyLoad);
-            window.addEventListener("resize", lazyLoad);
-            lazyLoad(); // 初次执行
-
-            // 轮播功能
-            let currentIndex = 0;
-            const images = document.querySelectorAll(".b-img a");
-            const dotsContainer = document.querySelector(".b-list");
-            const leftBtn = document.querySelector(".bar-left");
-            const rightBtn = document.querySelector(".bar-right");
-
-            // 创建指示点
-            images.forEach((_, i) => {
-                let dot = document.createElement("span");
-                if (i === 0) dot.classList.add("spcss"); // 默认选中第一个
-                dot.addEventListener("click", () => showSlide(i));
-                dotsContainer.appendChild(dot);
-            });
-
-            const dots = document.querySelectorAll(".b-list span");
-
-            function showSlide(index) {
-                images.forEach((img, i) => {
-                    img.style.opacity = i === index ? "1" : "0";
-                });
-
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle("spcss", i === index);
-                });
-
-                currentIndex = index;
-            }
-
-            leftBtn.addEventListener("click", () => {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showSlide(currentIndex);
-            });
-
-            rightBtn.addEventListener("click", () => {
-                currentIndex = (currentIndex + 1) % images.length;
-                showSlide(currentIndex);
-            });
-
-            // 自动轮播
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % images.length;
-                showSlide(currentIndex);
-            }, 5000); // 5秒切换一次
         });
-    </script>
+    };
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-7VRDNYTJ1Y');
-    </script>
+    // 监听页面滚动和加载
+    window.addEventListener("scroll", lazyLoad);
+    window.addEventListener("resize", lazyLoad);
+    lazyLoad(); // 初次执行
+});
+</script>
 
 </body>
 </html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-7VRDNYTJ1Y');
+</script>
