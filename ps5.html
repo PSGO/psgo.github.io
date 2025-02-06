@@ -441,7 +441,8 @@ function handleVersionUpdate(buttonId, version) {
       clicked: false
     }));
 
-    button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
+    <!-- button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`; -->
+    button.innerHTML += ` ${version}`;//首次展示不要小红点
     bindClickEvent(button, buttonId, version);
     return;
   }
