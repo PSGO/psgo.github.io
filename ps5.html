@@ -530,7 +530,7 @@ function bindClickEvent(button, buttonId, version) {
 			button.disabled = true;
 		} else {
 			// 如果今天还未签到
-			button.innerHTML = `<font color="">今日份打卡 求稳!</font>`;
+			button.innerHTML = `<font color="">今日份打卡 求稳!</font><span class="dot"></span>`;
 			button.disabled = false; // 启用按钮
 			button.onclick = () => {
 				// 点击签到按钮时
