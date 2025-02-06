@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预览效果 - PSGO.eu.org</title>
+    <link rel="shortcut icon" href="https://psgo.eu.org/psgo.ico">
+    <style>
+        * { margin: 0; padding: 0; }
+        html, body { height: 100%; background-color: #202125; overflow-x: hidden; }
+        
+        .banner { width: 100%; height: 100vh; position: relative; overflow: hidden; }
+        .b-img { width: 100%; height: 100%; position: absolute; display: flex; }
+        .b-img a { display: block; width: 100%; height: 100%; flex: 1; background-size: cover; background-position: center; transition: opacity 0.5s; }
+        
+        .b-list { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; }
+        .b-list span { width: 14px; height: 14px; border-radius: 50%; border: 3px solid #fff; margin: 0 5px; cursor: pointer; }
+        .b-list .spcss { border-color: #603bcc; }
+        
+        .bar-left, .bar-right { position: absolute; top: 50%; width: 50px; height: 50px; background: rgba(255, 255, 255, 0.5); cursor: pointer; text-align: center; line-height: 50px; font-size: 24px; font-weight: bold; color: #000; user-select: none; border-radius: 50%; }
+        .bar-left { left: 10px; }
+        .bar-right { right: 10px; }
+        
+        .bar-left:hover, .bar-right:hover { background: rgba(255, 255, 255, 0.8); }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <div class="b-img">
+            <!-- 第一张默认加载，其他使用 data-bg 懒加载 -->
+            <a class="lazy" style="background: url('images/1-y.webp') center no-repeat;" data-bg="images/1-y.webp"></a>
+            <a class="lazy" data-bg="images/2-y.webp"></a>
+            <a class="lazy" data-bg="images/3-y.webp"></a>
+            <a class="lazy" data-bg="images/4-y.webp"></a>
+            <a class="lazy" data-bg="images/5-y.webp"></a>
+            <a class="lazy" data-bg="images/6-y.webp"></a>
+            <a class="lazy" data-bg="images/7-y.webp"></a>
+            <a class="lazy" data-bg="images/8-y.webp"></a>
+            <a class="lazy" data-bg="images/9-y.webp"></a>
+        </div>
+        <div class="b-list"></div>
+        <div class="bar-left">&#9664;</div>
+        <div class="bar-right">&#9654;</div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let lazyImages = document.querySelectorAll(".lazy");
+            
+            function lazyLoad() {
+                lazyImages.forEach(img => {
+                    if (img.dataset.bg && img.getBoundingClientRect().top < window.innerHeight) {
+                        img.style.background = `url(${img.dataset.bg}) center no-repeat`;
+                        img.style.backgroundSize = "cover";
+                        img.removeAttribute("data-bg"); // 加载后移除属性
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", lazyLoad);
+            window.addEventListener("resize", lazyLoad);
+            lazyLoad(); // 初次执行
+
+            // 轮播功能
+            let currentIndex = 0;
+            const images = document.querySelectorAll(".b-img a");
+            const dotsContainer = document.querySelector(".b-list");
+            const leftBtn = document.querySelector(".bar-left");
+            const rightBtn = document.querySelector(".bar-right");
+
+            // 创建指示点
+            images.forEach((_, i) => {
+                let dot = document.createElement("span");
+                if (i === 0) dot.classList.add("spcss"); // 默认选中第一个
+                dot.addEventListener("click", () => showSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll(".b-list span");
+
+            function showSlide(index) {
+                images.forEach((img, i) => {
+                    img.style.opacity = i === index ? "1" : "0";
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("spcss", i === index);
+                });
+
+                currentIndex = index;
+            }
+
+            leftBtn.addEventListener("click", () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showSlide(currentIndex);
+            });
+
+            rightBtn.addEventListener("click", () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                showSlide(currentIndex);
+            });
+
+            // 自动轮播
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                showSlide(currentIndex);
+            }, 5000); // 5秒切换一次
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7VRDNYTJ1Y');
+    </script>
+
+</body>
+</html>
