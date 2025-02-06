@@ -7,6 +7,7 @@ const ASSETS = [
     '/switch.png',
     '/bg.jpg',
     '/css/pc.css',
+    '/ps5-ver.js',
     '/psgo.ico'
 	
 ];
