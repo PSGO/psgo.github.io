@@ -32,7 +32,7 @@
 <button type="button" id="24hours" onmousedown="this.querySelector('.dot')?.remove()" onclick="window.open('https://24.psgo.eu.org/')";><font color=""> 24小时</font></button>
 <button type="button" onclick="window.open('update.html')";><font color=""> 更新</font></button>
 <button type="button" onclick="window.open('jiaocheng.html')";><font color=""> 新手教程和减少死机</font></button>
-<button type="button" id="B-里程碑" onclick="window.open('https://ps5jb.psgo.eu.org/')";><font color=""> 里程碑</font><span class="dot"></span></button>
+<button type="button" id="jailbreak" onmousedown="this.querySelector('.dot')?.remove()" onclick="window.open('https://ps5jb.psgo.eu.org/')";><font color=""> 里程碑</font></button>
 <button type="button" onclick="window.open('https://psgo.pages.dev/xiaoguotu/')";><font color=""> 预览</font></button>
 </td></tr>
 
@@ -300,13 +300,14 @@
 
 </body>
 </html>
-  <!-- 版本号 -->
+<!-- 版本号 -->
 <script>
 let hasExecuted = false;
 const threshold = 0; //默认200
 let pkgData = null;
 let releasesData = null;
 
+fetchVersionData();//暂时使用及时加载
 <!-- function checkScrollAndExecute() { -->
   <!-- if (window.scrollY >= threshold && !hasExecuted) { -->
     <!-- hasExecuted = true; -->
@@ -316,27 +317,32 @@ let releasesData = null;
 
 <!-- window.addEventListener('scroll', checkScrollAndExecute); -->
 
-fetchVersionData();//暂时使用及时加载
-
 async function fetchVersionData() {
   const pkgURL = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
   const releasesURL = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
+  const jailbreakURL = decodeBase64('aHR0cHM6Ly9wczVqYi5wc2dvLmV1Lm9yZy9wczVfaGFja19kYXRlLnR4dA==');
 
   try {
-    const [newPkgData, newReleasesData] = await Promise.all([
+    const [newPkgData, newReleasesData, newJailbreakData] = await Promise.all([
       fetchWithRetry(pkgURL),
-      fetchWithRetry(releasesURL)
+      fetchWithRetry(releasesURL),
+      fetchWithRetry(jailbreakURL)
     ]);
 
     const oldPkgData = JSON.parse(localStorage.getItem('pkgData') || '[]');
     const oldReleasesData = JSON.parse(localStorage.getItem('releasesData') || '[]');
+    const oldJailbreakData = JSON.parse(localStorage.getItem('jailbreakData') || '[]');
 
     if (!arraysEqual(newPkgData, oldPkgData) || !arraysEqual(newReleasesData, oldReleasesData)) {
-      mark24HoursButton();
+      markButton('24hours');
+    }
+    if (!arraysEqual(newJailbreakData, oldJailbreakData)) {
+      markButton('jailbreak');
     }
 
     localStorage.setItem('pkgData', JSON.stringify(newPkgData));
     localStorage.setItem('releasesData', JSON.stringify(newReleasesData));
+    localStorage.setItem('jailbreakData', JSON.stringify(newJailbreakData));
 
     pkgData = newPkgData;
     releasesData = newReleasesData;
@@ -352,15 +358,15 @@ function arraysEqual(arr1, arr2) {
   return JSON.stringify(arr1) === JSON.stringify(arr2);
 }
 
-// 给 id="24hours" 的按钮添加标记
-function mark24HoursButton() {
-  const btn = document.getElementById('24hours');
+// 给指定 id 的按钮添加标记
+function markButton(buttonId) {
+  const btn = document.getElementById(buttonId);
   if (btn) {
     btn.insertAdjacentHTML('beforeend', ' <span class="dot"></span>');
   }
 }
 
-//带重试fetch
+// 带重试 fetch
 async function fetchWithRetry(url, retries = 1) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -380,7 +386,7 @@ function decodeBase64(encoded) {
   return atob(encoded);
 }
 
-//PKG以P-识别，Github发布包以R-识别
+//PKG 以 P- 识别，Github 发布包以 R- 识别
 function updateButtonsWithVersion() {
   document.querySelectorAll('[id^="P-"], [id^="R-"]').forEach(button => {
     updateButtonWithVersion(button.id);
@@ -445,6 +451,7 @@ function handleVersionUpdate(buttonId, version) {
     bindClickEvent(button, buttonId, version);
     return;
   }
+
   //1天 86400000 2天 172800000 3天 259200000 7天 604800000
   if (!clicked && currentTime - storedTime < 172800000) {
     button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
@@ -469,6 +476,7 @@ function bindClickEvent(button, buttonId, version) {
   }
 }
 </script>
+
 
 <!-- 悟空动态壁纸 -->
 <video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
