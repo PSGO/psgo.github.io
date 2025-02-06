@@ -491,7 +491,16 @@ function bindClickEvent(button, buttonId, version) {
 }
 </script>
 
-
+//调用缓存，适用于大文件比如背景图
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+        console.log('Service Worker 注册成功', reg);
+    }).catch(function(err) {
+        console.log('Service Worker 注册失败', err);
+    });
+}
+</script>
 <!-- 悟空动态壁纸 -->
 <video poster="img_bg_title.png" loop="loop" preload="auto" muted="muted" autoplay="autoplay" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5-page" x5-video-orientation="h5" x5-video-player-fullscreen="true" x5-video-ignore-metadata="true"><source src="video_WebTitle_batch.mp4" type="video/mp4"> 您的浏览器不支持本视频播放，请尝试换一个浏览器或升级到最新版本 </video>
 <a style="text-decoration:none;" href="https://www.heishenhua.com/video/b1/PV05Full_ZH.mp4" target="_blank"><div style="position: fixed;right: 20px;bottom: 20px;z-index: 999;width:220px"><img style="width:100%"src="img_logo_a.png"></div></a>
