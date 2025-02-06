@@ -14,15 +14,6 @@
       window.location.href = "ps4.html";
     }
   </script>
-  <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/index-sw.js').then(function(reg) {
-            console.log('Service Worker 注册成功', reg);
-        }).catch(function(err) {
-            console.log('Service Worker 注册失败', err);
-        });
-    }//调用缓存，适用于大文件比如背景图
-  </script>
   <style>
     /* 默认样式 */
     html, body {
@@ -132,6 +123,15 @@
       </div>
     </div>
   </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/index-sw.js').then(function(reg) {
+            console.log('Service Worker 注册成功', reg);
+        }).catch(function(err) {
+            console.log('Service Worker 注册失败', err);
+        });
+    }//调用缓存，适用于大文件比如背景图
+  </script>  
 </body>
 </html>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
