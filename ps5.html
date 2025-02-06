@@ -20,16 +20,11 @@
   <br>
   <table align="center"> 
 
+<tr><td><br></td></tr>
+
 <tr><td align="center">
 <button id="button666" type="button"><font color="">今日份打卡 求稳!</font></button>
-</button>
-</td></tr>
-
-<tr><td><br><br></td></tr> 
-
-<tr><td align="center">
-<button type="button" onclick="window.open('aio/')";><font color=""> All in One </font></button>
-<button type="button" onclick="window.open('https://psgo.lanzoub.com/i9pET1kyeq5g')";><font color=""> AIO PKG </font>
+<button type="button" onclick="window.open('https://liuyan.psgo.eu.org/')";><font color=""> 留言反馈 </font></button>
 </button>
 </td></tr>
 
@@ -41,7 +36,7 @@
 <button type="button" onclick="window.open('https://psgo.pages.dev/xiaoguotu/')";><font color=""> 预览</font></button>
 </td></tr>
 
-<tr><td><br><br><br></td></tr>
+<tr><td><br><br><br><br></td></tr>
 
 <tr><td><font style="font-size:20px;text-align:center;color:#dcddde;">日常使用离线缓存PKG！支持4.03、4.50、4.51，兼容3.00-4.51</font></td></tr>
 
@@ -62,6 +57,12 @@
 <tr><td align="center">
 <button type="button" onclick="window.open('https://psgo.lanzoub.com/i4hJ01m6tvwh')";><font color="">idlesauce IPv6 原链 PKG</font></button>
 <button type="button" onclick="window.open('https://psgo.lanzoub.com/i6ZM92j461ra')";><font color="">idlesauce UMTX 原链 PKG</font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('aio/')";><font color=""> All in One 预览</font></button>
+<button type="button" onclick="window.open('https://psgo.lanzoub.com/i9pET1kyeq5g')";><font color=""> AIO .PKG </font>
+</button>
 </td></tr>
 
 <tr><td><br><br><br><br><br></td></tr>
@@ -87,7 +88,7 @@
 
 <tr><td><div id="esp"><div><br><br><br><br><br></td></tr>
 
-<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> ESP折腾</font></td></tr>
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> ESP 折腾</font></td></tr>
 <tr><td align="center">
 <button type="button" id="B-网页刷机工具v2" onclick="window.open('esptoolv2/')";><font color=""> 网页刷机工具 v2</font><span class="dot"></span></button>
 <button type="button" id="B-安卓烧录工具" onclick="window.open('https://psgo.lanzoub.com/izN5i2jjny4h')";><font color=""> 安卓烧录工具</font><span class="dot"></span></button>
@@ -140,7 +141,7 @@
 
 <tr><td><br><br><br><br><br></td></tr>
 
-<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 常用自制应用 </font></td></tr>
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 常用FPKG </font></td></tr>
 
 <tr><td align="center">
 <button type="button" onclick="window.open('https://github.com/PSGO/Itemzflow-PS5-CN/releases')";><font color="">ItemzFlow 游戏管理器 中文版</font></button>
@@ -210,7 +211,7 @@
 
 <tr><td><br><br><br><br><br></td></tr>
 
-<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 工具 </font></td></tr>
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 工具集 </font></td></tr>
 
 <tr><td align="center">
 <button type="button" onclick="window.open('https://www.filezilla.cn/download/client')";><font color=""> FTP文件传输工具 FileZilla </font></button>
@@ -292,8 +293,8 @@
    <a href="http://game.psgo.eu.org/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">资源导航</a> &nbsp;·&nbsp; 
    <a href="https://x.com/psgocn" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">关注推特</a> &nbsp;·&nbsp; 
    <a href="https://t.me/PSGO_Channel" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">加入电报</a> &nbsp;·&nbsp; 
-   <a href="https://dszz.pages.dev/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">打赏赞助</a> &nbsp;·&nbsp;  
-   <a href="disclaimer.html" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">免责声明</a>
+   <a href="disclaimer.html" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">免责声明</a> &nbsp;·&nbsp;  
+   <a href="https://liuyan.psgo.eu.org/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">留言反馈</a>
    
   </div> 
 
@@ -514,7 +515,7 @@ function bindClickEvent(button, buttonId, version) {
 			button.disabled = true;
 		} else {
 			// 如果今天还未签到
-			button.innerHTML = `<font color="">今日份签到 求稳!</font>`;
+			button.innerHTML = `<font color="">今日份打卡 求稳!</font>`;
 			button.disabled = false; // 启用按钮
 			button.onclick = () => {
 				// 点击签到按钮时
