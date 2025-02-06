@@ -292,40 +292,15 @@ body{
    <a href="https://liuyan.psgo.eu.org/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">留言反馈</a>
    <!-- <a href="https://www.psgo.tk/donate/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;"> -->
   </div> 
-  <div style="display:none" class="tiles"> 
-   <div class="tiles__line"> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img"></div> 
-   </div> 
-   <div class="tiles__line"> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-   </div> 
-   <div class="tiles__line"> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-    <div class="tiles__line-img"></div> 
-   </div> 
-   <div class="tiles__line"> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img"></div> 
-    <div class="tiles__line-img tiles__line-img--large"></div> 
-    <div class="tiles__line-img"></div> 
-   </div>  
-  </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/index-sw.js').then(function(reg) {
+            console.log('Service Worker 注册成功', reg);
+        }).catch(function(err) {
+            console.log('Service Worker 注册失败', err);
+        });
+    }//调用缓存，适用于大文件比如背景图
+  </script>   
  <!-- <link rel="stylesheet" href="css/yanhua.css"> -->
  </body>
 </html>
