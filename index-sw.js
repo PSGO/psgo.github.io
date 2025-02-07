@@ -1,4 +1,4 @@
-const CACHE_NAME = 'index-20250207-2'; // 更新资源文件，缓存只需要改变名称字符
+const CACHE_NAME = 'index-20250207-3'; // 确保更改缓存名称以触发更新
 const ASSETS = [
     '/img_bg_title.png',
     '/img_logo_a.png',
@@ -14,44 +14,57 @@ const ASSETS = [
 
 // 安装 Service Worker 并缓存资源
 self.addEventListener('install', event => {
-    self.skipWaiting(); // 立即启用新的 Service Worker
+    console.log('[Service Worker] Installing...');
+    self.skipWaiting(); // 立即启用新 Service Worker
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
+            console.log('[Service Worker] Caching assets...');
             return cache.addAll(ASSETS);
-        })
+        }).catch(err => console.error('[Service Worker] Cache install error:', err))
     );
 });
 
-// 激活新 Service Worker 并删除旧缓存
+// 激活 Service Worker 并清除旧缓存
 self.addEventListener('activate', event => {
+    console.log('[Service Worker] Activating...');
     event.waitUntil(
         caches.keys().then(keys => {
-            return Promise.all(keys.map(key => {
-                if (key !== CACHE_NAME) {
-                    return caches.delete(key);
-                }
-            }));
+            return Promise.all(
+                keys.map(key => {
+                    if (key !== CACHE_NAME) {
+                        console.log(`[Service Worker] Deleting old cache: ${key}`);
+                        return caches.delete(key);
+                    }
+                })
+            );
         }).then(() => {
-            self.clients.claim(); // 立即控制所有页面
+            console.log('[Service Worker] Claiming clients...');
+            return self.clients.claim(); // 立即控制页面
         })
     );
 });
 
-// 拦截请求，缓存优先 + 动态更新
+// 监听 fetch 事件，优先使用缓存，并确保资源动态更新
 self.addEventListener('fetch', event => {
-    // 只缓存静态资源，API 请求始终走网络
-    if (ASSETS.includes(new URL(event.request.url).pathname)) {
+    const requestUrl = new URL(event.request.url);
+    
+    // 只处理我们定义的 ASSETS 资源
+    if (ASSETS.includes(requestUrl.pathname)) {
         event.respondWith(
             caches.match(event.request).then(response => {
                 return response || fetch(event.request).then(networkResponse => {
                     return caches.open(CACHE_NAME).then(cache => {
                         cache.put(event.request, networkResponse.clone()); // 更新缓存
+                        console.log(`[Service Worker] Cached updated: ${event.request.url}`);
                         return networkResponse;
                     });
                 });
+            }).catch(error => {
+                console.error('[Service Worker] Fetch failed:', error);
+                return new Response('Offline', { status: 503, statusText: 'Service Unavailable' });
             })
         );
     } else {
-        event.respondWith(fetch(event.request)); // API 请求不缓存
+        event.respondWith(fetch(event.request));
     }
 });
