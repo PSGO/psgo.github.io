@@ -1,0 +1,176 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+<title>资源链接Base64加解密工具 - PSGO.eu.org</title>
+<style> 
+.btn {
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+    margin:0px 20px 0px 0px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#CFB53B;
+    box-shadow:0 5px 0 #888888;
+} 
+
+.btn:hover {
+    color: #CFB53B;
+    font-size:22px;
+    background:#161616;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+} 
+
+.btn:active {
+    background:#CFB53B;
+    position:relative;
+    color:#000;
+    top:5px;
+    box-shadow:none
+}
+
+textarea {
+    font-family: arial;
+    border-radius: 8px;
+    padding: 12px 12px;
+    color: white;
+    width:100%;
+    height:260px;
+    resize:none;
+    font-size:18px;
+    background-color:#181818;
+    border: 3px solid #CFB53B;
+}
+textarea:focus {
+    outline:none;
+    border:4px solid #CFB53B;
+}
+</style> 
+</head>
+
+<body style="background-color:#181818;">
+
+<div style="margin:60 auto;width:700px">
+  <h1 style="font-size:38px"><font color="#CFB53B">资源链接加解密工具 - PSGO.eu.org</font></h1> 
+  <div>
+    <textarea spellcheck="false" id="input" rows="6" placeholder="请在这里输入想要加密或解密的文本内容
+
+例如游戏链接地址、折腾资源地址、文字说明等敏感信息，避免被不相关的无辜群众轻易看到明文链接并举报，也能避开各平台禁发链接地址的要求，也将防止搜索引擎或者爬虫工具抓取分析禁用链接。
+	
+本工具基于Base64通用编码算法，在全球游戏资源圈已成熟运用，适用于Reddit、TG等众多资源。"></textarea>
+  </div>
+  <div style="margin:30 0;">
+    <input type="button" class="btn" onclick="normal_encode();" value="加密">
+    <input type="button" class="btn" onclick="normal_decode();" value="解密">
+    <input type="button" id="clearBtn" onclick="ClearTextArea();" value="清空" class="btn" style="display:none;">
+	<input type="button" id="copyBtn" onclick="CopyTextArea();" value="复制结果" class="btn" style="display:none;">
+  </div>
+  <pre style="white-space: pre-wrap;word-wrap: break-word;margin:30px 0px;">
+    <div style="font-family: arial;color: #CFB53B;width:700px;height:auto;resize:none;font-size:20px;background-color:#181818;" id="output">加密或解密后的结果将会显示在这里</div>
+  </pre>
+</div>
+
+<script>
+function normal_encode() {
+    var raw = document.getElementById("input").value.trim();
+    if (!raw) {
+        document.getElementById("output").innerText = "输入内容不能为空！";
+        hideCopyButton();
+        return;
+    }
+    var encoded = btoa(unescape(encodeURIComponent(raw)));
+    document.getElementById("output").innerText = encoded;
+    showClearButton();
+    showCopyButton();
+}
+
+function normal_decode() {
+    var raw = document.getElementById("input").value.trim();
+    if (!raw) {
+        document.getElementById("output").innerText = "输入内容不能为空！";
+        hideCopyButton();
+        return;
+    }
+    try {
+        var decoded = decodeURIComponent(escape(atob(raw)));
+        document.getElementById("output").innerText = decoded;
+        showCopyButton();
+    } catch (e) {
+        document.getElementById("output").innerText = "解码失败: 无效的Base64输入";
+        hideCopyButton();
+    }
+    showClearButton(); // 解码失败时也应显示清空按钮
+}
+
+function ClearTextArea() {
+    document.getElementById("input").value = "";
+    document.getElementById("output").innerText = "加密或解密后的结果将会显示在这里";
+    hideClearButton();
+    hideCopyButton();
+}
+
+function CopyTextArea() {
+    var outputText = document.getElementById("output").innerText.trim();
+    if (!outputText || outputText === "加密或解密后的结果将会显示在这里" || outputText === "输入内容不能为空！") {
+        alert("复制内容为空，请先输入并进行编码/解码！");
+        return;
+    }
+
+    var textArea = document.createElement("textarea");
+    textArea.value = outputText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+
+    alert("复制成功！\n\n让折腾圈子能走的更长远，把这个加密解密的骚操作教给你熟悉的机友哦");
+}
+
+// 显示/隐藏按钮
+function showClearButton() {
+    document.getElementById("clearBtn").style.display = "inline-block";
+}
+
+function showCopyButton() {
+    document.getElementById("copyBtn").style.display = "inline-block";
+}
+
+function hideClearButton() {
+    document.getElementById("clearBtn").style.display = "none";
+}
+
+function hideCopyButton() {
+    document.getElementById("copyBtn").style.display = "none";
+}
+
+// 监听输入框内容，输入时自动显示“清空”按钮
+document.getElementById("input").addEventListener("input", function() {
+    var inputContent = this.value.trim();
+    if (inputContent) {
+        showClearButton();
+    } else {
+        hideClearButton();
+        hideCopyButton();
+    }
+});
+
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>
+
+</body>
+</html>
