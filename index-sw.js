@@ -1,4 +1,4 @@
-const CACHE_NAME = 'index-20250207'; // 更新资源文件，缓存只需要改变名称字符
+const CACHE_NAME = 'index-20250207-2'; // 更新资源文件，缓存只需要改变名称字符
 const ASSETS = [
     '/img_bg_title.png',
     '/img_logo_a.png',
