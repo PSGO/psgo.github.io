@@ -1,5 +1,5 @@
 const BUTTONS = ["24hours", "jailbreak"];
-const EXPIRY_TIME = 86400000; //1天 86400000 2天 172800000 3天 259200000 7天 604800000 1.5天应该最佳
+const EXPIRY_TIME = 86400000; //1天 86400000 2天 172800000 3天 259200000 7天 604800000
 let pkgData = null;
 let releasesData = null;
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'index-20250207-3'; // 确保更改缓存名称以触发更新
+const CACHE_NAME = 'index-20250207-5'; // 确保更改缓存名称以触发更新
 const ASSETS = [
     '/img_bg_title.png',
     '/img_logo_a.png',
