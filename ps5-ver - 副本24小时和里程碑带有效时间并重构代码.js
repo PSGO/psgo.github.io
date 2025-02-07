@@ -1,9 +1,17 @@
-const BUTTONS = ["24hours", "jailbreak"];
-const EXPIRY_TIME = 86400000; //1天 86400000 2天 172800000 3天 259200000 7天 604800000
+let hasExecuted = false;
+const threshold = 0; //默认200
 let pkgData = null;
 let releasesData = null;
 
-fetchVersionData(); // 暂时使用即时加载
+fetchVersionData();//暂时使用及时加载
+<!-- function checkScrollAndExecute() { -->
+  <!-- if (window.scrollY >= threshold && !hasExecuted) { -->
+    <!-- hasExecuted = true; -->
+    <!-- fetchVersionData(); -->
+  <!-- } -->
+<!-- } -->
+
+<!-- window.addEventListener('scroll', checkScrollAndExecute); -->
 
 async function fetchVersionData() {
   const pkgURL = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
@@ -46,7 +54,11 @@ function arraysEqual(arr1, arr2) {
   return JSON.stringify(arr1) === JSON.stringify(arr2);
 }
 
-// 记录小红点的显示时间
+// 
+const BUTTONS = ["24hours", "jailbreak"];
+const EXPIRY_TIME = 86400000; //1天 86400000 2天 172800000 3天 259200000 7天 604800000
+
+// 记录小红点的显示时间（假设后台调用此函数来触发更新）
 function markButton(buttonId) {
   const currentTime = Date.now();
   localStorage.setItem(`updateTime-${buttonId}`, currentTime); // 记录更新时间
@@ -97,7 +109,8 @@ BUTTONS.forEach(buttonId => {
   }
 });
 
-// 带重试的 fetch 请求
+
+// 带重试 fetch
 async function fetchWithRetry(url, retries = 1) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -117,7 +130,7 @@ function decodeBase64(encoded) {
   return atob(encoded);
 }
 
-// PKG 以 P- 识别，Github 发布包以 R- 识别
+//PKG 以 P- 识别，Github 发布包以 R- 识别
 function updateButtonsWithVersion() {
   document.querySelectorAll('[id^="P-"], [id^="R-"]').forEach(button => {
     updateButtonWithVersion(button.id);
@@ -183,8 +196,8 @@ function handleVersionUpdate(buttonId, version) {
     return;
   }
 
-  // 检查是否过期
-  if (!clicked && currentTime - storedTime < EXPIRY_TIME) {
+  //1天 86400000 2天 172800000 3天 259200000 7天 604800000
+  if (!clicked && currentTime - storedTime < 86400000) {
     button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
     bindClickEvent(button, buttonId, version);
     return;

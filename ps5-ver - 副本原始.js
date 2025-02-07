@@ -1,9 +1,17 @@
-const BUTTONS = ["24hours", "jailbreak"];
-const EXPIRY_TIME = 86400000; //1天 86400000 2天 172800000 3天 259200000 7天 604800000
+let hasExecuted = false;
+const threshold = 0; //默认200
 let pkgData = null;
 let releasesData = null;
 
-fetchVersionData(); // 暂时使用即时加载
+fetchVersionData();//暂时使用及时加载
+<!-- function checkScrollAndExecute() { -->
+  <!-- if (window.scrollY >= threshold && !hasExecuted) { -->
+    <!-- hasExecuted = true; -->
+    <!-- fetchVersionData(); -->
+  <!-- } -->
+<!-- } -->
+
+<!-- window.addEventListener('scroll', checkScrollAndExecute); -->
 
 async function fetchVersionData() {
   const pkgURL = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
@@ -46,58 +54,15 @@ function arraysEqual(arr1, arr2) {
   return JSON.stringify(arr1) === JSON.stringify(arr2);
 }
 
-// 记录小红点的显示时间
+// 给指定 id 的按钮添加标记
 function markButton(buttonId) {
-  const currentTime = Date.now();
-  localStorage.setItem(`updateTime-${buttonId}`, currentTime); // 记录更新时间
-  localStorage.removeItem(`clicked-${buttonId}`); // 允许小红点重新出现
-
-  const btn = document.getElementById(buttonId);
-  if (btn && !btn.querySelector(".dot")) {
-    btn.insertAdjacentHTML("beforeend", ` <span class="dot" id="dot-${buttonId}"></span>`);
-  }
-}
-
-// 用户点击按钮后移除小红点，并记录已点击
-function handleButtonClick(buttonId) {
-  localStorage.setItem(`clicked-${buttonId}`, "true");
-
-  const dotElem = document.getElementById(`dot-${buttonId}`);
-  if (dotElem) {
-    dotElem.remove();
-  }
-}
-
-// 页面加载时恢复小红点状态
-function restoreDots() {
-  const currentTime = Date.now();
-
-  BUTTONS.forEach(buttonId => {
-    const lastUpdateTime = parseInt(localStorage.getItem(`updateTime-${buttonId}`), 10) || 0;
-    const isClicked = localStorage.getItem(`clicked-${buttonId}`) === "true";
-
-    // 小红点显示条件：未点击 & 更新时间未过期
-    if (!isClicked && lastUpdateTime && (currentTime - lastUpdateTime <= EXPIRY_TIME)) {
-      const btn = document.getElementById(buttonId);
-      if (btn && !btn.querySelector(".dot")) {
-        btn.insertAdjacentHTML("beforeend", ` <span class="dot" id="dot-${buttonId}"></span>`);
-      }
-    }
-  });
-}
-
-// 页面初始化
-restoreDots();
-
-// 绑定点击事件（确保按钮存在）
-BUTTONS.forEach(buttonId => {
   const btn = document.getElementById(buttonId);
   if (btn) {
-    btn.addEventListener("click", () => handleButtonClick(buttonId));
+    btn.insertAdjacentHTML('beforeend', ' <span class="dot"></span>');
   }
-});
+}
 
-// 带重试的 fetch 请求
+// 带重试 fetch
 async function fetchWithRetry(url, retries = 1) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -117,7 +82,7 @@ function decodeBase64(encoded) {
   return atob(encoded);
 }
 
-// PKG 以 P- 识别，Github 发布包以 R- 识别
+//PKG 以 P- 识别，Github 发布包以 R- 识别
 function updateButtonsWithVersion() {
   document.querySelectorAll('[id^="P-"], [id^="R-"]').forEach(button => {
     updateButtonWithVersion(button.id);
@@ -183,8 +148,8 @@ function handleVersionUpdate(buttonId, version) {
     return;
   }
 
-  // 检查是否过期
-  if (!clicked && currentTime - storedTime < EXPIRY_TIME) {
+  //1天 86400000 2天 172800000 3天 259200000 7天 604800000
+  if (!clicked && currentTime - storedTime < 172800000) {
     button.innerHTML += ` ${version} <span class="dot" id="dot-${buttonId}"></span>`;
     bindClickEvent(button, buttonId, version);
     return;
