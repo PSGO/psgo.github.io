@@ -54,7 +54,7 @@ const payload_map = [
         supportedFirmwares: ["5."]
     },
     {
-        displayTitle: "etaHEN2.0-pre2-9021",
+        displayTitle: "etaHEN2.0b-9021",
         description: "AIO HEN",
         fileName: "etaHEN.bin",
         author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
@@ -65,7 +65,7 @@ const payload_map = [
         toPort: 9021
     },    
 	{
-        displayTitle: "etaHEN2.0-pre2-9020",
+        displayTitle: "etaHEN2.0b-9020",
         description: "AIO HEN",
         fileName: "etaHEN.bin",
         author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
