@@ -42,7 +42,7 @@ const payload_map = [
         version: "47a6ae7",
         supportedFirmwares: ["5."],
         toPort: 9021
-    },    
+    },
 	{
         displayTitle: "ps5-kstuff-9020",
         description: "FPKG enabler",
@@ -60,10 +60,10 @@ const payload_map = [
         author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
         projectSource: "https://github.com/LightningMods/etaHEN",
         binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
-        version: "1.9b",
+        version: "2.0b",
         supportedFirmwares: ["5."],
         toPort: 9021
-    },    
+    },
 	{
         displayTitle: "etaHEN2.0b-9020",
         description: "AIO HEN",
@@ -71,7 +71,7 @@ const payload_map = [
         author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
         projectSource: "https://github.com/LightningMods/etaHEN",
         binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
-        version: "1.9b",
+        version: "2.0b",
         supportedFirmwares: ["5."]
     },
     {
