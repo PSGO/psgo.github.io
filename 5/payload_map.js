@@ -33,7 +33,18 @@ const payload_map = [
     // etaHEN is added twice so that on 1.xx-2.xx you can load it in webkit only mode too
     // but on 3.xx-4.xx it only shows in kernel exploit mode since it needs the 9020 elf loader for kstuff
     {
-        displayTitle: "ps5-kstuff",
+        displayTitle: "ps5-kstuff-9021",
+        description: "FPKG enabler",
+        fileName: "kstuff.elf",
+        author: "sleirsgoevy, EchoStretch", 
+        projectSource: "https://github.com/EchoStretch/Byepervisor",
+        binarySource: "https://github.com/EchoStretch/Byepervisor/actions/runs/12567456429",
+        version: "47a6ae7",
+        supportedFirmwares: ["5."],
+        toPort: 9021
+    },    
+	{
+        displayTitle: "ps5-kstuff-9020",
         description: "FPKG enabler",
         fileName: "kstuff.elf",
         author: "sleirsgoevy",
@@ -43,15 +54,25 @@ const payload_map = [
         supportedFirmwares: ["5."]
     },
     {
-        displayTitle: "ps5-kstuff",
-        description: "FPKG enabler",
-        fileName: "kstuff.elf",
-        author: "sleirsgoevy, EchoStretch", 
-        projectSource: "https://github.com/EchoStretch/Byepervisor",
-        binarySource: "https://github.com/EchoStretch/Byepervisor/actions/runs/12567456429",
-        version: "47a6ae7",
+        displayTitle: "etaHEN2.0-pre2-9021",
+        description: "AIO HEN",
+        fileName: "etaHEN.bin",
+        author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
+        projectSource: "https://github.com/LightningMods/etaHEN",
+        binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
+        version: "1.9b",
         supportedFirmwares: ["5."],
         toPort: 9021
+    },    
+	{
+        displayTitle: "etaHEN2.0-pre2-9020",
+        description: "AIO HEN",
+        fileName: "etaHEN.bin",
+        author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
+        projectSource: "https://github.com/LightningMods/etaHEN",
+        binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
+        version: "1.9b",
+        supportedFirmwares: ["5."]
     },
     {
         displayTitle: "libhijacker game-patch",
