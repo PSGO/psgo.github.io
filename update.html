@@ -884,7 +884,7 @@ Itemzflow 1.05 变更日志：
 			return true;
 		}
 
-		const oneWeekInMillis = 7 * 24 * 60 * 60 * 1000;
+		const oneWeekInMillis = 2 * 7 * 24 * 60 * 60 * 1000; //每2周弹一次
 		const currentTime = new Date().getTime();
 		return currentTime - lastShown > oneWeekInMillis;
 	}
