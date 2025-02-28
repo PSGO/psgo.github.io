@@ -47,10 +47,59 @@
 	
 <!-- } -->
 <!-- </script> -->
-  
+    <style>
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 48px; 
+            background: none;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1;
+            transition: opacity 0.3s ease;
+        }
+        #scrollToTopBtn.show {
+            display: block;
+        }
+    </style> 
  <head>
  
  <body style="background-color:#181818;">
+    <!-- 滚动到顶部按钮 -->
+    <button id="scrollToTopBtn" title="回到顶部">⬆️</button>
+
+    <script>
+        // 获取按钮元素
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // 监听滚动事件
+        window.onscroll = function() {
+            // 如果滚动条滚动了200px，显示按钮
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scrollToTopBtn.classList.add("show");
+            } else {
+                scrollToTopBtn.classList.remove("show");
+            }
+        };
+
+        // 点击按钮时滚动到页面顶部并隐藏按钮
+        scrollToTopBtn.onclick = function() {
+            // 平滑滚动到顶部
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // 平滑滚动
+            });
+
+            // 隐藏按钮
+            setTimeout(() => {
+                scrollToTopBtn.classList.remove("show");
+            }, 300); // 等待滚动动画结束后隐藏按钮
+        };
+    </script>
 <!-- <div style="font-size:16px;color:white;">
 <pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
 带原样式，用于展示原作者更新说明，可以插入p之间
