@@ -33,7 +33,7 @@ const payload_map = [
     // etaHEN is added twice so that on 1.xx-2.xx you can load it in webkit only mode too
     // but on 3.xx-4.xx it only shows in kernel exploit mode since it needs the 9020 elf loader for kstuff
     {
-        displayTitle: "ps5-kstuff-9021",
+        displayTitle: "510-kstuff-9021",
         description: "FPKG enabler",
         fileName: "kstuff.elf",
         author: "sleirsgoevy, EchoStretch", 
@@ -44,7 +44,7 @@ const payload_map = [
         toPort: 9021
     },
 	{
-        displayTitle: "ps5-kstuff-9020",
+        displayTitle: "510-kstuff-9020",
         description: "FPKG enabler",
         fileName: "kstuff.elf",
         author: "sleirsgoevy",
@@ -54,7 +54,28 @@ const payload_map = [
         supportedFirmwares: ["5."]
     },
     {
-        displayTitle: "etaHEN2.0b-9021",
+        displayTitle: "550-kstuff-9021",
+        description: "FPKG enabler",
+        fileName: "kstuff550.elf",
+        author: "sleirsgoevy, EchoStretch", 
+        projectSource: "https://github.com/EchoStretch/Byepervisor",
+        binarySource: "https://github.com/EchoStretch/Byepervisor/actions/runs/12567456429",
+        version: "47a6ae7",
+        supportedFirmwares: ["5."],
+        toPort: 9021
+    },
+	{
+        displayTitle: "550-kstuff-9020",
+        description: "FPKG enabler",
+        fileName: "kstuff550.elf",
+        author: "sleirsgoevy",
+        projectSource: "https://github.com/sleirsgoevy/ps4jb-payloads/tree/bd-jb/ps5-kstuff",
+        binarySource: "https://github.com/sleirsgoevy/ps4jb2/blob/3e6053c3e4c691a9ccdc409172293a81de00ad7f/ps5-kstuff.bin",
+        version: "3e6053c",
+        supportedFirmwares: ["5."]
+    },
+    {
+        displayTitle: "510-etaHEN2.0b-9021",
         description: "AIO HEN",
         fileName: "etaHEN.bin",
         author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
@@ -65,7 +86,7 @@ const payload_map = [
         toPort: 9021
     },
 	{
-        displayTitle: "etaHEN2.0b-9020",
+        displayTitle: "510etaHEN2.0b-9020",
         description: "AIO HEN",
         fileName: "etaHEN.bin",
         author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
