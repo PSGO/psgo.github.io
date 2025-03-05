@@ -118,6 +118,28 @@
 		<br>
 <p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月5日</p>
 <p style="font-size:18px;color:white;">PS5 5.50 测试专用临时链接新增etaHEN2.0b-pre（etaHEN暂时不包含5.50kstuff），注入etaHEN之后仍然需要注入kstuff，必须使用配套的Itemzflow：https://github.com/etaHEN/etaHEN/releases/download/2.0b-pre/IV0002-ITEM00001_00-STOREUPD00000000.pkg 离线折腾链接：https://psgo.eu.org/5/ 或 https://psgo.github.io/5/ ，注意这只是早期测试版。参考首页教程，先做好屏蔽升级措施！然后安装浏览器https://psgo.lanzoub.com/ivj3U1jjy80h，再输入5.50临时链接进行缓存。如果9021注入报错则尝试9020，如果都报错请使用注入工具手动注入，或等待新版发布</p>
+<p style="font-size:18px;color:white;">关于Lua折腾方案，最近大家问的比较多，简单说明一下：</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+Lua折腾方案目前已知最高支持到最新系统10.4，由于UMTX最高支持到7.61，所以暂时只讨论7.61及以下系统版本
+
+1.首先需要有下列游戏光盘之一，日版游戏，存量并不多，并不容易买到
+Raspberry Cube (CUSA16074)
+Aibeya (CUSA17068)
+Hamidashi Creative (CUSA27389)
+Aikagi Kimi to Issho ni Pack (CUSA16229)
+Aikagi 2 (CUSA19556)
+
+2.需要修改存档用来加载lua，最简单的方法是恢复开发者已经修改好的存档合集，通过OffAct修改账号ID，或者直接恢复备份，都会重置（操作前先备份PS5）
+
+3.修改好的存档中或/data/目录下放入elfldr.elf
+
+4.通过启动游戏图标将会启动Lua加载器，注入umtx.lua完成越狱，注入elf_loader.lua将会加载elf加载器
+
+5.最后注入Kstuff、etaHEN等插件
+
+</pre>
+</div>
 <br>
 		
 <p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月4日</p>
