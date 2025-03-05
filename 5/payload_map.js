@@ -40,7 +40,7 @@ const payload_map = [
         projectSource: "https://github.com/EchoStretch/Byepervisor",
         binarySource: "https://github.com/EchoStretch/Byepervisor/actions/runs/12567456429",
         version: "47a6ae7",
-        supportedFirmwares: ["5."],
+        supportedFirmwares: ["5.10"],
         toPort: 9021
     },
 	{
@@ -51,29 +51,29 @@ const payload_map = [
         projectSource: "https://github.com/sleirsgoevy/ps4jb-payloads/tree/bd-jb/ps5-kstuff",
         binarySource: "https://github.com/sleirsgoevy/ps4jb2/blob/3e6053c3e4c691a9ccdc409172293a81de00ad7f/ps5-kstuff.bin",
         version: "3e6053c",
-        supportedFirmwares: ["5."]
+        supportedFirmwares: ["5.10"]
     },
-    {
-        displayTitle: "550-kstuff-9021",
-        description: "FPKG enabler",
-        fileName: "kstuff550.elf",
-        author: "sleirsgoevy, EchoStretch", 
-        projectSource: "https://github.com/EchoStretch/Byepervisor",
-        binarySource: "https://github.com/EchoStretch/Byepervisor/actions/runs/12567456429",
-        version: "47a6ae7",
-        supportedFirmwares: ["5."],
-        toPort: 9021
-    },
-	{
-        displayTitle: "550-kstuff-9020",
-        description: "FPKG enabler",
-        fileName: "kstuff550.elf",
-        author: "sleirsgoevy",
-        projectSource: "https://github.com/sleirsgoevy/ps4jb-payloads/tree/bd-jb/ps5-kstuff",
-        binarySource: "https://github.com/sleirsgoevy/ps4jb2/blob/3e6053c3e4c691a9ccdc409172293a81de00ad7f/ps5-kstuff.bin",
-        version: "3e6053c",
-        supportedFirmwares: ["5."]
-    },
+    // {
+        // displayTitle: "550-kstuff-9021",
+        // description: "FPKG enabler",
+        // fileName: "kstuff550.elf",
+        // author: "sleirsgoevy, EchoStretch", 
+        // projectSource: "https://github.com/EchoStretch/Byepervisor",
+        // binarySource: "https://github.com/EchoStretch/Byepervisor/actions/runs/12567456429",
+        // version: "47a6ae7",
+        // supportedFirmwares: ["5.50"],
+        // toPort: 9021
+    // },
+	// {
+        // displayTitle: "550-kstuff-9020",
+        // description: "FPKG enabler",
+        // fileName: "kstuff550.elf",
+        // author: "sleirsgoevy",
+        // projectSource: "https://github.com/sleirsgoevy/ps4jb-payloads/tree/bd-jb/ps5-kstuff",
+        // binarySource: "https://github.com/sleirsgoevy/ps4jb2/blob/3e6053c3e4c691a9ccdc409172293a81de00ad7f/ps5-kstuff.bin",
+        // version: "3e6053c",
+        // supportedFirmwares: ["5.50"]
+    // },
     {
         displayTitle: "510-etaHEN2.0b-9021",
         description: "AIO HEN",
@@ -82,18 +82,39 @@ const payload_map = [
         projectSource: "https://github.com/LightningMods/etaHEN",
         binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
         version: "2.0b-2",
-        supportedFirmwares: ["5."],
+        supportedFirmwares: ["5.10"],
         toPort: 9021
     },
 	{
-        displayTitle: "510etaHEN2.0b-9020",
+        displayTitle: "510-etaHEN2.0b-9020",
         description: "AIO HEN",
         fileName: "etaHEN.bin",
         author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
         projectSource: "https://github.com/LightningMods/etaHEN",
         binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
         version: "2.0b-2",
-        supportedFirmwares: ["5."]
+        supportedFirmwares: ["5.10"]
+    },
+    {
+        displayTitle: "550-etaHEN2.0b-9021",
+        description: "AIO HEN",
+        fileName: "etaHEN550.bin",
+        author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
+        projectSource: "https://github.com/LightningMods/etaHEN",
+        binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
+        version: "2.0b-2",
+        supportedFirmwares: ["5.50"],
+        toPort: 9021
+    },
+	{
+        displayTitle: "550-etaHEN2.0b-9020",
+        description: "AIO HEN",
+        fileName: "etaHEN550.bin",
+        author: "LightningMods, Buzzer, sleirsgoevy, ChendoChap, astrelsky, illusion, CTN, SiSTR0, Nomadic",
+        projectSource: "https://github.com/LightningMods/etaHEN",
+        binarySource: "https://github.com/LightningMods/etaHEN/releases/download/1.9b/etaHEN.bin",
+        version: "2.0b-2",
+        supportedFirmwares: ["5.50"]
     },
     {
         displayTitle: "libhijacker game-patch",
