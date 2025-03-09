@@ -35,11 +35,11 @@
 </head>
 <body>
     <h1>DNS和网站可用状态检测 - PSGO.eu.org</h1>
-    <div id="dns-result" class="group">
-        <div class="group-title">DNS</div>
-    </div>
     <div id="domain-result" class="group">
         <div class="group-title">域名</div>
+    </div>
+    <div id="dns-result" class="group">
+        <div class="group-title">DNS用于进入用户指南和屏蔽升级(进入PS5设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动)</div>
     </div>
     <div id="status" class="status">正在检测...</div>
 
@@ -88,22 +88,21 @@
         }
 
         async function pingDNS() {
-            const dnsList = [
-                '165.227.83.145', 
-                '192.241.221.79',
-				'62.210.38.117',
+            const dnsList = [ 
                 'psgo.eu.org', 
                 'psgo.github.io', 
                 'es7in1.site',
                 'ps5jb.pages.dev',
-                'umtx.pages.dev'
-
+                'umtx.pages.dev', 
+                '165.227.83.145', 
+                '192.241.221.79',
+				'62.210.38.117'
             ];
             const dnsResultDiv = document.getElementById('dns-result');
             const domainResultDiv = document.getElementById('domain-result');
             const statusDiv = document.getElementById('status');
-            dnsResultDiv.innerHTML = '<div class="group-title">DNS用于进入用户指南和屏蔽升级(进入PS5设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动)</div>';
             domainResultDiv.innerHTML = '<div class="group-title">域名</div>';
+            dnsResultDiv.innerHTML = '<div class="group-title">DNS用于进入用户指南和屏蔽升级(进入PS5设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动)</div>';
             statusDiv.textContent = '正在检测...';
 
             for (const host of dnsList) {
