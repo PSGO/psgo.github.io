@@ -106,19 +106,19 @@ p {
   }
 }
 </style>
-<script>
-    var secs=6;
-    for(var i=secs;i>=0;i--){
-       window.setTimeout("doUpdate("+ i + ")",(secs-i)*1000);
-    }
-    function doUpdate(num){
-       document.getElementById("second").innerHTML=num;
-       if(num==0) window.location='index.html';
-    }
-	 function nav(){
-       window.location='index.html';
-    }
-</script>
+<!-- <script> -->
+    <!-- var secs=6; -->
+    <!-- for(var i=secs;i>=0;i--){ -->
+       <!-- window.setTimeout("doUpdate("+ i + ")",(secs-i)*1000); -->
+    <!-- } -->
+    <!-- function doUpdate(num){ -->
+       <!-- document.getElementById("second").innerHTML=num; -->
+       <!-- if(num==0) window.location='index.html'; -->
+    <!-- } -->
+	 <!-- function nav(){ -->
+       <!-- window.location='index.html'; -->
+    <!-- } -->
+<!-- </script> -->
 </head>
 <body>
 <div style="width:100%;height:100%" onclick="nav()">
@@ -156,7 +156,7 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 
 <!--Content starts-->
 <div class="content flex">
-  <p><span">链接地址有误，倒计时 </span><span id="second">0</span><span> 秒后自动跳转至首页</span></p>
+  <!-- <p><span">链接地址有误，倒计时 </span><span id="second">0</span><span> 秒后自动跳转至首页</span></p> -->
 </div>
 <!--Content ends-->
 
