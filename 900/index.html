@@ -1,0 +1,506 @@
+<html manifest="Cache.manifest">
+<title>9.00折腾服务器</title>
+<meta charset="utf-8" />
+<head>
+<style>
+html, body {
+margin: 0;
+height: 100%;
+padding: 0;
+overflow: hidden;
+font-family: sans-serif;
+font-size: 24px;
+font-weight: bold;
+text-align: center;  
+width: 100%;
+overflow: hidden;
+}
+#head {
+ font-weight:bold;
+ font-size:20px;
+ color: white;
+  margin-right:10%;
+}
+ button {
+            
+            border: 2px solid black;
+            border-radius: 10px;
+			width: 200px;
+            height: 50px;            
+            text-align: center;
+            padding: 1px;
+            margin: 1px;
+            box-shadow: 0 5px 20px 0 white;
+            background:green;
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 white;
+            color: white;
+            border-radius: 10px;
+            background-color: black;
+}
+header{
+	height: 3em;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+#clock{
+ float:right;
+ margin-right:2.25%;
+ margin-top: 0px;
+ font-weight:bold;
+ font-size:20px;
+  color: white;
+}
+#date {
+ float:left;
+ margin-left:1.25%;
+ font-weight:bold;
+ margin-top: 5px;
+ font-size:20px;
+ color: white;
+}
+#donate2{
+ float:right;
+ margin-right:2.25%;
+ margin-top: 0px;
+ font-weight:bold;
+ font-size:28px;
+  color: white;
+}
+#donate {
+ float:left;
+ margin-left:1.60%;
+ font-weight:bold;
+ margin-top: 0px;
+ font-size:28px;
+ color: white;
+}
+#msgs {
+ font-weight:bold;
+ padding-right: 60px;
+ margin-right: 60px;
+ font-size:17px;
+}
+header div{
+	height: 100%;
+	display: ruby-text;
+	margin-top: -1.5em;
+}
+.pointer {cursor: pointer;}
+.yellow {
+  color:yellow;
+ }
+ .hue {
+  color:yellow;
+  padding:10px;
+  border-radius:10px;
+  animation:hue 5s linear infinite;
+  -webkit-animation: hue 5s linear infinite;
+  box-shadow: 0px 0px 50px yellow;
+  color:white;
+  background:rgba(255,255,0,0.4);
+ }
+ .hue:hover{
+  color:yellow;
+  background:transparent;
+ }
+ @keyframes hue{
+ 0%{
+ filter:hue-rotate(0deg);
+ -webkit-filter:hue-rotate(0deg);
+ }
+ 10%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 20%{
+ box-shadow: 1px 1px 50px yellow;
+ }
+ 30%{
+ box-shadow: 1px 0px 50px yellow;
+ }
+ 40%{
+  box-shadow: 1px -1px 50px yellow;
+ }
+ 50%{
+ box-shadow: 0px -1px 50px yellow;
+ }
+ 60%{
+ box-shadow: -1px -1px 50px yellow;
+ }
+ 70%{
+ box-shadow: -1px 0px 50px yellow;
+ }
+ 80%{
+ box-shadow: -1px 1px 50px yellow;
+ }
+ 90%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 100%{
+ filter:hue-rotate(360deg);
+ -webkit-filter:hue-rotate(360deg);
+ }
+ }
+  .content {
+  width:80%;
+  margin-left:7.5%;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  margin-top:0%;
+  font-size:25px;
+  text-align:center;
+  border-radius:30px;
+  padding:20px;
+  line-height:10px;
+ }
+ .title {
+  font-size:40px;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-weight:bolder;
+  margin-bottom:10px;
+ }
+    </style>
+<meta charset="utf-8">
+
+		<script>
+			window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="开始缓存菜单!!";};
+			window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML="菜单缓存进度: "+(Math.round(100*(a.loaded/a.total)))+"%";};
+			window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="完成!!";setTimeout(function(){document.getElementById("progress").innerHTML="请关闭网络，并重启浏览器!!"; }, 1500);};
+		</script>
+<script>
+function load_poc(){
+var xhr = new XMLHttpRequest();
+xhr.responseType = "arraybuffer";
+xhr.open("GET",PLfile,true);
+xhr.send();
+xhr.onreadystatechange=function(){
+if (xhr.readyState == 4){
+  var tmp0 = new Uint8Array(xhr.response.byteLength);
+  tmp0.set(new Uint8Array(xhr.response), 0);
+  var payload = new Uint32Array(tmp0);
+  PLS = payload;
+  setTimeout(poc, 1500); 
+  }
+};
+}
+
+function allset() {
+window.progress.innerHTML="成功！";
+}
+
+function Binset() {
+window.progress.innerHTML="加载完成，端口9020";
+alert("加载完成，端口9020");
+}
+
+function Mset() {
+window.progress.innerHTML="加载完成，端口9021";
+alert("加载完成，端口9021");
+}
+
+function goldhen(){
+    progress.innerHTML="加载中...请稍后（约10-30秒）";
+    PLfile = "goldhen2b.bin";
+    out_jb = "GoldPL";
+    load_poc();
+}
+
+function goldhen2(){
+    progress.innerHTML="加载中...请稍后（约10-30秒）";
+    PLfile = "goldhen_2.2.2_900.bin";
+    out_jb = "GoldPL";
+    load_poc();
+}
+
+function load_PS4Debug(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "ps4debug.bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function load_permanentuart(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "permanentuart.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_App2USB(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "app2usb.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_BackupDB(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "backupdb.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_AppDumper(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "app-dumper.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_KernelDumper(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "kerneldumper.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_ModuleDumper(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "mdumper.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_RestoreDB(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "restoredb.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_DisableASLR(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "disableaslr.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_DisableUpdates(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "disableupdates.bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function load_EnableUpdates(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "enbaleupdates.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_EnableBrowser(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "enbalebrowser.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_ExitIDU(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "exitidu.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_FTP(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "ftp.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_HistoryBlocker(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "historyblocker.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_RIFRenamer(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "rifrenamer.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_Orbis(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "Orbis-Toolbox-900.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Linux(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "LinuxLoader.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Linux3gb(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "LinuxLoader-3gb.bin";
+    out_jb = "AllPL";     load_poc();  
+}
+
+function load_GTAAr1(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "gtava1.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_GTAAr2(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "gtava2.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_GTAAr3(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "gtava3.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_GTAL(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "gtavl.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_GTABQ(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "BeefQueefMod.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_GTABQ2(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "BeefQueefMod134.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_GTABQ3(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "BeefQueefMod138.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_Oysters100(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "Oysters1.00.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_Oysters113(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "Oysters1.13.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_Oysters119(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "Oysters1.19.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+function load_Oysters124(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "Oysters1.24.bin";
+    out_jb = "RDRS";     load_poc();
+}
+
+
+function load_ToDex(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "ToDex.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_WebRTE(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "WebRTE.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_fan(){
+    var script = document.createElement('script');script.src = "fan-threshold.js";localStorage.setItem('fanthreshold', tempC.value);document.getElementsByTagName('head')[0].appendChild(script);
+    progress.innerHTML="加载中...请稍后";
+    out_jb = "AllPL";
+    setTimeout(poc,1500);
+}
+
+function Mira(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "Mira.elf";
+    out_jb = "AllPL";     load_poc();
+}
+
+function Mloader(){
+    progress.innerHTML="加载中...请稍后";
+    PLfile = "MiraLoader.bin";
+    out_jb = "MLD";
+    load_poc();
+}
+
+function Bloader(){
+    progress.innerHTML="加载中...请稍后";
+    out_jb = "BinLD";
+    setTimeout(poc,1500);
+}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js"></script>
+<script src="webkit.js"></script>
+</head>
+<body style='background-color:black'>
+ <h1  style='font-size:45px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>9.00FW 折腾菜单 V6</h1> 
+
+<div style="text-align:center"  id="MyItems">
+<button id="button-Payload" onMouseOver="progress.innerHTML='用于运行自制游戏，可休眠、FTP(端口2121)等。'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button2" onclick="goldhen()" style='width:250px;background-color:red;font-size:24px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 黄金Hen2测试版 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='运行自制游戏，金手指、FTP(端口2121)、优化休眠、添加3232端口等。'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button2"  onclick="goldhen2()" style='width:250px;background-color:red;font-size:24px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 黄金Hen2.2.2</button></a>
+<button id="button-Payload" onMouseOver="progress.innerHTML='Bin文件加载器，端口9020'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button2" onclick="Bloader()" style='width:250px;background-color:blue;font-size:24px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Bin 加载器 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='请先运行黄金HEN。系统设置追加Orbis工具箱菜单，用于温度显示等。(汉化:上帝右手)'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button2" onclick="load_Orbis()" style='width:250px;background-color:blue;font-size:24px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Orbis 工具箱 </button>
+<br><h1 id=progress style='font-size:28px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>光标指向按钮，查看功能概述</h1> 
+<hr><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='FTP服务端口1337，开启对PS4内置硬盘上的访问权限'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_FTP()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > FTP服务 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='将PS4内置游戏转移到USB存储器（外置存储器需EXfat格式）'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_App2USB()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > App2USB </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='解锁testkit开发机菜单。'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_ToDex()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > ToDex </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='通过载荷直接关闭IDU模式'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_ExitIDU()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 退出IDU </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='将光盘或数字游戏转储到USB存储器，用来制作fpkg游戏安装文件'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_AppDumper()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 游戏转储 </button>
+
+<br><br>
+
+<button id="button-Payload" onMouseOver="progress.innerHTML='PS4 Debug加载器，用于修改金手指等'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_PS4Debug()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Ps4debug </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='当Mira安装的游戏，Hen无法运行时，可以通过Rif重签名工具修复'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_RIFRenamer()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Rif重签名 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='加载网页版金手指 www.ps4trainer.com'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_WebRTE()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > WebRTE </button>
+<a href="web.html"><button  onMouseOver="progress.innerHTML='ID激活与编辑（修改ID字符串将导致已有存档无效，谨慎使用）'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>网页ID编辑器</button></a>
+<button id="button-Payload" onMouseOver="progress.innerHTML='屏蔽浏览器最后一页'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_HistoryBlocker()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 屏蔽页面历史 </button>
+
+<br><br>
+<button id="button-Payload" onMouseOver="progress.innerHTML='建立UPDATE虚拟文件，以阻止系统下载更新'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_DisableUpdates()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' >屏蔽升级</button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='删除许虚拟UPDATE文件，以恢复系统更新'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_EnableUpdates()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 激活升级 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='备份个人数据库文件到USB存储器'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_BackupDB()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 数据备份 </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='还原USB存储器中的个人数据库到PS4'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_RestoreDB()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 数据还原 </button>
+
+<button id="button-Payload" onMouseOver="progress.innerHTML='设置风扇启动温度，默认79℃。（越小越暴力）'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_fan()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 风扇启动温度  </button>
+<select style='font-size:20px;height:50px;background-color: white;color:red;position: absolute;text-align:center;' id="tempC"></select></a>
+<!--<button id="button-Payload" onMouseOver="progress.innerHTML='LinuxLoader 1G'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_Linux()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Linux 1G </button>
+<button id="button-Payload" onMouseOver="progress.innerHTML='LinuxLoader 3G'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" onclick="load_Linux3gb()" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Linux 3G </button>-->
+<br><br>
+<a href="payload.html#p0=mira.js&p1=LinuxLoader.js"><button  onMouseOver="progress.innerHTML='Linux引导 1gb显存 '"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 1GB</button></a>
+<a href="payload.html#p0=mira.js&p1=LinuxLoader2gb.js"><button  onMouseOver="progress.innerHTML='Linux引导 2gb显存'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 2GB</button></a>
+<a href="payload.html#p0=mira.js&p1=LinuxLoader3gb.js"><button  onMouseOver="progress.innerHTML='Linux引导 3gb显存'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 3GB</button></a>
+<a href="payload.html#p0=mira.js&p1=LinuxLoader4gb.js"><button  onMouseOver="progress.innerHTML='Linux引导 4gb显存'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 4GB</button></a>
+<a href="payload.html#p0=mira.js&p1=LinuxLoader5gb.js"><button  onMouseOver="progress.innerHTML='Linux引导 5gb显存'"; onmouseout="progress.innerHTML='光标指向按钮，查看功能概述'" type="button" style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;color:white'>Linux 5GB</button></a>
+<br><br><hr>
+
+<h1 style="font-size:25px; color: white;">开发人员:sleirsgoevy、ChendoChap、SpecterDev、SiSTR0、Znullptr、karo 、Nazky
+<h1 style="font-size:28px; color: yellow;"> 菜单：豆子哥2022.03.25
+</div>
+</div>
+</div>
+<script>
+for(var i=40; i<=79; i++){
+    var select = document.getElementById("tempC");
+    var option = document.createElement("OPTION");
+	select.options.add(option);
+	option.text = i;
+	option.value = i;
+}
+tempC.value=60;
+</script>
+</body>
+
+</html>

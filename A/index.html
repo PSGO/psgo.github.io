@@ -1,0 +1,442 @@
+<html manifest="Cache.manifest">
+<head>
+<meta charset="utf-8" />
+    <style>
+    html, body{
+	background-color:blue;
+margin:auto;
+font-family:sans-serif;
+font-size:20px;
+font-weight:lighter;
+text-align:left;
+color:#FFFFFF;
+background-size:cover;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+ .content {
+  width:80%;
+  height:15%;
+  margin-left:7.5%;
+  background:blue;
+  color:white;
+  margin-top:1%;
+  font-size:25px;
+  text-align:center;
+  border-radius:30px;
+  padding:20px;
+  line-height:12px;
+ }
+ .title {
+ background-color:blue;
+  font-size:40px;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-weight:bolder;
+  margin-bottom:10px;
+ }
+ .yellow {
+  color:yellow;
+ }
+ .hue {
+  color:yellow;
+  padding:10px;
+  border-radius:10px;
+  animation:hue 5s linear infinite;
+  -webkit-animation: hue 5s linear infinite;
+  box-shadow: 0px 0px 50px yellow;
+  color:white;
+  background:green;
+ }
+ .hue:hover{
+  color:yellow;
+  background:transparent;
+ }
+ @keyframes hue{
+ 0%{
+ filter:hue-rotate(0deg);
+ -webkit-filter:hue-rotate(0deg);
+ }
+ 10%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 20%{
+ box-shadow: 1px 1px 50px yellow;
+ }
+ 30%{
+ box-shadow: 1px 0px 50px yellow;
+ }
+ 40%{
+  box-shadow: 1px -1px 50px yellow;
+ }
+ 50%{
+ box-shadow: 0px -1px 50px yellow;
+ }
+ 60%{
+ box-shadow: -1px -1px 50px yellow;
+ }
+ 70%{
+ box-shadow: -1px 0px 50px yellow;
+ }
+ 80%{
+ box-shadow: -1px 1px 50px yellow;
+ }
+ 90%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 100%{
+ filter:hue-rotate(360deg);
+ -webkit-filter:hue-rotate(360deg);
+ }
+ }
+ .text {
+  padding-bottom:50px;
+ }
+  .back {
+   font-size:25px;
+   margin-top:10px;
+   display:block;
+   line-height:55px;
+   width:20%;
+   text-decoration:none;
+   height:50px;
+   background:white;
+   color:black;
+   border-radius:15px;
+  }
+  .back:hover{
+   border:2px solid white;
+   background:transparent;
+   box-sizing:border-box;
+   color:white;
+  }
+ #psip {
+  text-align: center;
+  margin-left: 38%;
+  margin-right: auto;
+  width:15%;
+  display:flex;
+  position: absolute;
+  
+  background: rgba(0, 0, 0, 0.500);
+  border-radius: 2em;
+  border: none;
+  padding: 0.8em;
+  
+  color: #ffffff;
+  padding-left: 1.5em;
+  
+  outline: none;
+  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
+  backdrop-filter: blur(5px);
+}
+/* Modal Content */
+.modal-content {
+  font-family: BFARNAZ;
+  font-size: 18px;
+  position: relative;
+  background-color: #dddddd;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+button {
+            background:rgba(0,0,0,0.5);
+			box-shadow: 0 5px 20px 0 white;
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 173px;
+            height: 40px;            
+            text-align: center;
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 white;
+            color: white;
+            border-radius: 10px;
+			background-color: #0F0F53;
+}
+
+hr {
+padding:0;
+margin:0;
+opacity:0.7;
+}
+
+#msgs2 {
+ font-weight:bold;
+ text-shadow: 4px 4px 4px black;
+
+ font-size:17px;
+}
+.pointer {cursor: pointer;}
+
+
+#Jailbreak {
+  background-color: red;
+  text-align: center;
+  font-size: 150%;
+  width: 150px;
+  margin-top: 3%;
+  padding: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  border-radius: 80%;
+  border: 8px solid white; /this gets rid of bootstrap shadow/
+  margin: 10px;
+
+}
+
+
+    </style>
+<meta charset="utf-8">
+<title>7.5X黄金HEN菜单</title>
+    <script>
+        document.cookie = 'kex=1';
+    </script>
+        <link rel="stylesheet" href="font-awesome.min.css">
+        <link rel="stylesheet" href="font.css">
+        <link rel="stylesheet" href="simple-notify.min.css" />
+        <script type="text/javascript" src="main.js"></script>
+        <script src="simple-notify.min.js"></script>
+        <script src="jquery-3.6.0.js"></script>
+
+<script>
+  window.applicationCache.ondownloading=function(){document.getElementById("msgs2").innerHTML="开始缓存菜单!!"};
+  window.applicationCache.onprogress=function(a){document.getElementById("msgs2").innerHTML="缓存进度: "+(Math.round(100*(a.loaded/a.total)))+"% "};
+  window.applicationCache.oncached=function(){document.getElementById("msgs2").innerHTML="完成!!";setTimeout(function(){document.getElementById("msgs2").innerHTML="可以离线使用（但需保持网络设置中的“与互联网连接”）"; }, 1500);};
+</script>
+</head>
+<body onload="go()" style='background-color:#1A1920'>
+<h1 style='text-shadow: 4px 4px 4px black;font-size:40px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>【7.5X黄金HEN2.0B菜单】</h1>
+
+<div style="text-align:center">
+ <div class="bjb" id="ButtonJBB">
+               <div id="Jailbreak" >
+<a style="text-decoration: none; color:white;text-shadow: 4px 4px 4px black;'"  href="goldhen2b.html" onclick="Jailbreak()"><b>一键黄金Hen破解<b></a></div>
+<br>
+<h1 id=msgs2 style='font-size:25px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件</h1><br>
+
+<hr>
+<div class="SelectF"><input type="text" placeholder="PS4 IP Here" id="psip"></div>
+<div style="text-align:center"  id="MyItems"><br>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='PS4 的完全访问 FTP 服务器'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_FTP()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > FTP服务 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='将已安装的游戏移动到外部 USB 驱动器'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_App2USB()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > App2USB </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='Orbis工具箱，实时显示温度等'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_Orbis()"><button href="" <button  style='width:250px;font-size:22px;background-color:red;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Orbis工具箱 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='解锁 testkit 上可用的一些调试功能'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_ToDex()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > ToDex菜单 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='将游戏转储到 USB 驱动器以能够创建 fpkg 文件'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_AppDumper()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 游戏转储 </button></a>
+
+<br><br>
+
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='激活不能使用的浏览器'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_EnableBrowser()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 启用浏览器 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='禁用打开浏览器中使用的最后一页'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_HistoryBlocker()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 屏蔽网页历史 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='在 PS4 更新文件夹中创建虚拟文件，阻止系统更新'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_DisableUpdates()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' >屏蔽系统更新</button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='删除 PS4 更新文件夹中的虚拟文件，恢复更新'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_EnableUpdates()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 激活系统更新 </button></a>
+<br><br>
+
+
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='退出IDU 模式'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_ExitIDU()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 退出IDU模式 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='创建重要数据库文件和用户数据的备份'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_BackupDB()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' >数据备份 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='恢复数据库文件和用户数据的备份'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_RestoreDB()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 数据还原 </button></a>
+<br><br>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='重签名游戏ID，修复mira安装的游戏，hen无法运行的bug'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_RIFRenamer()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Rif重签名 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='Linux Loader 1G'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_Linux()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 加载Linux 1G显存 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='Linux Loader 3G'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_Linux3gb()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > 加载Linux 3G显存 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='网络作弊器'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_WebRTE()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > WebRTE作弊器 </button></a>
+<a <button  style='width:250px;font-size:22px;text-align:center;text-shadow: 4px 4px 4px black;color:white' class="button" id="button-Payload" onMouseOver="msgs2.innerHTML='启用ps4debug'"; onmouseout="msgs2.innerHTML='系统设置GoldHEN插件里启用binloader服务后，可直接注入下方载荷插件'" type="button" onclick="load_PS4Debug()"><button href="" <button  style='width:250px;font-size:22px;background-color:green;text-align:center;text-shadow: 4px 4px 4px black;color:white' > Ps4debug </button></a>
+<br><br>
+<hr>
+<span style='font-size:28px;text-shadow: 4px 4px 4px black;' class="yellow" >开发人员 :</span >&nbsp;&nbsp; <a style='font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>SiSTRo ,Sleirsgoevy , Al Azif , Nazky ,Karo  ...<span style='font-size:28px;text-shadow: 4px 4px 4px black;' class="yellow" >菜单：</span ><a style='font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>豆子哥（2021.12.01） </a>
+	 </div></div>
+<script>
+
+function load_PS4Debug(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "ps4debug.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_App2USB(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "app2usb.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_BackupDB(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "backupdb.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_AppDumper(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "appdumper.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_KernelDumper(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "kerneldumper.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_ModuleDumper(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "mdumper.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_RestoreDB(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "restoredb.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_DisableASLR(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "disableaslr.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_DisableUpdates(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "disableupdates.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_EnableUpdates(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "enbaleupdates.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_EnableBrowser(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "enbalebrowser.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_ExitIDU(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "exitidu.bin";
+    LoadviaGoldhen(PLfile);
+}
+  
+function load_FTP(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "ftp.bin";
+    LoadviaGoldhen(PLfile);
+}
+  
+function load_HistoryBlocker(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "historyblocker.bin";
+    LoadviaGoldhen(PLfile);
+}
+  
+function load_RIFRenamer(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "rifrenamer.bin";
+    LoadviaGoldhen(PLfile);
+}
+  
+function load_Orbis(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "Orbis-Toolbox-755.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_Linux(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "LinuxLoader.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_Linux3gb(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "LinuxLoader-3gb.bin";
+    LoadviaGoldhen(PLfile);  
+}
+
+function load_GTAAr1(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "gtava1.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_GTAAr2(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "gtava2.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_GTAAr3(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "gtava3.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_GTAL(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "gtavl.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_GTABQ(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "gtavbq133.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_Oysters113(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "Oysters1.13.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_Oysters119(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "Oysters1.19.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_Oysters124(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "Oysters1.24.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+
+function load_ToDex(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "ToDex.bin";
+    LoadviaGoldhen(PLfile);
+}
+
+function load_WebRTE(){
+    msgs2.innerHTML="加载中...请稍后";
+    PLfile = "WebRTE.bin";
+    LoadviaGoldhen(PLfile);
+}
+</script>	 
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+CACHE MANIFEST 
+# wiiu
+
+index.html
+code550.bin
+index.php
+index-hax.php
+wiiuhaxx_common_cfg.php
+
+wiiuhaxx_common\wiiu_browserhax_common.php
+wiiuhaxx_common\wiiuhaxx_loader.bin
+wiiuhaxx_common\wiiuhaxx_rop_sysver_550.php
+wiiuhaxx_common\wiiuhaxx_searcher.bin
+

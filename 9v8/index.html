@@ -1,0 +1,680 @@
+<html manifest="Cache.manifest">
+<head>
+<style>
+html, body {
+background-color:black;
+background-size: 100%;
+background-repeat: no-repeat;
+color: white;
+text-align: center;
+margin: 0px;
+overflow: hidden;
+}
+h1 {
+text-shadow: 0.1em 0.1em 0.2em black;
+font-size: 25px;
+text-align: center;
+color: white;
+}
+.btna {
+background-color:#EE2C2C;
+color: white;
+width: 500px;
+height: 49px;
+padding-bottom: 5px;
+text-align: center;
+font-size: 30px;
+margin-top: 8px;
+margin-bottom: 8px;
+margin-left: 8px;
+margin-right: 8px;
+border-bottom-width: 0px;
+border-right-width: 0px;
+border-top-width: 0px;
+border-left-width: 0px;
+transition-duration: 0.4s;
+cursor: pointer;
+border-radius: 8px;
+}
+.btna:hover {
+background-color: #0058b1;
+}
+.btna-toolbox {
+background-color: #ae2301;
+}
+.btna-toolbox:hover {
+background-color: #d42a01;
+}
+.btn {
+background-color: green;
+color: white;
+width: 200px;
+height: 40px;
+padding-bottom: 5px;
+text-align: center;
+font-size: 24px;
+margin-top: 8px;
+margin-bottom: 8px;
+margin-left: 8px;
+margin-right: 8px;
+border-bottom-width: 0px;
+border-right-width: 0px;
+border-top-width: 0px;
+border-left-width: 0px;
+transition-duration: 0.4s;
+cursor: pointer;
+border-radius: 8px;
+}
+.btn:hover {
+background-color: blue
+}
+.btn2 {
+background-color: red;
+color: white;
+width: 300px;
+height: 40px;
+padding-bottom: 5px;
+text-align: center;
+font-size: 26px;
+margin-top: 8px;
+margin-bottom: 8px;
+margin-left: 8px;
+margin-right: 8px;
+border-bottom-width: 0px;
+border-right-width: 0px;
+border-top-width: 0px;
+border-left-width: 0px;
+transition-duration: 0.4s;
+cursor: pointer;
+border-radius: 8px;
+}
+.btn2:hover {
+background-color: blue
+}
+</style>
+<meta charset="utf-8">
+<title>900折腾菜单V8.2</title>
+		<script>
+			window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="开始缓存菜单!!";};
+			window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";};
+			window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="菜单缓存完成!!";setTimeout(function(){document.getElementById("progress").innerHTML="请关闭网络，并重启浏览器 !!"; }, 1500);};
+		</script>
+<script>
+function load_poc(){
+var xhr = new XMLHttpRequest();
+xhr.responseType = "arraybuffer";
+xhr.open("GET",PLfile,true);
+xhr.send();
+xhr.onreadystatechange=function(){
+if (xhr.readyState == 4){
+  PLS = xhr.response;
+  LoaderPL(); 
+  }
+};
+}
+
+function LoaderPL() {
+if (out_jb == "AllPL")  {
+var payload_buffer = chain.syscall(477, 0, 0x300000 , 7, 0x1002, -1, 0);
+            var pl = p.array_from_address(payload_buffer, PLS.byteLength*4);
+            var buf = new Uint32Array(PLS);
+            pl.set(buf,0);
+            var pthread = p.malloc(0x10);
+            chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+            allset();
+}
+if (out_jb == "MLD")  {
+var payload_buffer = chain.syscall(477, 0, 0x300000 , 7, 0x1002, -1, 0);
+            var pl = p.array_from_address(payload_buffer, PLS.byteLength*4);
+            var buf = new Uint32Array(PLS);
+            pl.set(buf,0);
+            var pthread = p.malloc(0x10);
+            chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+            Mset();
+}
+else if (out_jb == "BinLD") {
+    var payload_buffer = chain.syscall(477, 0x0, 0x300000, 0x7, 0x1000, 0xFFFFFFFF, 0);
+    var payload_loader = p.malloc32(0x1000);
+    
+    var loader_writer = payload_loader.backing;
+    loader_writer[0] = 0x56415741;
+    loader_writer[1] = 0x83485541;
+    loader_writer[2] = 0x894818EC;
+    loader_writer[3] = 0xC748243C;
+    loader_writer[4] = 0x10082444;
+    loader_writer[5] = 0x483C2302;
+    loader_writer[6] = 0x102444C7;
+    loader_writer[7] = 0x00000000;
+    loader_writer[8] = 0x000002BF;
+    loader_writer[9] = 0x0001BE00;
+    loader_writer[10] = 0xD2310000;
+    loader_writer[11] = 0x00009CE8;
+    loader_writer[12] = 0xC7894100;
+    loader_writer[13] = 0x8D48C789;
+    loader_writer[14] = 0xBA082474;
+    loader_writer[15] = 0x00000010;
+    loader_writer[16] = 0x000095E8;
+    loader_writer[17] = 0xFF894400;
+    loader_writer[18] = 0x000001BE;
+    loader_writer[19] = 0x0095E800;
+    loader_writer[20] = 0x89440000;
+    loader_writer[21] = 0x31F631FF;
+    loader_writer[22] = 0x0062E8D2;
+    loader_writer[23] = 0x89410000;
+    loader_writer[24] = 0x2C8B4CC6;
+    loader_writer[25] = 0x45C64124;
+    loader_writer[26] = 0x05EBC300;
+    loader_writer[27] = 0x01499848;
+    loader_writer[28] = 0xF78944C5;
+    loader_writer[29] = 0xBAEE894C;
+    loader_writer[30] = 0x00001000;
+    loader_writer[31] = 0x000025E8;
+    loader_writer[32] = 0x7FC08500;
+    loader_writer[33] = 0xFF8944E7;
+    loader_writer[34] = 0x000026E8;
+    loader_writer[35] = 0xF7894400;
+    loader_writer[36] = 0x00001EE8;
+    loader_writer[37] = 0x2414FF00;
+    loader_writer[38] = 0x18C48348;
+    loader_writer[39] = 0x5E415D41;
+    loader_writer[40] = 0x31485F41;
+    loader_writer[41] = 0xC748C3C0;
+    loader_writer[42] = 0x000003C0;
+    loader_writer[43] = 0xCA894900;
+    loader_writer[44] = 0x48C3050F;
+    loader_writer[45] = 0x0006C0C7;
+    loader_writer[46] = 0x89490000;
+    loader_writer[47] = 0xC3050FCA;
+    loader_writer[48] = 0x1EC0C748;
+    loader_writer[49] = 0x49000000;
+    loader_writer[50] = 0x050FCA89;
+    loader_writer[51] = 0xC0C748C3;
+    loader_writer[52] = 0x00000061;
+    loader_writer[53] = 0x0FCA8949;
+    loader_writer[54] = 0xC748C305;
+    loader_writer[55] = 0x000068C0;
+    loader_writer[56] = 0xCA894900;
+    loader_writer[57] = 0x48C3050F;
+    loader_writer[58] = 0x006AC0C7;
+    loader_writer[59] = 0x89490000;
+    loader_writer[60] = 0xC3050FCA;
+    chain.syscall(74, payload_loader, 0x4000, (0x1 | 0x2 | 0x4));
+
+    var pthread = p.malloc(0x10);
+    //
+    {
+        chain.fcall(window.syscalls[203], payload_buffer, 0x300000);
+        chain.fcall(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
+    }
+    chain.run();
+    Binset();
+}
+
+}
+
+function jbdone() {
+all.style.display = "block";
+}
+
+function allset() {
+window.progress.innerHTML= LoadedMSG
+}
+
+function Binset() {
+window.progress.innerHTML="加载完成！端口：9020";
+alert("加载完成！端口：9020");
+}
+
+function Mset() {
+window.progress.innerHTML="加载完成！端口： 9021";
+alert("加载完成！端口：9021");
+}
+
+function loadScript(path)
+{
+    var xhr = new XMLHttpRequest(path);
+    xhr.open("GET", path, false);
+    xhr.send('');
+    return xhr.responseText;
+}
+
+function print(){}
+
+function Linux1(){
+progress.innerHTML="LinuxLoader 1GB加载中...请稍后!";
+LoadedMSG="加载完成！";
+setTimeout(function(){
+eval.call(window, loadScript('netcat.js')
++loadScript('malloc.js')
++loadScript('ropb2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript('LinuxLoader.js')
++loadScript('mira.js')
++loadScript('relocator.js'));
+}, 1000);
+}
+
+function Linux2(){
+progress.innerHTML="LinuxLoader 2GB加载中...请稍后!";
+LoadedMSG="加载完成！";
+setTimeout(function(){
+eval.call(window, loadScript('netcat.js')
++loadScript('malloc.js')
++loadScript('ropb2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript('LinuxLoader2gb.js')
++loadScript('mira.js')
++loadScript('relocator.js'));
+}, 1000);
+}
+
+function Linux3(){
+progress.innerHTML="LinuxLoader 3GB加载中...请稍后!";
+LoadedMSG="加载完成！";
+setTimeout(function(){
+eval.call(window, loadScript('netcat.js')
++loadScript('malloc.js')
++loadScript('ropb2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript('LinuxLoader3gb.js')
++loadScript('mira.js')
++loadScript('relocator.js'));
+}, 1000);
+}
+
+function Linux4(){
+progress.innerHTML="LinuxLoader 4GB加载中...请稍后!";
+LoadedMSG="加载完成！";
+setTimeout(function(){
+eval.call(window, loadScript('netcat.js')
++loadScript('malloc.js')
++loadScript('ropb2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript('LinuxLoader4gb.js')
++loadScript('mira.js')
++loadScript('relocator.js'));
+}, 1000);
+}
+
+function Linux5(){
+progress.innerHTML="LinuxLoader 5GB加载中...请稍后!";
+LoadedMSG="加载完成！";
+setTimeout(function(){
+eval.call(window, loadScript('netcat.js')
++loadScript('malloc.js')
++loadScript('ropb2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript('LinuxLoader5gb.js')
++loadScript('mira.js')
++loadScript('relocator.js'));
+}, 1000);
+}
+
+function Mira(){
+progress.innerHTML="Mira加载中...请稍后!";
+LoadedMSG="加载完成！";
+setTimeout(function(){
+eval.call(window, loadScript('netcat.js')
++loadScript('malloc.js')
++loadScript('ropb2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript('mira2.js')
++loadScript('mira.js')
++loadScript('relocator.js'));
+}, 1000);
+}
+
+function goldhen(){
+    progress.innerHTML="黄金hen加载中...请稍后!";
+    LoadedMSG="破解完成！";
+    PLfile = "goldhen2b.bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function goldhen2(){
+    progress.innerHTML="黄金hen加载中...请稍后!";
+    LoadedMSG="破解完成！";
+    PLfile = "goldhen_2.2.2_900.bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function load_PS4Debug(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "ps4debug.bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function load_permanentuart(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "permanentuart.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_App2USB(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "app2usb.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_BackupDB(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "backupdb.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_AppDumper(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "app-dumper.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_KernelDumper(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "kerneldumper.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_ModuleDumper(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "mdumper.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_RestoreDB(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "restoredb.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_DisableASLR(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "disableaslr.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_DisableUpdates(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "disableupdates.bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function load_EnableUpdates(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "enableupdates.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_EnableBrowser(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "enablebrowser.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_ExitIDU(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "exitidu.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_FTP(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！端口1337！";
+    PLfile = "ftp.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_HistoryBlocker(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "historyblocker.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_RIFRenamer(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "rifrenamer.bin";
+    out_jb = "AllPL";     load_poc();
+}
+  
+function load_Orbis(){
+    progress.innerHTML=" 加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "Orbis-Toolbox-900.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTAAr0(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "gtava0.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTAAr1(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "gtava1.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTAAr2(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "gtava2.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTAAr3(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "gtava3.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTAL(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "gtavl.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_expul(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "LushModz-1.0-9.00.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_expul2(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "LushModz-3.0-9.00.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTABQ(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "BeefQueefMod.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTABQ2(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "BeefQueefMod134.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTABQ3(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "BeefQueefMod138.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTAVMB(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "gtavmb127.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_GTAVLTS(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "gtavLTS127.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Wilde32(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "WildeModz-1.32.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Wilde33(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "WildeModz-1.33.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Wilde38(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "WildeModz-1.38.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Oysters100(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "Oysters1.00.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Oysters113(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "Oysters1.13.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Oysters119(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "Oysters1.19.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Oysters124(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "Oysters1.24.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_Oysters129(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "Oysters1.29.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+
+function load_ToDex(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "ToDex.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_WebRTE(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "WebRTE.bin";
+    out_jb = "AllPL";     load_poc();
+}
+
+function load_fan(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "fan"+tempC.value+".bin";
+    out_jb = "AllPL";
+    load_poc();
+}
+
+function Mloader(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    PLfile = "MiraLoader.bin";
+    out_jb = "MLD";
+    load_poc();
+}
+
+function Bloader(){
+    progress.innerHTML="加载中...请稍后!"; LoadedMSG="加载完成！";
+    out_jb = "BinLD";
+    LoaderPL();
+}
+
+function allmods(){
+all.style.display = "none";
+gtav.style.display = "block";
+		}
+function backall(){
+all.style.display = "block";
+gtav.style.display = "none";
+		}
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js"></script>
+<script src="webkit.js"></script>
+</head>
+<body onload="poc()" style='background-color:black'>
+<h1 style=' font-size:50px;text-align:center; color:yellow; '>900折腾菜单V8.2</h1>
+
+<div id=all style="text-align:center;display:none">
+<button id="button-Payload" class="btn2" onMouseOver="progress.innerHTML='Bin加载器，端口9021 制作:Sleirsgoevy'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="Mloader()"  > Bin 加载器 </button>
+<button id="button-Payload" class="btn2" onMouseOver="progress.innerHTML='运行自制游戏，金手指、VR、可休眠、USBHDD挂载、FTP(端口2121)。制作:SISTRo'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="goldhen2()"   > 黄金Hen2.2.2破解 </button>
+<button id="button-Payload" class="btn2" onMouseOver="progress.innerHTML='需要先进行黄金Hen破解。Orbiso工具箱，实时显示温度等插件。By: Legendary OSM (汉化:上帝右手)'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_Orbis()"   > Orbis 工具箱 </button>
+<br>
+<h1 id=progress style='font-size:26px;text-align:center; color:yellow;'>光标指向按钮查看功能概述 </h1><hr> <br>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='FTP服务端口1337，开启对PS4内置硬盘上的访问权限'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_FTP()"  > FTP服务 </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='将PS4内置游戏转移到USB存储器（外置存储器需EXfat格式）'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_App2USB()"  > App2USB </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='在主题菜单的游戏选项卡中，加入TestKit测试机调试菜单- By notzecoxao'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_ToDex()"  > ToDex </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='退出IDU模式'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_ExitIDU()"  > 退出IDU模式 </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='关闭内存随机地址，使用固定地址'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_DisableASLR()"  > 关闭动态地址 </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='激活无法打开的浏览器'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_EnableBrowser()"  > 激活浏览器 </button>
+
+<br><br>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='WebRTE金手指 By PS4 Trainer'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_WebRTE()"   > WebRTE </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='PS4 Debug加载器  By CTN123'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_PS4Debug()"   > Ps4debug </button>
+
+<a href="web.html"><button class="btn" onMouseOver="progress.innerHTML='网页ID编辑器 by Sleirsgoevy'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button"  >网页ID编辑器</button></a>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='将光盘游戏或数字游戏转储到USB存储器，用来制作fpkg游戏安装文件'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_AppDumper()"  > 游戏转储 </button>
+ <button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='屏蔽网页历史 By Stooged / Al Azif'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_HistoryBlocker()"  > 关闭网页历史 </button>
+<br><br>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='在PS4 HDD建立虚拟UPDATE文件，以阻止系统下载更新 By Al Azif'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_DisableUpdates()"  >屏蔽升级</button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='删除在PS4 HDD建立的虚拟UPDATE文件，以恢复系统更新 By Al Azif'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_EnableUpdates()"  >激活升级 </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='备份个人数据库文件到USB存储器'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_BackupDB()"  > 数据备份 </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='还原USB存储器中的个人数据库到PS4'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_RestoreDB()"  > 数据还原 </button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='当Mira安装的游戏，Hen无法运行时，可以通过Rif重签名工具修复 By  Al Azif'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_RIFRenamer()"  > Rif重签名</button>
+ 
+<br><br>
+<button class="btn" onMouseOver="progress.innerHTML='Linux 1GB显存/7G内存 - By Nazky'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="Linux1()" >Linux 1GB</button>
+<button class="btn" onMouseOver="progress.innerHTML='Linux 2GB显存/6G内存 - By Nazky'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="Linux2()" >Linux 2GB</button>
+<button class="btn" onMouseOver="progress.innerHTML='Linux 3GB显存/5G内存 - By Nazky'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="Linux3()" >Linux 3GB</button>
+<button class="btn" onMouseOver="progress.innerHTML='Linux 4GB显存/4G内存 - By Nazky'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="Linux4()" >Linux 4GB</button>
+<button class="btn" onMouseOver="progress.innerHTML='Linux 5GB显存/3G内存 - By Nazky'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="Linux5()" >Linux 5GB</button>
+<button id="button-Payload" class="btn" onMouseOver="progress.innerHTML='风扇启动温度，默认79℃启动。越小越暴力！'"; onmouseout="progress.innerHTML='光标指向按钮查看功能概述'" type="button" onclick="load_fan()"  > 风扇控制 </button><select style='font-size:20px;text-align:center;background-color:red; color:white' id="tempC"></select><a style='font-size:17px;text-align:center;color:white;'>&#176;C</a>
+
+<br><br><hr>
+</div>
+    <p style="text-align:center;font-size:22px;color:white">开发人员：Znullptr, ChendoChap, Specter, Sleirsgoevy, theflow0, SiSTRo, Al-Azif, Leeful, Nazky,karo</p>
+    <p style="text-align:center;font-size:28px;color:yellow">菜单制作：豆子哥 2022.03.25</p>
+    
+   
+</div>
+   </div>
+</div>
+<script>
+localStorage.setItem('fanthreshold', tempC.value);
+for(var i=50; i<=80; i=i+5){
+    var select = document.getElementById("tempC");
+    var option = document.createElement("OPTION");
+	select.options.add(option);
+	option.text = i;
+	option.value = i;
+}
+tempC.value=60;
+</script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>4.74系统折腾服务器v1.3</title>
+<link rel="stylesheet" href="Style_03.css">
+</head>
+<body>
+<div id=BGD>
+<div class="navbarBG">	
+<div class="navbar" onclick="Hide()">
+	
+	<a href="#" onclick="Hen()" onmouseover="ChangeText('<h1>HEN</h1><hr><i>启用自制软件, 启用 Debug 菜单, 支持外置移动硬盘</i>')" onmouseout="DefaultText()">HEN1.5破解</a>
+	<a href="#" onclick="HenVR()" onmouseover="ChangeText('<h1>HEN + VR</h1><hr><i>载入 Hen + 启用 VR</i>')" onmouseout="DefaultText()">HEN1.5+VR破解（推荐）</a>
+	<a href="#" onclick="BinLoader()" onmouseover="ChangeText('<h1>Bin Loader</h1><hr><i>载入后可通过 9020 端口向 PS4 发送 .bin payload</i>')" onmouseout="DefaultText()">Bin 加载器</a>
+	<a href="#" onclick="Mira()" onmouseover="ChangeText('<h1>Mira By OpenOrbis</h1><hr><i>启用 Mira<hr>内核日志服务器端口: 9998<br>RPC 服务器端口: 9999</i>')" onmouseout="DefaultText()">Mira</a>
+	<a href="#" onclick="FTP()" onmouseover="ChangeText('<h1>FTP Server</h1><hr><i>开启 PS4 FTP 服务器<br>连接 PS4 IP 地址端口 1337</i>')" onmouseout="DefaultText()">FTP</a>
+	<a href="#" onclick="FTP_up()" onmouseover="ChangeText('<h1>FTP Server + Update Blocker</h1><hr><i>开启 PS4 FTP 服务器<br>屏蔽升级<br>连接 PS4 IP 地址端口 1337</i>')" onmouseout="DefaultText()">FTP+屏蔽升级</a>
+	<a href="#" onclick="Linux()" onmouseover="ChangeText('<h1>用于PsxitaArch Linux V2加载器</h1><hr><i>用于PsxitaArch Linux V2版的引导和安装</i>')" onmouseout="DefaultText()">PsxitArch Linux系统加载器</a>
+	<a href="#" onclick="AppToUsb()" onmouseover="ChangeText('<h1>AppToUSB By Stooged</h1><hr><i>移动已安装的游戏到外置 USB 设备<br>请将 AppToUsb.ini 文件复制到 USB 设备根目录的 PS4 文件夹中</i>')" onmouseout="DefaultText()">AppToUsb</a>
+	<a href="#" onclick="DB_GS_Backup()" onmouseover="ChangeText('<h1>DB & GS Backup By Stooged</h1><hr><i>创建游戏存档, 用户数据和重要的 .db 文件的备份</i>')" onmouseout="DefaultText()">DB & GS 备份</a>
+	<a href="#" onclick="GTAmod()" onmouseover="ChangeText('<h1>payload</h1><hr><i>payload</i>')" onmouseout="DefaultText()">payload加载器</a>
+
+
+
+
+<div class="dropdown">
+	<button class="dropbtn" onmouseover="ChangeText('<h1>Tools & Utilities</h1><hr><i>可供 PS4 FW 4.74 使用的各种工具 & 应用程序</i>')" onmouseout="DefaultText()">工具</button>
+	<div class="dropdown-content">
+		<a href="#" onclick="EnaVR()" onmouseover="ChangeText('<h1>Enable VR By Stooged</h1><hr><i>启用 VR 设备<hr>步骤 1: 运行启用 VR 漏洞, 退出浏览器.<br>步骤 2: 开启 VR 设备<br>步骤 3: 打开浏览器, 运行 HEN 漏洞. 享受 VR 吧.</i>')" onmouseout="DefaultText()">启用 VR</a>
+		<a href="#" onclick="KernelDump()" onmouseover="ChangeText('<h1>Kernel Dumper</h1><hr><i>转存 KernelDump.bin 到 USB 设备</i>')" onmouseout="DefaultText()">转存核心</a>
+		<a href="#" onclick="Browser()" onmouseover="ChangeText('<h1>Enable Browser</h1><hr><i>允许使用浏览器应用程序</i>')" onmouseout="DefaultText()">启用浏览器</a>
+		<a href="#" onclick="OffLineCache()" onmouseover="ChangeText('<h1>OffLine Cache Installer</h1><hr><i>保存全部漏洞网页数据到 PS4 浏览器缓存<br>以便在离线方式下使用这些功能</i>')" onmouseout="DefaultText()">*离线缓存</a>
+	</div>
+</div> 
+
+</div>
+</div>
+
+<div id="text-display" class="desc"><h2>4.74系统折腾服务器v1.3</h2></div>
+
+<div id="content" class="content">
+<div class=logo>
+<a href="#" onclick="Hide(); Hen()"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" border=0 width=300 height=75></a>
+</div>
+</div>
+
+<div id="footer">感谢: qwertyuiop,flatz, CelesteBlue, zecoxao, leeful, kiiwii &nbsp;&nbsp; 排版：leeful 修改：豆子哥shykelit</div>
+
+</div>
+<script>
+function ChangeText(text){var display = document.getElementById('text-display');display.innerHTML = "";display.innerHTML = text;}
+function DefaultText(){var display = document.getElementById('text-display');display.innerHTML = "";display.innerHTML = "<h2>4.74漏洞服务器 v1.2 </h2>";}
+function Hide(){var x = document.querySelectorAll(".dropdown-content, #text-display"); var i; for (i = 0; i < x.length; i++) {x[i].style.display="none";}}
+function HenVR(){document.getElementById("content").innerHTML='<object type="text/html" data="henvr/index.html" style="width:100%; height:100%;"></object>';}
+function Hen(){document.getElementById("content").innerHTML='<object type="text/html" data="hen/index.html" style="width:100%; height:100%;"></object>';}
+function BinLoader(){document.getElementById("content").innerHTML='<object type="text/html" data="474-BinLoader.html" style="width:100%; height:100%;"></object>';}
+function Mira(){document.getElementById("content").innerHTML='<object type="text/html" data="474-Mira.html" style="width:100%; height:100%;"></object>';}
+function FTP(){document.getElementById("content").innerHTML='<object type="text/html" data="474-FTP.html" style="width:100%; height:100%;"></object>';}
+function FTP_up(){document.getElementById("content").innerHTML='<object type="text/html" data="474-FTPup.html" style="width:100%; height:100%;"></object>';}
+function Linux(){document.getElementById("content").innerHTML='<object type="text/html" data="linux/index.html" style="width:100%; height:100%;"></object>';}
+function AppToUsb(){document.getElementById("content").innerHTML='<object type="text/html" data="474-AppToUsb.html" style="width:100%; height:100%;"></object>';}
+function DB_GS_Backup(){document.getElementById("content").innerHTML='<object type="text/html" data="474-dbBackup.html" style="width:100%; height:100%;"></object>';}
+function GTAmod(){document.getElementById("content").innerHTML='<object type="text/html" data="payload/index.html" style="width:100%; height:100%;"></object>';}
+
+function KernelDump(){document.getElementById("content").innerHTML='<object type="text/html" data="474-Kernel.html" style="width:100%; height:100%;"></object>';}
+function EnaVR(){document.getElementById("content").innerHTML='<object type="text/html" data="exploits/474-EnaVR.html" style="width:100%; height:100%;"></object>';}
+function Browser(){document.getElementById("content").innerHTML='<object type="text/html" data="474-Browser.html" style="width:100%; height:100%;"></object>';}
+
+function OffLineCache(){document.getElementById("content").innerHTML='<object type="text/html" data="Cache_Install_1.html" style="width:100%; height:100%;"></object>';}
+</script>
+</body>
+</html>

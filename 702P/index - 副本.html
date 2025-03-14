@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+  <meta charset="UTF-8">
+  <title>7.02折腾菜单</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    /* Grid layout */
+
+    #website {
+      display: grid;
+      grid-template-areas: 'top' 'middle' 'bottom';
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+      height: 100vh;
+    }
+
+    #website > header {
+      align-items: center;
+      background-color: #004B97;
+      border-color: var(--border-color);
+      border-style: none none solid;
+      border-width: 1px;
+      display: none;
+      grid-area: top;
+      justify-content: space-between;
+    }
+
+    #website > main {
+      background-color: var(--background-color-2);
+      color: var(--text-color-2);
+      display: none;
+      grid-area: middle;
+      overflow: auto;
+      padding: 8px 8px 0;
+      position: relative;
+    }
+
+    #website > footer {
+      background-color: #004B97;
+      border-color: var(--border-color);
+      border-style: solid none none;
+      border-width: 1px;
+      display: none;
+      grid-area: bottom;
+      padding: 8px 0 0 8px;
+    }
+
+    /* Header */
+
+    #title {
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      padding: 8px;
+	  text-align:center;
+    }
+
+    #button_container {
+      align-items: stretch;
+      align-self: stretch;
+      display: flex;
+    }
+
+    #updateinfo {
+      align-self: center;
+      color: yellow;
+	  font-size: 26px;
+      padding: 0 8px;
+    }
+
+    header button {
+      background-color: #004B97;
+      border: none;
+      color: white;
+      font-size: large;
+      font-weight: bold;
+      margin: 0;
+      outline: none;
+      padding: 0 8px;
+    }
+
+    /* Tabs */
+
+    .tab {
+      background-color: var(--background-color-2);
+      border-color: var(--border-color);
+      border-style: none none solid solid;
+      border-width: 1px;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+      color: var(--text-color-2);
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .tab_content {
+      padding: 8px;
+    }
+
+    .tab_title {
+      align-items: baseline;
+      display: flex;
+      font-size: x-large;
+      font-weight: bold;
+      justify-content: space-between;
+      padding: 8px;
+    }
+
+    /* Settings tab */
+
+    .tab_option_group {
+      border: 1px solid var(--border-color);
+      padding: 8px;
+      text-align: right;
+    }
+
+    .custom_payload_title {
+       width: 100px;
+    }
+
+    .custom_payload_payloads {
+       width: 500px;
+    }
+
+
+    /* Footer */
+
+    #payload_chain_area {
+      display: none;
+      font-size: medium;
+      margin: 0 8px 8px 0;
+    }
+
+    #payload_chain {
+      align-items: center;
+      background-color: var(--background-color-2);
+      border: 1px solid var(--border-color);
+      color: var(--text-color-2);
+      display: flex;
+      flex-grow: 1;
+      padding: 0 6px;
+    }
+
+    #payload_chain_buttons > :first-child {
+      margin: 0 4px 0 8px;
+    }
+
+    #payload_chain_buttons > * {
+      margin: 0 4px 0 0;
+    }
+
+    #payload_chain_buttons > :last-child {
+      margin: 0;
+    }
+
+    #payload_info {
+      color:red;
+      display: none;
+      font-size: 20px;
+      margin: 0 8px 8px 0;
+    }
+
+    .payload_link {
+      color: var(--text-color-1);
+      display: inline-block; /* Undesired side-effect: this adds 4px additional horizontal margin between items */
+      font-size: medium;
+      font-weight: bold;
+      margin: 0 12px 8px 0; /* margin-right: taking the 4px into account */
+      text-decoration: none;
+    }
+
+    .payload_link.show {
+      display: inline-block;
+    }
+
+    .payload_style_plain:hover {
+      text-decoration: underline;
+    }
+
+    .payload_style_underline {
+      text-decoration: underline;
+    }
+
+    .payload_style_button {
+      color: white;
+      background-color: var(--background-color-1);
+      border: 1px solid var(--border-color);
+      margin-right: 4px;
+      padding: 2px 8px;
+    }
+
+    .payload_style_button:hover {
+      background-color: var(--highlight-color);
+      color: var(--text-color-1);
+     }
+
+    .payload_style_button:active {
+      box-shadow: inset 0 0 5px var(--text-color-1);
+    }
+
+    .credits {
+      color: var(--border-color);
+      font-size: small;
+      margin: 0 8px 8px 0;
+    }
+
+    /* Standard UI elements */
+
+    /* Reminder: Payloads are links and not buttons */
+    button {
+      background-color: var(--background-color-1);
+      border: 1px solid var(--border-color);
+      color: var(--text-color-1);
+      font-size: medium;
+      text-decoration: none;
+    }
+
+    button:hover {
+      background-color: var(--highlight-color);
+    }
+
+    button:active {
+      box-shadow: inset 0 0 5px var(--text-color-1);
+    }
+
+    input {
+      background-color: var(--background-color-2);
+      border: 1px solid var(--border-color);
+      color: var(--text-color-2);
+      font-size: medium;
+    }
+
+    input[type="checkbox"] {
+      text-decoration: none;
+      transform: scale(1.24);
+      transform-origin: right;
+    }
+
+    select {
+      background-color: var(--background-color-2);
+      border-color: var(--border-color);
+      color: var(--text-color-2);
+      font-size: medium;
+    }
+
+    ::-webkit-scrollbar {
+      width: 1em;
+    }
+
+    @font-face {
+      font-family: "monospace";
+      font-style: normal;
+      font-weight: 400;
+      src: url("courier_prime_v2_latin_regular.woff");
+    }
+
+    /* Hide firmware-specific elements */
+    .fw702,
+    .fw75x {
+      display: none;
+    }
+	
+	
+	
+ button {
+            
+            border: 2px solid black;
+            border-radius: 10px;
+			width: 150px;
+            height: 40px;            
+            text-align: center;
+            padding: 1px;
+            margin: 1px;
+            box-shadow: 0 5px 20px 0 white;
+            background:rgba(0,0,0,0.5);
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 white;
+            color: white;
+            border-radius: 10px;
+            background-color: #0F0F53;
+}
+
+  </style>
+  <style id="scrollbar"></style>
+  <script>
+    // Firmware safety check to prevent system lockups
+    var useragent = navigator.userAgent;
+    if (useragent.substring(13,26) === "PlayStation 4") {
+      var firmware = useragent.substring(27,31);
+    } else {
+      alert("您没有使用PS4来查看此网站。 不要单击任何按钮，否则您的系统可能会死机。\n该网站仅可用于PS4。 继续需要您自担风险!");
+    }
+  </script>
+</head>
+<body>
+  <script src="changelog.js"></script>
+  <div id="website">
+    <header>
+      <span id="title">hippie68折腾服务器</span>
+      <script>
+        // Show for which target firmware the website is made
+        document.title += " " + targetFirmware;
+        document.getElementById("title").innerHTML +=  targetFirmware+" 【修改汉化:豆子哥2021.11.24】" ;
+        // Show current firmware if it differs
+        if (firmware !== undefined && firmware.substring(0,3) !== targetFirmware.substring(0,3)) {
+          document.getElementById("title").innerHTML += `<span style="color: var(--border-color)">  Current firmware:  ` + firmware;
+        }
+      </script>
+      <div id="button_container">
+        <div id="updateinfo"></div> <!-- Displays caching progress -->
+        <button onmousedown="showTab('tab_changelog', event)">日志</button>
+        <button id="button_jailbreakhistory" style="display: none" onmousedown="showTab('tab_jailbreakhistory', event); loadJailbreakHistory()">破解记录</button>
+        <button onmousedown="showTab('tab_options', event)">高级菜单设置</button>
+        <script>
+          function hideTabs() {
+            let x;
+            // Hide all tabs
+            x = document.getElementsByClassName("tab");
+            for (let i = 0; i < x.length; i++) {
+              x[i].style.display = "none";
+            }
+            // Unpress all buttons
+            x = document.getElementsByTagName("button");
+            for (let i = 0; i < x.length; i++) {
+              x[i].style.boxShadow = "";
+              x[i].style.backgroundColor = "";
+            }
+          }
+
+          function showTab(id, event) {
+            let tab = document.getElementById(id);
+            if (tab.style.display == "block") {
+              // Hide tab if already open
+              tab.style.display = "none";
+              // Unpress button
+              event.target.style.boxShadow = "";
+              event.target.style.backgroundColor = "";
+            } else {
+              hideTabs();
+              // Show tab
+              tab.style.display = "block";
+              // Make button look pressed
+              event.target.style.boxShadow = "inset 0 0 5px var(--text-color-1)";
+              event.target.style.backgroundColor = "var(--highlight-color)";
+            }
+          }
+        </script>
+      </div>
+    </header>
+    <main>
+      <div id="instructions" style="overflow: hidden">
+        <noscript><span style="color: red">运行越狱需要JavaScript支持。 浏览器中按下手柄“OPTIONS”按钮，转到“设置”并选中“启用JavaScript”，然后刷新网页。</span></noscript>
+        <b style="font-size: large">注意事项</b>
+        
+        <p><b><font size="5" color=red>此菜单仅适用于PS4的7.0-7.02固件！！【进系统后建议等2分钟！再破解更稳定】</font>
+        <ol>
+            <li>单击MIRA或HEN进行破解，根据您的个人习惯。 大约几分钟后，Hen会得到<font size="4" color=red> "You're all set!"</font>提示，<font size="4" color=red>Mirahen则会黑屏重启XMB桌面，</font>以上说明破解完成了。
+			<br />【如果提示<font size="4" color=red>“系统内存不足”</font>，请点击<font size="4" color=red>“OK”</font>继续。】
+             <b>注意：使用Mira破解成功时，屏幕将黑屏几秒钟这是正常的！</b><br />
+             <li></a>在此过程中，如果您收到一条警告:<font size="4" color=red>“失败，请重启PS4再试.”</font>
+				这种情况说明破解失败了，您必须重新启动PS4。最好不要关闭对话框，按住手柄PS键，唤出电源管理选择重启。
+                 <br />
+                破解页面如果卡住超过一分钟无反应，请关闭页面或者重启您的PS4，然后重试。
+                
+                如果KP内核当机（看起来像突然断电），请按PS4上的电源按钮多次，直到它再次启动。
+            </li>
+            <li></a>Webkit破解失败
+                <b>不会损害您的PS4。 这里的成功率约为20％，您需要耐心。</b></li>
+      </div>
+      <div class="tab" id="tab_changelog">
+        <div class="tab_title"><span id="tab_changelog_version" style="font-size: medium; font-weight: normal"></span></div>
+        <div class="tab_content" id="changelog">
+          <script>
+            // Shows the changelog, replacing newlines with "<br>"
+            document.getElementById("changelog").innerHTML = changes.replace(/\n/g, "<br>");
+            document.getElementById("tab_changelog_version").innerHTML = "Release " + date + "#" + build;
+          </script>
+        </div>
+      </div>
+      <div class="tab" id="tab_jailbreakhistory">
+        <div class="tab_title"><span id="tab_jailbreakhistory_stats" style="font-size: medium; font-weight: normal; text-align: right"></span></div>
+        <div class="tab_content" id="historylog" style="font-family: 'monospace'"></div>
+      </div>
+      <div class="tab" id="tab_options"> <!-- Checkboxes have the same ID name as the key they store -->
+        <div class="tab_title">高级菜单设置</div>
+        <div class="tab_content" style="display: flex">
+          <div style="margin-right: 8px">
+            <!-- Wallpaper settings -->
+            <div style="font-size: large; font-weight: bold">墙纸</div>
+            <div class="tab_option_group" style="">
+              <label for="enable_wallpaper">启用墙纸</label>
+              <input type="checkbox" id="enable_wallpaper" onclick="toggleEnableWallpaper()"><br>
+              <label for="select_wallpaper">墙纸:</label>
+              <select id="select_wallpaper" onchange="applyOptionEnableWallpaper()">
+                <option value="cache" selected>离线缓存</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2QxMDYxMGJkZDY3MjcyOWNjZWQzNjhhYzg5NWRiMDQ4NmI4NmIwMTguanBnCg==">Assassin's Creed: Black Flag</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2Q1MzgwNDJiMTM3MjY4NTQwZjE4MjQ5NzgyZmZiNmMxNWQwNGI0YjAuanBnCg==">Assassin's Creed: Valhalla #1</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2Y0YzY1MDE2MzI5NTc4M2QyNThiZWRjMzU2MTBjMjUzOThiMTdkNWUuanBnCg==">Assassin's Creed: Valhalla #2</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzc5MTVhMjM2NDI3MjZhMDkxNmFmNDk0NTRlZjdkNmM4MmIzZWE4MmYuanBnCg==">Bloodborne #1</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzYzY2M1NDk3NDY1NzcwMzM0NmRmMjAzYTZmODk0ZjM1MmEwMmJhM2YuanBnCg==">Bloodborne #2</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzIyMDk0ZGIwNjBkYTQ5NmVhMTNkZGJkNGEyMzUwZmJjOWUyODY5ZjIuanBnCg==">Code Vein</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2I2NDhjODFlOTVkNmQzNjg2NTVhNDIwNGRhNDNkMjUzYjFjMWQyYjIuanBnCg==">Cyberpunk 2077 Girl #1</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2ZkNTgxMGM0NWFiYzg5YjBlZTFiNTEwYjI2OGRhZjZiYmUwNzViODEuanBnCg==">Cyberpunk 2077 Girl #2</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzkzZmQ0N2JlMTZhMjM4ODk2NjkzYjAwZmVhZGY0Y2ZkMzE3ZGQ2NjkuanBnCg==">Cyberpunk 2077 Main Cover</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzYwOWQ5ZDlkMTdkMWU2NGM0OTViM2U3ZTM1YjI4NTIzZmQ2Njk5ZDcuanBnCg==">Dark Souls #1</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzI5MDhjNDM4ZTdjNGE1NDM4ZDkyNWYxZWFiNmNlN2YyNjc1NGNkNGQuanBnCg==">Dark Souls #2</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2U4OTBmZWIxYzJjZjJmNmI0ZGFmY2RmMDg3OGZhYmM3Yzg2OTQ2ZjEuanBnCg==">Days Gone</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzA2N2Y4MWZhOWE0MzhhMjM3ZjhkNzg2NzczODVhYzVmNzhiZDkyOTYuanBnCg==">Detroit: Become Human</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzQwMGQ3MjFmMGJjMWUzYTcxYjIwNWI1YTgxZmQ4YjlkZGQ2NGY2ZmYuanBnCg==">Dying Light</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2NiMDBmMWNjMDQ0NDEwYzczYWYxNzdmMDdlZjdjZTAxN2E3MTQ3NWUuanBnCg==">Fallout: New Vegas</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzIzZjZiNzI3MTNhM2JlZjM0ZGE4Y2EzZDliMTcyNTlkMjgwMTJmYzUuanBnCg==">Ghost of Tsushima</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzMxOTEwOGY2MTYyNjViYWJlNzI0YjM2ZjgwZTJlYTI1NWY0Yjk0OGMuanBnCg==">God of War</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzQwNjZlZGExNzEyMmJjMDZiN2FkNTk0M2VkNWNkZDIwYjQ1MWU4MDkuanBnCg==">Grand Theft Auto</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzg5MWJmZGI3MjNlYTUxY2Y2Y2YwOGU1NDg1ZjMzYTU2NGJhYjU0NTMuanBnCg==">Metro Exodus</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzUxYTlkMDNjNTg5NDJjYTU4MGZkYWNmNDQwZWE0YjU1NTYwNTZhZjMuanBnCg==">Monster Hunter: World</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzA3NjdjOGY3ZTEzNzM0ZGNkZGU3NDFmNzM1NjIzMzZkMjRhOThjOGEuanBnCg==">Need for Speed</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2I2ZTJmMzZlYTEzNDk2NDMzOWM5ZTI2N2Q5MDliNzQ2NDMzZDcxZDYuanBnCg==">NieR: Automata</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2IxYWIwNzhmMzc1Zjk5MTgwY2RiMzg5MGM0ZDZiYjIzYTkwMThlMjEuanBnCg==">No Man's Sky</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2NjMDMyMDljYjEzMDQ0ZDJmNzk0NWRmYWQzZDY5N2Q0NjUxNTM5NmMuanBnCg==">Persona 5</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2EwMGExYWU4ZjFlMjQ1NTM5ZTY1YjQ2N2NkODZiNDk1MDQ4Y2M0YzguanBnCg==">Red Dead Redemption 2</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzM4Mjc3NTk2ZGVhOTFiOGU3YzQzZDU4YjM4YzYxZjc1NDYyZjc1YzUuanBnCg==">Sekiro: Shadows Die Twice</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2Y2ZmZlODE5YTBlYTVkZjFhZDQwNDc4NGVjNDRjNzJjZGJhZmM0MjMuanBnCg==">Spider-Men</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzY5MWZhMWE3M2Y0NDE5ZGU3ZTRjNTBkNGI0ZmZhMTIwM2QyNTc3Y2QuanBnCg==">The Last of Us Ellie #1</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2E4NTdiZTY5MmMyNzdhYmFiMDE0NDBhYmQ3MTdkNmE0NjdiZWYxZTEuanBnCg==">The Last of Us Ellie #2</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tLzVkMzI3MGIwNWYxNDY0M2RkNmIyZTBkYTFkZDY0MDA3NDEwYjExNzcuanBnCg==">The Witcher 3 Geralt and Ciri</option>
+                <option value="aHR0cHM6Ly9iYXlpbWcuY29tL2U3ZGE1NzQ4MmVmMDcyZjkzOTQyODAwOGUxZjdmZGMzYjRmYTAwM2EuanBnCg==">The Witcher 3 Triss Merrigold</option>
+              </select><br>
+              <button id="button_cache_wallpaper" onclick="cacheWallpaper()" style="display: block; width: 100%">缓存选定的墙纸</button>
+              <button id="wallpaper_cache" onclick="deleteWallpaperCache()" style="width: 100%">删除离线缓存</button> <!-- "Delete data" buttons have the same ID name as the key they delete -->
+            </div><br>
+            <!-- Jailbreak history settings -->
+            <div style="font-size: large; font-weight: bold">越狱历史</div>
+            <div class="tab_option_group">
+              <label for="disable_jailbreak_history">隐藏越狱历史</label>
+              <input type="checkbox" id="disable_jailbreak_history" onclick="toggleJailbreakHistory()"><br>
+              <label for="select_jailbreak_history_max">要显示的行数:</label>
+              <select id="select_jailbreak_history_max" onchange="setJailbreakHistoryMax(this.value)">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="100">100</option>
+              </select><br>
+              <button id="jailbreak_history" onclick="clearJailbreakHistory()" style="width: 100%">删除越狱历史记录数据</button>
+            </div>
+          </div>
+          <div>
+            <!-- Jailbreak settings -->
+            <div style="font-size: large; font-weight: bold">选项</div>
+            <div class="tab_option_group">
+              <label for="disable_youreallset">禁用弹出 "You're all set!"信息</label>
+              <input type="checkbox" id="disable_youreallset" onclick="toggleYoureAllSet()"><br>
+              <label for="select_log_level">日志记录选项:</label>
+              <select id="select_log_level" onchange="setLogLevel(this.selectedIndex)">
+                <option value="0">0: 禁用所有日志记录</option>
+                <option value="1">1: 越狱日志记录</option>
+                <option value="2">2: 启用越狱历史记录</option>
+              </select><br>
+              <label for="select_webkit_exploit">WebKit版本选择:</label>
+              <select id="select_webkit_exploit" onchange="setWebkitExploit(this.value)">
+                <option value="regular">常规版</option>
+                <option value="hippie68">hippie68高速版</option>
+                <option value="sleirsgoevy">sleirsgoevy标准版</option>
+                <option value="combined">组合版</option>
+              </select><br class="fw75x">
+              <label class="fw75x" for="select_kernel_exploit">系统越狱版本选择:</label>
+              <select class="fw75x" id="select_kernel_exploit" onchange="setKernelExploit(this.value)">
+                <option value="regular">常规版</option>
+                <option value="2021-04-29">2021-04-29</option>
+                <option value="2021-05-03">2021-05-03</option>
+                <option value="2021-05-21">2021-05-21</option>
+				<option value="2021-05-27">2021-05-27</option>
+                <option value="2021-06-03">最新(2021-06-03)</option>
+              </select>
+            </div><br>
+            <!-- Miscellaneous settings -->
+            <div style="font-size: large; font-weight: bold">杂项</div>
+            <div class="tab_option_group" style="margin-bottom: 8px">
+              <label for="disable_payload_info">隐藏有效载荷内容描述</label>
+              <input type="checkbox" id="disable_payload_info" onclick="togglePayloadInfo()"><br>
+              <label for="select_payload_style">有效载荷选项样式:</label>
+              <select id="select_payload_style" onchange="setPayloadStyle(this.selectedIndex)">
+                <option value="0">按钮</option>
+                <option value="1">带下划线的文字</option>
+                <option value="2">文本</option>
+              </select><br>
+              <label class="fw75x" for="select_goldhen">GoldHEN破解版本:</label>
+              <select class="fw75x" id="select_goldhen" onchange="setGoldHenVersion(this.value)">
+                <option value="all">显示所有</option>
+                <option value="1.0_fw751">1.0 (FW 7.51)</option>
+                <option value="1.0_fw755">1.0 (FW 7.55)</option>
+                <option value="1.1_fw750">1.1 (FW 7.50)</option>
+                <option value="1.1_fw751">1.1 (FW 7.51)</option>
+                <option value="1.1_fw755">1.1 (FW 7.55)</option>
+              </select><br class="fw75x">
+              <label for="select_gta5"> </label>
+              <select id="select_gta5" onchange="setGTA5Version(this.value)">
+
+
+              </select><br>
+              <label for="select_color_scheme"> </label>
+              <select id="select_color_scheme" onchange="setColorScheme(this.value)">
+
+              </select>
+            </div>
+            <button onclick="restoreDefaultSettings()" style="width: 100%">恢复默认设置</button>
+          </div>
+        </div>
+      </div>
+      <!-- Custom payload options -->
+      <div class="tab" id="tab_custom_payloads" style="border-style: solid none none solid; bottom: 0; top: initial">
+        <!-- Custom payload chains -->
+        <div style="padding: 8px">
+          <div style="font-size: large; font-weight: bold">自定义有效载荷链</div>
+          <div class="tab_option_group" style="text-align: left">
+            <table>
+              <tr>
+                <th></th>
+                <th>名字</th>
+                <th>有效载荷*</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td><input id="custom_1_enabled" onchange="saveCustomPayloadCheckbox(this.id)" type="checkbox"></td>
+                <td><input class="custom_payload_title" id="custom_1_title" onchange="saveCustomPayloadTitle(this.id)" value="Custom 1"></td>
+                <td><input class="custom_payload_payloads" id="custom_1_payloads"></td>
+                <td><button id="custom_1_save" onclick="saveCustomPayloadPayloads(this.id)">存储</button></td>
+              </tr>
+              <tr>
+                <td><input id="custom_2_enabled" onchange="saveCustomPayloadCheckbox(this.id)" type="checkbox"></td>
+                <td><input class="custom_payload_title" id="custom_2_title" onchange="saveCustomPayloadTitle(this.id)" value="Custom 2"></td>
+                <td><input class="custom_payload_payloads" id="custom_2_payloads"></td>
+                <td><button id="custom_2_save" onclick="saveCustomPayloadPayloads(this.id)">存储</button></td>
+              </tr>
+              <tr>
+                <td><input id="custom_3_enabled" onchange="saveCustomPayloadCheckbox(this.id)" type="checkbox"></td>
+                <td><input class="custom_payload_title" id="custom_3_title" onchange="saveCustomPayloadTitle(this.id)" value="Custom 3"></td>
+                <td><input class="custom_payload_payloads" id="custom_3_payloads"></td>
+                <td><button id="custom_3_save" onclick="saveCustomPayloadPayloads(this.id)">存储</button></td>
+              </tr>
+            </table>
+            <span>*要保存新的有效负载列表，请在下面选择多个有效负载，然后按“保存”.</span><br>
+            <button onclick="deleteCustomPayloads()">删除所有自定义有效载荷数据</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <div id="payload_chain_area">
+          <span id="payload_chain"></span>
+          <div id="payload_chain_buttons">
+            <button onclick="resetPayloadChain()">重启</button>
+            <button onclick="togglePayloadChainOptions()">高级选项</button>
+            <button onclick="toggleChainRecording()">撤销</button>
+            <button onclick="launchPayloadChain()">发布</button>
+          </div>
+        </div>
+        <div id="payload_info"><h2 style="color:#EE2C2C'">移动光标，查看功能概述</div>
+        <div class="fw702 payloadlist" onmouseout="resetPayloadInfo()">
+          <a class="payload_link custom_1" href="" style="display: none"></a>
+          <a class="payload_link custom_2" href="" style="display: none"></a>
+          <a class="payload_link custom_3" href="" style="display: none"></a>
+		  <a class="payload_link" href="javascript:selectPayload('payload.html#p0=goldhen_v1.0.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#EE2C2C;color:white'>GoldHEN 1.0</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=goldhen_v1.1.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#EE2C2C;color:white'>GoldHEN 1.1</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=goldhen_2.0b.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#EE2C2C;color:white'>GoldHEN 2.0B</button></a>         
+		 <a class="payload_link" href="javascript:selectPayload('payload.html#p0=hen_v2.1.3.bin')" onmouseover="showPayloadInfo('常规的HEN。 启用自制程序和调试设置。 可能不适用于某些最新的反向端口.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#EE2C2C;color:white'>HEN213破解</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=hen_v2.1.3b.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。 将固件版本伪装为9.99，以运行最新的反向端口。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#EE2C2C;color:white'>HEN213b破解</button></a>
+		            <a class="payload_link" href="javascript:selectPayload('payload.html#p0=orbis_toolbox.bin')" onmouseover="showPayloadInfo('系统设置中追加orbis工具箱，实时显示CPU、内存、温度等（需先GoldHEN破解，不支持HEN213或213b！）【汉化:不讲武德】')"><button style='width:220px;font-size:20px;text-align:center;background-color:green;color:white'>Orbis工具箱</button></a>
+<br>
+		  <a class="payload_link" href="javascript:selectPayload('payload.html#p0=netcat.js')" onmouseover="showPayloadInfo('使您能够从计算机发送其他有效负载文件。 可以多次选择.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>BIN加载器</button></a>
+		  <a class="payload_link" href="javascript:selectPayload('payload.html#p0=dumper.bin')" onmouseover="showPayloadInfo('加载游戏转储有效载荷，然后启动游戏以提取游戏并将其转储到exFAT格式的USB存储设备。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>游戏转储</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=app2usb.bin')" onmouseover="showPayloadInfo('将内部硬盘上的游戏转移到exFAT格式的USB存储设备上.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>App2USB转移工具</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=backup.bin')" onmouseover="showPayloadInfo('备份数据库并将所有游戏保存到USB存储设备。 由于文件已加密，因此只能在当前内部HDD设置上还原.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>数据备份</button></a>
+		  <a class="payload_link" href="javascript:selectPayload('payload.html#p0=restore.bin')" onmouseover="showPayloadInfo('恢复先前由“备份”有效负载完成的备份。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>还原数据</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=ftp.bin')" onmouseover="showPayloadInfo('启动侦听端口1337的FTP服务器。在计算机上，您可以运行FTP客户端来访问PS4文件。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>FTP (端口 1337)</button></a>   
+		  <br>
+		  <a class="payload_link" href="javascript:selectPayload('payload.html#p0=disable_updates.bin')" onmouseover="showPayloadInfo('在内部HDD上的/ update中创建伪目录，该目录在重新启动后仍然有效，从而阻止PS4启动固件更新。 注意：HEN有效负载会自动执行此操作.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>屏蔽系统更新</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=enable_updates.bin')" onmouseover="showPayloadInfo('删除由“禁用更新”有效负载创建的目录，以再次启用固件更新。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>启用系统更新</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=history_blocker.bin')" onmouseover="showPayloadInfo('通常，PS4浏览器会自动加载上次使用的页面。 此有效负载可关闭/打开该功能。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>网页历史拦截</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=linux_1gb.bin')" onmouseover="showPayloadInfo('从准备好的USB存储设备加载Linux。 留下7 GB RAM的Linux，因为1 GB将用于图形.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>Linux (1 GB)</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=linux_3gb.bin')" onmouseover="showPayloadInfo('从准备好的USB存储设备加载Linux。 留下5 GB RAM的Linux，因为3 GB将用于图形。 在安装过程中，请勿使用3 GB的有效负载。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>Linux (3 GB)</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=ps4debug_dmiller.bin')" onmouseover="showPayloadInfo('PS4的调试器。 某些PC应用程序所需，例如 保存安装程序和脱机帐户激活器.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>PS4Debug (by dmiller)</button></a>
+		  <br>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=ps4debug_nazky.bin')" onmouseover="showPayloadInfo('PS4的调试器。 某些PC应用程序所需，例如 保存安装程序和脱机帐户激活器.')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>PS4Debug (by Nazky)</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=rif_renamer.bin')" onmouseover="showPayloadInfo('mira破解安装的游戏如果hen无法运行，执行本项以获得更好的HEN兼容性。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>RIF重签名</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=todex.bin')" onmouseover="showPayloadInfo('将目标ID伪装为0x82（测试机）。 如果您想使用调试奖杯，则很有用。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>ToDEX菜单</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=webrte.bin')" onmouseover="showPayloadInfo('金手指应用程序需要第三方网站\'ps4trainer.com \'的有效负载。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>WebRTE网页金手指</button></a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=web_activator.bin')" onmouseover="showPayloadInfo('用网页激活或编辑本地PS4用户帐户。 警告：仅激活新帐户。 不要激活具有保存游戏和奖杯的帐户。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>ID激活与编辑</button></a>
+          <a class="payload_link" href="javascript:toggleChainRecording()" onmouseover="showPayloadInfo('允许同时加载多个有效载荷。')"><button style='width:220px;font-size:20px;text-align:center;background-color:#004B97;color:white'>多载荷加载器</button></a>
+        </div>
+        <div class="fw75x payloadlist" onmouseout="resetPayloadInfo()">
+          <a class="payload_link custom_1" style="display: none"></a>
+          <a class="payload_link custom_2" style="display: none"></a>
+          <a class="payload_link custom_3" style="display: none"></a>
+		  <a class="payload_link goldhen" href="javascript:selectPayload('payload.html#p0=goldhen_v1.0_fw751.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')">GoldHEN 1.0 (FW 7.51)</a>
+          <a class="payload_link goldhen" href="javascript:selectPayload('payload.html#p0=goldhen_v1.0_fw755.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')">GoldHEN 1.0 (FW 7.55)</a>
+          <a class="payload_link goldhen" href="javascript:selectPayload('payload.html#p0=goldhen_v1.1_fw750.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')">GoldHEN 1.1 (FW 7.50)</a>
+          <a class="payload_link goldhen" href="javascript:selectPayload('payload.html#p0=goldhen_v1.1_fw751.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')">GoldHEN 1.1 (FW 7.51)</a>
+          <a class="payload_link goldhen" href="javascript:selectPayload('payload.html#p0=goldhen_v1.1_fw755.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。绕过CE30391-6，忽略固件检查以运行最新的反向端口，提供远程软件包安装，启动FTP服务器（端口2121），启用调试奖杯等.')">GoldHEN 1.1 (FW 7.55)</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=hen_v2.1.3b.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。 将固件版本伪装为9.99，以运行最新的反向端口.')">HEN213b破解</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=app2usb.bin')" onmouseover="showPayloadInfo('将内部硬盘上的游戏转移到exFAT格式的USB存储设备上.')">App2USB</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=backup.bin')" onmouseover="showPayloadInfo('备份数据库并将所有游戏保存到USB存储设备。 由于文件已加密，因此只能在当前内部HDD设置上还原.')">数据备份</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=disable_aslr.bin')" onmouseover="showPayloadInfo('禁用ASLR（地址空间布局随机化），以简化/可重复使用内存。 对于开发人员。')">屏蔽 ASLR</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=disable_updates.bin')" onmouseover="showPayloadInfo('在内部HDD上的/ update中创建伪目录，该目录在重新启动后仍然有效，从而阻止PS4启动固件更新。 注意：HEN有效负载会自动执行此操作.')">屏蔽系统更新</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=dumper.bin')" onmouseover="showPayloadInfo('加载游戏转储有效载荷，然后启动游戏以提取游戏并将其转储到exFAT格式的USB存储设备。')">游戏转储</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=enable_updates.bin')" onmouseover="showPayloadInfo('删除由“禁用更新”有效负载创建的目录，以再次启用固件更新。')">启用系统更新</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=ftp.bin')" onmouseover="showPayloadInfo('启动侦听端口1337的FTP服务器。在计算机上，您可以运行FTP客户端来访问PS4文件。')">FTP (端口 1337)</a>
+
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=history_blocker.bin')" onmouseover="showPayloadInfo('通常，PS4浏览器会自动加载上次使用的页面。 此有效负载可关闭/打开该功能。')">网页历史拦截</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=linux_1gb.bin')" onmouseover="showPayloadInfo('从准备好的USB存储设备加载Linux。 留下7 GB RAM的Linux，因为1 GB将用于图形')">Linux (1 GB)</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=linux_3gb.bin')" onmouseover="showPayloadInfo('从准备好的USB存储设备加载Linux。 留下5 GB RAM的Linux，因为3 GB将用于图形。 在安装过程中，请勿使用3 GB的有效负载。')">Linux (3 GB)</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=mira.bin')" onmouseover="showPayloadInfo('启用自制程序和调试设置。 可能不适用于某些最新的反向端口')">Mira破解</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=netcat.js')" onmouseover="showPayloadInfo('使您能够从计算机发送其他有效负载文件。 可以多次选择。')">BIN加载器</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=ps4debug.bin')" onmouseover="showPayloadInfo('PS4的调试器。 某些PC应用程序所需，例如 保存安装程序和脱机帐户激活器.')">PS4Debug</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=restore.bin')" onmouseover="showPayloadInfo('恢复先前由“备份”有效负载完成的备份。')">数据还原</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=rif_renamer.bin')" onmouseover="showPayloadInfo('将假RIF重命名为免费RIF，以获得更好的HEN兼容性。')">RIF重签名</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=todex.bin')" onmouseover="showPayloadInfo('将目标ID伪装为0x82（测试机）。 如果您想使用调试奖杯，则很有用。')">ToDEX菜单</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=webrte.bin')" onmouseover="showPayloadInfo('金手指应用程序需要第三方网站\'ps4trainer.com \'的有效负载。')">WebRTE网页金手指</a>
+          <a class="payload_link" href="javascript:selectPayload('payload.html#p0=web_activator.bin')" onmouseover="showPayloadInfo('用网页激活或编辑本地PS4用户帐户。 警告：仅激活新帐户。 不要激活具有保存游戏和奖杯的帐户。')">ID激活与编辑</a>
+          <a class="payload_link" href="javascript:toggleChainRecording()" onmouseover="showPayloadInfo('允许同时加载多个有效载荷。')">多载荷加载器</a>
+        </div>
+      </div>
+      <div class="fw702 credits"><h2 style='font-size:20px;text-align:center'>开发人员: TheFlow、Specter、Sleirsgoevy、AIAzif、zecoxao、LM、SISTR0、ChendoChap、dmiller423、Nazky、tihmstar 、karo、Joonie86、hippie68。</div>
+    </footer>
+  </div>
+<script>
+/* INITIALIZATION
+   -------------- */
+
+const payloadChainDefaultText = "No payloads selected.";
+
+// Shows application cache updates
+function checkForUpdates() {
+  document.getElementById("updateinfo").innerHTML = sessionStorage.getItem("last_status");
+  sessionStorage.clear();
+  window.applicationCache.onprogress = function(a) {
+    let percentage = Math.round(a.loaded / a.total * 100);
+    document.getElementById("updateinfo").innerHTML = "菜单缓存进度: " + percentage + "%";
+  }
+  window.applicationCache.oncached = window.applicationCache.onupdateready = function() {
+    sessionStorage.setItem("last_status", "缓存完成，请关闭网络，并重启浏览器.");
+    window.location.reload();
+  }
+}
+
+// Sets elements depending on existing localStorage data
+function initialize() {
+  // Show firmware-specific elements
+  {
+    let x = document.getElementsByClassName("fw" + targetFirmware.replace(".", ""));
+    for (let i = 0; i < x.length; i++) {
+      x[i].style.display = "initial";
+    }
+  }
+
+  // Layout
+  applyColorScheme();
+  applyOptionEnableWallpaper();
+  applyOptionHideJailbreakHistory();
+  applyOptionHidePayloadInfo();
+  applyPayloadStyle();
+  applyGoldHenVersion();
+  applyGTA5Version();
+
+  // Custom payloads
+  loadCustomPayload("custom_1");
+  loadCustomPayload("custom_2");
+  loadCustomPayload("custom_3");
+
+  // Settings tab, checkboxes
+  function initializeCheckbox(optionName) {
+    var checkbox = document.getElementById(optionName);
+    if (localStorage.getItem(optionName) == 1) {
+      checkbox.checked = true;
+    } else {
+      checkbox.checked = false;
+    }
+  }
+  initializeCheckbox("enable_wallpaper");
+  initializeCheckbox("disable_payload_info");
+  initializeCheckbox("disable_youreallset");
+  initializeCheckbox("disable_jailbreak_history");
+
+  // Settings tab, various elements
+  {
+    let index, val;
+    // Set log level dropdown menu
+    index = localStorage.getItem("jailbreak_log_level");
+    if (index === null) {
+      document.getElementById("select_log_level").selectedIndex = 2; // Default
+    } else {
+      document.getElementById("select_log_level").selectedIndex = index;
+    }
+    // Set WebKit exploit dropdown menu
+    val = localStorage.getItem("jailbreak_webkit_exploit");
+    if (val === null) {
+      document.getElementById("select_webkit_exploit").value = "hippie68"; // Default
+    } else {
+      document.getElementById("select_webkit_exploit").value = val;
+    }
+    // Set Kernel exploit dropdown menu
+    val = localStorage.getItem("jailbreak_kernel_exploit");
+    if (val === null) {
+      document.getElementById("select_kernel_exploit").value = "regular"; // Default
+    } else {
+      document.getElementById("select_kernel_exploit").value = val;
+    }
+    // Set payload style dropdown menu
+    index = localStorage.getItem("payload_style");
+    if (index === null) {
+      document.getElementById("select_payload_style").selectedIndex = 0; // Default
+    } else {
+      document.getElementById("select_payload_style").selectedIndex = index;
+    }
+    // Set color scheme dropdown menu
+    val = localStorage.getItem("color_scheme");
+    if (val === null) {
+      document.getElementById("select_color_scheme").value = "gray"; // Default
+    } else {
+      document.getElementById("select_color_scheme").value = val;
+    }
+    // Set max lines to display in jailbreak history
+    val = localStorage.getItem("jailbreak_history_max");
+    if (val === null) {
+      document.getElementById("select_jailbreak_history_max").value = 10; // Default
+    } else {
+      document.getElementById("select_jailbreak_history_max").value = val;
+    }
+  }
+}
+
+/* OPTIONS/SETTINGS
+------------------- */
+
+// Payload info
+
+function showPayloadInfo(text) {
+  document.getElementById("payload_info").textContent=text;
+}
+
+function resetPayloadInfo() {
+  document.getElementById("payload_info").textContent="移动光标，查看功能概述";
+}
+
+function applyOptionHidePayloadInfo() {
+  if (localStorage.getItem("disable_payload_info") != "1") {
+    document.getElementById("payload_info").style.display = "block";
+  } else {
+    document.getElementById("payload_info").style.display = "none";
+  }
+}
+
+function togglePayloadInfo() {
+  if (localStorage.getItem("disable_payload_info") != 1) {
+    localStorage.setItem("disable_payload_info", 1);
+  } else {
+    localStorage.removeItem("disable_payload_info");
+  }
+  applyOptionHidePayloadInfo();
+}
+
+// "You're all set"
+
+function toggleYoureAllSet() {
+  if (localStorage.getItem("disable_youreallset") != 1) {
+    localStorage.setItem("disable_youreallset", "1");
+  } else {
+    localStorage.removeItem("disable_youreallset");
+  }
+}
+
+// Wallpaper
+
+function cacheWallpaper(attempt = 0) {
+  var imageUrl = atob(document.getElementById("select_wallpaper").value);
+  if (imageUrl.startsWith("http")) { // Only cache online resources
+    let select = document.getElementById("select_wallpaper");
+    select.disabled = true;
+    let button = document.getElementById("button_cache_wallpaper");
+    button.disabled = true;
+    let oldInnerHTML = button.innerHTML;
+    if (attempt === 0) {
+      button.innerHTML = "Requesting data, please wait ...";
+    } else {
+      button.innerHTML = "Retrying (" + attempt + "), please wait ...";
+    }
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://cors.bridged.cc/" + imageUrl);
+    xhr.responseType = "arraybuffer";
+    // "Nothing happens" error
+    xhr.onerror = function() {
+      attempt++;
+      if (attempt === 10) {
+        alert("Caching failed after " + attempt + " attempts! Please try again later.");
+      } else {
+        cacheWallpaper(attempt);
+      }
+    };
+    // Show download progress
+    xhr.onprogress = (event) => {
+      button.innerHTML = "Caching, please wait ... " + Math.round(event.loaded / xhr.getResponseHeader("Content-Length") * 100) + "%";
+    };
+    // Cache when downloaded
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        var blob = new Blob([xhr.response], {type: "image/jpeg"});
+        var fileReader = new FileReader();
+        fileReader.onload = function(event) {
+          var result = event.target.result;
+          try {
+            localStorage.setItem("wallpaper_cache", result);
+            let size = result.length / 1000000;
+            alert("Wallpaper cached!\nImage size in cache: " + size.toFixed(2) + " MB");
+            select.selectedIndex = 0;
+            applyOptionEnableWallpaper();
+            initializeButton("wallpaper_cache");
+          }
+          catch (error) {
+            alert("Caching failed: " + error + "\nImage size (if it had been cached): " + size.toFixed(2) + " MB");
+          }
+        };
+        fileReader.readAsDataURL(blob);
+      } else {
+        alert("Error! Server response: " + xhr.status);
+      }
+    };
+    // Re-enable the button when finished
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        select.disabled = false;
+        button.disabled = false;
+        button.innerHTML = oldInnerHTML;
+      }
+    };
+    xhr.send();
+  } else {
+    return;
+  }
+}
+
+function toggleEnableWallpaper() {
+  if (localStorage.getItem("enable_wallpaper") != 1) {
+    localStorage.setItem("enable_wallpaper", "1");
+  } else {
+    localStorage.removeItem("enable_wallpaper");
+  }
+  applyOptionEnableWallpaper();
+}
+
+function applyOptionEnableWallpaper() {
+  if (localStorage.getItem("enable_wallpaper") == 1) {
+    enableWallpaperMode(document.getElementById("select_wallpaper").value);
+  } else {
+    disableWallpaperMode();
+  }
+}
+
+function deleteWallpaperCache() {
+  let x = confirm("Are you sure you want to delete your wallpaper offline cache?");
+  if (x == true) {
+    localStorage.removeItem("wallpaper_cache");
+
+    // Refresh wallpaper
+    document.getElementById("select_wallpaper").value = "cache";
+    applyOptionEnableWallpaper();
+
+    alert("Wallpaper offline cache has been deleted!");
+  }
+}
+
+// Log level
+
+function setLogLevel(index) {
+  if (index == 2) { // Default
+    localStorage.removeItem("jailbreak_log_level");
+  } else {
+    localStorage.setItem("jailbreak_log_level", index);
+  }
+}
+
+// WebKit exploit
+
+function setWebkitExploit(value) {
+  if (value == "hippie68") { // Default
+    localStorage.removeItem("jailbreak_webkit_exploit");
+  } else {
+    localStorage.setItem("jailbreak_webkit_exploit", value);
+  }
+}
+
+// Kernel exploit
+
+function setKernelExploit(value) {
+  if (value == "regular") { // Default
+    localStorage.removeItem("jailbreak_kernel_exploit");
+  } else {
+    localStorage.setItem("jailbreak_kernel_exploit", value);
+  }
+}
+
+// Payload style
+
+function setPayloadStyle(index) {
+  if (index == 0) { // Default
+    localStorage.removeItem("payload_style");
+  } else {
+    localStorage.setItem("payload_style", index);
+  }
+  applyPayloadStyle();
+}
+
+function applyPayloadStyle() {
+  let payloads = document.getElementsByClassName("payload_link");
+  let payload_style = localStorage.getItem("payload_style");
+  switch (payload_style) {
+    case "1": // Underlined text
+      for (let i = 0; i < payloads.length; i++) {
+        payloads[i].classList.remove("payload_style_button", "payload_style_plain");
+        payloads[i].classList.add("payload_style_underline");
+      }
+      break;
+    case "2": // Button
+      for (let i = 0; i < payloads.length; i++) {
+        payloads[i].classList.remove("payload_style_plain", "payload_style_underline");
+        payloads[i].classList.add("payload_style_button");
+      }
+      break;
+    default: // Plain text
+      for (let i = 0; i < payloads.length; i++) {
+        payloads[i].classList.remove("payload_style_button", "payload_style_underline");
+        payloads[i].classList.add("payload_style_plain");
+      }
+      break;
+  }
+}
+
+// GoldHEN
+
+function setGoldHenVersion(value) {
+  if (value == "all") { // Default
+    localStorage.removeItem("goldhen_version");
+  } else {
+    localStorage.setItem("goldhen_version", value);
+  }
+  applyGoldHenVersion();
+}
+
+function applyGoldHenVersion() {
+  let x = document.getElementById("select_goldhen");
+  let goldhen_version = localStorage.getItem("goldhen_version");
+  let a = document.querySelectorAll(".fw75x > .payload_link.goldhen");
+  if (goldhen_version === null) {
+    x.value = "all"; // Default
+    // Show all versions
+    for (let i = 0; i < a.length; i++) {
+      a[i].style.display = "inline-block";
+    }
+  } else {
+    x.value = goldhen_version;
+    for (let i = 0; i < a.length; i++) {
+      if (a[i].href.includes(goldhen_version)) {
+        // Only show the selected version
+        a[i].style.display = "inline-block";
+      } else {
+        // Hide all other versions
+        a[i].style.display = "none";
+      }
+    }
+  }
+}
+
+// GTA 5 Mods
+
+function setGTA5Version(value) {
+  if (value == "all") { // Default
+    localStorage.removeItem("gta5_version");
+  } else {
+    localStorage.setItem("gta5_version", value);
+  }
+  applyGTA5Version();
+}
+
+function applyGTA5Version() {
+  let x = document.getElementById("select_gta5");
+  let gta5_version = localStorage.getItem("gta5_version");
+  let a = document.querySelectorAll(".payload_link.gta5");
+  if (gta5_version === null) {
+    x.value = "all"; // Default
+    // Show all versions
+    for (let i = 0; i < a.length; i++) {
+      a[i].style.display = "inline-block";
+    }
+  } else {
+    x.value = gta5_version;
+    for (let i = 0; i < a.length; i++) {
+      if (a[i].href.includes(gta5_version)) {
+        // Only show the selected version
+        a[i].style.display = "inline-block";
+      } else {
+        // Hide all other versions
+        a[i].style.display = "none";
+      }
+    }
+  }
+}
+
+// Color scheme
+
+function setColorScheme(value) {
+  if (value == "gray") { // Default
+    localStorage.removeItem("color_scheme");
+  } else {
+    localStorage.setItem("color_scheme", value);
+  }
+  applyColorScheme();
+}
+
+function applyColorScheme() {
+
+  function setColors(background1, text1, highlight, border, background2, text2 = text1) {
+    let x = document.documentElement;
+    x.style.setProperty("--background-color-1", background1);
+    x.style.setProperty("--text-color-1", text1);
+    x.style.setProperty("--highlight-color", highlight);
+    x.style.setProperty("--border-color", border);
+    x.style.setProperty("--background-color-2", background2);
+    x.style.setProperty("--text-color-2", text2);
+    // Scrollbar
+    x = document.getElementById("scrollbar");
+    scrollbar.innerHTML = "::-webkit-scrollbar-thumb{background-color:" + highlight + ";border:1px solid " + border + "}::-webkit-scrollbar-track{background-color:" + background1 + ";border: 1px solid " + border + ";border-style: none none none solid}";
+    // Bodypainting done
+    document.getElementsByTagName("header")[0].style.display = "flex";
+    document.getElementsByTagName("main")[0].style.display = "initial";
+    document.getElementsByTagName("footer")[0].style.display = "initial";
+  }
+
+  let value = localStorage.getItem("color_scheme");
+  switch (value) {
+    // setColors(background1, text1, highlight, border, background2 [, text2])
+    case "cappuccino":
+      setColors("#3A2E2E", "#F7ECDF", "sienna", "#816C61", "#D6B79F", "#4B3832");
+      break;
+    case "lavender":
+      setColors("lavender", "indigo", "thistle", "darkorchid", "#F5F5FA");
+      break;
+    case "midnightblue":
+      setColors("midnightblue", "white", "tomato", "#A9BBF1", "royalblue");
+      break;
+    case "rojigualda":
+      setColors("#AA151B", "#F1BF00", "#800F14", "#D7810A", "#F1BF00", "#AA151B")
+      break;
+    case "usa":
+      setColors("#9B1C2C", "#E3DED4", "#33335F", "#CCC8BF", "#33335F");
+      break;
+    case "wheat":
+      setColors("wheat", "maroon", "burlywood", "saddlebrown", "#FFFBF2");
+      break;
+    case "wildberry":
+      setColors("#550000", "#FFDDDD", "#801515", "#E6C7C7", "#AA3939");
+      break;
+    default: // "gray"
+      setColors("#D8D8D8", "black", "#D7D7D7", "#FF0040", "white");
+  }
+}
+
+// Custom payload chains (Settings)
+
+function togglePayloadChainOptions() {
+  showTab("tab_custom_payloads", event);
+}
+
+function saveCustomPayloadCheckbox(id) {
+  id = id.substr(0, 8);
+  if (document.getElementById(id + "_enabled").checked === true) {
+    localStorage.setItem(id + "_enabled", "1");
+  } else {
+    localStorage.removeItem(id + "_enabled");
+  }
+  loadCustomPayload(id);
+}
+
+function saveCustomPayloadTitle(id) {
+  id = id.substr(0, 8);
+  let title = document.getElementById(id + "_title").value;
+  if (title !== "") {
+    localStorage.setItem(id + "_title", title);
+  } else {
+    localStorage.removeItem(id + "_title", title);
+  }
+  loadCustomPayload(id);
+}
+
+function saveCustomPayloadPayloads(id) {
+  id = id.substr(0, 8);
+  let payload_chain = document.getElementById("payload_chain");
+  if (payload_chain.innerHTML != payloadChainDefaultText) {
+    let payloads = payload_chain.innerHTML.split(/[, ]+/);
+    localStorage.setItem(id + "_payloads", JSON.stringify(payloads));
+  }
+  loadCustomPayload(id);
+}
+
+function loadCustomPayload(id) {
+  let customPayloadLink = document.querySelector(".fw" + targetFirmware.replace(".", "") + " > .payload_link" + "." + id);
+  // Title
+  let title = localStorage.getItem(id + "_title");
+  if (title !== null) {
+    document.getElementById(id + "_title").value = title;
+    // Link title
+    customPayloadLink.innerHTML = title;
+  } else {
+    title = id.charAt(0).toUpperCase() + id.slice(1);
+    title = title.replace("_", " ");
+    customPayloadLink.innerHTML = title;
+    document.getElementById(id + "_title").value = title;
+  }
+  // Payloads
+  let payloads = JSON.parse(localStorage.getItem(id + "_payloads"));
+  if (payloads !== null) {
+    document.getElementById(id + "_payloads").value = payloads;
+    // Link href
+    let payloadLink = "javascript:selectPayload('payload.html";
+    for (let i = 0; i < payloads.length; i++) {
+      payloadLink += (i == 0 ? "#" : "&") + "p" + i + "=" + payloads[i];
+    }
+    payloadLink += "')"
+    customPayloadLink.href = payloadLink;
+    // Link mouseover
+    customPayloadLink.onmouseover = function() {
+      showPayloadInfo("Loads " + payloads.join(", ") + ".");
+    };
+  } else {
+    document.getElementById(id + "_payloads").value = null;
+    // Link href
+    customPayloadLink.href = "";
+    // Link mouseover
+    customPayloadLink.onmouseover = "";
+  }
+  // Checkbox
+  let checkbox = document.getElementById(id + "_enabled");
+  checkbox.checked = (localStorage.getItem(id + "_enabled") !== null);
+  // Show/hide link
+  if (checkbox.checked) {
+    customPayloadLink.style.display = "inline-block";
+  } else {
+    customPayloadLink.style.display = "none";
+  }
+}
+
+function deleteCustomPayloads() {
+  let customPayloadLink;
+  for (let i = 1; i < 4; i++) {
+    localStorage.removeItem("custom_" + i + "_title");
+    localStorage.removeItem("custom_" + i + "_payloads");
+    localStorage.removeItem("custom_" + i + "_enabled");
+    let customPayloadLink = document.querySelector(".fw" + targetFirmware.replace(".", "") + " > .payload_link" + "." + "custom_" + i);
+    customPayloadLink.href = "";
+    customPayloadLink.onmouseover = "";
+    loadCustomPayload("custom_" + i);
+  }
+}
+
+// Payload chains
+
+var isRecording = false; // Global
+function toggleChainRecording() {
+  isRecording = !isRecording;
+  let payload_chain_area = document.getElementById("payload_chain_area");
+  let payload_chain = document.getElementById("payload_chain");
+  if (isRecording === true) {
+    payload_chain_area.style.display = "flex";
+  } else {
+    hideTabs();
+    payload_chain_area.style.display = "none";
+  }
+  resetPayloadChain();
+}
+
+function resetPayloadChain() {
+  document.getElementById("payload_chain").innerHTML = payloadChainDefaultText;
+}
+
+function launchPayloadChain() {
+  let payload_chain = document.getElementById("payload_chain");
+  if (payload_chain.innerHTML != payloadChainDefaultText) {
+    let payloads = payload_chain.innerHTML.split(/[, ]+/);
+    let payloadLink = "payload.html";
+    for (let i = 0; i < payloads.length; i++) {
+      payloadLink += (i == 0 ? "#" : "&") + "p" + i + "=" + payloads[i];
+    }
+    location.href = payloadLink;
+  }
+}
+
+function selectPayload(payloadLink) {
+  if (isRecording === true) {
+    let payload_chain = document.getElementById("payload_chain");
+    let existingPayloads = payload_chain.innerHTML.split(/[, ]+/);
+    let newPayloads = payloadLink.substring(payloadLink.indexOf("#") + 1).split("&");
+    // Add new payloads to the list, one by one
+    for (let i = 0; i < newPayloads.length; i++) {
+      let temp = newPayloads[i].split("=");
+      temp.shift();
+      newPayloads[i] = temp.join();
+      if (existingPayloads.includes(newPayloads[i]) === false || newPayloads[i] == "netcat.js") { // No duplicates except for Netcat
+        if (payload_chain.innerHTML == payloadChainDefaultText) {
+          payload_chain.innerHTML = newPayloads[i];
+        } else {
+          payload_chain.innerHTML += ", " + newPayloads[i];
+        }
+      }
+    }
+  } else {
+    location.href = payloadLink;
+  }
+}
+
+// Jailbreak history
+
+function setJailbreakHistoryMax(val) {
+  if (val == 10) { // Default
+    localStorage.removeItem("jailbreak_history_max");
+  } else {
+    localStorage.setItem("jailbreak_history_max", val);
+  }
+}
+
+function clearJailbreakHistory() {
+  let x = confirm("Are you sure you want to delete your jailbreak history data?");
+  if (x == true) {
+    localStorage.removeItem("jailbreak_history");
+    alert("Jailbreak history data has been deleted.");
+    document.getElementById("tab_jailbreakhistory_stats").innerHTML = "";
+  }
+}
+
+function applyOptionHideJailbreakHistory() {
+  if (localStorage.getItem("disable_jailbreak_history") != 1) {
+    document.getElementById("button_jailbreakhistory").style.display = "inline";
+  } else {
+    document.getElementById("button_jailbreakhistory").style.display = "none";
+  }
+}
+
+function toggleJailbreakHistory() {
+  if (localStorage.getItem("disable_jailbreak_history") != 1) {
+    localStorage.setItem("disable_jailbreak_history", "1");
+  } else {
+    localStorage.removeItem("disable_jailbreak_history");
+  }
+  applyOptionHideJailbreakHistory();
+}
+
+// Deletes all saved localStorage items and restores websites' default settings
+function restoreDefaultSettings() {
+  // Not deleting jailbreak history nor wallpaper cache nor custom payload chains, as they have separate delete buttons
+  let jailbreak_history = localStorage.getItem("jailbreak_history");
+  let jailbreak_kex_skipped = localStorage.getItem("jailbreak_kex_skipped");
+  let wallpaper_cache = localStorage.getItem("wallpaper_cache");
+  let custom_title = [], custom_payloads = []; custom_enabled = [];
+  for (let i = 1; i < 4; i++) {
+    custom_title[i] = localStorage.getItem("custom_" + i + "_title");
+    custom_payloads[i] = localStorage.getItem("custom_" + i + "_payloads");
+    custom_enabled[i] = localStorage.getItem("custom_" + i + "_enabled");
+  }
+  localStorage.clear();
+  localStorage.setItem("jailbreak_history", jailbreak_history);
+  localStorage.setItem("jailbreak_kex_skipped", jailbreak_kex_skipped);
+  localStorage.setItem("wallpaper_cache", wallpaper_cache);
+  for (let i = 1; i < 4; i++) {
+    if (custom_title[i] !== null) { localStorage.setItem("custom_" + i + "_title", custom_title[i]); }
+    if (custom_payloads[i] !== null) { localStorage.setItem("custom_" + i + "_payloads", custom_payloads[i]); }
+    if (custom_enabled[i] !== null)  { localStorage.setItem("custom_" + i + "_enabled", custom_enabled[i]); }
+  }
+
+  initialize();
+}
+
+/* JAILBREAK HISTORY
+-------------------- */
+
+// Puts zeroes in front of numbers
+const zerofy = (number) => String(number).padStart(2, "0");
+
+// Clean up and, if jailbreak history enabled, log the last jailbreak
+function evaluateLastJailbreak() {
+  let jailbreak_start_date = localStorage.getItem("jailbreak_start_date");
+  if (jailbreak_start_date !== null) {
+    let logLevel = localStorage.getItem("jailbreak_log_level");
+    if (logLevel === null) { // Means "level 2"
+      let jailbreak_last_date = localStorage.getItem("jailbreak_last_date");
+      let elapsedTime = (jailbreak_last_date - jailbreak_start_date);
+      let hours = Math.floor(elapsedTime / 1000 / 60 / 60);
+      let minutes = Math.floor(elapsedTime / 1000 / 60 - hours * 60);
+      let seconds = Math.floor(elapsedTime / 1000 - minutes * 60);
+      let jailbreak_attempts = localStorage.getItem("jailbreak_attempts");
+      let jailbreak_history = JSON.parse(localStorage.getItem("jailbreak_history"));
+      if (jailbreak_history === null) { jailbreak_history = []; }
+      let jailbreak_payload = localStorage.getItem("jailbreak_payload");
+      if (jailbreak_payload === null) { jailbreak_payload = "Netcat"; }
+      let jailbreak_stage = localStorage.getItem("jailbreak_stage");
+      let reason;
+      switch (jailbreak_stage) {
+        case "0":
+          reason = "WebKit exploit failed";
+          break;
+        case "1":
+          reason = "Kernel exploit failed";
+          break;
+        case "2":
+          reason = "Exploits successful, no feedback from payload";
+          break;
+        case "3":
+          reason = "Exploits successful*, no feedback from payload";
+          break;
+        case "4":
+          reason = "Jailbreak successful";
+          break;
+        case "5":
+          reason = "Jailbreak successful*";
+          break;
+        default:
+          reason = "Session interrupted";
+      }
+      let logDate = new Date(parseInt(jailbreak_last_date));
+      let historyNewEntry = "[" + logDate.getFullYear() + "-" + zerofy(logDate.getMonth() + 1) + "-" + zerofy(logDate.getDate()) + " " + zerofy(logDate.getHours()) + ":" + zerofy(logDate.getMinutes()) + "] " + reason + "; payload" + (jailbreak_payload.includes(",") ? "s: " : ": ") + jailbreak_payload + "; attempts: " + jailbreak_attempts + "; time: " + zerofy(hours) + ":" + zerofy(minutes) + ":" + zerofy(seconds);
+      jailbreak_history.unshift(historyNewEntry);
+      localStorage.setItem("jailbreak_history", JSON.stringify(jailbreak_history));
+    }
+    localStorage.removeItem("jailbreak_start_date");
+    localStorage.removeItem("jailbreak_last_date");
+    localStorage.removeItem("jailbreak_attempts");
+    localStorage.removeItem("jailbreak_payload");
+    localStorage.removeItem("jailbreak_stage");
+  }
+}
+
+// Loads recorded history of previous jailbreak attempts, writing it into the history tab
+function loadJailbreakHistory() {
+  var jailbreak_history = JSON.parse(localStorage.getItem("jailbreak_history"));
+  if (jailbreak_history === null) {
+    jailbreak_history = ["No jailbreaks recorded yet."];
+  // Calculate and output statistics
+  } else {
+    var webKitAttempts = 0, webKitSuccessCount = 0, kernelAttempts = 0, kernelSuccessCount = 0, successAttempts = 0, successCount = 0, successTime = 0, attempts, time, hours, minutes, seconds;
+    var jailbreak_stages = JSON.parse(localStorage.getItem("jailbreak_stages"));
+    if (jailbreak_stages === null) { jailbreak_stages = []; }
+    for (var i = 0; i < jailbreak_history.length; i++) {
+      if (jailbreak_history[i].includes("successful")) {
+        attempts = jailbreak_history[i].match(/ttempts: .*[;,]/);
+        attempts = parseInt(attempts[0].match(/ [^;,]+/));
+        webKitAttempts += attempts;
+        webKitSuccessCount++;
+        successAttempts += attempts;
+        successCount++;
+
+        // Don't calculate skipped kernel exploits
+        if (!jailbreak_history[i].includes("*")) {
+          kernelSuccessCount++;
+          kernelAttempts++;
+        }
+
+        time = jailbreak_history[i].match(/..:..:../);
+        time = time[0];
+        hours = parseInt(time.substr(0, 2));
+        minutes = parseInt(time.substr(3, 2));
+        seconds = parseInt(time.substr(6, 2));
+        successTime += hours * 60 * 60 + minutes * 60 + seconds;
+      } else if (jailbreak_history[i].includes("WebKit exploit failed")) {
+        attempts = jailbreak_history[i].match(/ttempts: .*[;,]/);
+        attempts = parseInt(attempts[0].match(/ [^;,]+/));
+        webKitAttempts += attempts;
+      } else if (jailbreak_history[i].includes("Kernel exploit failed")) {
+        attempts = jailbreak_history[i].match(/ttempts: .*[;,]/);
+        attempts = parseInt(attempts[0].match(/ [^;,]+/));
+        webKitAttempts += attempts;
+        webKitSuccessCount++;
+        kernelAttempts++;
+      }
+    }
+    if (successCount > 0 && kernelAttempts > 0) {
+      let averageAttempts = successAttempts / successCount;
+      let averageTime = successTime / successCount;
+      let webKitSuccessRate = (webKitSuccessCount / webKitAttempts * 100).toFixed(2);
+      let kernelSuccessRate = (kernelSuccessCount / kernelAttempts * 100).toFixed(2);
+      hours = zerofy(Math.floor(averageTime / 60 / 60));
+      minutes = zerofy(Math.floor(averageTime / 60 - hours * 60));
+      seconds = zerofy(Math.floor(averageTime - minutes * 60));
+      averageTime = hours + ":" + minutes + ":" + seconds;
+      document.getElementById("tab_jailbreakhistory_stats").innerHTML = "Average attempts: " + averageAttempts.toFixed(2) + ", average time: " + averageTime + "<br>WebKit exploit success rate: " + webKitSuccessRate + "%, kernel exploit success rate: " + kernelSuccessRate + "%";
+    }
+  }
+
+  // Print the jailbreak history
+  var max = localStorage.getItem("jailbreak_history_max"); // Apply max lines to show
+  if (max === null) {
+    if (jailbreak_history.length > 10) jailbreak_history.length = 10;
+  } else {
+    if (jailbreak_history.length > max) jailbreak_history.length = max;
+  }
+  let jailbreak_history_output = jailbreak_history.join("<br>"); // Adding linebreaks
+  document.getElementById("historylog").innerHTML = jailbreak_history_output;
+  if (jailbreak_history_output.includes("*")) {
+    document.getElementById("historylog").innerHTML += "<br><br>*Kernel exploit skipped.";
+  }
+}
+
+/* WALLPAPERS
+------------- */
+
+// Loads a wallpaper and displays it
+function loadWallpaper(imageUrl) {
+  if (imageUrl == "cache") {
+    imageUrl = localStorage.getItem("wallpaper_cache");
+    if (imageUrl === null) {
+      disableWallpaperMode();
+      return false;
+    }
+  } else {
+    if (!imageUrl.startsWith("wallpapers")) {
+      imageUrl = atob(imageUrl);
+    }
+    var image = new Image();
+    image.src = imageUrl;
+    image.onerror = function() {
+      disableWallpaperMode();
+    }
+  }
+  document.body.style.backgroundImage = "url(" + imageUrl + ")";
+  return true;
+}
+
+// Hides various elements/changes their opacity for optimum wallpaper experience, and sets a wallpaper
+function enableWallpaperMode(imageUrl) {
+  if (loadWallpaper(imageUrl) === true) {
+    document.body.style.backgroundSize = "cover";
+    document.querySelector(".credits" + ".fw" + targetFirmware.replace(".", "")).style.display = "none";
+    document.getElementById("website").style.opacity = "0.85";
+    document.getElementById("instructions").style.display = "none";
+    document.querySelector("main").style.backgroundColor = "transparent";
+  }
+}
+
+// Removes the wallpaper and resets the website's looks to default
+function disableWallpaperMode() {
+  document.getElementById("instructions").style.display = "block";
+  document.getElementById("website").style.opacity = "1.0";
+  document.querySelector(".credits" + ".fw" + targetFirmware.replace(".", "")).style.display = "block";
+  document.body.style.backgroundImage = "none";
+  document.querySelector("main").style.backgroundColor = "var(--background-color-2)";
+}
+
+/* STARTUP
+---------- */
+
+initialize();
+evaluateLastJailbreak();
+checkForUpdates();
+</script>
+</body>
+</html>

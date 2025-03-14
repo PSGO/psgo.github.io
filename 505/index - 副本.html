@@ -1,0 +1,512 @@
+<html manifest="cache.manifest">
+<body> 
+<head>
+<meta charset="utf-8"/>
+<title>5.05系统折腾菜单</title>
+<style type="text/css">
+html, body {
+margin: 0;
+height: 100%;
+padding: 0;
+overflow: hidden;
+font-family: sans-serif;
+font-size: 20px;
+font-weight: bold;
+text-align: center;  
+width: 100%;
+overflow: hidden;
+}
+#head {
+ font-weight:bold;
+ font-size:20px;
+ color: white;
+  margin-right:10%;
+}
+ button {
+            
+            border: 2px solid black;
+            border-radius: 10px;
+			width: 170px;
+            height: 50px;            
+            text-align: center;
+            padding: 1px;
+            margin: 1px;
+            box-shadow: 0 5px 20px 0 white;
+            background:green;
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 white;
+            color: white;
+            border-radius: 10px;
+            background-color: red;
+}
+header{
+	height: 3em;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+#clock{
+ float:right;
+ margin-right:2.25%;
+ margin-top: 0px;
+ font-weight:bold;
+ font-size:20px;
+  color: white;
+}
+#date {
+ float:left;
+ margin-left:1.25%;
+ font-weight:bold;
+ margin-top: 5px;
+ font-size:20px;
+ color: white;
+}
+#donate2{
+ float:right;
+ margin-right:2.25%;
+ margin-top: 0px;
+ font-weight:bold;
+ font-size:28px;
+  color: white;
+}
+#donate {
+ float:left;
+ margin-left:1.60%;
+ font-weight:bold;
+ margin-top: 0px;
+ font-size:28px;
+ color: white;
+}
+#msgs {
+ font-weight:bold;
+ padding-right: 60px;
+ margin-right: 60px;
+ font-size:17px;
+}
+header div{
+	height: 100%;
+	display: ruby-text;
+	margin-top: -1.5em;
+}
+.pointer {cursor: pointer;}
+.yellow {
+  color:yellow;
+ }
+ .hue {
+  color:yellow;
+  padding:10px;
+  border-radius:10px;
+  animation:hue 5s linear infinite;
+  -webkit-animation: hue 5s linear infinite;
+  box-shadow: 0px 0px 50px yellow;
+  color:white;
+  background:rgba(255,255,0,0.4);
+ }
+ .hue:hover{
+  color:yellow;
+  background:transparent;
+ }
+ @keyframes hue{
+ 0%{
+ filter:hue-rotate(0deg);
+ -webkit-filter:hue-rotate(0deg);
+ }
+ 10%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 20%{
+ box-shadow: 1px 1px 50px yellow;
+ }
+ 30%{
+ box-shadow: 1px 0px 50px yellow;
+ }
+ 40%{
+  box-shadow: 1px -1px 50px yellow;
+ }
+ 50%{
+ box-shadow: 0px -1px 50px yellow;
+ }
+ 60%{
+ box-shadow: -1px -1px 50px yellow;
+ }
+ 70%{
+ box-shadow: -1px 0px 50px yellow;
+ }
+ 80%{
+ box-shadow: -1px 1px 50px yellow;
+ }
+ 90%{
+ box-shadow: 0px 1px 50px yellow;
+ }
+ 100%{
+ filter:hue-rotate(360deg);
+ -webkit-filter:hue-rotate(360deg);
+ }
+ }
+  .content {
+  width:80%;
+  margin-left:7.5%;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  margin-top:0%;
+  font-size:25px;
+  text-align:center;
+  border-radius:30px;
+  padding:20px;
+  line-height:10px;
+ }
+ .title {
+  font-size:40px;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-weight:bolder;
+  margin-bottom:10px;
+ }
+</style>
+<script>
+
+  window.applicationCache.ondownloading=function(){document.getElementById("msgs").innerHTML="开始安装离线缓存菜单!!"};
+  window.applicationCache.onprogress=function(a){document.getElementById("msgs").innerHTML="菜单安装进度: "+(Math.round(100*(a.loaded/a.total)))+"% "};
+  window.applicationCache.oncached=function(){document.getElementById("msgs").innerHTML="离线菜单安装完成!!";setTimeout(function(){document.getElementById("msgs").innerHTML="请收藏本页至书签，并关闭网络使用离线模式"; }, 1500);};
+</script>
+
+<div style="background-color:black;"><br>
+<div> <iframe src="blank.html" name="exp-loader" width="100%" height="130" style="border:none;"> </iframe> </div>
+</head>
+<body style='background-color:black'>
+<script src="cal.js"></script>
+<div style="text-align:center"><h2 style='font-size:22px;color:white;'>V3版 菜单制作：豆子哥&nbsp <font size="4">2021.11.24</b>
+<hr>
+<button style='width:242px;font-size:22px;text-align:center;background-color:#EE2C2C;color:white' class="pointer" onMouseOver="msgs.innerHTML='黄金HenV1.1破解：运行自制游戏，VR支持、休眠支持、USBHDD挂载、UART、FTP(端口2121)。 制作：SISTRo'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_goldhen(); return false"><b>&nbsp;&nbsp;黄金Hen1.1破解&nbsp;&nbsp; </button> 
+<button style='width:242px;font-size:22px;text-align:center;background-color:#EE2C2C;color:white' class="pointer" onMouseOver="msgs.innerHTML='黄金HenV2.0B破解：运行自制游戏，VR支持、休眠支持、USBHDD挂载、UART、FTP(端口2121)。 制作：SISTRo'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_goldhen2(); return false"><b>&nbsp;&nbsp;黄金Hen2.0B破解&nbsp;&nbsp; </button>   
+<button style='width:242px;font-size:22px;text-align:center;background-color:green;color:white' class="pointer" onMouseOver="msgs.innerHTML='系统设置中追加orbis工具箱开发菜单，支持实时显示CPU、内存、温度等选项（请先黄金HEN破解）汉化:不讲武德'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明'" onclick="load_orbis(); return false"><b>&nbsp;&nbsp;Orbis工具箱&nbsp;&nbsp; </button>
+<button style='width:242px;font-size:22px;text-align:center;background-color:#EE2C2C;color:white' class="pointer" onMouseOver="msgs.innerHTML='Hen213破解：运行自制游戏，VR支持、休眠支持，USBHDD挂载、系统伪装FW8.03(休眠唤醒后显示)。制作：jocover'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_hen213(); return false"><b>&nbsp;&nbsp;Hen213破解&nbsp;&nbsp; </button>
+<button style='width:242px;font-size:22px;text-align:center;background-color:#EE2C2C;color:white' class="pointer" onMouseOver="msgs.innerHTML='Hen214b破解：运行自制游戏， VR支持、休眠支持，USBHDD挂载、系统伪装FW9.00(休眠唤醒后显示)。制作：Leeful'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_hen214b(); return false"><b>&nbsp;&nbsp;Hen214b破解 &nbsp;&nbsp; </button>
+
+<div style="background-color:black;"><br>
+<h1 id=msgs style='font-size:25px;text-shadow: 4px 4px 4px black;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'>移动光标至按钮，查看功能概述</h1>
+
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='Bin文件加载器，端口9020'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_binloader(); return false"> Bin加载器</button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='FTP服务端口1337，开启对PS4内置硬盘的访问权限。'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_ftprw(); return false"> FTP服务 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='禁用PS4固件更新。如有更新文件已被下载，通过此功能可将其删除。'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_updatesdisable(); return false"> 屏蔽系统更新 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='激活PS4的固件更新，完成重启后生效'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_updatesenable(); return false"> 激活系统更新 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='备份数据库文件到USB存储器'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_dbBackup(); return false"> 数据库备份 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='从USB存储器恢复备份的数据库文件'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_dbRestore(); return false"> 数据库还原 </button>
+<br><br>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='将光盘游戏或数字游戏转储到USB存储器，用来制作FPKG备份游戏。'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_dumper(); return false"> Dumper转储 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='在主题游戏图标的功能选项卡中，加入TestKit测试机调试选项'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_todex(); return false"> ToDex伪装 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='存档数据注入器v1.0'"; onmouseout="msgs.innerHTML='Night King Lite 5.05 FW'" onclick="load_ps4debug(); return false"> debug模式 </button>
+<a href="http://ps4trainer.com/Trainer/index.html"><button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='网页金手指，需要联网使用'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" > 在线金手指 </button></a>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='将所有的游戏存档备份至USB存储器'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_saveb(); return false"> 存档备份 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='从USB存储器恢复备份存档'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_saver(); return false"> 存档还原 </button>
+<br><br>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='将已安装的游戏从PS4内置硬盘，转移到外部USB存储器（USB存储器需exfat格式）。'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_app2usb(); return false"> App2USB转移 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='从USB引导Linux，分配1GB显存'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明'" onclick="load_linux1g(); return false"> Linux引导1Gb </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='从USB引导Linux，分配2GB显存'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明'" onclick="load_linux2g(); return false"> Linux引导2Gb </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='从USB引导Linux，分配3GB显存'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_linux3g(); return false"> Linux引导3Gb </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='将Mira签名更改为Hen，用来解决Mira游戏Hen无法运行的问题'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_rif(); return false"> Rif失效改签 </button>
+<button style='width:200px;font-size:20px;text-align:center;color:white' class="pointer" onMouseOver="msgs.innerHTML='调整风扇加速值所需的起始温度（系统默认79℃启动）'"; onmouseout="msgs.innerHTML='光标指向载荷，可查看注解及说明。'" onclick="load_fanthresh(); return false"> 风扇控制 </button>
+</div>
+<hr>
+ 	<div class="text" >
+ 	 <h1 style='font-size:20px;color:white;'>开发人员: qwertyoruiopz,flatz,Specter,LM,CelesteBlue,AlAzif,Zecoxao,TheFlow,SISTR0,ChendoChap,leeful,karo...</a>
+ 	 <br><br> <align="center" style="color: #01DF3A"><b>重要提示：更换或更新本菜单，请先三清并重启浏览器。缓存完成后收藏本页至书签，断网使用。
+</a>
+	 </div></div>
+<script>
+if (localStorage.passcount == null) localStorage.passcount=0;
+window.passCounter.innerHTML=localStorage.passcount;
+if (localStorage.failcount == null) localStorage.failcount=0;
+window.failCounter.innerHTML=localStorage.failcount;
+
+function load_hen16(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'vtxhen16.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_hen17(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'vtxhen17.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_hen18(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'vtxhen18.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_hen212(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'hen212.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_hen213(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'hen213.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_hen214(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'hen214.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+
+function load_hen214b(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'hen214b.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+
+function load_goldhen(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'goldhen.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_goldhen2(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'goldhen2.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+
+
+function load_mirahen(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'mirahen18.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+
+function load_binloader(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'binloader.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+
+function load_ftp(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'vtxftp.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_ftprw(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'ftprw.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_dumper(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'vtxdump.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_app2usb(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'apptousb.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_updatesdisable(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'blocker.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_updatesenable(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'unblock.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_dbBackup(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'db_backup.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+
+function load_dbRestore(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'db_restore.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+
+function load_todex(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'todex.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_ps4debug(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'ps4debug100.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+
+function load_webrte(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'rte.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_linuxbaikal(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'baikal.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_linux1g(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = '1gblinux.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_linux2g(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = '2gblinux.html';
+        link.target = 'exp-loader';
+        link.click();
+}
+function load_linux3g(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = '3gblinux.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+
+function load_fanthresh(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'FanControl.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_rif(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'RifRenamer.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_gtav(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'gta_v_lotus104.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_gtav2(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'gta_v_ap_ii_intense.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_ren(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'PS4REN.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_infinix(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'infinix.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_trpb(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'trp_backup.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_trpr(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'trp_restore.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_saveb(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'save_backup.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_saver(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'save_restore.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_savem(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'save_mounter.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_orbis(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'orbis.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+function load_orbisafr(){
+  var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = 'orbisafr.html';
+        link.target = 'exp-loader';
+        link.click();
+		}
+</script>
+</div>
+</body>
+</html>

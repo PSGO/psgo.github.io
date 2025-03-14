@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<style>body{background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;}</style>
+<style>img:hover {transform: scale(1.2); /* (100% zoom - Note: if the zoom is too large, it will go outside of the viewport) */}</style>
+<style>.center{display: block;margin-left: auto;margin-right: auto;}</style>
+<b><a class="hue" style='font-size:45px;text-align:center;color:white;text-shadow: 4px 4px 4px black;'>XBOXone/SS/SX折腾服务器<b>
+<title>PSGO折腾服务器</title>
+<style>
+body{
+background-color:black;
+margin:0;
+padding:0;
+text-align:center;
+}
+.option{
+cursor:crosshair;
+margin:5px auto;
+padding:5px;
+background-color:#fff;
+font-family:微软雅黑;
+font-size:26px;
+width:700px;
+}
+   .rangefan {
+        -webkit-appearance: none;
+        vertical-align: middle;
+        outline: 5;
+        padding: 0;
+        border: 1px solid #fff;
+        background: #ff3300;
+        border-radius: 10px;
+        width: 50%;
+      }
+      .rangefan::-webkit-slider-runnable-track {
+        background-color: 0 0;
+        height: 6px;
+        border-radius: 3px;
+        border: 1px solid transparent;
+      }
+      .rangefan::-webkit-slider-thumb {
+        -webkit-appearance: none !important;
+        border-radius: 100%;
+        background-color: #fff;
+        height: 18px;
+        width: 18px;
+        margin-top: -7px;
+      }
+      .rangefan:active::-ms-thumb {
+        border: none;
+      }
+      #outputfan {
+        border: 1px solid #d7dbdd;
+        font-size: 15px;
+        padding: 0.3em 0.3em;
+        margin: 0.1em;
+        border-radius: 3px;
+        min-width: 2em;
+        text-align: center;
+      }
+      #submitfan {
+        border: 1px solid #d7dbdd;
+        background: 0 0;
+        font-size: 15px;
+        padding: 0.3em 0.3em;
+        margin: 0.1em;
+        border-radius: 3px;
+        text-align: center;
+        color:#fff;
+      }
+ button {
+            
+            border: 2px solid black;
+            border-radius: 10px;
+			width: 150px;
+            height: 40px;            
+            text-align: center;
+            padding: 1px;
+            margin: 1px;
+            box-shadow: 0 5px 20px 0 white;
+           
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 white;
+            color: white;
+            border-radius: 10px;
+            background-color: #0F0F53;
+}
+
+   #updateinfo {
+      
+      color: red;
+	  font-size: 26px;
+      
+    }
+	
+	
+    #payload_info {
+      color:red;
+     
+      font-size: 20px;
+   
+    }
+	
+	
+</style>
+<body>
+
+<hr> 
+<div style="text-align:center"> <p><b><a class="hue" style='font-size:26px;text-align:center;color:yellow;'>不再需要白名单，可直接通过XBOX内置Edge浏览器领取！<br>【 弹窗提示跳转微软商城时，请点击确认！！】</p></font></b></div>
+  <h1 style='font-size:25px;text-align:center;color:#01DF3A'></h1>
+<a href="ms-windows-store://pdp/?productid=9NP8M76JP9F5"  ><button style="width:350px;font-size:22px;text-align:center;background-color:green;color:white;"><b> RetroArch全能模拟器 </button></a>
+<a href="ms-windows-store://pdp/?productid=9N942N4SP1CC" ><button style="width:350px;font-size:22px;text-align:center;background-color:green;color:white;"><b>PSP模拟器  </button></a>
+<br/><br/><br/>
+ <a href="ms-windows-store://pdp/?productid=9P64XV1T2DQF" ><button style="width:350px;font-size:22px;text-align:center;background-color:#004B97;color:white;"><b>小黄鸭PS1模拟器   </button></a>
+<a href="ms-windows-store://pdp/?productid=9NFZ6LS51S8T" ><button style="width:350px;font-size:22px;text-align:center;background-color:#004B97;color:white;"><b>DC模拟器 </button></a>
+<a href="ms-windows-store://pdp/?productid=9NW262T12WCD" ><button style="width:350px;font-size:22px;text-align:center;background-color:#004B97;color:white;"><b>FTP服务软件  </button></a>
+
+<br/><br/> 
+ 
+ <hr>
+<b><a class="hue" style='font-size:26px;text-align:center;color:white;text-shadow: 4px 4px 4px black;'>开发人员: Nun-z、Gamr13 等...     
+<br/> 2022.04.24
+
+<div class="u-audio">
+    <audio id="yy" autoplay preload src="music.mp3" loop="true" volume="90" ></audio>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    var bjyy=document.getElementById("yy");
+    function autoPlayAudio() {
+        wx.config({
+            debug: false
+        });
+        wx.ready(function() {
+            bjyy.play();
+        });
+    }
+    $(".u-audio").click(function(){
+        if($(this).attr("class")=="u-audio"){
+            bjyy.play();
+            $(".u-audio").addClass("u-play");
+        }else if($(this).attr("class")=="u-audio u-play"){
+            bjyy.pause();
+            $(".u-audio").removeClass("u-play");
+        }
+    });
+    $(".u-audio").trigger("click");
+    autoPlayAudio();
+</script>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>PS4 4.74 离线缓存安装</title>
+<link rel="stylesheet" href="Style_03.css">
+<script>
+function ondownloading(){changeText("安装 &nbsp; 离线 &nbsp; 缓存<br>正在&nbsp; 加载 ...");}
+function oncached(){changeText("离线 &nbsp; 缓存 &nbsp; 安装 &nbsp; 成功 !<br><div class=ib>请按&nbsp;</div><div id=PSBUTTON></div><div class=ib>&nbsp;PS按键&nbsp;退出</div>");}
+function onupdateready(){changeText("离线 &nbsp; 缓存 &nbsp; 已经 &nbsp; 完成&nbsp; 升级 !<br><div class=ib>请按 S&nbsp;</div><div id=PSBUTTON></div><div class=ib>&nbsp;PS按键 &nbsp;退出</div>");}
+function onnoupdate(){changeText("没有&nbsp; 新的 &nbsp; 升级 &nbsp; 文档 &nbsp; <br><div class=ib>请按&nbsp;</div><div id=PSBUTTON></div><div class=ib>&nbsp;PS按键 &nbsp;退出</div>");}
+function onerror(){changeText("错误 &nbsp; 缓存 G &nbsp; 失败 !<br><div class=ib>请按&nbsp;</div><div id=PSBUTTON></div><div class=ib>&nbsp;退出 &nbsp;重来</div>");}
+function changeText(text){var display = document.getElementById('text-display'); display.innerHTML = ""; display.innerHTML = text;}
+</script>
+</head>
+<body>
+<br>
+<div id=Title>PS4 4.74 离线缓存安装</div>
+<div id="text-display" class="info"></div>
+<iframe style=border:none; src="Cache_Install_2.html"></iframe>
+</body>
+</html>

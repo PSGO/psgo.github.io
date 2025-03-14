@@ -1,0 +1,359 @@
+<html>
+<style>
+  body {
+    height: 100%;
+    margin: 16px;
+    overflow: hidden;
+  }
+
+  #container {
+    border: 1px solid black;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    font-size: large;
+  }
+
+  #title {
+    font-weight: bold;
+    padding: 8px;
+  }
+
+  #log_area {
+    border: 1px solid black;
+    border-style: solid none none;
+    padding: 8px;
+  }
+</style>
+<body onload="go()">
+<div id="container">
+  <div id="title"></div>
+  <div id="log_area"></div>
+</div>
+<span id="exploit_info"></span>
+<script>
+  // Global variables
+  var jailbreak_start_date, jailbreak_last_date, jailbreak_attempts,
+    jailbreak_stage, jailbreak_payload, hours, minutes, seconds,
+    logLevel = parseInt(localStorage.getItem("jailbreak_log_level"));
+  if (isNaN(logLevel)) { logLevel = 2; }
+
+  // Cleans up local storage
+  function clearJailbreakStorage() {
+    localStorage.removeItem("jailbreak_start_date");
+    localStorage.removeItem("jailbreak_last_date");
+    localStorage.removeItem("jailbreak_attempts");
+    localStorage.removeItem("jailbreak_payload");
+    localStorage.removeItem("jailbreak_stage");
+  }
+
+  // Converts a given time (in milliseconds) into hours, minutes, seconds
+  function convertTime(time) {
+    hours = Math.floor(time / 1000 / 60 / 60);
+    minutes = Math.floor(time / 1000 / 60 - hours * 60);
+    seconds = Math.floor(time / 1000 - minutes * 60);
+  }
+
+  // Adds leading zeroes to numbers
+  const zerofy = (number) => String(number).padStart(2, "0");
+
+  // Saves jailbreak history in local storage
+  function saveJailbreakHistory(reason) {
+    var jailbreak_history = JSON.parse(localStorage.getItem("jailbreak_history"));
+    if (jailbreak_history === null) {
+      jailbreak_history = [];
+    }
+    if (jailbreak_history.length > 100) {
+      jailbreak_history.length = 100;
+    }
+    jailbreak_payload = localStorage.getItem("jailbreak_payload");
+    jailbreak_attempts = localStorage.getItem("jailbreak_attempts");
+    jailbreak_start_date = localStorage.getItem("jailbreak_start_date");
+    jailbreak_last_date = localStorage.getItem("jailbreak_last_date");
+    let logDate = new Date(parseInt(jailbreak_last_date));
+    convertTime(jailbreak_last_date - jailbreak_start_date);
+    let historyNewEntry = "[" + logDate.getFullYear() + "-" + zerofy(logDate.getMonth() + 1) + "-" + zerofy(logDate.getDate()) + " " + zerofy(logDate.getHours()) + ":" + zerofy(logDate.getMinutes()) + "] " + reason + "; payload" + (jailbreak_payload.includes(",") ? "s: " : ": ") + jailbreak_payload + "; attempts: " + jailbreak_attempts + "; time: " + zerofy(hours) + ":" + zerofy(minutes) + ":" + zerofy(seconds);
+    jailbreak_history.unshift(historyNewEntry);
+    localStorage.setItem("jailbreak_history", JSON.stringify(jailbreak_history));
+  }
+
+  // Returns all payloads as an array
+  function getPayloads() {
+    let payloads = document.location.hash.substr(1).split("&");
+    for (let i = 0; i < payloads.length; i++) {
+      let temp = payloads[i].split("=");
+      temp.shift();
+      payloads[i] = temp.join();
+    }
+    return payloads;
+  }
+
+  // Resets all variables to start a new run
+  function jailbreakLogInit() {
+    clearJailbreakStorage();
+    jailbreak_start_date = Date.now();
+    localStorage.setItem("jailbreak_start_date", jailbreak_start_date);
+    localStorage.setItem("jailbreak_last_date", jailbreak_start_date);
+    jailbreak_payload = getPayloads().join(", ");
+    localStorage.setItem("jailbreak_payload", jailbreak_payload);
+    jailbreak_attempts = 1;
+    localStorage.setItem("jailbreak_attempts", jailbreak_attempts);
+  }
+
+  // Log jailbreak stats
+  if (logLevel > 0) {
+    {
+      jailbreak_start_date = localStorage.getItem("jailbreak_start_date");
+      // Handle the first run
+      if (jailbreak_start_date === null) {
+        jailbreakLogInit();
+      // Handle previous runs
+      } else {
+        jailbreak_stage = localStorage.getItem("jailbreak_stage");
+        // Handle finished runs
+        if (jailbreak_stage !== null) {
+          if (logLevel > 1 ) {
+            switch (jailbreak_stage) {
+              case "0":
+                saveJailbreakHistory("WebKit exploit failed");
+                break;
+              case "1":
+                saveJailbreakHistory("Kernel exploit failed");
+                break;
+              case "2":
+                saveJailbreakHistory("Exploits successful, no feedback from payload");
+                break;
+              case "3":
+                saveJailbreakHistory("Exploits successful*, no feedback from payload");
+                break;
+              case "4":
+                saveJailbreakHistory("Jailbreak successful");
+                break;
+              case "5":
+                saveJailbreakHistory("Jailbreak successful*");
+            }
+          }
+          jailbreakLogInit();
+        // Handle subsequent runs
+        } else {
+          let currentDate = Date.now();
+          jailbreak_last_date = localStorage.getItem("jailbreak_last_date");
+          // After 5 minutes, assume interruption
+          if (currentDate - jailbreak_last_date > 300000) {
+            if (logLevel > 1 ) {
+              saveJailbreakHistory("Session interrupted");
+            }
+            jailbreakLogInit();
+          // Continue previous run
+          } else {
+            jailbreak_payload = localStorage.getItem("jailbreak_payload");
+            jailbreak_attempts = localStorage.getItem("jailbreak_attempts");
+            jailbreak_attempts++;
+            localStorage.setItem("jailbreak_attempts", jailbreak_attempts);
+            localStorage.setItem("jailbreak_last_date", currentDate);
+          }
+        }
+      }
+    }
+  } else {
+    jailbreak_payload = getPayloads().join(", ");
+  }
+
+  // Text output
+  {
+    let title = document.getElementById("title");
+    title.innerHTML = "Now jailbreaking with payload" + (jailbreak_payload.includes(",") ? "s" : "") + " \"" + jailbreak_payload + "\"";
+
+    // Create log area (which is also used by function "debug_log" from script utils.js)
+    var logArea = document.getElementById("log_area");
+
+    // Applies a color scheme
+    function setColors(background1, text1, highlight, border, background2, text2 = text1) {
+      container.style.borderColor = border;
+      title.style.backgroundColor = background1;
+      title.style.borderColor = border;
+      title.style.color = text1;
+      logArea.style.backgroundColor = background2;
+      logArea.style.borderColor = border;
+      logArea.style.color = text2;
+    }
+
+    // Load color scheme
+    let color_scheme = localStorage.getItem("color_scheme");
+    switch (color_scheme) {
+      case "cappuccino":
+        setColors("#3A2E2E", "#F7ECDF", "sienna", "#816C61", "#D6B79F", "#4B3832");
+        break;
+      case "lavender":
+        setColors("lavender", "indigo", "thistle", "darkorchid", "#F5F5FA");
+        break;
+      case "midnightblue":
+        setColors("midnightblue", "white", "tomato", "#A9BBF1", "royalblue");
+        break;
+      case "rojigualda":
+        setColors("#AA151B", "#F1BF00", "#800F14", "#D7810A", "#F1BF00", "#AA151B")
+        break;
+      case "usa":
+        setColors("#9B1C2C", "#E3DED4", "#33335F", "#CCC8BF", "#33335F");
+        break;
+      case "wheat":
+        setColors("wheat", "maroon", "burlywood", "saddlebrown", "#FFFBF2");
+        break;
+      case "wildberry":
+        setColors("#550000", "#FFDDDD", "#801515", "#E6C7C7", "#AA3939");
+        break;
+      default:
+        setColors("#F0F0F0", "black", "#D7D7D7", "gray", "white");
+    }
+
+    // Write elapsed time and number of attempts
+    if (logLevel > 0) {
+      convertTime(Date.now() - jailbreak_start_date);
+      logArea.innerHTML += "[+] Attempt " + jailbreak_attempts + "<br>";
+      logArea.innerHTML += "[+] Elapsed time: " + zerofy(hours) + ":" + zerofy(minutes) + ":" + zerofy(seconds) + "<br>";
+    }
+    let height = logArea.offsetHeight;
+  }
+
+  // Jailbreak
+
+  var scriptCode = "";
+  var payloadScriptCode = [];
+  var payloadByteArray = [];
+
+  window.midExploit = function() {
+    var xhr = new XMLHttpRequest();
+    // Preload initial scripts
+    jailbreak_kernel_exploit = localStorage.getItem("jailbreak_kernel_exploit");
+    switch (jailbreak_kernel_exploit) {
+      case "2021-06-03":
+      case "2021-05-27":
+      case "2021-05-21":
+      case "2021-05-03":
+      case "2021-04-29":
+        var scripts = ["blob.js", "jb_" + jailbreak_kernel_exploit + ".js", "mira.js"];
+        break;
+      default:
+        var scripts = ["blob.js", "jb.js", "mira.js"];
+    }
+    for (let i = 0; i < scripts.length; i++) {
+      xhr.open("GET", scripts[i], false);
+      xhr.send();
+      scriptCode += xhr.responseText + "\n";
+    }
+    // Preload payload scripts
+    let payloads = jailbreak_payload.split(", ");
+    for (let i = 0; i < payloads.length; i++) {
+      // .js files
+      if (payloads[i].endsWith(".js")) {
+        xhr.open("GET", payloads[i], false);
+        xhr.send();
+        payloadScriptCode[i] = "";
+        payloadScriptCode[i] += xhr.responseText + "\n";
+        // Netcat only once
+        if (payloads[i] != "netcat.js") {
+          xhr.open("GET", "netcat.js", false);
+          xhr.send();
+          payloadScriptCode[i] += xhr.responseText;
+        }
+      // .bin files
+      } else {
+        function loadBinaryPayload(i) {
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", payloads[i]);
+          xhr.responseType = "arraybuffer";
+          xhr.onload = function() {
+            let arrayBuffer = xhr.response;
+            payloadByteArray[i] = new Uint8Array(arrayBuffer);
+            payloadScriptCode[i] = "";
+            payloadScriptCode[i] += "window.mira_blob_2_len = " + payloadByteArray[i].length + ";\n";
+            payloadScriptCode[i] += "window.mira_blob_2 = malloc(window.mira_blob_2_len);\n";
+            payloadScriptCode[i] += "write_mem(window.mira_blob_2, payloadByteArray[" + i + "]);\n";
+            xhr = new XMLHttpRequest();
+            xhr.open("GET", "netcat.js", false);
+            xhr.send();
+            payloadScriptCode[i] += xhr.responseText;
+            // Web Activator
+            if (payloads[i] == "web_activator.bin") {
+              xhr.open("GET", "web_activator_frontend.js", false);
+              xhr.send();
+              payloadScriptCode[i] += "\n" + xhr.responseText;
+            }
+          };
+          xhr.send();
+        }
+        loadBinaryPayload(i);
+      }
+    }
+  }
+
+  window.postExploit = function() {
+    if (logLevel > 0 ) {
+      localStorage.setItem("jailbreak_last_date", Date.now());
+      localStorage.setItem("jailbreak_stage", 1);
+      var timeoutValue = 300; // Hopefully long enough to physically write to disk before KP
+    } else {
+      var timeoutValue = 100;
+    }
+    if (jailbreak_payload.includes("netcat.js")) {
+      let netcatCount = (jailbreak_payload.match(/netcat\.js/g) || []).length;
+      debug_log("[+] 等待有效载荷" + (netcatCount > 1 ? "s" : "") + "端口9021");
+    }
+    history.pushState({}, "", "index.html");
+    setTimeout(function() {
+      let payloads = jailbreak_payload.split(", ");
+      eval.call(window, scriptCode);
+      for (let i = 0; i < payloads.length; i++) {
+        eval.call(window, payloadScriptCode[i]);
+      }
+      done();
+    }, timeoutValue);
+  }
+
+  function done() {
+    if(main_ret == 0 || main_ret == 179) {
+      if (localStorage.getItem("disable_youreallset") != 1) {
+        if (logLevel > 0) {
+          jailbreak_last_date = Date.now();
+          localStorage.setItem("jailbreak_last_date", jailbreak_last_date);
+          localStorage.setItem("jailbreak_stage", parseInt(localStorage.getItem("jailbreak_stage")) + 2);
+          convertTime(jailbreak_last_date - jailbreak_start_date);
+          alert("成功!\n\n破解用时" + (hours * 60 + minutes) + "分钟" + (minutes == 1 ? "" : "") + " " + seconds + "秒" + (seconds == 1 ? "" : "") + ".");
+        } else {
+          alert("成功!");
+        }
+      }
+      if (!jailbreak_payload.includes("web_activator.bin")) {
+        read_ptr_at(0);
+      }
+    } else {
+      alert("失败，请重启PS4再试.");
+    }
+  }
+</script>
+<script src="webkit/utils.js"></script>
+<script src="webkit/int64.js"></script>
+<script>
+  switch (localStorage.getItem("jailbreak_webkit_exploit")) {
+    case "combined":
+      document.write("<script src=\"webkit/ps4_combined.js\"><\/script>");
+      break;
+    case "regular":
+      document.write("<script src=\"webkit/ps4_regular.js\"><\/script>");
+      break;
+    case "sleirsgoevy":
+      document.write("<script src=\"webkit/ps4_sleirsgoevy.js\"><\/script>");
+      break;
+    default:
+      document.write("<script src=\"webkit/ps4_hippie68.js\"><\/script>");
+  }
+</script>
+<div>
+<button id="input1" onfocus="handle2()" style="opacity: 0"></button>
+<button id="input2" style="opacity: 0"></button>
+<button id="input3" onfocus="handle2()" style="opacity: 0"></button>
+<select id="select1" style="opacity: 0">
+<option value="value1" style="opacity: 0">Value1</option>
+</select>
+</div>
+</body>
+</html>

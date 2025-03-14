@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Save Restore</title>
+<link rel="stylesheet prefetch" href="exploit.css">
+</head>
+<body>
+<div id=loader class=loader><div class=ib2>存档还原器</div><div class=ib2>&nbsp;</div><div class=loaderO></div><div class=ib2>加载中...</div></div>
+<div id=done class=done style=display:none>开始还原<br><div class=ib>请按</div><div id=PSBUTTON></div><div class=ib>退出</div></div>
+<div id=fail class=info style=display:none>失败</div>
+<script>
+var bin="Save_Data_Restore.bin";function getScript(source,callback){var gs=document.createElement('script');gs.src=source;gs.onload=callback;gs.async=false;document.body.appendChild(gs);}function loadScript(){getScript("exploit_bin.js",function(){setTimeout(exploit,1500);});}loadScript();
+</script>
+</body>
+</html>
