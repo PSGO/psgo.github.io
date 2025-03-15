@@ -1,0 +1,199 @@
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+  <title>PS5折腾教程 - PSGO.eu.org</title> 
+    
+   <style> 
+  button
+    {
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#CFB53B;
+    box-shadow:0 5px 0 #888888;
+    } 
+
+    
+    button:hover
+    {
+    color: #CFB53B;
+    font-size:22px;
+    background:#161616;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+    } 
+    
+    button:active
+    {
+    background:#CFB53B;
+    position:relative;
+    color:#000;
+    top:5px;
+    box-shadow:none
+    }
+    </style>
+ <head> 
+   <body style="background-color:#181818;">
+        <br>
+   		<h1 style="font-size:46px;color:#CFB53B;text-align:center;">PS5折腾教程 - PSGO.eu.org</h1>
+        <br>
+		<div style="width:800px;margin:50px auto;">
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;"><a style="color:#CFB53B;" target="_blank" href="https://psgo.lanzouj.com/iBioI1e0r8bc">另附网友制作的新手新机首次折腾手把手超详细图文教程PDF（点击下载）</a></p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第1步：关闭自动更新！关闭自动更新！关闭自动更新！</p>
+		<p style="font-size:18px;color:white;">进入设置 - 主机 - 主机软件升级设定 - 关闭 自动下载和自动安装；进入进入设置 - 系统 - 省电 - 待机模式中可使用的功能，关闭“保持与互联网连接”</p>
+        <!--<p style="font-size:18px;color:white;">如果你还不放心可以再加一道保险，将以下链接添加到路由器的黑名单中进行屏蔽，但是厂商未来可能会修改这些链接地址（注意不要有空格）：<br/>fcn01.ps5.update.playstation.net<br/>fjp01.ps5.update.playstation.net<br/>fus01.ps5.update.playstation.net<br/>feu01.ps5.update.playstation.net<br/>fkr01.ps5.update.playstation.net<br/>fuk01.ps5.update.playstation.net<br/>fmx01.ps5.update.playstation.net<br/>fau01.ps5.update.playstation.net<br/>fsa01.ps5.update.playstation.net<br/>ftw01.ps5.update.playstation.net<br/>fru01.ps5.update.playstation.net<br/>fcn01.ps5.update.playstation.net<br/>fhk01.ps5.update.playstation.net<br/>fbr01.ps5.update.playstation.net</p>-->
+		<p style="font-size:18px;color:white;">将以下域名添加到路由器的黑名单中进行屏蔽，如果不进行路由器屏蔽，PS5在联网状态下，系统和游戏都将会收到升级提醒！屏蔽2个域名：playstation.net 和 playstation.com</p>
+		<p style="font-size:18px;color:white;">如果曾经联网过且断网重启后仍然提示更新系统，说明PS5中已经存在系统升级缓存包或游戏补丁升级包，为避免误升级，需要使用FTP工具删除UPDATE文件下的PS5UPDATE.PUP和PS5UPDATE.PUP.net.temp文件夹，或者使用PS5文件管理器快速删除或使用一键禁用升级插件。在桌面的游戏补丁下载提示中删除正在后台下载的补丁并断开网络，否则启动游戏也会提示升级。如果仍未解决，进入设置-系统-系统软件-备份和恢复-备份你的 PS5，然后设置-系统系统软件-重置选项，格式化主机相当于恢复出厂也会删除系统升级缓存包 </p>
+		<br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第2步：设置DNS</p>
+		<p style="font-size:18px;color:white;">进入设置 - 主机 - 日期与时间，确认时区和时间是否为正确的本地时间，不一致则手动改为当前本地时间</p>
+		<p style="font-size:18px;color:white;">进入设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动，把主DNS改为165.227.83.145，次DNS改为192.241.221.79 （备用DNS：62.210.38.117，如果未设置DNS一定要离线使用或设置好路由器屏蔽，首次折腾也可使用Windows离线版，全程无需联网），保存完之后可能会提示“无法连接互联网”，这是正常情况，是由于DNS有屏蔽升级服务的功能。（首页还提供Windows一键折腾服务，无需依赖在线DNS，断网也可折腾）</p>
+        <p style="font-size:18px;color:white;">如果无法进入用户指南，请尝试将PS5网络连接手机卡流量的WiFi热点</p>
+		<br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第3步：打开用户指南</p>
+		<p style="font-size:18px;color:white;">进入设置 - 用户指南。健康与安全以及其他信息 - 用户指南，进入后会自动跳转到一个中转网站，弹窗提示安全证书，点击ok是，等待中转网页加载完成</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第4步：激活并进入Debug菜单</p>
+		<p style="font-size:18px;color:white;">如果PC都无法打开psgo.eu.org或psgo.github.io，PS5大概率也是无法进入的，建议拔掉光猫电源2分钟，同时重启一次路由器</p>
+		<p style="font-size:18px;color:white;">手柄连续按两次L2键，会弹出一个输入框，第一行输入网址 https://psgo.eu.org/debug/ 或 https://psgo.github.io/debug/  点击submit则跳转至PSGO折腾页面，根据你的系统版本选择IPv6或UMTX，过程中如果遇到弹出信息“内存不足”，点击确定键，如果持续弹框或死机，请重启重试。提示完成或看到插件按钮页面后按下PS键返回桌面</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第5步：安装折腾PKG</p>
+		<p style="font-size:18px;color:white;">PC访问psgo.eu.org 或 psgo.github.io，选择PS5进入PS5首页，如果是3.x 4.x系统选择下载IPv6版本离线PKG，如果是其它版本系统选择下载UMTX版本离线PKG，将文件拷贝到exfat格式移动硬盘或U盘的根目录下（不要放进文件夹！），插入PS5（后面的USB是高速口支持10Gbps）。进入设置，拉到最底部，进入Debug菜单-Game（弹出错误提示可忽略），选择game-installer安装pkg文件，安装完成后桌面会出现浏览器的快捷图标，请先不要启动，先重启PS5，建议你首次在非折腾的情况下（也就是正版环境）启动两个PKG应用并联网进行缓存，这样是为了避免由于折腾环境不稳定导致缓存失败。缓存完成后你可以断网离线使用PKG进行折腾。如果遇到缓存更新失败，请尝试切换DNS（114.114.114.114、8.8.4.4、233.5.5.5、119.29.29.29等），重启路由器和PS5后再试，或者链接手机热点进行缓存更新！</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第6步：启动折腾</p>
+		<p style="font-size:18px;color:white;">安装PKG之后，进入PS5桌面选择顶部的"媒体"，选择折腾PKG图标，按照页面提示进行操作，等待注入HEN完成后按下PS键回到桌面。</p>
+        <br>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第7步：运行或安装PKG</p>
+		<p style="font-size:18px;color:white;">进入PS5系统设置，最下方会出现Debug菜单，选择Game-Install安装移动硬盘里的PKG文件，安装完成后进入系统首页找到PKG图标运行。</p>
+        <br>
+        <br>
+		<br>
+		<br>
+		<p id="jingyan" style="font-size:20px;font-weight:bold;color:#fff;">减少死机断电的一些建议：</p>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">适用于所有折腾网站，举一反三自己总结经验，养成好习惯成功率可以在85-95%之间。</p>
+<div style="font-size:18px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+使用Kstuff原版HEN建议关闭网络开关，完全离线使用。如果使用etaHEN注入一瞬间频繁死机或断电(etaHEN某些版本会有此问题)，请保持PS5连接着WiFi或有线再折腾（注意路由器屏蔽升级）。如果是wifi连接状态，PS5设置-网络中，确保wifi名字右边不是红色感叹号失败，第二行互联网连接可以是红色感叹号失败，折腾进行中时，切记不要切断路由器或手机热点或ESP；
+
+etaHEN本身是多合一插件，会默认加载一些除kstuff以外的插件，如果日常不使用这些插件，如果是1.9b之后的版本，进入设置etaHEN Toolbox - Plugins、service和Utilitiles中选择关闭，建议关闭"ps5debug"金手指、"FTP"远程文件管理、"Klog"服务、"DPI"远程安装PKG、"Allow data in App sandbox"在沙盒模式访问data。或者可以选择"Active Lite mode"打钩，不会加载额外的功能，将会提高稳定性和成功率；
+
+经过大量实测，etaHEN v1.09在注入后可能会出现高频断电，etaHEN v2.0b pre注入后进入toolbox进行某些配置的开关调整之后，可能会出现频繁的游戏断电；
+
+Itemzflow版本必须和etaHEN版本要匹配，某些版本使用不匹配的Itemzflow，也有很大几率断电；
+
+不要频繁切换不同的折腾网站和不同的离线折腾方案，尤其是不清缓存的前提下频繁切换离线方案使用更容易断电；
+
+后台不要有更新游戏，暂停更新或删除更新。建议根治提前设置好路由器屏蔽升级；
+
+开机后在桌面稍等15-60秒，等系统组件（眼睛看不见）充分加载完成；
+
+折腾成功后不要再次重复进入折腾页面，折腾中途误按PS键后也不要再次进入折腾页面，先重启；
+
+注入HEN成功后，不要再次重复注入，etaHEN和Kstuff原版HEN只能二选一注入，如果日常只运行PS4游戏，建议使用Kstuff原版HEN。其它插件也不建议重复注入，也有几率断电；
+
+某些插件，比如PS5debug、FTP、ELF加载器、解锁帧率等插件也有一定几率导致断电，如非必要，减少开启插件的数量，日常只建议单一注入HEN或者etaHEN即可；
+
+首次使用etaHEN注入时，会在/data/etaHEN/路径下创建一些配置文件，有一定几率会创建空配置文件或有问题的配置文件，这是etaHEN的一个bug，这会导致后续无法注入etaHEN，如果出现注入kstuff原版HEN正常，而注入etaHEN持续失败的情况，可以通过FTP或文件管理器删除etaHEN文件夹；
+
+注入插件后，不要急着按PS键返回桌面，要等左上角提示消息消失之后再按PS键，尤其是etaHEN、PS5debug等（个别插件不会弹消息，多等几秒）；
+
+缓存不同离线方案太多之后，要定期清除浏览器缓存，并重新缓存，建议不要缓存多种不同的折腾方案，只保留一份折腾缓存最稳定；
+
+折腾进行中不要随意操作手柄，尤其是返回键、L1、R1键，一般情况下只有报错弹窗或注入时需要操作手柄；
+
+待机和关机前把正在运行的游戏或应用OPTIONS键关闭掉；
+
+不建议插着USB设备去操作折腾，尤其是移动硬盘，折腾成功后再插上；
+
+如果加装M.2内置扩展固态后遇到频繁折腾失败，需要核实固态兼容性问题，另外现阶段只建议使用外置扩展硬盘；
+
+折腾熟练后，不要着急忙慌的操作，按部就班慢慢操作；
+
+如果遇到一轮连着2次断电，建议再次开机后选择"关机"而非"重启"，然后再开机；
+
+如果遇到一轮连着3次断电（如果其它操作都按要求做了，实际上很难遇到连续3次），建议拔掉电源，15分钟后再开机，然后清除浏览器缓存并重新缓存，然后关闭网络再折腾；
+
+如果遇到某次折腾连续5次弹内存不足，建议按PS键回到桌面并重新进入折腾页面，或者重启；
+
+如果遇到折腾页面遇到"未响应"提示，要点"否"按钮。如果不小心点了"是"，建议按PS键回到桌面并重新进入折腾页面，或者重启；
+
+某些自制应用PKG频繁地启动和关闭也会导致断电，尤其是关机会断电，建议想清楚要做的操作后一次性操作完；
+
+如果游戏过程中频繁断电，需要核实资源或扩展硬盘是否有问题；
+
+3.X版本最后一个环节注入原版HEN或etaHEN后提示内存不足属于正常现象，直接按下PS键返回桌面玩耍即可，不要点确定键或返回键。
+
+以上内容来自PSGO，转载请注明出处，链接：psgo.eu.org
+
+</pre>
+</div>
+		</div> 
+		<br><br><br>
+		
+	<!-- <h1 style="font-size:20px;color:#CFB53B;text-align:center;">-- 持续完善更新中 --</h1> -->
+	<br>
+    <br><br><br><br><br><br>
+   </body>
+</html>
+<!-- weixin -->
+<!-- <link rel="stylesheet" href="https://laoba.pages.dev/css/weixin.css"> -->
+<!-- <div style="position: fixed;left: 20px;bottom: 20px;z-index: 999;width:220px"><a style="text-decoration:none;" href="https://laoba.pages.dev" target="_blank"><img class="header"></a></div> -->
+
+<script>
+	document.oncopy = function (e) {
+		// 获取选区对象
+		let selObj = window.getSelection();
+		// IE8及更早不支持window.getSelection
+		if (typeof selObj == 'undefined') return false;
+
+		// 获取clipboardData对象
+		// Chrome\Safari\Firefox浏览器中,这个对象是event对象的属性
+		// IE浏览器中,它是window对象的属性
+		let clipboardData = e.clipboardData || window.clipboardData;
+
+		// 获取选区文本内容
+		let selectedText = selObj + '';
+
+		let copytext;
+		// 如果选中文字内容小于30个字符，则不做任何操作
+		if (selectedText.length < 30) {
+			copytext = selectedText;
+
+		} else {
+			copytext = selectedText +
+				'\n\n\n' +
+				'来源：PSGO折腾导航\n' +
+				'链接：' + location.href + '\n' +
+				'著作权归作者所有，商业转载请联系作者获取授权，非商业转载请注明出处。';
+		}
+
+		// setData(format,text)用于设置剪贴板内容
+		clipboardData.setData('text/plain', copytext);
+		
+		// 取消默认的复制事件
+		return false;
+		// e.preventDefault()亦可
+		
+	}
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>
+</html>

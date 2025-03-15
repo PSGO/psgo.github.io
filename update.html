@@ -1,0 +1,1063 @@
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+  <title>更新记录 - PSGO.eu.org</title> 
+
+<!-- <script> -->
+<!-- function isTimeInRange(start, end) { -->
+    <!-- let now = new Date(); -->
+    <!-- let startTime = new Date(); -->
+    <!-- let endTime = new Date(); -->
+ 
+    <!-- startTime.setHours(start.getHours(), start.getMinutes(), start.getSeconds(), start.getMilliseconds()); -->
+    <!-- endTime.setHours(end.getHours(), end.getMinutes(), end.getSeconds(), end.getMilliseconds()); -->
+ 
+    <!-- return now >= startTime && now <= endTime; -->
+<!-- } -->
+ 
+<!-- let start = new Date(); -->
+<!-- let end = new Date(); -->
+ 
+<!-- start.setHours(7, 0, 0, 0); -->
+<!-- end.setHours(22, 0, 0, 0); -->
+ 
+<!-- if (isTimeInRange(start, end)) { -->
+    <!-- function isCookieExpired(name) { -->
+	  <!-- var cookies = document.cookie.split(";"); -->
+	  <!-- for (var i = 0; i < cookies.length; i++) { -->
+		<!-- var cookie = cookies[i].trim(); -->
+		<!-- if (cookie.startsWith(name + "=")) { -->
+		  <!-- return false; // Cookie未过期 -->
+		<!-- } -->
+	  <!-- } -->
+	  <!-- return true; // Cookie已过期 -->
+	<!-- } -->
+
+	<!-- if (!isCookieExpired("mm") && document.cookie.includes("mm=1")) { -->
+
+	<!-- } -->
+	<!-- else -->
+	<!-- { -->
+		<!-- alert("点击确定（ok）将自动进入首页，输入正确的邀请码后即可访问！"); -->
+		<!-- window.location='index.html'; -->
+	<!-- } -->
+<!-- } else { -->
+	
+<!-- } -->
+<!-- </script> -->
+    <style>
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 48px; 
+            background: none;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1;
+            transition: opacity 0.3s ease;
+        }
+        #scrollToTopBtn.show {
+            display: block;
+        }
+    </style> 
+ <head>
+ 
+ <body style="background-color:#181818;">
+    <!-- 滚动到顶部按钮 -->
+    <button id="scrollToTopBtn" title="回到顶部">⬆️</button>
+
+    <script>
+        // 获取按钮元素
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // 监听滚动事件
+        window.onscroll = function() {
+            // 如果滚动条滚动了200px，显示按钮
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scrollToTopBtn.classList.add("show");
+            } else {
+                scrollToTopBtn.classList.remove("show");
+            }
+        };
+
+        // 点击按钮时滚动到页面顶部并隐藏按钮
+        scrollToTopBtn.onclick = function() {
+            // 平滑滚动到顶部
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // 平滑滚动
+            });
+
+            // 隐藏按钮
+            setTimeout(() => {
+                scrollToTopBtn.classList.remove("show");
+            }, 300); // 等待滚动动画结束后隐藏按钮
+        };
+    </script>
+<!-- <div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+带原样式，用于展示原作者更新说明，可以插入p之间
+</pre>
+</div> -->
+        <br>
+   		<h1 style="font-size:50px;color:#CFB53B;text-align:center;">PSGO.eu.org 网站更新记录</h1>
+        <br>
+		<div style="width:800px;margin:50px auto;">
+		<p style="font-size:18px;font-weight:bold;color:#CFB53B;">
+		当前阶段还有诸多不完善，会有一定概率死机失败，不同的版本也会有差异，追求极致稳定的同学，请耐心等待！当前阶段以平均85-93%的成功率为标准（以注入HEN后回到桌面未死机为计算标准），如差距过大请参考首页教程中的提高成功率方法进行问题排查。死机主要集中在UAF、Socket、Debug、注入、游戏中、关机 6个环节（现阶段全网通病）。3.X版本注入原版HEN或etaHEN后提示内存不足属于正常现象，直接按下PS键返回桌面即可。<br><br>
+		如果日常只运行PS4，建议选择更稳定的原版HEN。如果需要运行PS5，可选择稳定性稍差的etaHEN。更追求功能性还是稳定性，根据自己的需求自行斟酌。<br><br>
+		3.x-4.x使用离线版折腾更新离线缓存之后，如果连续遇到异常，使用一键折腾中的清缓存插件或者一键清缓存在线版 https://psgo.eu.org/onlinehost/qing/ 清除缓存后重新缓存。一般情况下并不需要经常清缓存，直接更新缓存即可。<br><br>
+		与人玫瑰，留有余香，记得将本站和折腾进度分享给机友们！以下内容仅用来学术研究和技术开发使用，切勿用作其他用途！
+		</p>
+		<br>
+		
+<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月7日</p>
+<p style="font-size:18px;color:white;">来自网友的PS5串流教程：https://www.bilibili.com/video/BV1msRTY3EMF</p>
+<p style="font-size:18px;color:white;">来自网友的BD-JB光盘刻录教程：https://www.bilibili.com/video/BV1FzPHehENk</p>
+<br>
+		
+<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月6日</p>
+<p style="font-size:18px;color:white;">6.50 Kstuff已测试注入成功，预计72小时内发布，请将该消息分享给你的好机友。着急又不差钱的可以去日亚买张Lua游戏，差钱不着急的可以等UMTX BD-JB支持elf加载器，佛系躺平的可以等Webkit... 另外不排除阮安迪会发布PS5版PPPwn</p>
+<p style="font-size:18px;color:white;">5.10/5.50 专用临时测试链接在离线版的基础上新增online在线版入口，离线：https://psgo.eu.org/5/ 或 https://psgo.github.io/5/ 在线：https://psgo.eu.org/5/online/ 或 https://psgo.github.io/5/online/ </p>
+<p style="font-size:18px;color:white;">预计72小时内发布5.50专用测试版etaHEN（内含kstuff）</p>
+<p style="font-size:18px;color:white;">这几天有一些5.00/5.02的玩家纠结要不要离线升级到5.10，原则上不建议，当前5.x还属于早期测试阶段，有很多问题还有待发现和解决，可以再观察1个月时间，如果一个月内未发布Kstuff或者等待5.x之间版本比较成功率稳定性没有明显差别则可以考虑离线升级</p>
+<br>
+		
+<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月5日</p>
+<p style="font-size:18px;color:white;">看到这几天国内外大量玩家反馈5.x整体成功率较低的问题，这就是当前现状，这只是早期测试版，跟4.x肯定是比不了，建议耐心等等开发者发现问题解决问题。由于我手里没有5.x的机器，并不能完整测试所有环节，依赖于之前群里几个PSGO测试的同学，5.x的同学使用临时链接如果遇到什么请问，请及时在这里反馈 https://liuyan.psgo.eu.org/</p>
+<p style="font-size:18px;color:white;">PS5 5.50 测试专用临时链接新增etaHEN2.0b-pre（etaHEN暂时不包含5.50kstuff），注入etaHEN之后仍然需要注入kstuff，必须使用配套的Itemzflow：https://github.com/etaHEN/etaHEN/releases/download/2.0b-pre/IV0002-ITEM00001_00-STOREUPD00000000.pkg 离线折腾链接：https://psgo.eu.org/5/ 或 https://psgo.github.io/5/ ，注意这只是早期测试版。参考首页教程，先做好屏蔽升级措施！然后安装浏览器https://psgo.lanzoub.com/ivj3U1jjy80h，再输入5.50临时链接进行缓存。如果9021注入报错则尝试9020，如果都报错请使用注入工具手动注入，或等待新版发布</p>
+<p style="font-size:18px;color:white;">关于5.10 5.50折腾的几点说明：折腾领域没有百分百成功率一说（非折腾机都会死机），无论任何系统版本，Webkit没有百分百、IPv6也没有百分百、UMTX也没有百分百、注入Kstuff也没有百分百、注入etaHEN更没有百分百、单就注入代码和注入工具都不会百分百稳定，叠加在一起自己算数咯，学会让自己成长提高认知，不要听风就是雨，不要在一个坑里跳N次</p>
+<p style="font-size:18px;color:white;">关于Lua折腾方案，最近大家问的比较多，简单说明一下：</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+Lua折腾方案目前已知最高支持到系统10.4，由于UMTX最高支持到7.61，所以暂时只讨论7.61及以下系统版本
+
+1.首先需要有下列游戏光盘之一，日版游戏，存量并不多，并不容易买到，之后可能会发现更多支持Lua的游戏，这依赖于盘多的玩家们广泛的尝试和分享结果
+Raspberry Cube (CUSA16074)
+Aibeya (CUSA17068)
+Hamidashi Creative (CUSA27389)
+Aikagi Kimi to Issho ni Pack (CUSA16229)
+Aikagi 2 (CUSA19556)
+
+2.需要修改存档用来加载lua，最简单的方法是恢复开发者master已经修改好的存档合集 https://mega.nz/file/CeIgDCxD#KKeMnlD89pvfmx8oMNUu737vDrmlEpHmgta8pTjJQHE ，会重置PS5（操作前先备份）。不恢复备份不更换账号手动修改存档验证游戏是否可用的方法：https://github.com/shahrilnet/remote_lua_loader/blob/main/SETUP.md
+
+3.修改好的存档中或/data/目录下放入elfldr.elf
+
+4.通过启动游戏图标将会启动Lua加载器，注入umtx.lua完成越狱，注入elf_loader.lua将会加载elf加载器
+
+5.最后注入Kstuff、etaHEN等插件
+
+</pre>
+</div>
+<br>
+		
+<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月4日</p>
+<p style="font-size:18px;color:white;">6.50 Kstuff近日即将发布，拥有该版本的玩家可以提前从柜子里拿出来了，请将这个消息分享给你的朋友。难题来了，6.x 7.x暂时没有Webbkit漏洞利用入口，IPv6 BD-JB光盘方案不支持5.x-7.x，UMTX BD-JB光盘方案暂时没有elfldr加载器(不过应该很快会出现)，Lua方案呢普遍大家又没有对应的游戏光盘...</p>
+<p style="font-size:18px;color:white;">新手教程中的 https://psgo.eu.org/debug/ 或 https://psgo.github.io/debug/ 新增UMTX入口，仅用于首次安装折腾PKG之前或遇到缓存异常时使用</p>
+<p style="font-size:18px;color:white;">首页新增DNS检测，链接：https://psgo.eu.org/dns.html</p>
+<p style="font-size:18px;color:white;">来自网友的PS5 5.50 视频演示教程：https://www.bilibili.com/video/BV1To96YvEin/</p>
+<p style="font-size:18px;color:white;">本站恢复访问一个半月以来，目前已覆盖102个国家地区，日UV峰值即将恢复破万，其中港澳特别行政区稳居第三，台湾省的访问量自解除访问限制后一直稳居第二或第三</p>
+<br>
+		
+<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月3日</p>
+<p style="font-size:18px;color:white;">PS5 5.50 Kstuff测试文件PC手动注入懒人包，链接：https://psgo.lanzoub.com/idkiZ2pf91cf 。带GUI界面的Socat注入工具：https://github.com/Master-s/PSsocat/releases 。使用UMTX折腾，在注入插件界面，PC使用Socat发送到PS5 IP的9021端口（有不少5.50网友反馈无法使用网页和Netcat注入）。</p>
+<p style="font-size:18px;color:white;">PS5 5.50 测试专用临时链接支持离线缓存，链接：https://psgo.eu.org/5/ 或 https://psgo.github.io/5/ ，注意这只是早期测试版。参考首页教程，先做好屏蔽升级措施！然后安装浏览器https://psgo.lanzoub.com/ivj3U1jjy80h，再输入5.50临时链接进行缓存。如果9021注入报错则尝试9020，如果都报错请使用注入工具手动注入，或等待新版发布</p>
+<p style="font-size:18px;color:white;">首页新增Mediafire网盘文件解析下载工具：https://psgo.eu.org/mediafire/</p>
+<br>
+		
+<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年3月2日</p>
+<p style="font-size:18px;color:white;">PS5 5.10 测试专用临时链接改为支持离线缓存，链接：https://psgo.eu.org/5/ 或 https://psgo.github.io/5/ ，注意这只是早期测试版，如果是相对稳定的正式发布版本还会叫测试吗？喜欢BB的可以闭嘴了，随时删除测试链接。参考首页教程，先做好屏蔽升级措施（误升级怪不得别人）！然后安装浏览器，再输入5.10临时链接进行缓存。</p>
+<p style="font-size:18px;color:white;">5.10专用测试版Itemzflow：https://psgo.lanzoub.com/iMHvj2ovi5of</p>
+<p style="font-size:18px;color:white;">PSGO浏览器：https://psgo.lanzoub.com/ivj3U1jjy80h</p>
+<p style="font-size:18px;color:white;">首页新增PSN Account ID 串流转换工具，链接：https://psn.psgo.eu.org/  激活账号操作有一定难度，请搜索相关视频教程，需要使用OffAct和websrv，如果你没有什么特别的需求，可以新建一个user本地账号并转换激活成共享账号fdg</p>
+<br>
+		
+<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月28日</p>
+<p style="font-size:18px;color:white;">之前忘记介绍，5.10的Kstuff来自巴西的开发者Buzzer，他参与开发etaHEN内置的9S加载器（非elfldr）、金手指功能和部分Toolbox功能，他还参与维护PS5金手指库和测试跟进工作，蛮辛苦~。同时要感谢前期参与5.10 kstuff移植的idle和ES。更早期的还有大家熟知的specter和sleirsgoevy。</p>
+<p style="font-size:18px;color:white;">更新光盘折腾教程，包含注意事项</p>
+<p style="font-size:18px;color:white;">来自网友的PS5 5.10 视频演示教程：https://www.bilibili.com/video/BV1QXPHeDEiG/</p>
+<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月26日</p>
+		<p style="font-size:18px;color:white;">PS5 5.10 UMTX临时链接添加etaHEN2.0B-2，链接：https://psgo.eu.org/5/ 或 https://psgo.github.io/5/ 注意这只是一个测试版，新手勿试，如果一直失败则停止测试，请等待新版本。由于是在线加载插件，文件较大，如果网络不好点击注入后等待时间最长可能会有十几秒，耐心等待。由于当前只是早期测试阶段，为避免影响其它正常版本的玩家，暂时不会整合到离线PKG中，建议下载安装PSGO离线PKG五件套中的浏览器PKG，输入5.10测试链接进入即可。尝试运行5.10专用Itemzflow：https://psgo.lanzoub.com/iMHvj2ovi5of</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月25日</p>
+		<p style="font-size:18px;color:white;">一直以来大家问的最多的就是一些操作上的问题，而PSGO上的文字教程确实不够直观，现在首页新增"视频"按钮入口，页面里会推荐网上的一些UP主的视频教程和图文教程 https://psgo.eu.org/up.html</p>
+		<p style="font-size:18px;color:white;">新增Chiaki千秋串流工具，使用etaHEN1.9、2.0及以上，进入Debug设置Toolbox - Remote play 记住pin和id，输入到Chiaki</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月24日</p>
+		<p style="font-size:18px;color:white;">PS5 5.10 Kstuff原版HEN 测试版文件，请把这个消息分享给你认识的5.10机友。使用UMTX折腾，使用首页的Netcat或者安卓注入工具发送到端口9021或9020。或者使用UMTX临时测试测试链接（内含Kstuff-2测试版、不支持缓存）：https://psgo.eu.org/5/  https://psgo.github.io/5/ 注意这只是一个测试版，新手勿试，如果一直失败则停止测试，请等待新版本。Kstuff-2文件下载：https://www.mediafire.com/file/ztmdo94vcutk64x/</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月14日</p>
+		<p style="font-size:18px;color:white;">不断有同学在留言里询问关于QQ群的事情，再次说明没有群，以后也不会有，回想一下之前群里的那几颗老鼠屎，怎么还会弄群...</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月12日</p>
+		<p style="font-size:18px;color:white;">Lua入口+UMTX，已经在7.40成功激活Debug，入口点支持所有版本（你没看错是全部系统版本），UMTX目前已知最高支持到7.61。首页新增"Lua折腾"板块，本板块正在建设中...</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月10日</p>
+		<p style="font-size:18px;color:white;">首页新增光盘折腾新手教程，https://psgo.eu.org/bdjb-jiaocheng.html</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月9日</p>
+		<p style="font-size:18px;color:white;">ES突然声明他之前发布的5.x的Kstuff暂时不可用，停止测试耐心等待，如同一场不负责任的闹剧...</p>
+		<p style="font-size:18px;color:white;">"HTTP"版离线PKG停止维护，之前是因为某些地区突发TLS阻断问题，导致无法使用HTTPS进行访问，临时启用了HTTP访问。考虑到安全性和维护成本，不再支持HTTP访问，请换用默认的HTTPS版或Github版离线PKG。</p>
+		<p style="font-size:18px;color:white;">有3.x 4.x的同学出于好奇或误用UMTX版，注意！UMTX现在对3.x 4.x的支持并不好，先继续使用IPv6版本，待UMTX完善后再进行切换。</p>
+		<p style="font-size:18px;color:white;">新手教程内容少量修正。</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月8日</p>
+		<p style="font-size:18px;color:white;">【ES突然声明5.x暂时不可用，停止测试】PS5 5.10 & 5.50 Kstuff原版HEN 测试版已出炉来自ES，请把这个消息分享给你认识的5.50机友。使用UMTX折腾，使用首页的Netcat或者安卓注入工具发送到端口9021。或者使用UMTX临时测试测试链接（内含Kstuff测试版、不支持缓存）：https://psgo.eu.org/5/  https://psgo.github.io/5/ 注意这只是一个测试版，新手勿试，如果一直失败则停止测试，请等待新版本。Kstuff-1：https://psgo.lanzoub.com/iM2LE2n5ogab</p>
+		<p style="font-size:18px;color:white;">首页恢复展示留言板和打赏，https://liuyan.psgo.eu.org</p>
+		<p style="font-size:18px;color:white;">招募游戏资源分享者和维护者，详见https://psgo.eu.org/game/</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月5日</p>
+		<p style="font-size:18px;color:white;">开工大吉~</p>
+		<p style="font-size:18px;color:white;">PS5首页小改版，现在小红点是有更新才会提醒，点击后会消失，给一些对小红点有强迫症的同学~</p>
+		<p style="font-size:18px;color:white;">经过实测，Itemzflow v1.09公测版原版已经修复中文简体繁体，以后无需再使用所谓"中文修复版"，LM兑现了此前的修复承诺，感谢~   附临时链接：https://github.com/etaHEN/etaHEN/releases/download/2.0b-pre/IV0002-ITEM00001_00-STOREUPD00000000.pkg</p>
+		<p style="font-size:18px;color:white;">PS5首页恢复"工具集"板块；如果你无法打开Github页面，请参考工具集板块里的Github下载工具</p>
+		<p style="font-size:18px;color:white;">IPV6-BDJ-etaHEN光盘镜像 by LM，内含etaHEN2.0b-pre2 免联网注入 https://github.com/LightningMods/IPV6-BDJ-etaHEN/actions/runs/13120780106</p>
+		<p style="font-size:18px;color:white;">感谢熊总、嗨哥参与测试~</p>
+		<br>
+		
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月3日</p>
+		<p style="font-size:18px;color:white;">首页新增ESP AIO 在线刷机，支持在线也支持下载，包含PS5、PS4折腾固件，支持ESP8266、ESP32S2，与7in1同步自动更新，https://esp.psgo.eu.org</p>
+		<p style="font-size:18px;color:white;">IPV6-BDJ-etaHEN光盘镜像 by LM，内含etaHEN2.0b-pre2 https://github.com/LightningMods/IPV6-BDJ-etaHEN/actions/runs/13102681701/artifacts/2523953098</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月2日</p>
+		<p style="font-size:18px;color:white;">IPv6版一键折腾多插件版PKG已更新缓存，更新etaHEN2.0b-pre2 0202</p>
+		<p style="font-size:18px;color:white;">etaHEN2.0b-pre配套的Itemzflow官方原版v1.9测试版(已修复中文乱码) https://github.com/etaHEN/etaHEN/releases/tag/2.0b-pre</p>
+		<p style="font-size:18px;color:white;">关于PSGO PS5 AIO的一点说明，AIO的定位本身是面向老外用户，使用的是Github链接，考虑到国内某些地区可以稳定使用并且速度很快，内含的大部分第三方折腾网站也多为Github链接，页面为全英，但是不会英文也很容易操作，所以在此开放下载</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年2月1日</p>
+		<p style="font-size:18px;color:white;">IPv6版一键折腾多插件版PKG已更新缓存，更新etaHEN2.0b-pre 0131</p>
+		<p style="font-size:18px;color:white;">etaHEN2.0b-pre配套的Itemzflow中文修复版 https://github.com/PSGO/Itemzflow-PS5-CN/releases</p>
+		<p style="font-size:18px;color:white;">首页新增"24小时"按钮入口，150+折腾项目更新提醒，24小时不打烊，包含PS5、PS5、NS、PC等多类目。https://24.psgo.eu.org/</p>
+		<p style="font-size:18px;color:white;">感谢嗨哥在过年这段时间参与测试~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月29日</p>
+		<p style="font-size:18px;color:white;">PSGO在这里祝大家新年快乐，感谢大家一如既往的支持！</p>
+		<p style="font-size:18px;color:white;">全站自动化改造基本完成，如果哪天抽风了而我又没有及时发现，请在Github上提交反馈，谢谢。</p>
+		<p style="font-size:18px;color:white;">新增idle折腾原版链接对应的PKG，分为IPv6版和UMTX版，虽然是英文但可以作为备选。</p>
+		<p style="font-size:18px;color:white;">新增"里程碑"入口和对应页面，指的是折腾领域的整体进度，对于普通玩家能有一个全局认识，经过与维护者KiiWii沟通，将在PSGO同步自动更新。</p>
+		<p style="font-size:18px;color:white;">Windows离线版折腾链接改为直链，方便同学们更容易下载，里面的折腾文件会自动更新，只需再次下载，但是网站上不会有更新提醒信息。</p>
+		<p style="font-size:18px;color:white;">ESP网页刷机工具新增中文并优化加载速度，另外刷机速度相比v1版本有明显提升。</p>
+		<p style="font-size:18px;color:white;">新增PS5游戏运行测试结果列表，与EchoStretch维护的原表格自动同步更新。</p>
+		<p style="font-size:18px;color:white;">新增PS5金手指合集，与LM维护的Database库自动同步更新，注意当前LM只是fork了GoldHEN PS4 cheats库，暂不清楚是否会长期维护PS5金手指。</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月27日</p>
+		<p style="font-size:18px;color:white;">IPv6版一键折腾多插件版PKG已更新缓存，更新etaHEN2.0b 公测版0127，文件已经达到惊人的10MB，缓存可能会比较慢。etaHEN2.0b公测版配套的Itemzflow测试版：https://github.com/etaHEN/etaHEN/releases/download/Pb-test/IV0002-ITEM00001_00-STOREUPD00000000.pkg</p>
+		<p style="font-size:18px;color:white;">现在出现一种虚拟光驱加载BD-JB方案的方式，这种方法对于低版本机器来说无需刻录光盘，如果经过完善和大量实测其稳定性或许会超过网页折腾的方式，将有机会作为日常使用方案。</p>
+		<p style="font-size:18px;color:white;">约120+折腾领域项目，如Github发布新版下载文件、重要项目Github代码提交记录、常用自制应用FPKG更新，你将会第一时间收到自动推送消息、链接和说明 ↓</p>
+		<p style="font-size:18px;color:white;">关注 X 账号，开启小铃铛。https://x.com/psgocn</p>
+		<p style="font-size:18px;color:white;">加入TG频道，开启通知。https://t.me/PSGO_Channel</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月26日</p>
+		<p style="font-size:18px;color:white;">IPv6版一键折腾多插件版PKG已更新缓存，更新etaHEN2.0b 公测版0126（更新频率有点疯狂...）</p>
+		<p style="font-size:18px;color:white;">John和hammer-83今日双双更新了BD-JB项目，经过一些网友实测已经趋于稳定，John版本已内置HEN，而无需依赖外部工具注入HEN。在可预见的未来，6.x 7.x只有光盘折腾一种方式可选，或者等待Webkit和PS5版的PPPwn。</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月25日</p>
+		<p style="font-size:18px;color:white;">IPv6版一键折腾多插件版PKG已更新缓存，更新etaHEN2.0b 公测版0125-2。包含etaHEN1.8b，PSGO老用户都知道一键折腾版一直都是一新一旧双etaHEN，所以可以无忧更新缓存，另外之后不再提供etaHEN定制精简版。</p>
+		<p style="font-size:18px;color:white;">PSGO离线浏览器PKG已更新缓存v0125，新增UMTX入口。为照顾到部分老外，调整少部分文案为中英文。</p>
+		<p style="font-size:18px;color:white;">由于新版AIO主要面向海外用户，页面中的大多链接需要国际互联网，仅限于网络允许的同学使用。</p>
+		<p style="font-size:18px;color:white;">首页新增"今日份签到 求稳!"按钮，别太认真，这是用来搞笑祈福的~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月24日</p>
+		<p style="font-size:18px;color:white;">IPv6版一键折腾PKG已更新缓存，更新etaHEN2.0b 公测版0124，修复多个问题，要感谢Buzzer和LM的努力和耐心测试~</p>
+		<p style="font-size:18px;color:white;">etaHEN全自动PKG和UMTX稍晚些时候更新~</p>
+		<p style="font-size:18px;color:white;">在和LM的沟通过程中，发现一直以来他并未真正意识到局域网连接状态对etaHEN注入环节成功率的影响。从他的截图不难看出，他的测试都是基于连接局域网或互联网的前提下。而从大量测试和国内外玩家反馈，注入etaHEN环节的确会受到是否事联网状态的影响。"etaHEN doesn't care if you are online or offline nor does it do any checks or reach out to anywhere online" 由于并不开源所以无法查找具体问题，只能从现象结果来大致推断，或许LM可以确认etaHEN的整合代码、Toolbox配置相关代码、和"BigApp"基础代码并不受网络连接的影响，但并不能确定etaHEN包含的其它第三方插件诸如FTP、PS5debug、klog等是否有bug会影响成功率，因为注入etaHEN时会默认加载一些第三方插件。</p>
+		<p style="font-size:18px;color:white;">如果你日常使用etaHEN而非Kstuff原版HEN，当前仍然建议路由器屏蔽升级，并让PS5保持连接路由器的状态，或者在Toolbox（或config.ini文件）中关闭etaHEN包含的所有第三方插件并尝试完全离线（不连接局域网）使用。请相互转告玩家好友并交流心得经验~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月23日</p>
+		<p style="font-size:18px;color:white;">IPv6版一键折腾PKG已更新缓存，更新etaHEN2.0b - 公测版0123 7:59，修复金手指.txt内容识别错误</p>
+		<p style="font-size:18px;color:white;">由于PSGO有部分海外用户，为避免不必要的麻烦，请勿使用他人转载的PSGO文件和内容，以PSGO PS5折腾导航 中文主页上的内容为准。</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2025年1月22日</p>
+		<p style="font-size:18px;color:white;">PSGO所有折腾方案目前均默认使用PSFree入口；</p>
+		<p style="font-size:18px;color:white;">对于3.x 4.x版本同学，从IPV6过渡到UMTX方案还需要一些时间，UMTX在可预见的未来是最优选择；</p>
+		<p style="font-size:18px;color:white;">对于5.x版本的同学，预计春天（春分前后）可能会有Kstuff，6.x 7.x也不会很久很久（不负责任的吹牛逼~）；科普：可以简单的理解为需要一个入口漏洞比如PSfree webkit、BD-jb，用于加载内核漏洞利用代码，例如IPV6 UAF、UMTX来获得内核权限，进而转储分析解密内核，进而移植HEN，这是一个完整利用链工程，每个环节的未知因素都像是黑洞也可能是一张窗户纸，在PS漏洞利用领域实际参与业余时间研究的开发者，两只手可以数的过来，且用且珍惜吧少说风凉话不要脑袋简单的像个二极管黑子，不要动不动就贴标签"和骚尼串通好了"、"为了漏洞悬赏拿钱"，不要搞得好像如果不能立即搞定就像欠了你钱似的，当你年薪200万的时候你都不会正眼看一眼一万美金悬赏。对于技术层面感兴趣的同学可以参看：https://fail0verflow.com/blog/2017/ps4-crashdump-dump/</p>
+		<p style="font-size:18px;color:white;">近期漏洞悬赏增加了超过一万美金，一般来讲这个额度是内核漏洞，以阮Andy的性格，他会先出来冒个泡，然后切入正题公布点什么，高版本的同学近日可关注一下动态；</p>
+		<p style="font-size:18px;color:white;">PSGO UMTX 一键折腾多插件离线版为同步自动化生成方案，使用一新一旧双etaHEN，方便同学们自由选择平滑升级；</p>
+		<p style="font-size:18px;color:white;">Itemzflow的官方原版的下一个版本预计解决中文乱码问题，与etaHEN2.0一起就在近期会发布，经过几天的测试观察，对PS4金手指文件兼容性还不错，同时支持PS5金手指；</p>
+		<p style="font-size:18px;color:white;">关于etaHEN1.9版本普遍反馈不够稳定，主要原因是加入了Toolbox，类似GoldHEN的设置项，这是一个具有里程碑意义的版本，这将带来的极大的扩展性和便利性，追求极致稳定的同学可以用无Toolbox或进入设置etaHEN Toolbox - Plugins和service中选择关闭所有插件，另外可以选择"Active Lite mode"打钩，不会加载额外的功能以提升稳定性；</p>
+		<p style="font-size:18px;color:white;">根据环境变化，PS5首页展示页可能会不定期关闭，只保留折腾缓存和Github自动化项目。人工维护部分比如本页不会像之前一样高频更新，以后纯佛系~</p>
+		<p style="font-size:18px;color:white;">本站之外看到的PSGO内容均为他人转载，原则上不建议使用转载内容，因为可能会有一些信息传递损耗；</p>
+		<p style="font-size:18px;color:white;">关于有些同学打不开本站或缓存失败的问题，请自己想办法，本站以Github为主，外加一个CDN，不会做额外的网络优化，也无法控制某些时候某些地区的阻断问题；</p>
+		<p style="font-size:18px;color:white;">本站不欢迎绿蛙黄丝日杂反贼，根据实际情况将会屏蔽个人或区域IP；</p>
+		<p style="font-size:18px;color:white;">本站不提供任何咨询服务，没有任何QQ微信联系方式、群和咸鱼，如有问题在Github反馈，本站不提供任何付费内容和服务，请勿上当受骗。</p>
+		<p style="font-size:18px;color:white;">最后给大家拜个早年，玩得开心~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年5月28日</p>
+		<p style="font-size:18px;color:white;">由于诸多原因，本站将于2024年6月底停止维护</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">📢2024年5月1日（重要进展）</p>
+		<p style="font-size:18px;color:white;">阮安迪（@theflow0）已公开漏洞利用文件PoC of CVE-2006-4304，当前支持PS4 11.00和9.00两个版本，理论上支持PS4 11.00 / PS5 8.20及以下所有版本，项目地址：https://github.com/TheOfficialFloW/PPPwn</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月29日</p>
+		<p style="font-size:18px;color:white;">【研判】截止目前，有10+开发者跟进CVE-2006-4304，当前仍处于PoC阶段且多人核心代码片段均为1月份的原始进度，当时各位开发者并不清楚安迪所谓的新漏洞就是此漏洞，既然目前已经披露可行，多位开发者将会继续沿着这条路线研究。经过实测多个脚本，其中2个可导致内核崩溃并死机，某种程度上来说证明其有效性。保守估计仍需要2-3个月才有可能进一步突破，现在需要做的就是耐心等待和鼓励支持，请知晓~</p>
+		<p style="font-size:18px;color:white;">【通知】昨日已完成网站迁移，需观察几日，如遇到异常情况，请及时发送邮件至psgo.eu.org@gmail.com</p>
+		<!-- <p style="font-size:18px;color:white;">【通知】Skype大群：<a style="color:#CFB53B;" target="_blank" href="https://join.skype.com/uUgtOef3fbax">https://join.skype.com/uUgtOef3fbax</a>，无需安装客户端无需注册选择“来宾身份”即可进入群聊，如果你想长期在群里和大家聊天，建议注册一个微软账号并使用Skype客户端，客户端下载：https://psgo.lanzoub.com/b004hh2c3c 提取码密码:666</p> -->
+		<!-- <p style="font-size:18px;color:white;">【通知】原老鸟群同学发送你在群里的昵称至邮箱psgo.eu.org@gmail.com，加入新群</p> -->
+		<br>
+		
+		<!-- <p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月28日</p> -->
+		<!-- <p style="font-size:18px;color:white;">Telegram（电报）群：<a style="color:#CFB53B;" target="_blank" href="https://t.me/psgodev">https://t.me/psgodev</a>，使用方法自行百度搜索“注册使用tg”</p> -->
+		<!-- <br> -->
+		
+		<!-- <p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月27日</p> -->
+		<!-- <p style="font-size:18px;color:white;">《Gaza 100 days》截至目前加沙地区死亡儿童已经高达15000人</p> -->
+<!-- <video width="360" height="640" controls> -->
+  <!-- <source src="https://jiasha.pages.dev/100.mp4" type="video/mp4"> -->
+  <!-- 您的浏览器不支持视频标签。 -->
+<!-- </video> -->
+		<!-- <br><br> -->
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月26日</p>
+		<p style="font-size:18px;color:white;">【重要新闻】阮安迪（@theflow0）官宣，2006年的一个老漏洞CVE-2006-4304，就在刚刚已确认在PS5 最高到8.20系统（PS4 11.00）上可有效获得内核权限，请将此好消息分享给机友们~</a></p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+现已披露漏洞的部分细节：https://hackerone.com/reports/2177925
+原始漏洞报告：https://nvd.nist.gov/vuln/detail/CVE-2006-4304
+漏洞测试脚本1（初步确定可行）：https://gist.github.com/RobbedColek/8b0bc9655adc6ad9564ad71453188e37
+漏洞测试脚本2：https://github.com/boredmonkeyman/PS4-9.00-11.00-PoC-bin-loader
+漏洞测试脚本3：https://gist.github.com/iMrDJAi/847a4f2eeff9669657ffcdf85ac7a901
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月25日</p>
+		<p style="font-size:18px;color:white;">保存好防失联新邮箱：psgo.eu.org@gmail.com</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月24日</p>
+		<p style="font-size:18px;color:white;">【公告】由于多重因素，本周末计划迁移网站并仅供开发者使用，由发烧友自行托管第三方镜像，此期间可能会多次出现短暂的无法访问现象，在此期间不建议更新离线缓存~</p>
+		<p style="font-size:18px;color:white;">【工具】已更新DLC自动化脚本（ps4-eboot-dlc-patcher v1.2.0），修复bug，绝大多数同学只需等待可用资源就行了，无需使用本工具自行一一打包，感谢 jocover、idlesauce 对该领域的付出！</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+项目链接：
+https://github.com/idlesauce/ps4-eboot-dlc-patcher （Windows就下载win64版本）
+https://github.com/xSpecialFoodx/SelfUtil-Patched
+https://github.com/CyB1K/PS4-Fake-PKG-Tools-3.87
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月22日</p>
+		<p style="font-size:18px;color:white;">【公告】市面上有一些打着PSGO旗号的微信号、微信群、QQ号、QQ群、闲鱼号等账号，均与本站无关，请注意谨防受骗，所有内容只在本站更新</a></p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月19日</p>
+		<p style="font-size:18px;color:white;">【软件】新增PSVR驱动 iVRy For SteamVR</p>
+		<p style="font-size:18px;color:white;">请为绝望中的加沙妇女儿童和巴勒斯坦民族解放事业发声！</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+加沙人民现状资料：https://turkiye.un.org/en/263401-gaza-number-children-killed-higher-four-years-world-conflict
+联合国官方捐助链接：https://donate.unrwa.org/monthly/~my-donation
+</pre>
+</div>
+		<br>
+		
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月11日</p>
+		<p style="font-size:18px;color:white;">【教程】已更新路由器屏蔽方法，包含屏蔽系统升级、屏蔽游戏补丁更新，链接：<a style="color:#CFB53B;" target="_blank" href="PS5系统屏蔽.txt">https://psgo.github.io/PS5系统屏蔽.txt</a></p>
+		<p style="font-size:18px;color:white;">【通知】已修复PS5无法打开折腾在线版的问题，PS5中仅支持使用http://psgo.eu.org 、http://ps5.psgo.eu.org 和 https://psgo.github.io 三个域名，其它备用域名不支持在PS5中使用</p>
+		<!-- <p style="font-size:18px;color:white;">【新闻】John和Prb暗示停更甚至退圈，小黑子们可长点心吧~</p> -->
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月10日</p>
+		<p style="font-size:18px;color:white;">【网站】PS5游戏运行测试结果列表已更新，点击首页“资源测试”按钮进入</p>
+		<p style="font-size:18px;color:white;">【软件】新增傲梅分区助手（硬盘工具），支持PS5 M.2和外置扩展硬盘全盘克隆免重装，支持小硬盘换大硬盘扩容（PS4内置硬盘和扩展硬盘、Switch内存卡等同样适用）</p>
+		<p style="font-size:18px;color:white;">【工具】更新金手指文件合集0410</p>
+		<p style="font-size:18px;color:white;">【软件】新增PS Multi多功能开发者工具Win版、Mac版（较为复杂不适合普通用户）</p>
+		<p style="font-size:18px;color:white;">【网站】首页底部新增“内测同学专享”，仅开放给内测同学</p>
+		<p style="font-size:18px;color:white;">【网站】新增小红点提示，视觉上更容易察觉到更新，由于内容越来越多，按钮入口越来越多，按钮右上角出现小红点则表示近期有更新与更新记录相对应</p>
+		<p style="font-size:18px;color:white;">【新闻】也许可能大概5月官宣PS5 Pro</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年4月7日</p>
+		<p style="font-size:18px;color:white;">【公告】预计本月中下旬将启用密码访问本站，一是考虑到低调持久，二是过滤掉部分用户，密码获取方式另行通知~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">📢2024年4月6日（重要更新）</p>
+		<p style="font-size:18px;color:white;">为解决折腾PKG无法进入折腾页面的问题，现已更新折腾PKG五件套为v3.0版本，安装后将会覆盖原有的v2.0版本，v3.0版本分为http版和Github版，默认选择http版，根据自己的网络情况选择（哪个PKG可以正常打开折腾页面，哪个缓存更快，就使用哪个），Github版在沿海地区效果可能稍好，但偶尔可能会缓存较慢或抽风。v2.0为https请求，由于突发原因导致暂时无法使用，后续恢复等通知，如果你正常可以使用v2.0则无需安装v3.0。五件套PKG包括原版HEN全自动、etaHEN全自动、一键折腾、PSGO浏览器、一键清缓存，前去首页下载。</p>
+		<p style="font-size:18px;color:white;">现已启用新的备用域名：https://psgo.github.io 原psgo.eu.org、ps5.psgo.eu.org将继续使用，可正常使用http进行访问，等待后续https访问恢复正常。由于这次突发SSL阻断事件，有部分用户已失联，如果你在其它地方遇到有打不开的用户，烦请各位奔走相告。为防止以后失联，切记要提前将所有备用域名保存到电脑手机里。</p>
+		<p style="font-size:18px;color:white;">现已更新PS5折腾导航官网安卓Apk，前去首页顶部下载。</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：@熊总、@嗨嗨、@随风、@老八、@风云再起、@多位老鸟成员</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月31日</p>
+		<p style="font-size:18px;color:white;">现已开通赞助打赏通道，帮助本站持续运营下去，链接：<a style="color:#CFB53B;" target="_blank" href="https://laoba.pages.dev">https://laoba.pages.dev</a></p>
+		<br>
+		
+		<!-- <p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月31日</p> -->
+<!-- <div style="font-size:16px;color:white;"> -->
+<!-- <pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui"> -->
+<!-- “next etaHEN update will include an optional and functional ELF loader with support for dynamic linking as well as some other features TBA” -->
+
+<!-- 【预告】下一个 etaHEN 更新将包括一个可选的功能性 ELF 加载程序，支持动态链接以及一些其他功能（待定） -->
+<!-- </pre> -->
+<!-- </div> -->
+		<!-- <br> -->
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">📢2024年3月30日（重要通知）</p>
+		<p style="font-size:18px;color:white;">首页新增“PSGO折腾多合一”2个备用PKG（临时过渡），均为http请求（经过测试绝大部分地区均能正常打开），如果你使用原来的全自动或一键折腾PKG无法正常进入折腾页面，请临时尝试这两个备用PKG之一用于过渡，直到https请求恢复正常可继续使用原来的折腾PKG。之前无法访问的河北同学可尝试使用“备用”多合一折腾PKG。如果未遇到访问异常，请忽略本通知~</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：@嗨嗨、@八爷</p>
+		<p style="font-size:18px;color:white;">由于PS5.PSGO.eu.org域名的https加密访问被阻断，暂不确定是临时突发还是长期如此。电脑和手机端如https无法打开，请暂时使用http进行访问。由于折腾PKG固定使用https，可能会影响后续更新缓存。已经缓存的用户请不要轻易清除缓存，可正常使用已有的离线缓存进行折腾。你也可以临时选择Win离线版、折腾多合一PKG来进行过渡使用。如果迟迟得不到恢复，将考虑更换主域名并重新打包新的折腾PKG全家桶。请相互告知各位机友~</a></p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+默认：https://ps5.psgo.eu.org（如果打不开，使用http）
+备用：https://psgo.pages.dev
+备用：https://ps5.psgo.dedyn.io
+备用：https://www.psgo.dedyn.io
+备用：https://ps5.psgo.cloudns.biz
+备用：https://ps5.psgo.cloudns.org
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月27日</p>
+		<p style="font-size:18px;color:white;">减少死机断电的一些建议，链接：<a style="color:#CFB53B;" target="_blank" href="jiaocheng.html#jingyan">https://psgo.github.io/jiaocheng.html#jingyan</a></p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月25日</p>
+		<p style="font-size:18px;color:white;">截至上周，折腾PKG总用户数突破5K，官网月活跃用户数2.5W+，活跃用户总数4.9W+，感谢有你，一起学习一起成长～</p>
+		<br>
+		
+		<!-- <p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月24日</p> -->
+		<!-- <p style="font-size:18px;color:white;">首页底部更新圈内毒瘤（智障清单）：https://psgo.pages.dev/shabi ，后期将封禁其中部分用户IP或限制使用密码访问网站，其中对于情节严重的“蛙日杂交”挑衅行为，将个人信息发送给当地台办</p> -->
+		<!-- <br> -->
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月23日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，解决“PSFree failed”弹窗报错问题（全网PSFree方案通病），现PSFree执行失败后将自动再次执行，提升体验流畅性；etaHEN1.7本身存在缺陷，必须wifi联网使用，否则极易注入失败！</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】同步更新</p>
+		<p style="font-size:18px;color:white;">注意：使用全自动或一键折腾的PSFree漏洞方案，如果遇到5次以上循环执行PSFree或卡在PSFree Step2，请在此处反馈：https://docs.qq.com/form/page/DQUpxamRuY2ZYa0Fq 如果部分同学频繁遇到上述问题，为避免影响日常折腾，可选择一键折腾中的老漏洞方案，如未遇到该问题，忽略本通知。</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：4.03@熊猫、4.50@嗨嗨、3.20/4.03@随风</p>
+		<p style="font-size:18px;color:white;">【软件】首页新增PCXSense工具，可以在Windows上使用PS手柄，运行前先安装ViGEmBus驱动</p>
+		<p style="font-size:18px;color:white;">【网站】首页新增网站入口，跳转至骚尼官网免费壁纸下载页面</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月19日</p>
+		<p style="font-size:18px;color:white;">重要通知：如果使用etaHEN，折腾过程中请保持PS5连接到wifi或插线网络！否则注入一瞬间极容易死机断电！折腾结束返回桌面后可进入设置关闭网络！建议提前做好路由器屏蔽！请告知各位机友~</p>
+		<p style="font-size:18px;color:white;">【原版HEN全自动PKG】已推送新缓存，仅为PSFree方案，不可选老漏洞；全自动注入原版HEN 1.4；可正常断网离线使用；如有更多功能需求，请选择使用一键折腾</p>
+		<p style="font-size:18px;color:white;">【etaHEN全自动PKG】已推送新缓存，解决“PSFree failed”弹窗报错问题（全网PSFree方案通病），PSFree执行失败后将自动再次执行，提升体验流畅性；etaHEN1.7本身存在缺陷，必须wifi联网使用，否则极易注入失败！</p>
+		<p style="font-size:18px;color:white;">一键折腾PKG、Windows离线版将在晚些时候同步更新解决弹窗报错问题</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：4.50@嗨嗨、4.03@熊猫、3.20/4.03@随风</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月18日</p>
+		<p style="font-size:18px;color:white;">首页顶部新增【每周打卡反馈】，建议每周反馈一次近7天的折腾成功率（建议打开通知，每周会收到提醒），目的是为了及时找出共性问题（极端个例问题请从自身排查），反馈链接：https://docs.qq.com/form/page/DQUpxamRuY2ZYa0Fq</p>
+		<p style="font-size:18px;color:white;">当前阶段以平均85-93%的成功率为标准，如达不到，请参考首页教程中的减少断电方法进行问题排查，除个别极端异常外，绝大多数都是操作或设置问题，平时需留意网站上更新的的提示公告</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月15日</p>
+		<p style="font-size:18px;color:white;">【预告】预计周末推送新缓存，解决“PSFree failed”弹窗报错问题（全网PSFree方案通病），将大幅减少弹窗报错，使整个折腾过程“纵享丝滑”，目前仍在内测中~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">📢2024年3月14日（重要通知）</p>
+		<p style="font-size:18px;color:white;">【公告】针对近期反馈的新版etaHEN注入瞬间会导致死机或断电的问题，经过内测同学@熊猫@欧巴桑验证，初步证实是etaHEN本身的问题所导致（原版HEN1.4不存在该问题），折腾过程中可以通过保持连接wifi来临时解决该问题（在线版和ESP本身连接wifi所以不存在该问题）。该问题在早期版本中存在，作者在1.3b中说明已修复“Support browser caching and no longer requires a network to be connected”，遗憾的是在新版的etaHEN中再次出现类似问题（或许和新增的DPI远程安装功能有关）。由于etaHEN并非开源项目，第三方开发者无法从代码层面发现问题并及时修复，需等待作者修复该问题。如果你也有同样的困扰和期望，可以在该项目地址提交issues，表达“希望作者能开源或拆解简化etaHEN或整合进Debug菜单，以确保etaHEN的持续稳定”，链接：https://github.com/LightningMods/etaHEN/issues</p>
+		<p style="font-size:18px;color:white;">【公告】骚尼已发布PS5 9.00系统以及PS4 11.50系统，根据阮·安迪之前的透露，8.20（PS5）和11.00（PS4）系统存在可用的内核漏洞（或许/大概/应该/差不多），如果你想要折腾，那就不要更新系统！耐心等待至5月，请告知各位机友~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月13日</p>
+		<p style="font-size:18px;color:white;">重要通知：如果使用新版etaHEN，折腾过程中请保持PS5连接到wifi或插线网络！否则注入一瞬间极容易死机断电！折腾结束返回桌面后可进入设置关闭网络！建议提前做好路由器屏蔽！请告知各位机友~</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，首屏右侧新增“一键折腾在线版”临时入口（需要联网才能进入），左侧的“开始折腾”按钮为原本的离线版入口；更新elf加载器插件 v0.10；更新正版帧率解锁插件libhijacker v1.156</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">📢2024年3月12日（重要更新）</p>
+		<p style="font-size:18px;color:white;">重要通知：如果使用etaHEN，折腾过程中请保持PS5连接到wifi或插线网络！否则注入一瞬间极容易死机断电！折腾结束返回桌面后可进入设置关闭网络！建议提前做好路由器屏蔽！请告知各位机友~</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，默认为PSFree新Webkit漏洞方案，如体验不佳可在点击“开始折腾”按钮前按下手柄R2键可选择切换为老漏洞方案，插件页可选原版HEN 1.4 、新增原版etaHEN 1.7b（完整功能）和定制简化版etaHEN 1.6b（今后将采用双etaHEN双保险，避免新版etaHEN不断堆功能导致不稳）；删除伪装插件，其它插件不变。</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【etaHEN全自动PKG】已推送新缓存，仅为PSFree方案，不可选老漏洞；自动注入原版etaHEN 1.7b，不可选简化版etaHEN；如有更多个性化需求，请选择使用一键折腾</p>
+		<p style="font-size:18px;color:white;">【原版HEN全自动PKG】晚些时候推送PSFree方案</p>
+		<p style="font-size:18px;color:white;">【一键清缓存在线版】晚些时候更新PSFree方案</p>
+		<p style="font-size:18px;color:white;">注意：4.X可以选择PSFree或老漏洞两者任选，各有优劣自己感受，成功率稳定性差异不大（4.X系统 PSfree + etaHEN以20次平均85-93%的成功率为标准，如差距过大，请参考首页教程中的提高成功率方法进行问题排查），PSFree会提示报错属于正常现象，请按照页面引导操作，老漏洞依然会弹内存不足属于正常现象。3.X建议选择PSFree（成功率有所提升），3.X注入HEN或etaHEN后提示内存不足属于正常现象，直接返回桌面即可。如频繁遇到折腾异常，请参考首页教程中的提高成功率方法</p>
+		<p style="font-size:18px;color:white;">PSFree方案仍处于中长期观察阶段，仍需收集使用效果并作出优化，请将你的系统版本、缓存版本、遇到的问题、每周的成功率数据和测试照片录像发送至邮箱：psgo.eu.org@gmail.com 进行反馈，感谢配合！</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：4.50@嗨嗨、3.20/4.03@随风、4.03@熊猫、4.03@欧巴桑、4.03@猫叔</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+etaHEN定制简化说明：
+只保留运行PS5/PS4的最小可用模块，不加载其它任何多余插件功能，为达到提高稳定性的目的，仅支持运行PS5/PS4、itemzFlow、Xplorer
+
+etaHEN原版完整功能列表：
+自定义系统软件版本（自定义系统信息）
+kstuff 用于 fself 和 fpkg 支持
+etaHEN 登录 /data/etaHEN
+（可选）默认自动启动 itemzflow
+调试设置
+游戏转储器（与 Itemzflow 集成）
+用于设置的 HEN 配置文件
+越狱 IPC 调用（越狱 Homebrew 应用程序）
+更新阻止程序（卸载更新分区）
+可选的Illusions正版帧率解锁libhijacker
+可选的Illusions作弊/补丁
+端口 1337 上的可选FTP 服务器
+应用程序沙箱内允许使用可选的/data
+Klog 服务器端口 9081
+端口 9027 上的 elf 加载程序
+可选PS5调试
+开始Itemzflow 集成
+端口 8000 上的可选Discord RPC 服务器，单击此处获取设置说明
+端口 9090 上的可选直接 PKG 安装程序服务
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月11日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，修复Offsets提升4.02稳定性；插件页可选原版etaHEN（新增）和定制简化版etaHEN（原有），如使用远程安装等完整功能需注入原版etaHEN；删除伪装插件（不常用）；本版为过渡版本，接下来将更替为PSFree方案</p>
+		<p style="font-size:18px;color:white;">【etaHEN全自动PKG】已推送新缓存，修复Offsets提升4.02稳定性；将原有定制简化版etaHEN替换为原版etaHEN，如需使用定制版，请选用一键折腾</p>
+		<p style="font-size:18px;color:white;">【原版HEN全自动PKG】已推送新缓存，修复Offsets提升4.02稳定性</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月9日</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】已更新PSFree方案，默认为PSFree，可按下手柄R2键切换到老漏洞方案，插件页可选原版etaHEN（新增）和定制简化版etaHEN，4.X系统使用新老两种漏洞方案都可以，3.X系统推荐使用PSFree。离线版PKG晚些时候将会推送新缓存~</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：4.50@嗨嗨、3.20、4.03@随风</p>
+		<p style="font-size:18px;color:white;">【内测招募】招募内测组成员10人，提前测试和体验内测版本，目的是发布正式版前提前发现更多问题并修复，包括不限于折腾方案、新版本、新漏洞，在内测组你可以获得最新的技术动态。申请方式：说明情况发送邮件至psgo.eu.org@gmail.com</p>
+		<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+招募说明：
+1.有一定折腾基础、喜欢玩各种软件、善于观察变通、有贡献精神、处女座细节控优先  
+2.拥有PS5 3.00、3.10、3.20、3.21、4.00、4.02、4.03、4.50、4.51其中任何一个版本 
+3.每周平均至少测试10次 
+4.录像记录折腾过程并反馈到内测群 
+5.可以接受内测版可能存在的问题  
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年3月8日（三八妇女节祝天下母亲永远健康美丽）</p>
+		<p style="font-size:18px;color:white;">【预告】近期计划将折腾方案中的Webkit漏洞利用切换为PSFree，目前仍在持续内测观察中，预计与下次etaHEN或HEN新版一并推送。内存不足弹窗将大幅减少，折腾时长缩短，刚进入页面可能会出现失败提示弹窗，只需重新打开页面，成功率小幅提升（不同系统版本有差异），稳定性不变。仍需接收反馈并持续观察一阵~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月28日</p>
+		<p style="font-size:18px;color:white;">【通知】大会期间，某些地区某些运营商网络访问网站可能会有异常，如果遇到请更换DNS（自行百度）或使用首页底部备用链接或换个时间再次访问</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+默认：https://ps5.psgo.eu.org
+备用：https://psgo.pages.dev
+备用：https://ps5.psgo.dedyn.io
+备用：https://www.psgo.dedyn.io
+备用：https://ps5.psgo.cloudns.biz
+备用：https://ps5.psgo.cloudns.org
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月27日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，更新elf、bin加载器插件 v0.8（插件重大修改）</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】同步更新</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月26日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，更新etaHEN v1.7b</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【etaHEN全自动PKG】已推送新缓存，更新etaHEN v1.7b</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【ESP】已更新第三方固件，暂时停止发布PSGO固件，后续另行通知~</p>
+		<p style="font-size:18px;color:white;">【软件】更新HB自制应用商店PKG（自制太少，目前没什么大用）</p>
+		<p style="font-size:18px;color:white;">【软件】更新局域网远程安装PKG工具Remote.PKG.Sender.V2-2.10.3-win.zip，传输速度相比PS4 remote要快的多</p>
+		<p style="font-size:18px;color:white;">Remote远程安装功能说明：PS5和windows电脑需要在同一个局域网网段内，启动exe，选择config设置，首次使用需要设置PKG Base Path（PKG所在目录），Playstation Configuration-Playstation App下拉选择PS5 etaHEN。需要配合注入折腾里的最新的etaHEN1.7b才支持远程安装</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+etaHEN已更新至1.7 变更日志：
+- 添加了直接 PKG 安装程序服务（端口 9090）
+- 在 /data/etaHEN/config.ini 中添加了禁用 DPI 的设置
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月24日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，更新解锁帧率插件libhijacker v1.152</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】同上</p>
+		<p style="font-size:18px;color:white;">【软件】新增局域网远程安装PKG工具Remote PKG installer v1.02 PKG 、Remote.PKG.Sender.V2-2.10.1-win.zip</p>
+		<p style="font-size:18px;color:white;">注意：远程安装功能，PS5和windows电脑需要在同一个局域网网段内，如果使用RemotePKG，在客户端config中输入PS5的IP地址并选择FlatZ，首次使用需要设置PKG Base Path（PKG所在目录）；另外可下拉选择etaHEN，配合即将发布的新版itemzFlow进行远程安装</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月23日</p>
+		<p style="font-size:18px;color:white;">【公告】即日起，本站暂停向中国台湾省地区IP用户（包含大小金门）提供服务，直到台方就“恶意撞船致死事件”道歉、赔偿和审判。今日登船，明日登岛，一切台毒终将被物理消灭~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月18日</p>
+		<p style="font-size:18px;color:white;">【软件】更新Xplorer（统一简称X）文件管理器 v1.02 定制中文版，一些小修复~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月16日</p>
+		<p style="font-size:18px;color:white;">由于当前维护成本较高，全自动在线版、ESP、留言板、部分折腾方案、部分定制等逐步有所调整，望知晓~</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月12日</p>
+		<p style="font-size:18px;color:white;">已修复etaHEN版本号显示问题（LM问题），显示1.5b实际是1.6b，如特别在意请再次更新缓存</p>
+		<p style="font-size:18px;color:white;">【软件】首页已更新Itemzflow 1.6下载地址，原版现已自带中文简体/繁体（部分文字乱码），后期将不再发布定制。之前下载的过的同学重新下载“itemzFlow_V1.06中文版0212fix.zip”，卸载原版后解压安装新PKG</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，更新etaHEN v1.6b定制简化版</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】已发布，更新etaHEN v1.6b定制简化版</p>
+		<p style="font-size:18px;color:white;">【etaHEN全自动PKG】已推送新缓存，更新etaHEN v1.6b定制简化版</p>
+		<p style="font-size:18px;color:white;">【ESP32版】已发布，更新etaHEN v1.6b定制简化版，版本号显示错误（LM问题），实际是1.6，无需在意</p>
+		<p style="font-size:18px;color:white;">【etaHEN全自动在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">AIO折腾大全PKG已推送v0212离线缓存，菜单新增KsAmJ多插件版</p>
+		<p style="font-size:18px;color:white;">etaHEN定制简化说明：只保留运行PS5/PS4的最小可用模块，不加载其它任何多余插件，为达到提高稳定性的目的</p>
+		<p style="font-size:18px;color:white;">原版HEN说明：etaHEN本身基于原版HEN，eta更多是有关运行PS5方面的优化，原版HEN是有关运行PS4方面的优化。只运行PS4的同学，无需在意etaHEN的更新内容。原版HEN虽不能运行PS5，但更稳定~</p>
+		<p style="font-size:18px;color:white;">老男孩游戏网资源投稿说明：由于友站管理员回家过年无法及时审核，1月20 - 2月20日 节日期间投稿内容临时整合一起挂在首屏，依然可以正常投稿</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+etaHEN已更新至1.6B 变更日志：
+- 修复了 4.02 支持
+- 改进了休息模式支持
+- 添加了 itemzflow 的控制器快捷方式
+- 删除了一个对话框，如果在运行 PS5 FG 应用程序时启用 libhijacker 作弊，该对话框会发送垃圾邮件
+- 修复了一个罕见的问题，该问题可能导致某些应用程序在请求时无法越狱
+- etaHEN 现在将在启动后删除 syscore 挂钩
+
+Itemzflow已更新至1.6 变更日志：
+- 缺失的 PS5 FG 应用程序现在将显示在 itemzflow 中以供手动删除
+- 添加了显示 PS5 FG 信息的选项
+- Itemzflow 现在将在复制或移动之前检查可用空间量
+- 添加了新的光盘图标并添加了缺失游戏的封面
+- 添加了一项设置以启用系统范围的控制器快捷方式来打开 itemzflow
+- 修复了某些 Itemzflow 类别中的问题
+- 修复了在主菜单上将 PS5 应用程序标记为 PS4 应用程序的问题
+- 修复了导致 itemzflow 的问题，因此显示 PS5 应用程序错误的更新版本
+- 修复了导致某些 PS5 游戏不显示的问题
+- 添加中文lang文件，自带中文
+- 改进了 SQL DB 的创建
+- 提高了 PNG 标头解析速度
+- 添加了一些改进
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月11日</p>
+		<p style="font-size:18px;color:white;">AIO折腾大全PKG已推送v0211离线缓存，菜单新增TeRex777 PSFree 轻量版</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月10日</p>
+		<p style="font-size:18px;color:white;">首页新增 PS5 DLC 下载</p>
+		<p style="font-size:18px;color:white;">ESP说明：近期不断有小伙伴询问什么时候发布8266固件，基于之前调研结果，由于8266用户比例较小，暂不考虑发布和维护</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月6日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】由于v0205版PSFree方案高频出现“Spray”弹窗报错（与PSFree首版原版not found、undefined弹窗同属一类问题，非PSGO自身导致的问题），暂时恢复为v0125版缓存，仅更新etaHEN v1.5b定制简化版</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】同上</p>
+		<p style="font-size:18px;color:white;">【etaHEN全自动PKG】已推送新缓存，更新etaHEN v1.5b定制简化版</p>
+		<p style="font-size:18px;color:white;">etaHEN定制简化说明：只保留运行PS5/PS4的最小可用模块，不加载其它任何多余插件，为达到提高稳定性的目的</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+etaHEN已更新至1.5B 变更日志：
+- Libhijacker 作弊现在可以与自制程序一起使用
+- 添加了允许应用程序沙箱中的 /data 的设置
+- (仅限 4.5x）修复了可能导致 etaHEN 崩溃的问题
+- 修复了从外部驱动器转储补丁的问题（适用于 itemzflow 1.06）
+- 添加了 etaHEN 日志 (/data/etaHEN/etaHEN.log)
+- 禁用通过 FTP 上传到 /dev
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年2月5日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】已推送新缓存，PSFree新方案 + etaHEN v1.5b定制简化版</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】已发布，PSFree新方案 + etaHEN v1.5b定制简化版</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】已发布，PSFree新方案 + etaHEN v1.5b定制简化版</p>
+		<p style="font-size:18px;color:white;">【ESP版】已发布，PSFree新方案 + etaHEN v1.5b定制简化版</p>
+		<p style="font-size:18px;color:white;">【全自动折腾 + etaHEN版PKG】还在内测中，测试完成后推送~</p>
+		<p style="font-size:18px;color:white;">etaHEN定制简化说明：只保留运行PS5/PS4的最小可用模块，不加载其它任何多余插件，为达到提高稳定性的目的</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：3.20、4.03@随风、ESP@猫叔</p>
+		<br>
+		
+				<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月30日</p>
+<div style="font-size:18px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+鉴于这两天有不少同学询问有关PSFree的问题，简单做个说明：
+
+PSFree的前身名叫QuickHEN v2，由CelesteBlue早期研究，由ABC优化落地，PS5全链整合由idlesauce落地。其利用WebKit零日漏洞编号CVE-2022-22620，该漏洞可任意读写内核内存。
+
+由于该漏洞最早于两年前发现，所以更适用于那个时期的软件系统，后期各厂商已修复该漏洞。
+
+该漏洞的意义更多在于可以作为PS4 7.X（原方案很不稳定）最高支持到9.60 和 PS5 1.00-5.50版本系统（尤其是1.X、2.X、5.X数字版）的WebKit执行入口，当然另外还需要Kex，需要完成全链整合最终才可用。
+
+大家关心最多的成功率稳定性问题，PS5经过实测，相比当前WebKit方案（已研究落地两年）并无明显优势，所以“让子弹多飞一会儿”。该漏洞的执行速度较快和适用系统版本广，所以未来持续优化或许有潜力取代当前方案。至于某些人宣称的所谓“100%成功率稳定性”，纯属无稽之谈。成功率稳定性是多方面因素导致，并非单一WebKit可以决定。
+
+优化迭代就像马拉松，就像你的APP隔三差五更新版本一样，并非一朝一夕就能一步到位。作为开发者或使用者，不要盲信盲从，需要做的就是耐心等待、鼓励支持和积极反馈折腾问题~
+</pre>
+</div>
+		<br>
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月25日特别篇</p>
+<div style="font-size:18px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+“PS5折腾导航”网站的上线时间是在2023年10月6日上午11点22分19秒，如今回首仿佛刻在时间的钟面上，而在这短短的三个月里，时光宛如折腾的快慢两重奏，为这个项目编织了一幕幕精彩的小故事。
+
+从最初的0访问，演变成如今的16w+人次，衷心感谢各位同学一路以来的支持！感谢你们能够理解并宽容于我直言不讳的态度，感谢你们对于目前折腾方案尚未完善的情况能够包容并坚持。这份共同的努力，正是PS5折腾导航坚持发展的源泉。
+
+这里要特别感谢几位同学：
+
+@熊猫 自建站建群起一直帮助维护管理，让我能腾出更多时间在研究折腾方案上
+@大河马 无偿为PSGO提供了一台测试机，让我找问题找解决方案更方便更高效
+@嗨嗨 @team @灿 @KwokChu @风云再起 @大河马 @白羽等同学不同阶段抽出时间参与内测事项，替大家挡在前面用失败断电来发现问题，测试成功率，回答大家的问题
+@风云再起 写下最早第一份完整的图文教程，让很多人从一份小文档开始知道PSGO
+@朗 @嗨嗨 充分体现了分享精神，有好东西也会想到大家。当然还有其它几位同学也乐于分享美食、好物、经验、帅哥靓女、时政、娱乐八卦等
+
+可能会有遗漏的同学，他们不仅是使用者，同时再也在为广大机友出一份力~
+
+岁末年关，祝愿大家在新的一年都能工作顺利、家庭幸福！🧡折腾开心🧡
+</pre>
+</div>
+		<br>
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月25日</p>
+		<p style="font-size:18px;color:white;">全自动etaHEN版PKG、全自动HEN原版PKG、一键折腾PKG、Windows离线版，推送新缓存，使用1月18日预加载缓存技术，改善成功率。经过两周观察，PSGO定制简化版etaHEN成功率已接近原版HEN，稳定性差于原版HEN</p>
+		<br>
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月24日</p>
+		<p style="font-size:18px;color:white;">更新PS5发售游戏完整目录中文版+英文版  链接：https://psgo.lanpw.com/iv9hB1m46tjc</p>
+		<br>
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月22日</p>
+		<p style="font-size:18px;color:white;">【软件】新增itemzFlow（统一简称iF）游戏管理器春节特别版，PKG文件和普通中文版在最新的同一个压缩包内，安装PKG前先删除（卸载）旧版本。</p>
+		<p style="font-size:18px;color:white;">更新PS5资源测试运行结果列表，链接：https://ps5.psgo.eu.org/ps5game.html</p>
+		<p style="font-size:18px;color:white;">更新PS5发售游戏完整目录  链接：https://psgo.lanpw.com/iga261lusl3a</p>
+		<br>
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月21日</p>
+		<p style="font-size:18px;color:white;">【软件】更新Xplorer（统一简称X）文件管理器 v1.01 PSGO定制中文版，支持繁体中文，支持安装和替换系统头像。安装PKG前先删除（卸载）旧版本。</p>
+		<p style="font-size:18px;color:white;">注意：频繁多次打开和关闭、频繁待机唤醒，会导致关机断电；部分同学反馈之前1.00安装过中文补丁，使用新版再次安装中文补丁提示安装失败，解决方式是FTP进入data/PS5Xplorer，删除dat文件，再次安装中文补丁，或者等待作者修复该问题。Xplorer当前尚不完善</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+PS5-Xplorer 1.01 变更日志：
+- 修复了翻译支持（仅在 root 模式下）
+- 头像支持（来自 Avatar Maker 文件）
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月19日</p>
+		<p style="font-size:18px;color:white;">【预告】PS5-Xplorer 周末发布新的修复版本v1.01，修复中文补丁不生效问题，可能会修复目录深度和大文件导致的传输问题，支持安装PKG的版本应该不会太遥远~</p>
+		<p style="font-size:18px;color:white;">【预告】etaHEN和itemzFlow游戏管理器（统一简称iF），预计周末也会发布新版</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月18日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】首次使用缓存预加载方式、简化界面、继续做减法改善成功率</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月15日</p>
+		<p style="font-size:18px;color:white;">【软件】更新Xplorer文件管理器 V1.00 正式版PKG，必须使用etaHEN 1.4及以上才可以正常使用，启动后选择第一项“Root模式访问”。支持复制、粘贴、剪切，支持自建目录用来管理PKG或和文件。支持USB移动硬盘和优盘设备，进入目录mnt/usb0或123...，暂不支持安装PS4PKG，可以复制PS5文件夹（按下三角键选“send to”或者“copy”），暂时不支持中文目录和显示。再次感谢古巴兄弟Lapy的付出！已知正在修复的问题：1.大文件多目录传输不完整 2.翻译补丁不生效</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月14日</p>
+		<p style="font-size:18px;color:white;">【ESP32】PSGO首个ESP固件，支持ESP32-S2型号板子（常见紫色、红色、带壳均可），内含etaHEN v1.4定制简化版 + 原版HEN v1.4 + 部分插件，支持按自己的需求自定义上传、删除、更新插件</p>
+		<p style="font-size:18px;color:white;">【全自动折腾 + 原版HEN PKG】更新原版HEN v1.4，新增支持3.10、4.00、4.02系统版本</p>
+		<p style="font-size:18px;color:white;">【全自动折腾 + etaHEN版PKG】更新etaHEN v1.4b定制简化版，更新支持3.10、4.00、4.02系统版本，修复多个问题</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】更新etaHEN v1.4b定制简化版，更新原版HEN，更新支持3.10、4.00、4.02系统版本</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】更新etaHEN v1.4b定制简化版，更新原版HEN，更新支持3.10、4.00、4.02系统版本</p>
+		<p style="font-size:18px;color:white;">【软件】更新itemzflow 1.05定制中文版，修复目录、复制等多个问题，新增一键扫描挂载所有游戏</p>
+		<p style="font-size:18px;color:white;">【全自动折腾在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">注意：为避免出现兼容问题，使用最新版itemzFlow的同时建议使用同期最新版的etaHEN。安装itemzFlow时不建议覆盖安装，建议先卸载旧版再安装新版</p>
+<div style="font-size:16px;color:white;">
+<pre style="white-space: pre-wrap; word-wrap: break-word;font-family: system-ui">
+etaHEN 1.4b 变更日志：
+- 列入白名单的 Lapy 的 Xplorer 应用程序
+- 修复了倾倒 PS5 游戏奖杯的问题
+- 修复了创建时未写入完整配置的问题
+- 添加了测试套件设置（testkit kstuff）
+- 添加了退出休息模式的检测
+- 添加了对 4.00、4.02 的支持
+- Nomadic 添加了 Discord RPC 选项
+- 通过幻象更新了游戏秘籍
+
+
+Itemzflow 1.05 变更日志：
+- 修复了导致游戏首次启动需要一段时间的问题
+- 修复了文件夹深度超过 7 的某些应用程序的复制/移动/删除问题
+- 添加了扫描应用程序的选项
+- 添加了应用程序删除损坏的数据库的功能
+- 为 PS5 游戏添加了 PS5 光盘图标
+- 修复了使用主题时会导致卡顿的问题
+- 添加了移动和复制操作所用的时间
+- 如果在 Windows 上并使用默认/位置，您现在可以只输入 NFS 选项的 IP
+- 修复了无法始终检测您是否尝试复制到同一文件夹的问题
+- 修复了光盘图标不显示的问题
+</pre>
+</div>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月13日</p>
+		<p style="font-size:18px;color:white;">【软件】新增All in One 折腾大全PKG，精选16个第三方折腾方案，陆续增加收录中...</p>
+		<p style="font-size:18px;color:white;">【软件】新增用户指南快捷入口PKG，支持快捷进入ESP、Win离线的折腾页面</p>
+		<p style="font-size:18px;color:white;">【预告】PSGO即将发布第一个ESP固件和中文在线刷机工具，etaHEN注入无需等待只需1秒，支持按自己需求自定义上传插件。在此感谢Stooged从PS4时代以来一直在ESP方面的努力！</p>
+		<p style="font-size:18px;color:white;">【预告】待etaHEN1.4b和itemzflow 1.05发布之后，PSGO将会推送新缓存，届时原版HEN和etaHEN都将新增支持3.10、4.00、4.02</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月10日</p>
+		<p style="font-size:18px;color:white;">【软件】新增PSGO一键清除浏览器缓存在线版PKG，建议有备无患现在就提前安装好。可清除不同折腾网站包括用户指南在内的所有离线缓存。如果未遇到频繁出现异常，无需使用该工具清除缓存！</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月9日</p>
+		<p style="font-size:18px;color:white;">【软件】新增PS5-Xplorer 测试版PKG，目前仅sandbox模式并非完整读写，普通用户无需尝试，等待后续正式版，目录+粘贴复制即将到来！在此感谢古巴兄弟Lapy的付出！</p>
+		<p style="font-size:18px;color:white;">【预告】原版HEN已支持4.02系统版本，等待近日支持3.10和4.00的新HEN发布后将推送新的离线缓存</p>
+		<p style="font-size:18px;color:white;">【其他】新增备用域名（望各位给之前打不开的同学奔走相告）：https://psgo.pages.dev 、https://www.psgo.dedyn.io 、https://ps5.psgo.dedyn.io 、 https://ps5.psgo.cloudns.biz 、 https://ps5.psgo.cloudns.org</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月7日</p>
+		<p style="font-size:18px;color:white;">网站新增留言板：https://ps5.psgo.eu.org/liuyan/ 或者 https://psgo.pages.dev/liuyan/</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月6日</p>
+		<p style="font-size:18px;color:white;">【全自动折腾 + etaHEN版PKG】定制简化etaHEN v1.3b，提升成功率稳定性</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】定制简化etaHEN v1.3b，提升成功率稳定性</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】定制简化etaHEN v1.3b，提升成功率稳定性</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：4.50@嗨嗨、4.03@香香</p>
+		<p style="font-size:18px;color:white;">注意：etaHEN这种整合类插件短时间都不太可能稳定性比得上Sleirs的原版HEN，能做的只有一步一步提升，并非一朝一夕能根治；经过反复实测，发现原版etaHEN v1.03b有一个相对严重的bug，会间接影响成功率稳定性，由于该插件并未开源，同样也影响定制版，等待后续修复；极个别情况如果更新缓存后，注入etaHEN后左上角弹出消息未出现"PSGO定制"字眼，清除缓存后重新缓存</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月5日</p>
+		<p style="font-size:18px;color:white;">【全自动折腾PKG + 原版HEN】提升稳定性</p>
+		<p style="font-size:18px;color:white;">【全自动折腾在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【一键折腾在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【一键清缓存在线版】同步更新</p>
+		<p style="font-size:18px;color:white;">【软件】新增Makefself和Executables DecryptUI解密工具，用于解密PS5正版资源，解密后可分享TA人运行，推荐使用itemzflow提取+Makefself解密这个方案</p>
+		<br>
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月4日</p>
+		<p style="font-size:18px;color:white;">【全自动折腾 + etaHEN版PKG】更新etaHEN v1.03b，新增支持3.00、3.20、3.21系统</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】更新etaHEN v1.03b，新增支持3.00、3.20、3.21系统版本</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】更新etaHEN v1.03b，新增支持3.00、3.20、3.21系统版本</p>
+		<p style="font-size:18px;color:white;">【软件】PS5游戏启动器 itemzFlow v1.04中文版PKG，新增支持3.00、3.20、3.21系统</p>
+		<p style="font-size:18px;color:white;">注意：itemzFlow v1.04不兼容etaHEN v1.2B，必须更新到最新缓存，必须搭配使用etaHEN v1.3B！由于etaHEN整合了多个插件，实测相比原版HEN成功率稳定性低；日常不运行PS5资源则无需使用etaHEN；etaHEN现已支持正常待机</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月3日</p>
+		<p style="font-size:18px;color:white;">【全自动折腾PKG + 原版HEN】新增支持3.00、3.20、3.21系统版本</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】原版HEN新增支持3.00、3.20、3.21系统版本</p>
+		<p style="font-size:18px;color:white;">【Windows离线版】原版HEN新增支持3.00、3.20、3.21系统版本</p>
+		<p style="font-size:18px;color:white;">注意：etaHEN暂不支持3.00、3.20、3.21系统版本，等待下个版本推送更新etaHEN 1.3B，以及支持3.XX的新版itemzflow</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2024年1月1日</p>
+		<p style="font-size:18px;color:white;">【软件】全新PSGO折腾PKG v2.0 四件套，新增全自动etaHEN版PKG</p>
+		<p style="font-size:18px;color:white;">【软件】新增PS5版itemzFlow PSGO中文定制版PKG</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：@香香</p>
+		<p style="font-size:18px;color:white;">注意：新版本四件套可与折腾PKG老版本共存，安装新版PKG后从顶部"媒体"菜单中进入，解决超过8个后无法启动折腾PKG的问题</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年12月29日</p>
+		<p style="font-size:18px;color:white;">【全自动折腾PKG】提升稳定性</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】提升稳定性</p>
+		<p style="font-size:18px;color:white;">【windows离线版】提升稳定性</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：4.50@嗨嗨、4.03@香香</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年12月27日</p>
+		<p style="font-size:18px;color:white;">【全自动折腾PKG】恢复使用原版HEN，如需etaHEN，前往PSGO官网下载使用一键折腾多插件离线版PKG</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：@小云</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年12月26日</p>
+		<p style="font-size:18px;color:white;">【全自动折腾PKG】更新etaHEN 1.2b，支持itemzFlow，支持运行部分PS5资源</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】更新etaHEN 1.2b，支持itemzFlow，支持运行部分PS5资源。本次更新缓存前建议先使用插件清除旧缓存</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】更新libhijacker v1.138</p>
+		<p style="font-size:18px;color:white;">【windows离线版】更新etaHEN 1.2b，支持itemzFlow，支持运行部分PS5资源</p>
+		<p style="font-size:18px;color:white;">【软件】新增PS5版itemzFlow PKG</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：4.03@香香、4.50@大河马</p>
+		<p style="font-size:18px;color:white;">注意：由于etaHEN整合了多个插件，实测相比原版HEN成功率稳定性略低；如果频繁遇到异常，使用插件清除缓存后重新缓存！</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年12月20日</p>
+		<p style="font-size:18px;color:white;">【软件】新增PS5 金手指文件 2023.12.20（上千款 / json、shn、mc4格式合集 / 手动覆盖到MultiTrainer II）</p>
+		<p style="font-size:18px;color:white;">【软件】新增PS5 GoldHEN2MultiTrainer 金手指文件批量重命名工具（解决无法识别的问题）</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：@香香</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年12月18日</p>
+		<p style="font-size:18px;color:white;">【软件】新增PS5 金手指工具Win专业版 Reaper Studio V01.0.4.1，需配合一键折腾中的ps5debug插件</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：未测试</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年12月7日</p>
+		<p style="font-size:18px;color:white;">【一键折腾PKG】更新libhijacker插件 v1.137</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：@香香</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年12月2日</p>
+		<p style="font-size:18px;color:white;">-  全自动调整自动注入逻辑，为了兼容未来etaHen和多个插件自动注入</p>
+		<p style="font-size:18px;color:white;">-  一键pkg调整为本自动模式，进入后无需点击"开始折腾"按钮</p>
+		<p style="font-size:18px;color:white;">-  全自动和一键pkg剥离缓存功能，便于维护和减少折腾等待时间</p>
+		<p style="font-size:18px;color:white;">-  一键pkg新增重复注入判断，减少部分插件重复注入导致的死机问题</p>
+		<p style="font-size:18px;color:white;">-  一键pkg新增ps5debug金手指插件实验版，仅支持DX/Reaper等内存修改工具调试（注入后可能会导致卡顿等不稳定现象）</p>
+		<p style="font-size:18px;color:white;">-  一键pkg支持扳机键快捷注入HEN</p>
+		<p style="font-size:18px;color:white;">-  重新恢复新增ELF插件加载器（注意注入后有一定概率导致关机断电）</p>
+		<p style="font-size:18px;color:white;">感谢参与内测的同学：@嗨嗨、@香香</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年11月23日</p>
+		<p style="font-size:18px;color:white;">-一键pkg新增浏览器Lite和一键清缓存入口</p>
+		<p style="font-size:18px;color:white;">-支持快捷键操作</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年11月19日</p>
+		<p style="font-size:18px;color:white;">-修复bug，提升稳定性</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年11月5日</p>
+		<p style="font-size:18px;color:white;">-全自动和一键pkg优化缓存机制，新增强制替换缓存，即刻生效</p>
+		<p style="font-size:18px;color:white;">-kstuff新增支持4.51系统</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月31日</p>
+		<p style="font-size:18px;color:white;">-一键pkg新增高版本伪装、系统信息等插件</p>
+		<p style="font-size:18px;color:white;">-一键pkg新增手动自定义注入功能</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月29日</p>
+		<p style="font-size:18px;color:white;">-一键pkg新增一键屏蔽更新、etaHen等插件</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月22日</p>
+		<p style="font-size:18px;color:white;">-kstuff新增支持4.51系统</p>
+		<p style="font-size:18px;color:white;">-一键pkg更新底包</p>
+		<p style="font-size:18px;color:white;">-全自动pkg更新底包</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月16日</p>
+		<p style="font-size:18px;color:white;">-发布国内外全网首个全自动离线版pkg</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月15日</p>
+		<p style="font-size:18px;color:white;">-优化缓存机制，一键pkg新增手动更新缓存</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月13日</p>
+		<p style="font-size:18px;color:white;">-发布国内外全网首个一键折腾多插件离线版pkg</p>
+		<p style="font-size:18px;color:white;">-切换为Specter debug v1.04底包</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月12日</p>
+		<p style="font-size:18px;color:white;">-发布国内外全网首个离线浏览器pkg</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月10日</p>
+		<p style="font-size:18px;color:white;">-更新ps5-kstuff.bin，更新FrankenELF</p>
+		<p style="font-size:18px;color:white;">-修复缓存问题</p>
+		<br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月9日</p>
+		<p style="font-size:18px;color:white;">-更新ps5-kstuff.bin，修复无法从内容库启动游戏的问题</p>
+        <br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月8日</p>
+		<p style="font-size:18px;color:white;">-修复部分文件未更新的问题</p>
+		<p style="font-size:18px;color:white;">-修复缓存完成后的左上角提醒</p>
+        <br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月7日</p>
+		<p style="font-size:18px;color:white;">更新并新增ps5-kstuff.bin，又名Payload.bin，又名Hen，类似GoldHEN，用于解锁运行</p>
+        <br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">2023年10月6日</p>
+		<p style="font-size:18px;color:white;">首个可解锁运行的版本</p>
+
+        <br>
+		</div> 
+		<br><br><br>
+	<h1 style="font-size:20px;color:#CFB53B;text-align:center;">-- 持续更新中 --</h1>
+    <br><br><br><br><br><br>
+   </body>
+</html>
+<!-- weixin -->
+<!-- <link rel="stylesheet" href="https://laoba.pages.dev/css/weixin.css"> -->
+<!-- <div style="position: fixed;left: 20px;bottom: 20px;z-index: 999;width:220px"><a style="text-decoration:none;" href="https://laoba.pages.dev" target="_blank"><img class="header"></a></div> -->
+<script>
+	function showAlert() {
+		alert("重要通知：如果使用etaHEN（某些版本自身缺陷），无论你是离线PKG还是Win离线，折腾过程中必须保持PS5连接到wifi或插线网络（连接到局域网即可无需互联网）！否则注入一瞬间极容易死机断电！\n\n当前阶段以平均85-93%的成功率为标准（目前收集用户反馈成功率超过80%的有83%），如达不到请参考首页教程中的减少断电方法进行问题排查，除个别极端异常外，绝大多数都是自身操作或设置问题，平时需留意网站上更新的的提示公告");
+	}
+
+	function shouldShowAlert() {
+		const lastShown = localStorage.getItem('lastAlertShown');
+		if (!lastShown) {
+			return true;
+		}
+
+		const oneWeekInMillis = 2 * 7 * 24 * 60 * 60 * 1000; //每2周弹一次
+		const currentTime = new Date().getTime();
+		return currentTime - lastShown > oneWeekInMillis;
+	}
+
+	function updateLastShownTime() {
+		localStorage.setItem('lastAlertShown', new Date().getTime());
+	}
+
+	if (shouldShowAlert()) {
+		showAlert();
+		updateLastShownTime();
+	}
+</script>
+<script>
+	document.oncopy = function (e) {
+		// 获取选区对象
+		let selObj = window.getSelection();
+		// IE8及更早不支持window.getSelection
+		if (typeof selObj == 'undefined') return false;
+
+		// 获取clipboardData对象
+		// Chrome\Safari\Firefox浏览器中,这个对象是event对象的属性
+		// IE浏览器中,它是window对象的属性
+		let clipboardData = e.clipboardData || window.clipboardData;
+
+		// 获取选区文本内容
+		let selectedText = selObj + '';
+
+		let copytext;
+		// 如果选中文字内容小于30个字符，则不做任何操作
+		if (selectedText.length < 30) {
+			copytext = selectedText;
+
+		} else {
+			copytext = selectedText +
+				'\n\n\n' +
+				'来源：PSGO折腾导航\n' +
+				'链接：' + location.href + '\n' +
+				'著作权归作者所有，商业转载请联系作者获取授权，非商业转载请注明出处。';
+		}
+
+		// setData(format,text)用于设置剪贴板内容
+		clipboardData.setData('text/plain', copytext);
+		
+		// 取消默认的复制事件
+		return false;
+		// e.preventDefault()亦可
+		
+	}
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>

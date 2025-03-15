@@ -1,0 +1,131 @@
+@charset "UTF-8";
+/* html, body { */
+  /* width: 100%; */
+  /* height: 100%; */
+/* } */
+
+/* body { */
+  /* display: flex; */
+  /* background-color: #000; */
+/* } */
+body{
+    /* background-image:url(bg.jpg); */
+    background-color:#202124;
+    background-attachment:fixed;
+    background-size:100%;
+    background-repeat:no-repeat;
+    font-family:system-ui;
+	text-align:center
+    }
+		
+    a:hover{
+	text-decoration: none;
+    border-bottom: 1.5px solid;
+	padding-bottom: 5px;
+	}
+    
+    button:-moz-focus-inner, button:focus{
+    outline:0;
+    border:none
+	}
+	
+	option{
+    background-color:#080808;
+    }
+	
+    button{
+	color:#dcddde;
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#303134;
+    box-shadow:0 5px 0 #888888;
+    } 
+
+    button:hover{
+    font-size:22px;
+	color:#fff;
+    background:#603bcc;
+    } 
+    
+    button:active{
+    background:#603bcc;
+    position:relative;
+    top:5px;
+    box-shadow:none
+    }
+    
+   .bottopmsg{
+
+	padding:5px 0 1px 0;
+	color:#dcddde;
+	text-align: center;
+	font-size:16px;
+    }
+	
+      /** variables */
+      :root {
+        /*orig*/
+
+        --color-black: black;
+        --color-cod-gray: #101010;
+        --color-white: white;
+        --color-error: rgb(191, 95, 95);
+        --color-primary-rgba: 0, 192, 251;
+        --color-primary: #00c0fb;
+        --color-secondary-rgba: 234, 182, 56;
+        --color-secondary: #eab638;
+      }
+
+      .tiles {
+        display: flex;
+        flex-direction: column;
+		z-index:-1;
+        justify-content: center;
+        left: 50%;
+        position: fixed;
+        top: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%) rotate(22.5deg);
+      }
+      .tiles__line {
+        -webkit-animation: runner 20s linear infinite;
+        display: flex;
+        transform: translateX(25%);
+      }
+      .tiles__line:nth-child(2) {
+        -webkit-animation-duration: 32s;
+      }
+      .tiles__line:nth-child(3) {
+        -webkit-animation-duration: 44s;
+      }
+
+      @keyframes runner {
+        to {
+          -webkit-transform: translateX(-25%);
+        }
+      }
+      .tiles__line-img {
+        --tile-margin: 3vw;
+        background-position: 50% 50%;
+        background-size: cover;
+        border-radius: 50%;
+        flex: none;
+        height: 30vh;
+        margin: var(--tile-margin);
+        width: 30vh;
+        background-color:#1d9bf0;
+        opacity: 0.3;
+
+      }
+      .tiles__line-img--large {
+        border-radius: 20vh;
+        width: 100vh;
+        opacity: 0.3;
+      }

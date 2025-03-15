@@ -1,0 +1,152 @@
+<html>
+ <head> 
+  <meta charset="utf-8"> 
+  <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+  <title>PS5 BD-JB折腾教程 - PSGO.eu.org</title> 
+    
+   <style> 
+  button
+    {
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#CFB53B;
+    box-shadow:0 5px 0 #888888;
+    } 
+
+    
+    button:hover
+    {
+    color: #CFB53B;
+    font-size:22px;
+    background:#161616;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+    } 
+    
+    button:active
+    {
+    background:#CFB53B;
+    position:relative;
+    color:#000;
+    top:5px;
+    box-shadow:none
+    }
+    </style>
+ <head> 
+   <body style="background-color:#181818;">
+        <br>
+   		<h1 style="font-size:42px;color:#CFB53B;text-align:center;">PS5光盘折腾教程 - PSGO.eu.org</h1>
+        <br>
+		<div style="width:800px;margin:50px auto;">
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">IPv6版光盘支持3.00-4.51，内含Kstuff和etaHEN，其中etaHEN可关闭网络离线使用；UMTX光盘支持1.00-7.61，暂时只有jar加载器没有elf加载器；6.x 7.x暂时没有Kstuff和etaHEN</p>
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">经过实测BD-JB光盘成功率在入口和内核漏洞两个加载环节要比网页的PSFree + IPv6略高，稳定性和网页无明显差异。光盘无需借助PC注入HEN，无需清缓存操作，无需连接互联网全程离线，可以作为日常使用，该方案适合尝鲜买成品盘折腾和发烧友买刻录机~</p>
+        <br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第1步：准备工作</p>
+		<p style="font-size:18px;color:white;">1-1 一台支持BD-RE或R刻录的蓝光刻录机，大约¥300-1200；或者你可以去找一下附近的打字复印社、婚庆策划机构、婚纱影楼等店铺也会有蓝光刻录机；或者你可以直接买现成刻录好的折腾光盘</p>
+		<p style="font-size:18px;color:white;">1-2 一张BD-RE可反复擦写光盘（用于未来升级镜像文件、插件和HEN），大约¥6-25；或BD-R光盘（一次性写入不支持反复擦写），大约¥3-15；假盘多特别便宜的不耐用</p>
+		<p style="font-size:18px;color:white;">1-3 一台Windows电脑连接好刻录机，有些型号可能需要安装驱动和外置电源</p>
+		<p style="font-size:18px;color:white;">1-4 从PSGO PS5主页 BD-JB折腾专区下载ISO光盘镜像文件</p>
+		<p style="font-size:18px;color:white;">1-5 从PSGO PS5主页 BD-JB折腾专区下载 "Imgburn BD-RE/R光盘刻录工具中文版" Windows版刻录工具</p>
+        <br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第2步：安装刻录软件</p>
+		<p style="font-size:18px;color:white;">2-1 解压缩前面下载的刻录软件，找到 SetupImgBurn.exe 双击安装，全部默认点下一步</p>
+		<p style="font-size:18px;color:white;">2-2 安装成功后打开安装目录C:\Program Files\ImgBurn\Languages，将中文语言包 chinese_prc.lng 文件放入进去</p>
+		<p style="font-size:18px;color:white;">2-3 启动电脑桌面上的ImgBurn图标，运行刻录软件</p>
+        <br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第3步：刻录光盘镜像</p>
+		<p style="font-size:18px;color:white;">3-1 把光盘放入刻录机，保持光盘数据面洁净"</p>
+		<p style="font-size:18px;color:white;">3-2 点击第一个"刻录镜像至光盘"</p>
+		<p style="font-size:18px;color:white;">3-3 点击"来源"里右边的黄色文件夹小图标，选择你前面下载好的ISO镜像文件</p>
+		<p style="font-size:18px;color:white;">3-4 下拉"目标"里的下拉框选中光驱(一般只有一个刻录机会默认选中)</p>
+		<p style="font-size:18px;color:white;">3-5 "目标"里的"验证"为选中状态（一般默认会勾选）</p>
+		<p style="font-size:18px;color:white;">3-6 "选项"里的刻录速度(默认即可)，根据不同型号的刻录机和光盘可以选择最低速，能延长光盘使用寿命</p>
+		<p style="font-size:18px;color:white;">3-7 点下方两个光盘图标的位置开始刻录</p>
+		<p style="font-size:18px;color:white;">3-8 等到刻录和验证进度条走到100%的时候会弹窗提示"successfully completed"，则表示刻录成功，可以取出光盘</p>
+        <br>
+
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">第4步：用光盘折腾</p>
+		<p style="font-size:18px;color:white;">4-1 启动PS5，插入光盘，也可以一直插着</p>
+		<p style="font-size:18px;color:white;">4-2 选择顶部的"媒体"，选择"Disc Player"图标，点确定键。首次会询问你是否允许连接互联网，是或否都可以，对于新手安全起见不要联网或提前设置路由器屏蔽升级</p>
+		<p style="font-size:18px;color:white;">4-3 之后可能会有几秒的黑屏或者读取一些进度日志，此时先不要操作。</p>
+		<p style="font-size:18px;color:white;">4-4 之后会出现选择注入的HEN，注意有些版本的镜像文件支持从网络加载最新的插件，有些版本支持从光盘本地加载插件（From Disc），如果从网络加载则需要连接网络（注意John的Kstuff版镜像必须连接局域网无需互联网）。通过上下键选中所需的插件，比如etaHEN，然后点击确定键</p>
+		<p style="font-size:18px;color:white;">4-5 稍等几秒会有提示注入的弹窗，弹窗消失后按PS键回到桌面（此时可能还会有一个弹窗成功的提示）</p>
+		<br><p style="font-size:18px;color:white;">注意事项：</p>
+		<p style="font-size:18px;color:white;">1.低质量的刻录机和光盘会有几率刻录失败，选购前建议多看评论</p>
+		<p style="font-size:18px;color:white;">2.不要经常用手触摸光盘数据面，可以直接用嘴吹掉灰尘或用眼镜布轻轻擦拭灰尘，另外小心磕碰</p>
+		<p style="font-size:18px;color:white;">3.光盘不要接触腐蚀性物品，也不要用酒精，不要在阳光下暴晒</p>
+		<p style="font-size:18px;color:white;">4.如非折腾发烧友玩家，不建议萌新和普通玩家购买蓝光刻录机，利用率并不高</p>
+		<p style="font-size:18px;color:white;">5.BD-RE高质量盘反复擦写可以使用几百甚至上千次，普通盘可能几次几十次就废了</p>
+		<p style="font-size:18px;color:white;">6.游戏和视频盘如果磨损，有容错机制会卡顿或跳帧，而折腾盘磨损会加载代码不完整影响成功率</p>
+		<p style="font-size:18px;color:white;">7.如果遇到假盘、劣质盘、瑕疵盘、变形的盘，建议退换货，不要使用</p><br>
+		<br><p style="font-size:18px;color:white;">到此完成！</p><br>
+		<p style="font-size:18px;color:white;">另附网友的光盘刻录教程视频：<a style="color:white;" target="_blank" href="https://www.bilibili.com/video/BV1FzPHehENk">https://www.bilibili.com/video/BV1FzPHehENk</a></p>
+		<p style="font-size:18px;color:white;">另附网友的光盘折腾教程视频：<a style="color:white;" target="_blank" href="https://www.bilibili.com/video/BV1WoPse1EX5">www.bilibili.com/video/BV1WoPse1EX5</a></p>
+        <br>
+		
+		<p style="font-size:20px;font-weight:bold;color:#CFB53B;">以上内容来自PSGO，转载请注明出处，链接：psgo.eu.org</p>
+		<br>
+		</div> 
+		<br><br><br>
+    <br><br><br><br><br><br>
+   </body>
+</html>
+
+<script>
+	document.oncopy = function (e) {
+		// 获取选区对象
+		let selObj = window.getSelection();
+		// IE8及更早不支持window.getSelection
+		if (typeof selObj == 'undefined') return false;
+
+		// 获取clipboardData对象
+		// Chrome\Safari\Firefox浏览器中,这个对象是event对象的属性
+		// IE浏览器中,它是window对象的属性
+		let clipboardData = e.clipboardData || window.clipboardData;
+
+		// 获取选区文本内容
+		let selectedText = selObj + '';
+
+		let copytext;
+		// 如果选中文字内容小于30个字符，则不做任何操作
+		if (selectedText.length < 30) {
+			copytext = selectedText;
+
+		} else {
+			copytext = selectedText +
+				'\n\n\n' +
+				'来源：PSGO折腾导航\n' +
+				'链接：' + location.href + '\n' +
+				'著作权归作者所有，商业转载请联系作者获取授权，非商业转载请注明出处。';
+		}
+
+		// setData(format,text)用于设置剪贴板内容
+		clipboardData.setData('text/plain', copytext);
+		
+		// 取消默认的复制事件
+		return false;
+		// e.preventDefault()亦可
+		
+	}
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7VRDNYTJ1Y');
+</script>
+</html>

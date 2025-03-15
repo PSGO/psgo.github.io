@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+  <title>NS折腾导航 - PSGO.eu.org</title> 
+  <style>   
+body{
+    background-image:url(bg.jpg);
+    background-color:#202124;
+    background-attachment:fixed;
+    background-size:100%;
+    background-repeat:no-repeat;
+    font-family:system-ui;
+	text-align:center
+    }
+		
+    a:hover{
+	text-decoration: none;
+    border-bottom: 1.5px solid;
+	padding-bottom: 5px;
+	}
+    
+    button:-moz-focus-inner, button:focus{
+    outline:0;
+    border:none
+	}
+	
+	option{
+    background-color:#080808;
+    }
+	
+    button{
+	color:#dcddde;
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#303134;
+    box-shadow:0 5px 0 #888888;
+    } 
+
+    button:hover{
+    color:#161616;
+    font-size:22px;
+    background:#ea7a99;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+    } 
+    
+    button:active{
+    background:#1d9bf0;
+    position:relative;
+    color:#161616;
+    top:5px;
+    box-shadow:none
+    }
+    
+   .bottopmsg{
+
+
+	padding:5px 0 1px 0;
+	color:#dcddde;
+	text-align: center;
+	font-size:16px;
+    }
+	
+      /** variables */
+      :root {
+        /*orig*/
+
+        --color-black: black;
+        --color-cod-gray: #101010;
+        --color-white: white;
+        --color-error: rgb(191, 95, 95);
+        --color-primary-rgba: 0, 192, 251;
+        --color-primary: #00c0fb;
+        --color-secondary-rgba: 234, 182, 56;
+        --color-secondary: #eab638;
+      }
+
+      .tiles {
+        display: flex;
+        flex-direction: column;
+		z-index:-1;
+        justify-content: center;
+        left: 50%;
+        position: fixed;
+        top: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%) rotate(22.5deg);
+      }
+      .tiles__line {
+        -webkit-animation: runner 20s linear infinite;
+        display: flex;
+        transform: translateX(25%);
+      }
+      .tiles__line:nth-child(2) {
+        -webkit-animation-duration: 32s;
+      }
+      .tiles__line:nth-child(3) {
+        -webkit-animation-duration: 44s;
+      }
+
+      @keyframes runner {
+        to {
+          -webkit-transform: translateX(-25%);
+        }
+      }
+      .tiles__line-img {
+        --tile-margin: 3vw;
+        background-position: 50% 50%;
+        background-size: cover;
+        border-radius: 50%;
+        flex: none;
+        height: 30vh;
+        margin: var(--tile-margin);
+        width: 30vh;
+        background-color:#1d9bf0;
+        opacity: 0.3;
+
+      }
+      .tiles__line-img--large {
+        border-radius: 20vh;
+        width: 100vh;
+        opacity: 0.3;
+      }
+  
+</style> 
+ </head> 
+ <body> 
+<!-- yanhua -->
+<!-- <div style="width:0"><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh><bokeh></bokeh></div> -->
+  <br> 
+  <h1 style="font-size:70px;text-align:center;font-style:italic;text-shadow: 4px 2px #303134;"><font color="#dcddde">NS 折腾导航</font></h1>
+  <!-- <h2 style="font-size:28px;text-align:center;"><font color="#dcddde">你的收藏与分享 <font color="#dcddde"> 是我更新的动力</font> </font></h2> -->
+  <br><br><br><br>
+  <div id="mymenu"> 
+  
+  <table align="center"> 
+	  
+<!--<tr><td align="center">
+	  <button type="button" onclick="window.open('https://www.sdsetup.com/console?switch')"><font color=""> SDsetup 在线生成整合包（不含Sigpatches） </font></button>
+</td></tr>-->
+
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 大气层整合包 </font></td></tr>
+<tr><td align="center">
+	 <button type="button" id="R-AK478BB/AK-Atmosphere" onclick="window.open('https://pan.baidu.com/s/1ZXq-AQhGAOtLOJIOZyKYRw?pwd=tpz6')"><font color=""> AK整合包</font></button>
+	 <button type="button" onclick="window.open('https://github.com/AK478BB/AK-Atmosphere/releases')"><font color=""> 备用地址</font></button>
+</td></tr>
+<tr><td align="center">
+	 <button type="button" onclick="window.open('https://pan.baidu.com/s/11Ib0D4fndRNcDRRLsyWltw?pwd=0714')"><font color=""> 心悦整合包</font></button>
+	 <!-- <button type="button" onclick="window.open('https://github.com/laila509/Atmosphere-syspatch/releases')"><font color=""> 备用地址</font></button> -->
+</td></tr>
+<tr><td align="center">
+	 <button type="button" onclick="window.open('https://pan.baidu.com/s/1MKkurt0kQ0T069D6x0huPA?pwd=xcff')"><font color=""> 莱莱踢个球整合包</font></button>
+	 <button type="button" onclick="window.open('https://github.com/laila509/Atmosphere-syspatch/releases')"><font color=""> 备用地址</font></button>
+</td></tr>	  
+<tr><td align="center">
+	 <button type="button" id="R-Team-Neptune/DeepSea" onclick="window.open('https://github.com/Team-Neptune/DeepSea/releases')"><font color=""> DeepSea整合包 不含Sigpatches</font></button>	  
+</td></tr>
+<tr><td><br><br><br><br></td></tr>
+
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 系统固件离线升级包 </font></td></tr>
+<tr><td align="center">
+<button type="button" id="R-THZoria/NX_Firmware" onclick="window.open('https://github.com/THZoria/NX_Firmware/releases')"><font color=""> R-THZoria地址</font></button>
+<button type="button" onclick="window.open('https://darthsternie.net/switch-firmwares/')"><font color=""> Darthsternie地址</font></button>
+</td></tr>
+<tr><td><br><br><br><br></td></tr>
+
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 纯净原版基础包 </font></td></tr>
+<tr><td align="center">
+<button type="button" id="R-atmosphere-nx/atmosphere" onclick="window.open('https://github.com/Atmosphere-NX/Atmosphere/releases')"><font color=""> 【大气层包】大气层原版 </font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('https://gbatemp.net/threads/sigpatches-for-atmosphere-hekate-fss0-fusee-package3.571543/')"><font color=""> 【签名补丁】Sigpatches  </font></button>
+<button type="button" onclick="window.open('https://hackintendo.com/download/sigpatches/')"><font color=""> 备用1 </font></button>
+<button type="button" onclick="window.open('https://sigmapatches.su/')"><font color=""> 备用2 </font></button>
+<button type="button" onclick="window.open('https://github.com/fraxalotl/SwitchScript')"><font color=""> 备用3 </font></button>
+</td></tr>
+
+<tr><td><br><br><br><br></td></tr>
+
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> 模拟器 </font></td></tr>
+<tr><td align="center">
+<button type="button" id="R-Ryubing/Ryujinx" onclick="window.open('https://github.com/Ryubing/Ryujinx/releases')"><font color=""> Ryujinx - Win、安卓、Mac</font></button>	  
+<button type="button" onclick="window.open('https://ryujinx-emulator.com/')"><font color=""> 教程 </font></button>
+</td></tr>  
+
+<tr><td><br><br><br><br></td></tr>
+
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> MigSwitch烧录卡（可能兼容Switch 2） </font></td></tr>
+<tr><td align="center">
+<button type="button" onclick="window.open('magnet:?xt=urn:btih:53C2D6A588015F47908E01C592BB982FC4C3416C&tr=http%3A%2F%2Fbt3.t-ru.org%2Fann%3Fmagnet&dn=%5BNintendo%20Switch%5D%20MIG%20Switch%20Game%20Collection%3A%20%D1%81%D0%B1%D0%BE%D1%80%D0%BD%D0%B8%D0%BA%20%D0%B8%D0%B7%20366%20%D0%B8%D0%B3%D1%80%20%D0%B4%D0%BB%D1%8F%20%D1%84%D0%BB%D0%B5%D1%88-%D0%BA%D0%B0%D1%80%D1%82%D1%80%D0%B8%D0%B4%D0%B6%D0%B0%20MIG%20Switch%20%5BXCI%2BBIN%5D%5BRUS%2FMulti%5D')"><font color=""> 烧录卡合集磁力种子</font></button>	  
+<button type="button" onclick="window.open('https://s0nmo382lrr.feishu.cn/docx/W8jndJHGXoxjwUxOBpmcecqBnbb')"><font color=""> 烧录卡教程 </font></button>
+</td></tr>  
+
+<tr><td><br><br><br><br></td></tr>
+
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;;"> Pegascape </font></td></tr>
+<tr><td align="center">
+	<button type="button" onclick="window.open('https://github.com/PSGO/PegaScape/releases')"><font color=""> Win一键本地运行</font></button>	  
+	<button type="button" onclick="window.open('https://github.com/noahc3/PegaScape')"><font color=""> 教程 </font></button>
+</td></tr>  
+<tr><td><font style="font-size:14px;text-align:center;color:#dcddde;;"> 适用于真实系统为1.00-4.10，新DNS：141.148.246.60</font></td></tr>
+
+<tr><td><br><br><br><br></td></tr>
+
+<tr><td><font style="font-size:20px;text-align:center;color:#dcddde;"> 可选扩展插件（按需整合更稳定） </font></td></tr>
+
+<tr><td align="center">
+<button type="button" id="R-easyworld/hekate" onclick="window.open('https://github.com/easyworld/hekate/releases')"><font color=""> 【启动管理】Hekate中文版 </font></button>
+<button type="button" id="R-CTCaer/hekate" onclick="window.open('https://github.com/CTCaer/hekate/releases')"><font color=""> 英文版 </font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" id="R-rashevskyv/dbi" onclick="window.open('https://github.com/rashevskyv/dbi/releases')"><font color=""> 【安装游戏】DBI 操作简单 安装稳定</font></button>
+<button type="button" onclick="window.open('https://psgo.lanzoub.com/i1Y6S2529eve')"><font color=""> 中文版</font></button>
+<button type="button" onclick="window.open('https://psgo.lanzoub.com/i1Y6S2529eve')"><font color=""> 快捷图标</font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/ppkantorski/nx-ovlloader/releases')"><font color=""> Tesla启动器 </font></button>
+<button type="button" onclick="window.open('https://github.com/ppkantorski/Ultrahand-Overlay/releases')"><font color=""> Tesla菜单 </font></button>
+<button type="button" onclick="window.open('https://github.com/ppkantorski/ovl-sysmodules/releases')"><font color=""> Tesla系统管理 </font></button>
+<button type="button" onclick="window.open('https://github.com/ppkantorski/EdiZon-Overlay/releases')"><font color=""> ovlEdiZon金手指 </font></button>
+</td></tr>
+	
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/halop/OC_Toolkit_SC_EOS/releases')"><font color=""> 【超频】EOS-OC-Suite </font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" id="R-xfangfang/wiliwili"onclick="window.open('https://github.com/xfangfang/wiliwili/releases')"><font color=""> 【哔哩哔哩】wiliwili </font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/tomvita/EdiZon-SE/releases')"><font color=""> 【金手指】EdiZon-SE </font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/joel16/NX-Shell/releases')"><font color=""> 【文件管理】NX-Shell </font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/dezem/AtmoXL-Titel-Installer/releases')"><font color=""> 【安装游戏】AtmoXL 替代Awoo </font></button>
+</td></tr>
+
+<!-- <tr><td align="center"> -->
+<!-- <button type="button" onclick="window.open('https://github.com/Yuanbanba/Tesla/releases')"><font color=""> 【菜单插件】Tesla特斯拉集成包 中文版</font></button> -->
+<!-- </td></tr> -->
+	
+<tr><td align="center">
+<button type="button" onclick="window.open('http://tinfoil.io/Download#download')"><font color=""> 【安装游戏】Tinfoil 支持在线更新游戏 中文版 </font></button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/mrdude2478/TinWoo/releases/download/1.0.11/TinWoo-Installer.zip')"><font color=""> 【安装游戏】TinWoo 替代Awoo 中文版 </font></button>
+</td></tr>
+	
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/meganukebmp/Switch_90DNS_tester/releases')"><font color=""> 【安全工具】90DNS 防ban机</font></button>
+</td></tr>
+	
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/MenosGrante/Rekado/releases/download/5.0.2/5.0.2.Rekado.94.-release.apk')"><font color=""> 【注入工具】Rekado 使用安卓手机注入引导 中文版</font></button>
+</td></tr>
+	
+<tr><td align="center">
+<button type="button" onclick="window.open('https://github.com/WerWolv/Hekate-Toolbox/releases')"><font color=""> 【插件管理】Hekate-Toolbox 插件后台运行管理</font></button>
+</td></tr>
+
+<tr><td><br><br><br></td></tr>
+<!-- <tr><td><font size="4.5" color="#dcddde">--- 预计陆续新增二十多个插件 ---</font></td></tr> -->
+
+   </table> 
+  </div> 
+  <div class="bottopmsg"> 
+  <br><br><br><br><br>
+   <a href="index.html" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">回到首页</a> &nbsp;·&nbsp;
+   <a href="https://game.psgo.eu.org/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">资源导航</a> &nbsp;·&nbsp; 
+   <a href="base64/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">Base64</a> &nbsp;·&nbsp; 
+   <a href="https://x.com/psgocn" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">关注推特</a> &nbsp;·&nbsp; 
+   <a href="https://t.me/PSGO_Channel" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">加入电报</a> &nbsp;·&nbsp; 
+   <a href="disclaimer.html" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">免责声明</a> &nbsp;·&nbsp; 
+   <a href="https://liuyan.psgo.eu.org/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">留言</a> &nbsp;·&nbsp;
+   <a href="up.html" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">视频</a>
+   <!-- <a href="https://www.psgo.tk/donate/" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;"> -->
+  </div> 
+  <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/index-sw.js').then(function(reg) {
+            console.log('Service Worker 注册成功', reg);
+        }).catch(function(err) {
+            console.log('Service Worker 注册失败', err);
+        });
+    }//调用缓存，适用于大文件比如背景图
+  </script>   
+ <!-- <link rel="stylesheet" href="css/yanhua.css"> -->
+ </body>
+</html>
+<!-- 版本号 -->
+<script>
+updateButtonsWithVersion();
+
+function updateButtonsWithVersion() {
+  const buttons = document.querySelectorAll('[id^="P-"], [id^="R-"]');
+
+  const pkgURL = decodeBase64('aHR0cHM6Ly9wa2d6b25lLXZlci5wc2dvLmV1Lm9yZy9sb2cvTGF0ZXN0LnR4dA==');
+  const releasesURL = decodeBase64('aHR0cHM6Ly9yZWxlYXNlcy12ZXIucHNnby5ldS5vcmcvbG9nL0xhdGVzdC50eHQ=');
+
+  Promise.all([
+    fetchWithRetry(pkgURL),
+    fetchWithRetry(releasesURL)
+  ]).then(([pkgData, releasesData]) => {
+    buttons.forEach(button => {
+      updateButtonWithVersion(button, pkgData, releasesData);
+    });
+  }).catch(error => {
+    console.error('Error fetching version data:', error);
+  });
+}
+
+// 带重试的fetch
+async function fetchWithRetry(url, retries = 1) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return (await response.text()).split('\n');
+    } catch (error) {
+      if (attempt === retries) {
+        console.error(`Failed to fetch ${url} after ${retries + 1} attempts.`);
+        return null; // 返回 null 以便后续逻辑处理
+      }
+    }
+  }
+}
+
+function decodeBase64(encoded) {
+  return atob(encoded);
+}
+
+function updateButtonWithVersion(button, pkgData, releasesData) {
+  const buttonId = button.id;
+  const isPkgButton = buttonId.startsWith('P-');
+  const isReleasesButton = buttonId.startsWith('R-');
+
+  let data = isPkgButton ? pkgData : isReleasesButton ? releasesData : null;
+  if (!data) return;
+
+  let version = '';
+
+  data.forEach(line => {
+    line = line.trim();
+
+    if (isReleasesButton) {
+      const match = line.match(/(.+?)\|(.*)/i);
+      if (match) {
+        const key = match[1].trim();
+        version = match[2].trim();
+        if (key.toLowerCase() === buttonId.replace('R-', '').toLowerCase()) {
+          button.innerHTML += ` ${version}`;
+        }
+      }
+    } else {
+      const match = line.match(/\|(.*)/);
+      if (match) {
+        const strippedButtonId = buttonId.replace('P-', '');
+        if (match[1].includes(strippedButtonId)) {
+          const parts = match[1].split('_');
+          version = parts[parts.length - 1].trim();
+          if (strippedButtonId === buttonId.replace('P-', '')) {
+            button.innerHTML += ` ${version}`;
+          }
+        }
+      }
+    }
+  });
+}
+</script>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-7VRDNYTJ1Y');
+  </script>

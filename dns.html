@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS和域名可用状态 - PSGO.eu.org</title>
+    <style>
+        .result-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        .available {
+            color: green;
+        }
+        .unavailable {
+            color: red;
+        }
+        .group {
+            margin-bottom: 20px;
+        }
+        .group-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .status {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DNS和网站可用状态检测 - PSGO.eu.org</h1>
+    <div id="domain-result" class="group">
+        <div class="group-title">域名</div>
+    </div>
+    <div id="dns-result" class="group">
+        <div class="group-title">DNS用于进入用户指南和屏蔽升级(进入PS5设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动)</div>
+    </div>
+    <div id="status" class="status">正在检测...</div>
+
+    <script>
+        // 判断是否为IP地址的函数
+        function isIPAddress(addr) {
+            return /^(?:\d{1,3}\.){3}\d{1,3}$/.test(addr);
+        }
+
+        // 使用Google DNS API测试域名解析
+        async function testDNS(host) {
+            const startTime = performance.now();
+            try {
+                // 使用Google DNS API进行解析
+                const response = await fetch(`https://dns.google/resolve?name=${host}&type=A`);
+                const data = await response.json();
+                const endTime = performance.now();
+                return {
+                    success: true,
+                    latency: endTime - startTime
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    latency: null
+                };
+            }
+        }
+
+        // 使用fetch测试域名的响应时间
+        async function testDomain(domain) {
+            const startTime = performance.now();
+            try {
+                const response = await fetch(`https://${domain}`, { mode: 'no-cors' });
+                const endTime = performance.now();
+                return {
+                    success: true,
+                    latency: endTime - startTime
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    latency: null
+                };
+            }
+        }
+
+        async function pingDNS() {
+            const dnsList = [ 
+                'psgo.eu.org', 
+                'psgo.github.io', 
+                'es7in1.site',
+                'ps5jb.pages.dev',
+                'umtx.pages.dev', 
+                '165.227.83.145', 
+                '192.241.221.79',
+				'62.210.38.117'
+            ];
+            const dnsResultDiv = document.getElementById('dns-result');
+            const domainResultDiv = document.getElementById('domain-result');
+            const statusDiv = document.getElementById('status');
+            domainResultDiv.innerHTML = '<div class="group-title">域名</div>';
+            dnsResultDiv.innerHTML = '<div class="group-title">DNS用于进入用户指南和屏蔽升级(进入PS5设置 - 网络 - 设定 - 设定互联网 - 选择你的网络 - 高级设定 - DNS设定 - 手动)</div>';
+            statusDiv.textContent = '正在检测...';
+
+            for (const host of dnsList) {
+                const type = isIPAddress(host) ? 'IP地址' : '域名';
+                const className = isIPAddress(host) ? 'ip' : 'domain';
+                let result;
+                if (isIPAddress(host)) {
+                    result = await testDNS(host); // 如果是IP地址，使用Google DNS API测试
+                } else {
+                    result = await testDomain(host); // 如果是域名，使用用户端的fetch测试
+                }
+                const resultHTML = `
+                    <div class="result-item ${className}">
+                        <strong>${host}</strong> - 类型: ${type}, 状态: <span class="${result.success ? 'available' : 'unavailable'}">${result.success ? '可用' : '不可用'}</span>, 延迟: ${result.latency ? result.latency.toFixed(2) + '毫秒' : '无'}
+                    </div>
+                `;
+                if (isIPAddress(host)) {
+                    dnsResultDiv.innerHTML += resultHTML; // 如果是IP地址，添加到DNS组
+                } else {
+                    domainResultDiv.innerHTML += resultHTML; // 如果是域名，添加到域名组
+                }
+            }
+
+            // 检测完毕后更新状态
+            statusDiv.textContent = '检测完毕';
+        }
+
+        // 页面加载后直接执行
+        window.onload = pingDNS;
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+  <link rel="shortcut icon" href="psgo.ico" type="image/x-icon">
+  <title>PS4折腾导航 - PSGO.eu.org</title>  
+  <style>
+    
+	body{
+	overflow: hidden;
+    background-color:#080808;
+    background-attachment:fixed;
+    background-size:100%;
+	background-repeat:no-repeat;
+    font-family:system-ui;
+	text-align:center
+    }
+        
+	a:hover{
+	text-decoration: none;
+    border-bottom: 1.5px solid;
+	padding-bottom: 18px;
+	}
+	
+    button:-moz-focus-inner, button:focus{
+    outline:0;
+    border:none
+	}
+	
+	option{
+    background-color:#080808;
+    }
+	
+    button{
+    font-family:arial;
+    font-size:22px;
+    font-weight:700;
+    border:2px solid #404040;
+    border-radius:4px;
+	margin:10px 2px; 
+    padding:10px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:none;
+    background:#603bcc;
+    box-shadow:0 5px 0 #888888;
+	color:white;
+    } 
+
+    button:hover{
+    color:#603bcc;
+    font-size:22px;
+    background:#161616;
+    border:2px solid #fff;
+    box-shadow:0 5px 0 #ccc;
+    } 
+    
+    button:active{
+    background:#603bcc;
+    position:relative;
+    color:#000;
+    top:5px;
+    box-shadow:none
+    }
+    
+   .bottopmsg{
+	position:absolute;
+	bottom:20px;
+    width:99%;
+	padding:5px 0 1px 0;
+	color:#603bcc;
+	text-align: center;
+	font-size:16px;
+    }
+	
+      /** variables */
+      :root {
+        /*orig*/
+
+        --color-black: black;
+        --color-cod-gray: #101010;
+        --color-white: white;
+        --color-error: rgb(191, 95, 95);
+        --color-primary-rgba: 0, 192, 251;
+        --color-primary: #00c0fb;
+        --color-secondary-rgba: 234, 182, 56;
+        --color-secondary: #eab638;
+      }
+
+      .tiles {
+        display: flex;
+        flex-direction: column;
+		z-index:-1;
+        justify-content: center;
+        left: 50%;
+        position: fixed;
+        top: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%) rotate(22.5deg);
+      }
+      .tiles__line {
+        -webkit-animation: runner 20s linear infinite;
+        display: flex;
+        transform: translateX(25%);
+      }
+      .tiles__line:nth-child(2) {
+        -webkit-animation-duration: 32s;
+      }
+      .tiles__line:nth-child(3) {
+        -webkit-animation-duration: 44s;
+      }
+
+      @keyframes runner {
+        to {
+          -webkit-transform: translateX(-25%);
+        }
+      }
+      .tiles__line-img {
+        --tile-margin: 3vw;
+        background-position: 50% 50%;
+        background-size: cover;
+        border-radius: 50%;
+        flex: none;
+        height: 30vh;
+        margin: var(--tile-margin);
+        width: 30vh;
+        background-color:#603bcc;
+        opacity: 0.3;
+
+      }
+      .tiles__line-img--large {
+        border-radius: 20vh;
+        width: 100vh;
+        opacity: 0.3;
+      }
+  
+</style> 
+ </head> 
+ <body> 
+  <br> 
+  <h1 style="font-size:60px;text-align:center;font-style:italic;text-shadow: 3px 2px #ddd0ff;"><font color="#603bcc">PS4 AIO 折腾导航</font></h1> 
+  <div id="mymenu"> 
+  <div id="progress" style="font-size:30px;text-align:center;color:#fff;font-style:italic;font-weight:bold;">收录折腾原版原链接 <font color="#fff">记得分享给你的朋友 </font></div> 
+  <br> 
+ <table align="center"> 
+<tr><td align="center">
+<!-- <button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 702 & 75X & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Karo </font></button> -->
+<button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 702 & 75X & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Karo </font></button>
+<button type="button" onmouseover="progress.innerHTML='基于Karo / 支持505 & 672 & 702 & 75X & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 7in1 </font></button>
+<button type="button" onmouseover="progress.innerHTML='支持474 & 505 & 672 & 702 & 75X & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 右手 </font></button>
+<button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Wrozen </font></button>
+<!-- <button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 702 & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> TheWolf </font></button> -->
+<button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 702 & 75X & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> GamerHack </font></button>
+<button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> WolF </font></button>
+<button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 70x & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> NK </font></button>
+<!-- <button type="button" onmouseover="progress.innerHTML='仅支持900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Leeful 9.00 </font></button> -->
+<button type="button" onmouseover="progress.innerHTML='仅支持900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Kme 9</font></button>
+<!-- <button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Leeful / Prb </font></button> -->
+<!-- <button type="button" onmouseover="progress.innerHTML='支持505 & 672 & 702 & 75X & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> NightKing </font></button> -->
+<!-- <button type="button" onmouseover="progress.innerHTML='支持405 & 450 & 474 & 505 & 672 & 702 & 75X & 900'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Al-Azif </font></button> -->
+<!-- <button type="button" onmouseover="progress.innerHTML='在线免费下载2000+游戏 / 在线更新UPDATES和DLC / 需要国际网络 '" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 黑商店 </font></button> -->
+</td></tr>
+
+<tr><td align="center">
+<button type="button"  onmouseover="progress.innerHTML='支持7.00-11.00 / Win7-11'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> PPPwn Lite </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='支持7.00-11.00 / Win7-11'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> PPPwnGo </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='支持7.00-11.00'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Luckfox </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='支持7.00-11.00'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 玩客云</font> </button>
+<button type="button"  onmouseover="progress.innerHTML='所有版本合集自动同步更新 / 包含PPPwn所需的stage2'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> GoldHEN</font> </button>
+<button type="button"  onmouseover="progress.innerHTML='PPPwn专用 / 包含多种插件主要是为11.00'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 离线插件</font> </button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button"  onmouseover="progress.innerHTML='在线刷机 / 多版本支持ESP32、8266'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> ESP AIO </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='ESP32在线刷机仅支持9.00'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 9.00 ESP </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='多版本支持ESP32、8266'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 右手 ESP </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='多版本支持ESP32、8266 / GoldHEN老版本归档合集'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> Karo ESP </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='支持ESP32、8266等 / 网页刷机工具 自备Bin文件'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> ESP 网页 </font> </button>
+<button type="button"  onmouseover="progress.innerHTML='支持ESP32、8266等'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> ESP 安卓 </font> </button>
+</td></tr>
+
+<tr><td align="center">
+<button type="button" onmouseover="progress.innerHTML='150+折腾项目更新提醒24小时不打烊'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 折腾动态 </font></button>
+<button type="button" onmouseover="progress.innerHTML='PS4-HB自制应用市场 / 使用PC浏览器下载'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> FPKGs 应用 </font></button>
+<button type="button" onmouseover="progress.innerHTML='支持PS5 PS4手柄'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 手柄校准 </font></button>
+<button type="button" onmouseover="progress.innerHTML='支持PS5 PS4手柄'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 手柄测试 </font></button>
+<button type="button"  onmouseover="progress.innerHTML='每周五晚上6点自动更新金手指合集并生成压缩包链接'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 金手指</font> </button>
+<button type="button" onmouseover="progress.innerHTML='游戏ID和版本都需匹配 / 使用前先注入WebRTE'" onmouseout="progress.innerHTML='收录折腾原版原链接 记得分享给你的朋友'"><font color=""> 网页金手指</font></button>
+</td></tr>
+
+   </table>
+  </div> 
+<div class="bottopmsg"> 
+   <!-- <h3 style="font-size:20px;text-align:center;"><font color="#ffffff">如果有帮助到你 <font color="#dcddde">  分享给你的朋友</font> </font></h3> -->
+   <!-- <a href="https://psgo.eu.org/donate/" target="_blank" style="text-decoration:none;"><h1 style="font-size:23px;text-align:center;"><font color="#ffffff">如果有帮助到你 <font color="#dcddde">  打赏赞助一下吧</font> </font></h1></a> -->
+   <!-- <a href="https://psgo.eu.org/faqpsgo.html" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;">常见问题</a> &nbsp;·&nbsp;  -->
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">PS5折腾</a> &nbsp;·&nbsp; 
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">资源导航</a> &nbsp;·&nbsp; 
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">Base64</a> &nbsp;·&nbsp; 
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">关注推特</a> &nbsp;·&nbsp; 
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">加入电报</a> &nbsp;·&nbsp; 
+   <!-- <a href="https://psgo.eu.org/base64.html" target="_blank" style="color:#dcddde;font-size:16px;text-align:center;text-decoration:none;"> 解密工具 </a> &nbsp;·&nbsp;  -->
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">免责声明</a> &nbsp;·&nbsp; 
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">留言</a> &nbsp;·&nbsp; 
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">视频</a> &nbsp;·&nbsp; 
+   <a style="color:#603bcc;font-size:16px;text-align:center;text-decoration:none;">招募</a>
+</div>
+  <div class="tiles"> 
+   <div class="tiles__line"> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img"></div> 
+   </div> 
+   <div class="tiles__line"> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+   </div> 
+   <div class="tiles__line"> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+    <div class="tiles__line-img"></div> 
+   </div> 
+   <div class="tiles__line"> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img"></div> 
+    <div class="tiles__line-img tiles__line-img--large"></div> 
+    <div class="tiles__line-img"></div> 
+   </div>  
+  </div>
+ </body>
+</html>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9eb804e94a9a40999fa428a806b03c9a"}'></script><!-- End Cloudflare Web Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VRDNYTJ1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-7VRDNYTJ1Y');
+  </script>
+        <script>
+        window.onload = function() {
+            alert("本站已停止维护和更新\n当前页面仅留作纪念展示\n无法点击下载和使用页面中的工具\n最后由衷感谢长期参与PSGO内测的几位同学~\n公开悬赏：哪个小黑狗凑齐了网页上的所有工具替代品并整理出来分享给机友们，找我领取够喝2年的旺仔牛奶~");
+		};
+    </script>
+        <script>
+document.addEventListener('click', function() {
+    window.location.href = 'oldpsgo/';
+});
+    </script>
